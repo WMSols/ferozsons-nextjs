@@ -1,4 +1,4 @@
-const adminConfig = ({ env }) => ({
+const adminConfig = ({ env }: { env: (key: string, defaultValue?: string) => string }) => ({
   auth: {
     secret: env('ADMIN_JWT_SECRET', 'example-token'),
   },
@@ -14,8 +14,8 @@ const adminConfig = ({ env }) => ({
     },
   },
   flags: {
-    nps: env.bool('FLAG_NPS', true),
-    promoteEE: env.bool('FLAG_PROMOTE_EE', true),
+    nps: env?.bool('FLAG_NPS', true),
+    promoteEE: env?.bool('FLAG_PROMOTE_EE', true),
   },
 });
 

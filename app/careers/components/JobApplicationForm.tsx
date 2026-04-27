@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 import { X, Briefcase, MapPin, Clock, Paperclip } from "lucide-react";
 import { submitJobApplication } from "@/lib/strapi";
+import { StrapiJob } from "@/types/strapi";
 
+interface JobApplicationProps {
+  isOpen: boolean;
+  onClose: () => void;
+  job: StrapiJob
+}
 
-const JobApplicationModal = ({ isOpen, onClose, job }) => {
+const JobApplicationModal = ({ isOpen, onClose, job } : JobApplicationProps) => {
   // Form states
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -17,7 +23,7 @@ const JobApplicationModal = ({ isOpen, onClose, job }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [statusMessage, setStatusMessage] = useState({ type: "", text: "" });
 
-  const handleFileChange = (e) => {
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       const file = e.target.files[0];
       setFileName(file.name);
@@ -28,7 +34,7 @@ const JobApplicationModal = ({ isOpen, onClose, job }) => {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!resumeFile) {
@@ -86,7 +92,7 @@ const JobApplicationModal = ({ isOpen, onClose, job }) => {
           </h2>
           <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500">
             <span className="flex items-center gap-1.5">
-              <Briefcase size={16} /> {job.department}
+              <Briefcase size={16} /> {job.domain}
             </span>
             <span className="flex items-center gap-1.5">
               <MapPin size={16} /> {job.location}
@@ -146,7 +152,7 @@ const JobApplicationModal = ({ isOpen, onClose, job }) => {
                 className="w-full rounded-md border border-gray-300 bg-gray-50 p-3 text-sm outline-none focus:border-[#1a65a4] focus:ring-1 focus:ring-[#1a65a4]"
                 required
                 value={fullName}
-                onChange={(e) => setFullName(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFullName(e.target.value)}
               />
             </div>
 
@@ -161,7 +167,7 @@ const JobApplicationModal = ({ isOpen, onClose, job }) => {
                 className="w-full rounded-md border border-gray-300 bg-gray-50 p-3 text-sm outline-none focus:border-[#1a65a4] focus:ring-1 focus:ring-[#1a65a4]"
                 required
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
               />
             </div>
           </div>
@@ -176,7 +182,7 @@ const JobApplicationModal = ({ isOpen, onClose, job }) => {
               placeholder="Tell us why you're a great fit for this role..."
               className="w-full rounded-md border border-gray-300 bg-gray-50 p-3 text-sm outline-none focus:border-[#1a65a4] focus:ring-1 focus:ring-[#1a65a4] resize-none"
               value={coverLetter}
-              onChange={(e) => setCoverLetter(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setCoverLetter(e.target.value)}
             />
           </div>
 

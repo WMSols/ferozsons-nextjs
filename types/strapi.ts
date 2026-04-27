@@ -106,7 +106,7 @@ export interface StrapiNewsroom {
   documentId: string;
   title: string;
   slug: string;
-  content: StrapiNewsroomContent;
+  content: StrapiNewsroomContent[];
   createdAt: string;
   updatedAt: string;
   publishedAt: string;

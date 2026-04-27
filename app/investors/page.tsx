@@ -23,7 +23,7 @@ export const metadata = {
 type SearchParamsRecord = Record<string, string | string[] | undefined>;
 
 interface InvestorsPageProps {
-  searchParams?: SearchParamsRecord | Promise<SearchParamsRecord>;
+  searchParams?: Promise<SearchParamsRecord>;
 }
 
 function getQueryValue(
@@ -36,7 +36,7 @@ function getQueryValue(
 export default async function InvestorsPage({
   searchParams,
 }: InvestorsPageProps) {
-  const resolvedSearchParams = await Promise.resolve(searchParams);
+  const resolvedSearchParams = await searchParams;
   const requestedType = getQueryValue(resolvedSearchParams?.type);
   const requestedPage = parsePositiveInteger(
     getQueryValue(resolvedSearchParams?.page),

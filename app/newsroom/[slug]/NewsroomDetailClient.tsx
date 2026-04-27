@@ -39,7 +39,7 @@ export default function NewsroomDetailClient({
             <div
               className="mt-6  prose prose-slate max-w-none"
             />
-            {article.content[0].children[0].text}
+            {article.content[0]?.children[0]?.text}
           </div>
         </div>
 
