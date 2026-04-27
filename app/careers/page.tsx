@@ -1,3 +1,5 @@
+export const runtime = "edge";
+
 import PageHero from "@/components/layout/PageHero";
 import { whyWorkWithUs } from "@/data/careers";
 import WhyWorkCard from "./components/WhyWorkCard";
@@ -85,4 +87,3 @@ export default async function CareersPage() {
     </div>
   );
 }
-export const runtime = "edge";

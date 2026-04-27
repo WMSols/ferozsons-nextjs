@@ -1,3 +1,5 @@
+export const runtime = "edge";
+
 import { cache } from "react";
 import { notFound } from "next/navigation";
 import { getProductBySlugUrl, strapiFetch } from "@/lib/strapi";
@@ -43,4 +45,3 @@ export default async function ProductDetailPage({
   }
   return <ProductDetailClient product={product} />;
 }
-export const runtime = "edge";

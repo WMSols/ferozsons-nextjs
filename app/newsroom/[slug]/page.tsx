@@ -1,3 +1,5 @@
+export const runtime = "edge";
+
 import { cache } from "react";
 import { notFound } from "next/navigation";
 import { getNewsroomBySlugUrl, strapiFetch } from "@/lib/strapi";
@@ -42,4 +44,3 @@ export default async function NewsroomDetailPage({
 
   return <NewsroomDetailClient article={article} />;
 }
-export const runtime = "edge";
