@@ -85,3 +85,4 @@ export default async function CareersPage() {
     </div>
   );
 }
+export const runtime = "edge";

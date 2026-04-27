@@ -43,3 +43,4 @@ export default async function ProductDetailPage({
   }
   return <ProductDetailClient product={product} />;
 }
+export const runtime = "edge";

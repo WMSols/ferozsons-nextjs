@@ -113,3 +113,4 @@ export default async function InvestorsPage({
     </div>
   );
 }
+export const runtime = "edge";
