@@ -195,8 +195,6 @@ export interface JobApplicationPayload {
 }
 
 export async function submitJobApplication(payload: JobApplicationPayload) {
-  console.log(payload.resume);
-  console.log(payload.resume instanceof File);
   const url = `${STRAPI_BASE_URL}/api/job-applications`;
 
   const { resume, ...restData } = payload;

@@ -28,22 +28,22 @@ export const csrCategories: { key: CSRCategory; label: string; image?: string }[
   {
     key: "education",
     label: "Education",
-    image: "/images/csr/education-khalid-waheed-campus-the-citizens-foundation.png",
+    image: "/images/CSR/education-khalid-waheed-campus-the-citizens-foundation.png",
   },
   {
     key: "healthcare",
     label: "Healthcare",
-    image: "/images/csr/S2.png",
+    image: "/images/CSR/S2.png",
   },
   {
     key: "arts",
     label: "Arts & Culture",
-    image: "/images/csr/arts-and-culture-the-citizen-foundation.png",
+    image: "/images/CSR/arts-and-culture-the-citizen-foundation.png",
   },
   {
     key: "community",
     label: "Community",
-    image: "/images/csr/Lahore-Literary-Festival.png",
+    image: "/images/CSR/Lahore-Literary-Festival.png",
   },
 ];
 
@@ -246,61 +246,61 @@ export interface csrSlideshowImage {
 export const csrSlideshowImages: csrSlideshowImage[] = [
   {
     id: 1,
-    url: "/images/csr/slideshow/1_banner-creating-impact.jpg",
+    url: "/images/CSR/slideshow/1_banner-creating-impact.jpg",
     width: 6400,
     height: 4267
   },
   {
     id: 2,
-    url: "/images/csr/slideshow/art-.png",
+    url: "/images/CSR/slideshow/art-.png",
     width: 1536,
     height: 1024
   },
   {
     id: 3,
-    url: "/images/csr/slideshow/art-breathes-life.png",
+    url: "/images/CSR/slideshow/art-breathes-life.png",
     width: 1024,
     height: 1536
   },
   {
     id: 4,
-    url: "/images/csr/slideshow/arts-and-culture-the-citizen-foundation.png",
+    url: "/images/CSR/slideshow/arts-and-culture-the-citizen-foundation.png",
     width: 1536,
     height: 1024
   },
   {
     id: 5,
-    url: "/images/csr/slideshow/education_khalid-waheed-campus-the-citizens-foundation.png",
+    url: "/images/CSR/slideshow/education_khalid-waheed-campus-the-citizens-foundation.png",
     width: 1536,
     height: 1024
   },
   {
     id: 6,
-    url: "/images/csr/slideshow/img-7683.jpeg",
+    url: "/images/CSR/slideshow/img-7683.jpeg",
     width: 4032,
     height: 3024
   },
   {
     id: 7,
-    url: "/images/csr/slideshow/lahore-literaryfestival.png",
+    url: "/images/CSR/slideshow/lahore-literaryfestival.png",
     width: 1536,
     height: 1024
   },
   {
     id: 8,
-    url: "/images/csr/slideshow/lums-writers.png",
+    url: "/images/CSR/slideshow/lums-writers.png",
     width: 1157,
     height: 1024
   },
   {
     id: 9,
-    url: "/images/csr/slideshow/nca-.png",
+    url: "/images/CSR/slideshow/nca-.png",
     width: 834,
     height: 1024
   },
   {
     id: 10,
-    url: "/images/csr/slideshow/nop-.png",
+    url: "/images/CSR/slideshow/nop-.png",
     width: 1536,
     height: 1024
   }
