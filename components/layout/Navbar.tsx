@@ -264,7 +264,7 @@ const Navbar = () => {
       <div className="flex lg:hidden items-center justify-between rounded-[20px] bg-[#FFFFFF] shadow-[0_2px_12px_rgba(0,0,0,0.08)] px-4 py-3">
         <Link href="/" className="flex items-center shrink-0">
           <Image
-            src="/Ferozsons Logo 1000 x 250 px 3.png"
+            src="/Ferozsons-Logo-1000x250px3.png"
             alt="Ferozsons Laboratories Limited"
             width={160}
             height={40}
