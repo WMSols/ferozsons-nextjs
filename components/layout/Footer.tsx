@@ -13,7 +13,7 @@ const Footer = ({ dark = false }: { dark?: boolean }) => {
           <div>
             <Link href="/" className="inline-block mb-4">
               <Image
-                src="/Ferozsons Logo 1000 x 250 px 3.png"
+                src="/Ferozsons-Logo-1000x250px3.png"
                 alt="Ferozsons Laboratories Limited"
                 width={200}
                 height={50}

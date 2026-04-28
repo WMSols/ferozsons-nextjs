@@ -38,7 +38,7 @@ export default function CreatingImpactPage() {
       <PageHero
         title="Creating Impact"
         subtitle="At Ferozsons, giving back is not a programme — it is our purpose. From classrooms to clinical wards, we invest in the communities that define Pakistan."
-        backgroundImage="/images/CSR/1_banner creating impact.jpg"
+        backgroundImage="/images/CSR/1-banner-creating-impact.jpg"
       />
 
 

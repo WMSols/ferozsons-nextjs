@@ -24,13 +24,13 @@ export const therapeuticsData = [
   { label: "Antibiotics", image: "/images/Icons-Therapeutic-Areas/antibiotics.png" },
   {
     label: "Cough Syrup & Lozenges",
-    image: "/images/Icons-Therapeutic-Areas/cough syrup.png",
+    image: "/images/Icons-Therapeutic-Areas/cough-syrup.png",
   },
   { label: "Gastroenterology", image: "/images/Icons-Therapeutic-Areas/gastroenterology.png" },
   { label: "Urology", image: "/images/Icons-Therapeutic-Areas/urology.png" },
   {
     label: "Weight-Management",
-    image: "/images/Icons-Therapeutic-Areas/weight management.png",
+    image: "/images/Icons-Therapeutic-Areas/weight-management.png",
   },
   { label: "Dermatology", image: "/images/Icons-Therapeutic-Areas/dermatology.png" },
   { label: "Psychiatry", image: "/images/Icons-Therapeutic-Areas/psychiatry.png" },

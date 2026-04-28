@@ -6,6 +6,7 @@ import PositionCard from "./components/PositionCard";
 
 // Import your fetch utilities (adjust the path to wherever your strapi.ts file is located)
 import { buildJobPostsUrl, strapiFetch } from "@/lib/strapi";
+import { StrapiJob } from "@/types/strapi";
 
 export const metadata = {
   title: "Careers",
@@ -15,21 +16,23 @@ export const metadata = {
 
 // 1. Make the component async to handle server-side fetching
 export default async function CareersPage() {
-  let jobs = [];
+ let jobs = [];
 
-  // 2. Fetch data directly inside the Server Component
   try {
     const url = buildJobPostsUrl();
 
-    // Using cache: 'no-store' ensures you get fresh jobs on every page load.
-    // If jobs don't change often, you could use { next: { revalidate: 60 } } instead.
-    const res = await strapiFetch(url, { cache: 'no-store' });
+    const res = await strapiFetch(url);
+
+    if (!res.ok) {
+      throw new Error(`HTTP ${res.status}`);
+    }
+
     const json = await res.json();
 
-    // Strapi wraps the array in a 'data' object
-    jobs = json.data || [];
+    jobs = Array.isArray(json?.data) ? json.data : [];
   } catch (error) {
-    console.error("Failed to fetch job posts from Strapi:", error);
+    console.error("Failed to fetch job posts:", error);
+    jobs = [];
   }
 
   return (
@@ -56,12 +59,12 @@ export default async function CareersPage() {
           {jobs.length === 0 ? (
             <p className="text-gray-500">No open positions at the moment. Please check back later!</p>
           ) : (
-            jobs.map((job: any) => {
+            jobs.map((job: StrapiJob, idx:number) => {
               const { title, domain, location, type } = job;
 
               return (
                 <PositionCard
-                  key={job.id} // Use the Strapi database ID as the React key
+                  key={idx} // Use the Strapi database ID as the React key
                   title={title}
                   domain={domain}
                   location={location}
@@ -75,7 +78,7 @@ export default async function CareersPage() {
                   // Important: Since PositionCard contains the Application Form,
                   // you will likely want to pass the Job ID down so when the form
                   // is submitted, you know which job they applied for!
-                  jobId={job.id}
+                  jobId={job.jobId}
                 />
               );
             })
