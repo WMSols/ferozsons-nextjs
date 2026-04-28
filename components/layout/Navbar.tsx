@@ -71,7 +71,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between gap-8 px-8 py-4">
           <Link href="/" className="flex items-center shrink-0">
             <Image
-              src="/Ferozsons Logo 1000 x 250 px 3.png"
+              src="/Ferozsons-Logo-1000x250px3.png"
               alt="Ferozsons Laboratories Limited"
               width={200}
               height={50}
