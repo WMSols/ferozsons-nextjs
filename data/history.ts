@@ -61,7 +61,7 @@ export const timelineData: TimelineItem[] = [
     year: "2006",
     description:
       "Ferozsons Laboratories signed a joint venture agreement with Bagó Group of Argentina to establish BF Biosciences (bfbio.com), marking the creation of Pakistan's first biopharmaceutical company.",
-    imageSrc: "/images/about-history/history-2006.JPG",
+    imageSrc: "/images/about-history/history-2-006.JPG",
   },
   {
     year: "2008",
