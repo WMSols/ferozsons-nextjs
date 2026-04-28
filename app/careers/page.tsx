@@ -1,4 +1,4 @@
-
+ export const runtime = 'edge';
 import PageHero from "@/components/layout/PageHero";
 import { whyWorkWithUs } from "@/data/careers";
 import WhyWorkCard from "./components/WhyWorkCard";
