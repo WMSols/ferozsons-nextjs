@@ -1,3 +1,4 @@
+"use client"
 import React, { useState } from "react";
 import { X, Briefcase, MapPin, Clock, Paperclip } from "lucide-react";
 import { submitJobApplication } from "@/lib/strapi";
@@ -34,7 +35,7 @@ const JobApplicationModal = ({ isOpen, onClose, job } : JobApplicationProps) => 
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!resumeFile) {
