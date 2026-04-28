@@ -18,22 +18,22 @@ export const metadata = {
 export default async function CareersPage() {
  let jobs = [];
 
-  try {
-    const url = buildJobPostsUrl();
+//   try {
+//     const url = buildJobPostsUrl();
 
-    const res = await strapiFetch(url);
+//     const res = await strapiFetch(url);
 
-    if (!res.ok) {
-      throw new Error(`HTTP ${res.status}`);
-    }
+//     if (!res.ok) {
+//       throw new Error(`HTTP ${res.status}`);
+//     }
 
-    const json = await res.json();
+//     const json = await res.json();
 
-    jobs = Array.isArray(json?.data) ? json.data : [];
-  } catch (error) {
-    console.error("Failed to fetch job posts:", error);
-    jobs = [];
-  }
+//     jobs = Array.isArray(json?.data) ? json.data : [];
+//   } catch (error) {
+//     console.error("Failed to fetch job posts:", error);
+//     jobs = [];
+//   }
 
   return (
     <div className="pt-10">
