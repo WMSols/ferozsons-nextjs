@@ -3,7 +3,6 @@
 import { useState } from "react";
 import PageHero from "@/components/layout/PageHero";
 import {
-  csrImpactStats,
   csrInitiatives,
   type CSRCategory,
 } from "@/data/csrData";
@@ -11,7 +10,6 @@ import CSRClosingCTA from "./components/CSRClosingCTA";
 import CSRFilterBar from "./components/CSRFilterBar";
 import CSRInitiativeGrid from "./components/CSRInitiativeGrid";
 import CSRPillarOverview from "./components/CSRPillarOverview";
-import CSRStatsBar from "./components/CSRStatsBar";
 import CSRVisionSection from "./components/CSRVisionSection";
 import CSRSlidesshow from "./components/CSRSlidesshow";
 
