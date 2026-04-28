@@ -1,4 +1,4 @@
-
+export const runtime = 'edge';
 import Link from "next/link";
 import PageHero from "@/components/layout/PageHero";
 import SectionWrapper from "@/components/shared/SectionWrapper";
@@ -24,7 +24,7 @@ export const metadata = {
 type SearchParamsRecord = Record<string, string | string[] | undefined>;
 
 interface InvestorsPageProps {
-  searchParams?: Promise<SearchParamsRecord>;
+  searchParams: Promise<SearchParamsRecord>;
 }
 
 function getQueryValue(
@@ -37,7 +37,7 @@ function getQueryValue(
 export default async function InvestorsPage({
   searchParams,
 }: InvestorsPageProps) {
-  const resolvedSearchParams = await searchParams;
+  const resolvedSearchParams = await searchParams ;
   const requestedType = getQueryValue(resolvedSearchParams?.type);
   const requestedPage = parsePositiveInteger(
     getQueryValue(resolvedSearchParams?.page),

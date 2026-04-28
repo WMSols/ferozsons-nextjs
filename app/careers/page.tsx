@@ -20,7 +20,9 @@ export default async function CareersPage() {
   try {
     const url = buildJobPostsUrl();
 
-    const res = await strapiFetch(url);
+    const res = await strapiFetch(url, {
+  cache: "no-store",
+});
 
     if (!res.ok) {
       throw new Error(`HTTP ${res.status}`);
