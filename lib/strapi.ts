@@ -5,7 +5,7 @@ export { STRAPI_BASE_URL };
 
 const STRAPI_BEARER_TOKEN =
   process.env.NEXT_PUBLIC_STRAPI_BEARER_TOKEN ??
-  "700960cd2f4e2c2413a6fdae25d30e23a39c70defe058d1aa28eb02a47abd31cc8a1f4008f67a7d02a06c897f5e2717973fd9378d2c7ba33b2fb53fbb9cd0bc9c5a0166acfcee7135ded99827fbecf3113cf7b74fbdba68608a6d8daa21a903250ccf14f500f611685629b20eb8a11f663b12ea4d3637014ad372ccbce8fecd6";
+  "952c4e28d31fc2b6035e116f9d04950d4330b69e0a0ed7fb5972f4639dce6f191a725ad2cdc6dc2b188d6c8bba828628f9398a0c16ccf904c503bea896f4fdd07c88ceaadea1a01c704f432069aac8fca082851084b0b563c08d7b08dcfe2a88d520eaa8fdff58fa7bfde67f1e157c8389fa92c232679b5a904a26706b3b3a7b";
 
 export async function strapiFetch(input: string, init?: RequestInit) {
   const headers = new Headers(init?.headers);
