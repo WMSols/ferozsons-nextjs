@@ -19,7 +19,6 @@ export default function TherapeuticAreas() {
               key={area.label}
               title={area.label}
               icon={area.image}
-              description={area.description}
               portfolioLink={area.portfolioLink}
             />
           ))}

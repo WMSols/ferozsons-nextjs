@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 
 const ctaLinks = [
   { label: "About Us", href: "/about" },
-  { label: "Company Overview", href: "/about/company-overview" },
   { label: "Medical Technologies", href: "/products/medical-technologies" },
   { label: "Creating Impact", href: "/csr" },
   { label: "Newsroom", href: "/newsroom" },

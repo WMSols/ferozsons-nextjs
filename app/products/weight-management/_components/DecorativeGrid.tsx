@@ -1,14 +1,15 @@
 import Image from "next/image";
 
 const tiles = [
-  "/images/about-history/1954.jpg",
-  "/images/about-history/1960.jpg",
-  "/images/about-history/1961.jpg",
-  "/images/about-history/1964-1969.jpg",
-  "/images/about-history/1991.png",
-  "/images/about-history/2002.png",
-  "/images/about-history/2006.JPG",
-  "/images/about-history/2008.jpg",
+  "/weight-management/slider-images/dbdgb.png",
+  "/weight-management/slider-images/dytetybnty.png",
+  "/weight-management/slider-images/fnfnf.png",
+  "/weight-management/slider-images/hndgh.png",
+  "/weight-management/slider-images/nfnfn.png",
+  "/weight-management/slider-images/rtvgrtbvt.png",
+  "/weight-management/slider-images/smt.png",
+  "/weight-management/slider-images/tkito.png",
+
 ];
 
 export default function DecorativeGrid() {
@@ -46,7 +47,7 @@ export default function DecorativeGrid() {
               >
                 <Image
                   src={c}
-                  alt=""
+                  alt="Weight management images"
                   fill
                   className="object-cover"
                 />
@@ -66,7 +67,7 @@ export default function DecorativeGrid() {
               >
                 <Image
                   src={c}
-                  alt=""
+                  alt="Weight management images"
                   fill
                   className="object-cover"
                 />

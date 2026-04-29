@@ -1,19 +1,19 @@
 import Image from "next/image";
 
 const topTiles = [
-  "/images/about-history/1954.jpg",
-  "/images/about-history/1960.jpg",
-  "/images/about-history/1961.jpg",
-  "/images/about-history/1964-1969.jpg",
-  "/images/about-history/1991.png",
+  "/images/pharmacuticals-slider-images/bdfb.png",
+  "/images/pharmacuticals-slider-images/frerfref.png",
+  "/images/pharmacuticals-slider-images/h5h5hty.png",
+  "/images/pharmacuticals-slider-images/hjbjbjb.png",
+  "/images/pharmacuticals-slider-images/hyh.png",
 ];
 
 const bottomTiles = [
-  "/images/about-history/2002.png",
-  "/images/about-history/2006.JPG",
-  "/images/about-history/2008.jpg",
-  "/images/about-history/2012.png",
-  "/images/about-history/2014.png",
+  "/images/pharmacuticals-slider-images/nuyt.png",
+  "/images/pharmacuticals-slider-images/omega.png",
+  "/images/pharmacuticals-slider-images/revreerv.png",
+  "/images/pharmacuticals-slider-images/rvrttr.png",
+  "/images/pharmacuticals-slider-images/veee.png",
 ];
 
 export default function Hero() {
