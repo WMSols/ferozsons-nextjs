@@ -14,8 +14,6 @@ export const therapeuticsData = [
     label: "Hepatology",
     image: "/images/Icons-Therapeutic-Areas/hepatology.png",
     portfolioLink: "/products",
-    description:
-      "Ferozsons Laboratories Limited has played a pivotal role in advancing the treatment of liver diseases in Pakistan. In partnership with Gilead Sciences, we introduced Sovaldi® (sofosbuvir) in 2014 the first direct-acting antiviral therapy for hepatitis C in the country through a dedicated patient access program. This collaboration significantly expanded access to breakthrough treatment and has contributed to the cure of over 250,000 hepatitis C patients nationwide.Beyond treatment, we work closely with healthcare providers and medical societies to strengthen awareness of hepatic diseases, support medical education initiatives, and facilitate screening programs that promote early diagnosis and improved patient outcomes.",
   },
   { label: "Pulmonology", image: "/images/Icons-Therapeutic-Areas/pulmonology.png" },
 

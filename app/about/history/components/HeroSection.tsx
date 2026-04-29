@@ -103,7 +103,7 @@ export default function HeroSection() {
             letterSpacing: "-0.01em",
           }}
         >
-          A History of Impact
+          Generations of Care, Built on Trust
         </motion.h1>
 
         <motion.p
@@ -118,10 +118,12 @@ export default function HeroSection() {
             maxWidth: "1400px", // Prevents lines from getting uncomfortably wide
           }}
         >
-          Ferozsons Laboratories Limited was established in 1954 as one of the
-          first Pharmaceutical manufacturing companies in Pakistan, and has now
-          entered its seventh decade of serving the cause of health and
-          well-being in Pakistan and a growing number of international markets.
+          Founded in 1894 by Maulvi Ferozuddin Khan, the Ferozsons business
+          group began with the establishment of its publishing house, guided
+          from the outset by a commitment to advancing education and healthcare
+          for underserved communities across the subcontinent. Built on decades
+          of responsible healthcare leadership, ‘People Trust Us’ as we continue
+          advancing patient care.
         </motion.p>
 
         <motion.p

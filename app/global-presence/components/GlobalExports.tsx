@@ -9,20 +9,16 @@ const REGION_COUNTRIES = {
     "Azerbaijan",
     "Cambodia",
     "Indonesia",
-    "Iraq",
     "Kyrgyzstan",
+    "Mongolia",
     "Myanmar",
     "Nepal",
     "Philippines",
-    "Qatar",
     "Sri Lanka",
-    "Tajikistan",
-    "Turkey",
     "Uzbekistan",
     "Yemen",
   ],
   Africa: [
-    "Ethiopia",
     "Ghana",
     "Kenya",
     "Mauritania",
@@ -33,10 +29,9 @@ const REGION_COUNTRIES = {
     "Tanzania",
     "Uganda",
   ],
-  Europe: ["Moldova"],
-  "South America": ["Bolivia", "Chile", "Ecuador"],
+  Europe: ["Romania"],
+  "South America": ["Chile", "Ecuador"],
   "Central America & Caribbean": [
-    "Costa Rica",
     "Dominican Republic",
     "Guatemala",
     "Honduras",
@@ -132,7 +127,7 @@ export default function GlobalExports() {
           <div className="overflow-hidden rounded-[2rem] bg-[#2f87ce] ">
             <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[1.35rem]">
               <Image
-                src="/global-presence/world-map.jpg"
+                src="/global-presence/world-map.png"
                 alt="World map showing Ferozsons export footprint"
                 fill
                 className=" object-center"
