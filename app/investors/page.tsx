@@ -1,4 +1,3 @@
-export const runtime = 'edge';
 import Link from "next/link";
 import PageHero from "@/components/layout/PageHero";
 import SectionWrapper from "@/components/shared/SectionWrapper";
