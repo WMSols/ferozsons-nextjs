@@ -1,6 +1,6 @@
-import type { StrapiBlock, StrapiBlockTextChild } from "@/types/strapi";
+import type { StrapiBlock, StrapiTextNode } from "@/types/strapi";
 
-function renderTextChild(child: StrapiBlockTextChild): string {
+function renderTextChild(child: StrapiTextNode): string {
   let text = escapeHtml(child.text);
   if (child.bold) text = `<strong>${text}</strong>`;
   if (child.italic) text = `<em>${text}</em>`;
