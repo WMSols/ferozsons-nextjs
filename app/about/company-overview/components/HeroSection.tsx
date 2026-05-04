@@ -32,7 +32,7 @@ const HeroSection: React.FC = () => {
   return (
     <section
       ref={ref}
-      className="relative h-screen overflow-hidden flex items-center justify-center "
+      className="relative min-h-screen overflow-hidden flex items-center justify-center pt-[7rem] pb-14 "
       style={{
         background:
           "linear-gradient(135deg, #0d2d6b 0%, #1a4db8 40%, #1e6fa8 70%, #12547a 100%)",
@@ -114,7 +114,7 @@ const HeroSection: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="text-blue-200 text-xs tracking-[0.45em] uppercase font-semibold mb-6"
+          className="text-blue-200 text-xs tracking-[0.45em] uppercase font-semibold mb-2"
         >
           Established 1954
         </motion.p>
@@ -123,9 +123,9 @@ const HeroSection: React.FC = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="text-white font-black leading-[0.95] mb-10"
+          className="text-white font-black leading-[0.95] mb-12"
           style={{
-            fontSize: "clamp(3.5rem, 9vw, 7.5rem)",
+            fontSize: "clamp(3.5rem, 8vw, 7.1rem)",
             fontFamily: "'Georgia', serif",
           }}
         >
@@ -140,7 +140,7 @@ const HeroSection: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.75 }}
-          className="flex flex-wrap justify-center gap-10 mt-4"
+          className="flex flex-wrap justify-center gap-10 mt-6 "
         >
           {STATS.map((s, i) => (
             <motion.div
@@ -166,7 +166,7 @@ const HeroSection: React.FC = () => {
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2.2, repeat: Infinity }}
       >
-        <div className="w-px h-14 bg-gradient-to-b from-blue-200/80 to-transparent" />
+        <div className="w-px h-14 bg-linear-to-b from-blue-200/80 to-transparent" />
         <span className="text-white/40 text-[10px] tracking-[0.35em] uppercase">
           Scroll
         </span>

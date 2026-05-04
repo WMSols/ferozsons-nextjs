@@ -13,7 +13,7 @@ export default function CEOMessagePage() {
   return (
     <>
       {/* Navy Hero */}
-      <section className="bg-navy text-navy-foreground py-16 md:py-20">
+      <section className="bg-navy text-navy-foreground py-16 pt-30 -mt-24">
         <div className="container">
           <p className="text-xs tracking-[0.2em] uppercase text-primary mb-2">
             CEO Ferozsons Laboratories Limited

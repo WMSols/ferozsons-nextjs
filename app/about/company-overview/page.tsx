@@ -14,7 +14,7 @@ import TherapeuticAreasSection from "./components/TherapeuticAreasSection";
 const FerozsonAbout: React.FC = () => {
   return (
     <div
-      className="min-h-screen"
+      className="min-h-screen mt-[-6.6rem] "
       style={{ fontFamily: "'system-ui', sans-serif" }}
     >
       <HeroSection />

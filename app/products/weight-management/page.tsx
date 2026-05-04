@@ -12,11 +12,11 @@ export const metadata: Metadata = {
 
 export default function WeightManagementPage() {
   return (
-    <>
+    <div className="mt-[-6rem]">
       <Hero />
       <TreatmentOptions />
       <ProductSearch />
       <CareSection />
-    </>
+    </div>
   );
 }

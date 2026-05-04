@@ -17,6 +17,7 @@ export default function HeroSection() {
 
   return (
     <div
+
       ref={ref}
       style={{
         position: "relative",
@@ -26,6 +27,7 @@ export default function HeroSection() {
     >
       {/* 1. Hero Image Container */}
       <div
+      
         style={{
           position: "relative",
           width: "100%",

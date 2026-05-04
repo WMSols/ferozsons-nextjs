@@ -21,6 +21,7 @@ export default function HistoryOfImpactPage() {
         *{box-sizing:border-box}
       `}</style>
       <main
+      className="-mt-24"
         style={{
           fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
           background: "#fff",

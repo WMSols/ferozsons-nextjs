@@ -13,9 +13,9 @@ import {
 
 export default function Hero() {
   return (
-    <section className="bg-[#EEF2FF]"> 
+    <section className="bg-[#EEF2FF]">
 
-      <div className="container pb-14 pt-10 md:pb-20 md:pt-14">
+      <div className="container pb-16 pt-28 md:pb-24 md:pt-20">
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14">
           <div className="max-w-xl">
             <h1 className="text-[34px] leading-[1.12] text-blue-950 sm:text-[44px] sm:leading-[1.1]">
