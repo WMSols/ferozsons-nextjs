@@ -7,7 +7,7 @@ const EgmpSlideshowSection = () => {
   return (
     <div className="py-10">
       <h1
-        className="font-display leading-tight text-center px-4 sm:px-10"
+        className="font-display leading-tight text-center px-4 sm:px-10 py-14 pb-24"
         style={{
           fontSize: "clamp(1.9rem, 3.5vw, 3rem)",
           color: "#1d4ed8",
@@ -16,7 +16,7 @@ const EgmpSlideshowSection = () => {
       >
         cGMP-Compliant Manufacturing & Quality Systems Infrastructure.
       </h1>
-      <div className="flex relative overflow-hidden py-30">
+      <div className="flex relative overflow-hidden pb-24">
         <style>{`
             @keyframes scroll {
               from { transform: translateX(0) }

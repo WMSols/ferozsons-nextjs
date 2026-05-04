@@ -120,7 +120,7 @@ export default function MilestoneRow({
         {milestone.link && (
           <TimelineLink
             href={milestone.link.href}
-            label={milestone.link.label}
+            label={milestone.link.label} 
           />
         )}
 

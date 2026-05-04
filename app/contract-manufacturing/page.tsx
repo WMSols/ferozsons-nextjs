@@ -52,15 +52,16 @@ export default function ContractManufacturing() {
       <StatementSection />
       <FacilityHighlightsSection cards={facilityCards} />
       <EgmpSlideshowSection/>
+        <ClientsSection
+        currentClients={currentClients}
+        legacyClients={legacyClients}
+      />
       <ProductionCapacitiesSection
         productionRows={productionCapacities}
         injectableRows={injectableCapacities}
       />
       <FacilityVideoSection />
-      <ClientsSection
-        currentClients={currentClients}
-        legacyClients={legacyClients}
-      />
+
       <ClosingCtaSection ctaRef={ctaRef} ctaBgY={ctaBgY} />
     </div>
   );

@@ -85,21 +85,6 @@ const Footer = ({ dark = false }: { dark?: boolean }) => {
               5 KM Sundar Raiwind Road, Lahore - 55150<br />
               Email: <a href="mailto:cs@ferozsons-labs.com" className="hover:text-white transition-opacity">cs@ferozsons-labs.com</a>
             </p>
-
-            <div className="flex justify-start md:justify-end gap-6 w-full pt-1">
-              <a
-                href="#"
-                className="text-xs opacity-50 hover:opacity-100 transition-opacity"
-              >
-                Privacy Policy
-              </a>
-              <a
-                href="#"
-                className="text-xs opacity-50 hover:opacity-100 transition-opacity"
-              >
-                Terms of Use
-              </a>
-            </div>
           </div>
 
         </div>

@@ -52,21 +52,7 @@ export interface StrapiProductsResponse {
   };
 }
 
-/** Strapi Blocks / Rich Text node (e.g. for description). */
-export interface StrapiBlockTextChild {
-  type: "text";
-  text: string;
-  bold?: boolean;
-  italic?: boolean;
-  underline?: boolean;
-}
 
-export interface StrapiBlockParagraph {
-  type: "paragraph";
-  children: StrapiBlockTextChild[];
-}
-
-export type StrapiBlock = StrapiBlockParagraph;
 
 /** Single product from Strapi (e.g. by slug) with full populate. */
 export interface StrapiProductDetail extends StrapiProduct {
@@ -87,18 +73,38 @@ export interface StrapiProductDetail extends StrapiProduct {
   };
 }
 
+// types/strapi.ts
+
+// Base text node
+export interface StrapiTextNode {
+  type: "text";
+  text: string;
+  bold?: boolean;
+  italic?: boolean;
+  underline?: boolean;
+}
+
+// Link node (contains text nodes inside its own children array)
+export interface StrapiLinkNode {
+  type: "link";
+  url: string;
+  children: StrapiTextNode[];
+}
+
+export type StrapiNode = StrapiTextNode | StrapiLinkNode;
+
+export interface StrapiBlockParagraph {
+  type: "paragraph";
+  children: StrapiNode[];
+}
+
+// Export a generic block type that can be a paragraph, heading, list, etc.
+export type StrapiBlock = StrapiBlockParagraph; // Add other block types here if needed (e.g. StrapiBlockHeading)
+
 export interface StrapiNewsroomImage {
   id: number;
   documentId: string;
   url: string;
-}
-
-export interface StrapiNewsroomContent {
-  type: string;
-  children: [ {
-    type: string;
-    text: string
-  }]
 }
 
 export interface StrapiNewsroom {
@@ -106,7 +112,8 @@ export interface StrapiNewsroom {
   documentId: string;
   title: string;
   slug: string;
-  content: StrapiNewsroomContent[];
+  // Use 'any' here for the official renderer, or import 'BlocksContent' from the package if strict typing is preferred
+  content: any[];
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
@@ -132,4 +139,12 @@ export interface StrapiNewsroomsResponse {
   responsiblities: string;
   benefits: string;
   skills: string;
+}
+
+
+export interface FinancialHighlights {
+  revenue: string;
+  netProfit: string;
+  eps: string;
+  marketCap: string;
 }

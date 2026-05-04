@@ -2,7 +2,7 @@ import { Handshake } from "lucide-react";
 
 export default function CTASection() {
   return (
-    <section className="pb-20 sm:pb-24 lg:pb-32">
+    <section className="pb-20 sm:pb-24 lg:pb-32  pt-25 ">
       <div className="container max-w-[1320px]">
         <div className="rounded-[2.15rem] bg-[#427bb8] px-8 py-10 text-white shadow-[0_22px_50px_rgba(27,58,96,0.24)] sm:px-12 sm:py-14 lg:rounded-[2.6rem] lg:px-14 lg:py-16">
           <div className="max-w-[740px]">

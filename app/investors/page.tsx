@@ -13,6 +13,7 @@ import FinancialHighlight from "./components/FinancialHighlight";
 import ReportFilterTabs from "./components/ReportFilterTabs";
 import ReportList from "./components/ReportList";
 import Pagination from "./components/Pagination";
+import { STRAPI_BASE_URL, strapiFetch } from "@/lib/strapi";
 
 export const metadata = {
   title: "Investors",
@@ -64,6 +65,8 @@ export default async function InvestorsPage({
 
   const { pageCount, total } = reportsResponse.meta.pagination;
 
+  // Getting Financial Highlights from backend
+
   return (
     <div className="pt-10">
       <PageHero
@@ -74,7 +77,7 @@ export default async function InvestorsPage({
       <SectionWrapper containerClassName="max-w-4xl">
         <h2 className="text-2xl font-bold mb-8">Financial Highlights</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-          {financialHighlights.map((stat) => (
+          {financialHighlights?.map((stat) => (
             <FinancialHighlight
               key={stat.label}
               label={stat.label}

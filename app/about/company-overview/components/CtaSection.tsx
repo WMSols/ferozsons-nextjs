@@ -8,7 +8,7 @@ const ctaLinks = [
   { label: "Medical Technologies", href: "/products/medical-technologies" },
   { label: "Creating Impact", href: "/csr" },
   { label: "Newsroom", href: "/newsroom" },
-  { label: "Investors", href: "/investors" },
+  { label: "Investor Relations", href: "/investors" },
 ];
 
 const CtaSection: React.FC = () => {
@@ -27,7 +27,7 @@ const CtaSection: React.FC = () => {
           backgroundSize: "50px 50px",
         }}
       />
-      <div className="relative z-10 max-w-3xl mx-auto px-8 text-center">
+      <div className="relative z-10 max-w-4xl mx-auto px-8 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

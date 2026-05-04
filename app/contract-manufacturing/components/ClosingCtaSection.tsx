@@ -80,18 +80,6 @@ export function ClosingCtaSection({ ctaRef, ctaBgY }: ClosingCtaSectionProps) {
             >
               Contact Us →
             </motion.a>
-            <motion.a
-              href="#"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.97 }}
-              className="font-body px-10 py-4 rounded-full text-[#93c5fd] text-base cursor-pointer"
-              style={{
-                border: "1px solid #3b82f688",
-                fontWeight: 400,
-              }}
-            >
-              Download Capabilities Deck
-            </motion.a>
           </div>
         </FadeInSection>
       </div>

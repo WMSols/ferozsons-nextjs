@@ -13,7 +13,7 @@ export const partnerships: Partnership[] = [
       "A joint venture focused on manufacturing and distributing innovative biopharmaceutical products, including interferon-based therapies for hepatitis treatment across Pakistan.",
     since: "2006",
     logo: "/partnerships/bf-biosciences.png",
-    website: "https://www.bfbio.com",
+    website: "https://www.bago.com/en/",
   },
   {
     name: "BioGaia",
@@ -101,7 +101,7 @@ export const boardMembers = [
   { name: "Osman Khalid Waheed", title: "CEO and Director" },
   { name: "Akhter Khalid Waheed", title: "Chairperson, Board of Directors" },
   { name: "Amna Piracha Khan", title: "Director" },
-  { name: "Munize Azhar Piracha", title: "Director" },
+  { name: "Munize Azhar Peracha", title: "Director" },
   { name: "Arshad Saeed Husain", title: "Director" },
   { name: "Suleman Ghani", title: "Director" },
   { name: "Shahid Anwar", title: "Director" },

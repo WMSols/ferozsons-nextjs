@@ -7,7 +7,7 @@ import MessageSection from "./components/MessageSection";
 
 export default function GlobalPresenceClient() {
   return (
-    <div className="-mt-[6.6rem] bg-[#e8e8e8]">
+    <div className="mt-[-6.6rem] bg-[#e8e8e8]">
       <HeroSection />
       <GlobalExports />
       <MessageSection />
