@@ -51,7 +51,7 @@ export function ClientsSection({
               boxShadow: "0 20px 60px rgba(0,0,0,0.4)",
             }}
           >
-            <div className="grid grid-cols-3 gap-6 mb-10">
+            <div className="grid grid-cols-1 md:grid-cols-3  gap-6 mb-10">
               {currentClients.map((client, i) => (
                 <motion.div
                   key={i}

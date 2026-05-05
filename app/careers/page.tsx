@@ -45,7 +45,7 @@ export default async function CareersPage() {
       />
 
       <div className="flex flex-col items-center justify-center py-16 md:py-20">
-        <div className="mb-16 max-w-4xl">
+        <div className="mb-16 max-w-4xl px-4">
           <h2 className="text-2xl font-bold mb-6">Why Work With Us</h2>
           <div className="grid md:grid-cols-3 gap-6">
             {whyWorkWithUs.map((v) => (
@@ -55,7 +55,7 @@ export default async function CareersPage() {
         </div>
 
         <h2 className="text-2xl font-bold mb-6">Open Positions</h2>
-        <div className="space-y-4 max-w-5xl">
+        <div className="space-y-4 max-w-5xl  px-6 lg:p-0">
 
           {/* 3. Handle empty state or map through the fetched jobs */}
           {jobs.length === 0 ? (
