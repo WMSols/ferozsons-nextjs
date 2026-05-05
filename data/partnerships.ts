@@ -8,12 +8,12 @@ export type Partnership = {
 
 export const partnerships: Partnership[] = [
   {
-    name: "BF Biosciences",
+    name: "Bago Group",
     description:
       "A joint venture focused on manufacturing and distributing innovative biopharmaceutical products, including interferon-based therapies for hepatitis treatment across Pakistan.",
     since: "2006",
-    logo: "/partnerships/bf-biosciences.png",
-    website: "https://www.bago.com/en/",
+    logo: "/partnerships/bago.png",
+    website: "https://www.bago.com/en",
   },
   {
     name: "BioGaia",

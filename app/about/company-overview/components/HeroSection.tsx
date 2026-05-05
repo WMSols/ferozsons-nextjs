@@ -48,7 +48,7 @@ const HeroSection: React.FC = () => {
         />
         <div className="absolute inset-0 flex items-center justify-center">
           <div
-            className="w-[800px] h-[800px] rounded-full opacity-20"
+            className="w-200 h-200 rounded-full opacity-20"
             style={{
               background:
                 "radial-gradient(circle, #60a5fa 0%, transparent 65%)",
