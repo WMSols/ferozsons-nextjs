@@ -1,7 +1,6 @@
 import Link from "next/link";
 import PageHero from "@/components/layout/PageHero";
 import SectionWrapper from "@/components/shared/SectionWrapper";
-import { financialHighlights } from "@/data/investors";
 import {
   fetchInvestorReports,
   fetchReportTypes,
@@ -13,7 +12,10 @@ import FinancialHighlight from "./components/FinancialHighlight";
 import ReportFilterTabs from "./components/ReportFilterTabs";
 import ReportList from "./components/ReportList";
 import Pagination from "./components/Pagination";
-import { STRAPI_BASE_URL, strapiFetch } from "@/lib/strapi";
+
+// 1. Import your hardcoded fallback data and your fetch function
+import { financialHighlights as defaultHighlights } from "@/data/investors";
+import { getFinancialHighlights } from "@/lib/strapi";
 
 export const metadata = {
   title: "Investors",
@@ -37,7 +39,7 @@ function getQueryValue(
 export default async function InvestorsPage({
   searchParams,
 }: InvestorsPageProps) {
-  const resolvedSearchParams = await searchParams ;
+  const resolvedSearchParams = await searchParams;
   const requestedType = getQueryValue(resolvedSearchParams?.type);
   const requestedPage = parsePositiveInteger(
     getQueryValue(resolvedSearchParams?.page),
@@ -65,7 +67,34 @@ export default async function InvestorsPage({
 
   const { pageCount, total } = reportsResponse.meta.pagination;
 
-  // Getting Financial Highlights from backend
+  // 2. Fetch Financial Highlights from backend
+  const strapiHighlights = await getFinancialHighlights();
+
+  // 3. Map the data or fall back to defaults
+  let displayHighlights = defaultHighlights;
+
+  // Check if we received an array and it has at least one item
+  if (strapiHighlights && strapiHighlights.length > 0) {
+    const data = strapiHighlights[0]; // Assuming you only need the first record
+
+    // 1. Create this small helper above your array
+const formatCurrency = (value: string) => {
+  if (!value) return "N/A"; // Failsafe for empty data
+
+  // This removes any existing "pkr" (case-insensitive) and any trailing spaces,
+  // then prepends a fresh, uppercase "PKR " to ensure uniform formatting.
+  const cleanValue = value.replace(/PKR\s*/i, '').trim();
+  return `PKR ${cleanValue}`;
+};
+
+// 2. Map your data cleanly
+displayHighlights = [
+  { label: "Revenue", value: formatCurrency(data.revenue) },
+  { label: "Net Profit", value: formatCurrency(data.netProfit) },
+  { label: "EPS", value: formatCurrency(data.eps) },
+  { label: "Market Cap", value: formatCurrency(data.marketCap) },
+];
+  }
 
   return (
     <div className="pt-10">
@@ -77,7 +106,8 @@ export default async function InvestorsPage({
       <SectionWrapper containerClassName="max-w-4xl">
         <h2 className="text-2xl font-bold mb-8">Financial Highlights</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-          {financialHighlights?.map((stat) => (
+          {/* 4. Map over your newly transformed `displayHighlights` */}
+          {displayHighlights.map((stat) => (
             <FinancialHighlight
               key={stat.label}
               label={stat.label}

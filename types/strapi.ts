@@ -142,7 +142,7 @@ export interface StrapiNewsroomsResponse {
 }
 
 
-export interface FinancialHighlights {
+export interface StrapiFinancialHighlights {
   revenue: string;
   netProfit: string;
   eps: string;

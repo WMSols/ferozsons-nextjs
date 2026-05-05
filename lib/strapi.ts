@@ -1,3 +1,5 @@
+import { StrapiFinancialHighlights } from "@/types/strapi";
+
 const STRAPI_BASE_URL =
   process.env.NEXT_PUBLIC_STRAPI_URL ?? "http://localhost:1337";
 
@@ -199,16 +201,16 @@ export async function submitJobApplication(payload: JobApplicationPayload) {
 
   const { resume, ...restData } = payload;
 
- const formData = new FormData();
+  const formData = new FormData();
 
-formData.append("data[fullName]", payload.fullName);
-formData.append("data[email]", payload.email);
-formData.append("data[title]", payload.title);
-formData.append("data[coverLetter]", payload.coverLetter);
+  formData.append("data[fullName]", payload.fullName);
+  formData.append("data[email]", payload.email);
+  formData.append("data[title]", payload.title);
+  formData.append("data[coverLetter]", payload.coverLetter);
 
-if (payload.resume) {
-  formData.append("files.resume", payload.resume);
-}
+  if (payload.resume) {
+    formData.append("files.resume", payload.resume);
+  }
   // 3. Create fresh headers to guarantee NO "Content-Type" is set.
   // We MUST let the browser automatically generate the "multipart/form-data"
   // header along with its unique boundary hash.
@@ -234,4 +236,21 @@ if (payload.resume) {
   return res;
 }
 
- 
+export async function getFinancialHighlights() {
+  let financialHighlights: StrapiFinancialHighlights[] = [];
+  const url = `${STRAPI_BASE_URL}/api/financial-highlights`;
+  try {
+    const res = await strapiFetch(url, {
+      cache: "no-store",
+    });
+    if (!res.ok) {
+      throw new Error(`HTTP ${res.status}`);
+    }
+    const json = await res.json();
+    financialHighlights = Array.isArray(json?.data) ? json.data : [];
+    return financialHighlights;
+  } catch (error) {
+    console.error("Failed to fetch job posts:", error);
+    financialHighlights = [];
+  }
+}
