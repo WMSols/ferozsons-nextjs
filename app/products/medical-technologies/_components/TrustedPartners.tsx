@@ -43,10 +43,10 @@ export function TrustedPartners() {
             whileTap={{ scale: 0.98 }}
               key={partner.name}
               className={`flex group shrink-0 items-center justify-center ${partner.bgColor} shadow-[0_8px_40px_rgba(0,0,0,0.5)]
-                w-40 h-40 rounded-[20px] p-6
-                sm:w-[260px] sm:h-[260px] sm:rounded-[26px] sm:p-8
-                md:w-[300px] md:h-[300px] md:rounded-[30px] md:p-10
-                lg:w-[320px] lg:h-[320px] lg:rounded-[32px] lg:p-10`}
+                rounded-[20px] p-6
+                sm:rounded-[26px] sm:p-8
+                 md:rounded-[30px] md:p-10
+                w-[320px] h-[320px] lg:rounded-[32px] lg:p-10`}
             >
               <div className="relative w-full h-full">
                 <Image

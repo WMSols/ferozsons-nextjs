@@ -45,7 +45,7 @@ const Footer = ({ dark = false }: { dark?: boolean }) => {
           ))}
         </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start border-t border-white/10 mt-12 pt-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6  md:items-start border-t border-white/10 mt-12 pt-4">
 
           {/* Left Column: Copyright */}
           <div className="justify-self-start">
@@ -92,7 +92,7 @@ const Footer = ({ dark = false }: { dark?: boolean }) => {
           <p className="text-center">
             Managed by{" "}
             <a
-            className="text-green-400 italic"
+            className="text-emerald-500 italic"
              href="https://www.wmsols.com/"
              target="_blank">
               WMsols
