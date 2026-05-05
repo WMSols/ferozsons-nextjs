@@ -65,9 +65,9 @@ const Navbar = () => {
   });
 
   return (
-    <header className="sticky top-0 z-50  px-4 pt-4 lg:px-6 lg:pt-6">
+    <header className="sticky top-0 z-50  px-4 pt-4 ixl:px-6 ixl:pt-6">
       {/* Desktop */}
-      <div className="hidden lg:block rounded-[20px] bg-[#FFFFFF] shadow-[0_2px_12px_rgba(0,0,0,0.08)]">
+      <div className="hidden ixl:block rounded-[20px] bg-[#FFFFFF] shadow-[0_2px_12px_rgba(0,0,0,0.08)]">
         <div className="flex items-center justify-between gap-8 px-8 py-4">
           <Link href="/" className="flex items-center shrink-0">
             <Image
@@ -192,7 +192,7 @@ const Navbar = () => {
 
                 {item.children && activePrimaryDropdown === item.label && (
                   <div className="absolute top-full right-0 pt-2 z-50">
-                    <div className="bg-[#FFFFFF] border border-[#CCCCCC] rounded-lg shadow-lg p-6 min-w-[240px]">
+                    <div className="bg-[#FFFFFF] border border-[#CCCCCC] rounded-lg shadow-lg p-6 min-w-60">
                       <p className="text-xs font-semibold text-[#666666] uppercase tracking-wider mb-3">
                         {item.label}
                       </p>
@@ -261,7 +261,7 @@ const Navbar = () => {
       </div>
 
       {/* Mobile */}
-      <div className="flex lg:hidden items-center justify-between rounded-[20px] bg-[#FFFFFF] shadow-[0_2px_12px_rgba(0,0,0,0.08)] px-4 py-3">
+      <div className="flex ixl:hidden items-center justify-between rounded-[20px] bg-[#FFFFFF] shadow-[0_2px_12px_rgba(0,0,0,0.08)] px-4 py-3">
         <Link href="/" className="flex items-center shrink-0">
           <Image
             src="/Ferozsons-Logo-1000x250px3.png"
@@ -289,11 +289,11 @@ const Navbar = () => {
         <>
           <button
             type="button"
-            className="lg:hidden fixed inset-0 z-40 bg-black/20"
+            className="ixl:hidden fixed inset-0 z-40 bg-black/20"
             aria-label="Close menu"
             onClick={() => setMobileOpen(false)}
           />
-          <div className="lg:hidden absolute top-full left-0 right-0 mt-2 z-50 px-4">
+          <div className="ixl:hidden absolute top-full left-0 right-0 mt-2 z-50 px-4">
             <div className="rounded-[20px] bg-[#FFFFFF] shadow-[0_2px_12px_rgba(0,0,0,0.08)] border border-[#CCCCCC]/30 overflow-hidden">
               <div className="px-4 py-4 space-y-1">
                 {navItems.map((item) => (
