@@ -53,13 +53,8 @@ export default function ProductDetailClient({
             </div>
           </div>
 
-          <div className="max-w-6xl mt-12">
-            <p className="text-sm text-muted-foreground mb-4">
-              {product.dosage ??
-                product.concentration ??
-                product.formulation ??
-                ""}
-            </p>
+          <div className="max-w-6xl mt-12 ">
+
             <VolumeSelector
               options={volumeOptions}
               selectedIndex={selectedSize}
@@ -69,6 +64,16 @@ export default function ProductDetailClient({
               descriptionHtml={descriptionHtml}
               keyFeatures={product.keyFeatures}
             />
+             <p className="text-sm text-muted-foreground my-4">
+              Dosage: {product.dosage ?? ""}
+            </p>
+            <p className="text-sm text-muted-foreground mb-4">
+              Concentration: {product.concentration ?? ""}
+
+            </p>
+            <p className="text-sm text-muted-foreground mb-4">
+              Formulation: {product.formulation ?? ""}
+            </p>
           </div>
 
           <div className="mt-12">
