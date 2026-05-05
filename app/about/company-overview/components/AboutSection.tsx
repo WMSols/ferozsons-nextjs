@@ -32,7 +32,7 @@ const AboutSection: React.FC = () => {
             />
             <div className="absolute inset-0 flex flex-col items-center justify-center p-10">
               <div
-                className="text-white/20 text-9xl font-black"
+                className="text-white/20 text-7xl sm:text-9xl font-black"
                 style={{ fontFamily: "'Georgia', serif" }}
               >
                 FLL
@@ -55,11 +55,11 @@ const AboutSection: React.FC = () => {
           </div>
 
           <motion.div
-            className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-5 shadow-2xl shadow-blue-900/10 border border-blue-100"
+            className="absolute  -bottom-14 sm:-bottom-6  -right-2 sm:-right-6 bg-white rounded-2xl p-5 shadow-2xl shadow-blue-900/10 border border-blue-100"
             animate={{ y: [0, -6, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           >
-            <div className="text-3xl font-black text-[#0d2d6b]">70+</div>
+            <div className="text-xl sm:text-3xl font-black text-[#0d2d6b]">70+</div>
             <div className="text-blue-900/50 text-xs tracking-widest uppercase mt-1">
               Years of Innovation
             </div>

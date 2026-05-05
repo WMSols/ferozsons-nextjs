@@ -50,7 +50,7 @@ const HepatitisSection: React.FC = () => {
               </div>
               <div className="relative z-10">
                 <div
-                  className="text-[#0d2d6b] text-6xl md:text-7xl font-black"
+                  className="text-[#0d2d6b] text-4xl md:text-7xl font-black"
                   style={{ fontFamily: "'Georgia', serif" }}
                 >
                   <Counter target="250000" />+
