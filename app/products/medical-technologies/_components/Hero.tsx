@@ -30,7 +30,7 @@ export function Hero() {
             src="/medical-technologies/hero-sphere.png"
             alt="Ferozsons sphere"
             fill
-            className="object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.8)]"
+            className="object-contain "
           />
         </div>
       </div>
