@@ -93,8 +93,9 @@ const Navbar = () => {
                   setActiveNestedDropdown(null);
                 }}
               >
+
                 <Link
-                  href={item.href}
+                  href={item.href} // This redirects to the parent tab it self
                   className={cn(
                     "flex items-center gap-1 text-base font-medium text-[#5C85A6] transition-colors hover:opacity-80",
                     pathname === item.href && "opacity-100",
@@ -106,7 +107,7 @@ const Navbar = () => {
 
                 {item.children && activePrimaryDropdown === item.label && (
                   <div className="absolute top-full left-0 pt-2 z-50">
-                    <div className="bg-[#FFFFFF] border border-[#CCCCCC] rounded-lg shadow-lg p-6 min-w-[240px]">
+                    <div className="bg-[#FFFFFF] border border-[#CCCCCC] rounded-lg shadow-lg p-6 min-w-60">
                       <p className="text-xs font-semibold text-[#666666] uppercase tracking-wider mb-3">
                         {item.label}
                       </p>
@@ -132,7 +133,7 @@ const Navbar = () => {
                               </button>
                               {activeNestedDropdown === nestedKey && (
                                 <div className="absolute left-full top-0 pl-2">
-                                  <div className="bg-[#FFFFFF] border border-[#CCCCCC] rounded-lg shadow-lg p-4 min-w-[200px]">
+                                  <div className="bg-[#FFFFFF] border border-[#CCCCCC] rounded-lg shadow-lg p-4 min-w-50">
                                     {child.children?.map((grandChild) => (
                                       <Link
                                         key={`${grandChild.label}-${grandChild.href}`}
@@ -218,7 +219,7 @@ const Navbar = () => {
                               </button>
                               {activeNestedDropdown === nestedKey && (
                                 <div className="absolute right-full top-0 pr-2">
-                                  <div className="bg-[#FFFFFF] border border-[#CCCCCC] rounded-lg shadow-lg p-4 min-w-[200px]">
+                                  <div className="bg-[#FFFFFF] border border-[#CCCCCC] rounded-lg shadow-lg p-4 min-w-50">
                                     {child.children?.map((grandChild) => (
                                       <Link
                                         key={`${grandChild.label}-${grandChild.href}`}
@@ -300,22 +301,34 @@ const Navbar = () => {
                   <div key={item.href}>
                     {item.children ? (
                       <>
-                        <button
-                          className="flex items-center justify-between w-full py-3 text-base font-medium text-[#5C85A6]"
-                          onClick={() =>
-                            setMobileDropdown(
-                              mobileDropdown === item.label ? null : item.label,
-                            )
-                          }
-                        >
-                          {item.label}
-                          <ChevronDown
-                            className={cn(
-                              "h-4 w-4 transition-transform",
-                              mobileDropdown === item.label && "rotate-180",
-                            )}
-                          />
-                        </button>
+                        <div className="flex items-center justify-between w-full py-3 text-base font-medium text-[#5C85A6]">
+                          <Link
+                            href={item.href}
+                            className="flex-1 hover:opacity-80 text-left"
+                            onClick={() => {
+                              setMobileOpen(false);
+                              setMobileDropdown(null);
+                              setMobileNestedDropdown(null);
+                            }}
+                          >
+                            {item.label}
+                          </Link>
+                          <button
+                            className="p-2 -mr-2"
+                            onClick={() =>
+                              setMobileDropdown(
+                                mobileDropdown === item.label ? null : item.label,
+                              )
+                            }
+                          >
+                            <ChevronDown
+                              className={cn(
+                                "h-4 w-4 transition-transform",
+                                mobileDropdown === item.label && "rotate-180",
+                              )}
+                            />
+                          </button>
+                        </div>
                         {mobileDropdown === item.label && (
                           <div className="pl-4 pb-2 space-y-1">
                             {item.children.map((child) => {
@@ -326,25 +339,37 @@ const Navbar = () => {
 
                               return hasNestedChildren ? (
                                 <div key={`${child.label}-${child.href}`}>
-                                  <button
-                                    className="flex items-center justify-between w-full py-2 text-sm text-[#5C85A6] hover:opacity-80"
-                                    onClick={() =>
-                                      setMobileNestedDropdown(
-                                        mobileNestedDropdown === nestedKey
-                                          ? null
-                                          : nestedKey,
-                                      )
-                                    }
-                                  >
-                                    {child.label}
-                                    <ChevronDown
-                                      className={cn(
-                                        "h-4 w-4 transition-transform",
-                                        mobileNestedDropdown === nestedKey &&
-                                          "rotate-180",
-                                      )}
-                                    />
-                                  </button>
+                                  <div className="flex items-center justify-between w-full py-2 text-sm text-[#5C85A6]">
+                                    <Link
+                                      href={child.href}
+                                      className="flex-1 hover:opacity-80 text-left"
+                                      onClick={() => {
+                                        setMobileOpen(false);
+                                        setMobileDropdown(null);
+                                        setMobileNestedDropdown(null);
+                                      }}
+                                    >
+                                      {child.label}
+                                    </Link>
+                                    <button
+                                      className="p-2 -mr-2 hover:opacity-80"
+                                      onClick={() =>
+                                        setMobileNestedDropdown(
+                                          mobileNestedDropdown === nestedKey
+                                            ? null
+                                            : nestedKey,
+                                        )
+                                      }
+                                    >
+                                      <ChevronDown
+                                        className={cn(
+                                          "h-4 w-4 transition-transform",
+                                          mobileNestedDropdown === nestedKey &&
+                                            "rotate-180",
+                                        )}
+                                      />
+                                    </button>
+                                  </div>
                                   {mobileNestedDropdown === nestedKey && (
                                     <div className="pl-4 pb-2 space-y-1">
                                       {child.children?.map((grandChild) => (
@@ -399,24 +424,36 @@ const Navbar = () => {
                     <div key={item.href}>
                       {item.children ? (
                         <>
-                          <button
-                            className="flex items-center justify-between w-full py-2 text-sm font-medium text-[#5C85A6]"
-                            onClick={() =>
-                              setMobileDropdown(
-                                mobileDropdown === item.label
-                                  ? null
-                                  : item.label,
-                              )
-                            }
-                          >
-                            {item.label}
-                            <ChevronDown
-                              className={cn(
-                                "h-4 w-4 transition-transform",
-                                mobileDropdown === item.label && "rotate-180",
-                              )}
-                            />
-                          </button>
+                          <div className="flex items-center justify-between w-full py-2 text-sm font-medium text-[#5C85A6]">
+                            <Link
+                              href={item.href}
+                              className="flex-1 hover:opacity-80 text-left"
+                              onClick={() => {
+                                setMobileOpen(false);
+                                setMobileDropdown(null);
+                                setMobileNestedDropdown(null);
+                              }}
+                            >
+                              {item.label}
+                            </Link>
+                            <button
+                              className="p-2 -mr-2"
+                              onClick={() =>
+                                setMobileDropdown(
+                                  mobileDropdown === item.label
+                                    ? null
+                                    : item.label,
+                                )
+                              }
+                            >
+                              <ChevronDown
+                                className={cn(
+                                  "h-4 w-4 transition-transform",
+                                  mobileDropdown === item.label && "rotate-180",
+                                )}
+                              />
+                            </button>
+                          </div>
                           {mobileDropdown === item.label && (
                             <div className="pl-4 pb-2 space-y-1">
                               {item.children.map((child) => (
