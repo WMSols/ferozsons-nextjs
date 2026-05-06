@@ -73,7 +73,7 @@ export default function NewsroomListClient() {
                   return (
                     <Card
                       key={article.documentId ?? article.id}
-                      className="hover:shadow-md transition-shadow overflow-hidden"
+                      className="hover:shadow-md transition-shadow overflow-hidden  flex flex-col"
                     >
                       <div className="relative w-full h-48 sm:h-56 overflow-hidden">
                         {imageUrl ? (
@@ -91,8 +91,8 @@ export default function NewsroomListClient() {
                           </span>
                         )}
                       </div>
-                      <CardContent className="pt-4">
-                        <h3 className="font-bold text-lg">{article.title}</h3>
+                      <CardContent className="pt-4 flex flex-col flex-1">
+                        <h3 className="font-bold text-lg flex-1">{article.title}</h3>
                         <Link href={`/newsroom/${article.slug}`}>
                           <Button
                             variant="outline"
