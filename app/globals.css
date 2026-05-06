@@ -232,7 +232,10 @@
       );
   }
 }
-
+/* This guarantee the browser hardware-accelerates the sphere before the user even starts scrolling ref: Medical Technologies page */
+.hero-sphere {
+  will-change: transform, opacity;
+}
 @layer base {
   * {
     border-color: hsl(var(--border));

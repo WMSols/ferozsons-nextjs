@@ -7,3 +7,8 @@ compatibility_flags = ["nodejs_compat"]
 [assets]
 directory = ".open-next/assets"
 binding = "ASSETS"
+# Add your custom domain here
+routes = [
+  { pattern = "ferozsons-labs.com", custom_domain = true },
+  { pattern = "www.ferozsons-labs.com", custom_domain = true } # Optional, if you want www support
+]

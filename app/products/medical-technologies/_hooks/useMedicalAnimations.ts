@@ -10,7 +10,9 @@ gsap.registerPlugin(ScrollTrigger);
 export function useMedicalAnimations() {
   useEffect(() => {
     // Respect user preferences for reduced motion
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
 
     // --- Initialize Lenis ---
     const lenis = new Lenis({
@@ -39,20 +41,25 @@ export function useMedicalAnimations() {
     const ctx = gsap.context(() => {
       // --- Hero Animations ---
       const heroTl = gsap.timeline();
-      
-      heroTl.from(".hero-title span span", {
-        opacity: 0,
-        y: 40,
-        duration: 1,
-        stagger: 0.15,
-        ease: "power3.out",
-      })
-      .from(".hero-subtext", {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        ease: "power2.out",
-      }, "-=0.6");
+
+      heroTl
+        .from(".hero-title span span", {
+          opacity: 0,
+          y: 40,
+          duration: 1,
+          stagger: 0.15,
+          ease: "power3.out",
+        })
+        .from(
+          ".hero-subtext",
+          {
+            opacity: 0,
+            y: 30,
+            duration: 0.8,
+            ease: "power2.out",
+          },
+          "-=0.6",
+        );
 
       // Scroll-driven sphere movement/zoom
       gsap.to(".hero-sphere", {
@@ -60,11 +67,15 @@ export function useMedicalAnimations() {
           trigger: ".hero-section",
           start: "top top",
           end: "bottom top",
-          scrub: 1,
+          // Use true instead of a number so it syncs strictly with Lenis's smooth position
+          scrub: true,
         },
         scale: 1.2,
-        y: "20%",
+        // Use yPercent instead of y: "20%" (GSAP optimizes this much better under the hood)
+        yPercent: 20,
         opacity: 0.8,
+        // Force the browser to push this element to the GPU
+        force3D: true,
       });
 
       // --- Section Reveals ---
