@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { Menu, X, Search, ChevronDown } from "lucide-react";
 import {
@@ -17,17 +17,30 @@ import type { StrapiCategoriesResponse } from "@/types/strapi";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activePrimaryDropdown, setActivePrimaryDropdown] = useState<
-    string | null
-  >(null);
-  const [activeNestedDropdown, setActiveNestedDropdown] = useState<
-    string | null
-  >(null);
+  const [activePrimaryDropdown, setActivePrimaryDropdown] = useState<string | null>(null);
+  const [activeNestedDropdown, setActiveNestedDropdown] = useState<string | null>(null);
   const [mobileDropdown, setMobileDropdown] = useState<string | null>(null);
-  const [mobileNestedDropdown, setMobileNestedDropdown] = useState<
-    string | null
-  >(null);
+  const [mobileNestedDropdown, setMobileNestedDropdown] = useState<string | null>(null);
+  const [desktopSearchOpen, setDesktopSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const pathname = usePathname();
+  const router = useRouter();
+  const desktopSearchRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (desktopSearchOpen) {
+      desktopSearchRef.current?.focus();
+    }
+  }, [desktopSearchOpen]);
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!searchQuery.trim()) return;
+    router.push(`/products?search=${encodeURIComponent(searchQuery.trim())}`);
+    setSearchQuery("");
+    setDesktopSearchOpen(false);
+    setMobileOpen(false);
+  };
 
   const categoriesQuery = useQuery({
     queryKey: ["product-categories"],
@@ -41,17 +54,14 @@ const Navbar = () => {
 
   const navItems = mainNavItems.map((item) => {
     if (item.label !== "Products" || !item.children?.length) return item;
-
     const hasPlaceholder = item.children.some(
       (c) => c.label === PRODUCTS_DROPDOWN_PLACEHOLDER_LABEL,
     );
     if (!hasPlaceholder) return item;
-
     const dynamicChildren = productCategories.map((cat) => ({
       label: cat.name,
       href: `/products?category=${encodeURIComponent(cat.slug)}`,
     }));
-
     const nextChildren = item.children.map((child) => {
       if (child.label !== PRODUCTS_DROPDOWN_PLACEHOLDER_LABEL) return child;
       return {
@@ -60,12 +70,11 @@ const Navbar = () => {
         children: dynamicChildren,
       };
     });
-
     return { ...item, children: nextChildren };
   });
 
   return (
-    <header className="sticky top-0 z-50  px-4 pt-4 ixl:px-6 ixl:pt-6">
+    <header className="sticky top-0 z-50 px-4 pt-4 ixl:px-6 ixl:pt-6">
       {/* Desktop */}
       <div className="hidden ixl:block rounded-[20px] bg-[#FFFFFF] shadow-[0_2px_12px_rgba(0,0,0,0.08)]">
         <div className="flex items-center justify-between gap-8 px-8 py-4">
@@ -85,17 +94,14 @@ const Navbar = () => {
               <div
                 key={item.href}
                 className="relative"
-                onMouseEnter={() =>
-                  item.children && setActivePrimaryDropdown(item.label)
-                }
+                onMouseEnter={() => item.children && setActivePrimaryDropdown(item.label)}
                 onMouseLeave={() => {
                   setActivePrimaryDropdown(null);
                   setActiveNestedDropdown(null);
                 }}
               >
-
                 <Link
-                  href={item.href} // This redirects to the parent tab it self
+                  href={item.href}
                   className={cn(
                     "flex items-center gap-1 text-base font-medium text-[#5C85A6] transition-colors hover:opacity-80",
                     pathname === item.href && "opacity-100",
@@ -115,16 +121,13 @@ const Navbar = () => {
                         {item.children.map((child) => {
                           const nestedKey = `${item.label}.${child.label}`;
                           const hasNestedChildren =
-                            Array.isArray(child.children) &&
-                            child.children.length > 0;
+                            Array.isArray(child.children) && child.children.length > 0;
 
                           return hasNestedChildren ? (
                             <div
                               key={`${child.label}-${child.href}`}
                               className="relative"
-                              onMouseEnter={() =>
-                                setActiveNestedDropdown(nestedKey)
-                              }
+                              onMouseEnter={() => setActiveNestedDropdown(nestedKey)}
                               onMouseLeave={() => setActiveNestedDropdown(null)}
                             >
                               <button className="flex items-center justify-between w-full px-3 py-2 text-sm text-[#333333] font-medium rounded-md hover:bg-gray-100">
@@ -144,7 +147,7 @@ const Navbar = () => {
                                           setActiveNestedDropdown(null);
                                         }}
                                       >
-                                       {grandChild.label}
+                                        {grandChild.label}
                                       </Link>
                                     ))}
                                   </div>
@@ -175,9 +178,7 @@ const Navbar = () => {
               <div
                 key={item.href}
                 className="relative"
-                onMouseEnter={() =>
-                  item.children && setActivePrimaryDropdown(item.label)
-                }
+                onMouseEnter={() => item.children && setActivePrimaryDropdown(item.label)}
                 onMouseLeave={() => {
                   setActivePrimaryDropdown(null);
                   setActiveNestedDropdown(null);
@@ -201,16 +202,13 @@ const Navbar = () => {
                         {item.children.map((child) => {
                           const nestedKey = `${item.label}.${child.label}`;
                           const hasNestedChildren =
-                            Array.isArray(child.children) &&
-                            child.children.length > 0;
+                            Array.isArray(child.children) && child.children.length > 0;
 
                           return hasNestedChildren ? (
                             <div
                               key={`${child.label}-${child.href}`}
                               className="relative"
-                              onMouseEnter={() =>
-                                setActiveNestedDropdown(nestedKey)
-                              }
+                              onMouseEnter={() => setActiveNestedDropdown(nestedKey)}
                               onMouseLeave={() => setActiveNestedDropdown(null)}
                             >
                               <button className="flex items-center justify-between w-full px-3 py-2 text-sm text-[#333333] font-medium rounded-md hover:bg-gray-100">
@@ -254,9 +252,49 @@ const Navbar = () => {
                 )}
               </div>
             ))}
-            <button className="text-[#5C85A6] hover:opacity-80">
-              <Search className="h-5 w-5" />
-            </button>
+
+            {/* Desktop search */}
+            <div className="relative">
+              <button
+                className="text-[#5C85A6] hover:opacity-80"
+                onClick={() => setDesktopSearchOpen((prev) => !prev)}
+                aria-label="Toggle search"
+              >
+                {desktopSearchOpen ? (
+                  <X className="h-5 w-5" />
+                ) : (
+                  <Search className="h-5 w-5" />
+                )}
+              </button>
+
+              {desktopSearchOpen && (
+                <div className="absolute top-full right-0 pt-3 z-50">
+                  <form
+                    onSubmit={handleSearchSubmit}
+                    className="bg-[#FFFFFF] border border-[#CCCCCC] rounded-lg shadow-lg p-3 flex items-center gap-2 w-72"
+                  >
+                    <Search className="h-4 w-4 text-[#5C85A6] shrink-0" />
+                    <input
+                      ref={desktopSearchRef}
+                      type="text"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      placeholder="Search for products..."
+                      className="flex-1 text-sm text-[#333333] placeholder:text-[#999999] outline-none bg-transparent"
+                    />
+                    {searchQuery && (
+                      <button
+                        type="button"
+                        onClick={() => setSearchQuery("")}
+                        className="text-[#999999] hover:text-[#333333]"
+                      >
+                        <X className="h-3 w-3" />
+                      </button>
+                    )}
+                  </form>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -278,11 +316,7 @@ const Navbar = () => {
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
-          {mobileOpen ? (
-            <X className="h-6 w-6" />
-          ) : (
-            <Menu className="h-6 w-6" />
-          )}
+          {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
 
@@ -297,6 +331,31 @@ const Navbar = () => {
           <div className="ixl:hidden absolute top-full left-0 right-0 mt-2 z-50 px-4">
             <div className="rounded-[20px] bg-[#FFFFFF] shadow-[0_2px_12px_rgba(0,0,0,0.08)] border border-[#CCCCCC]/30 overflow-hidden">
               <div className="px-4 py-4 space-y-1">
+
+                {/* Mobile search — always at the top */}
+                <form
+                  onSubmit={handleSearchSubmit}
+                  className="flex items-center gap-2 bg-gray-50 border border-[#CCCCCC] rounded-lg px-3 py-2 mb-3"
+                >
+                  <Search className="h-4 w-4 text-[#5C85A6] shrink-0" />
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Search for products..."
+                    className="flex-1 text-sm text-[#333333] placeholder:text-[#999999] outline-none bg-transparent"
+                  />
+                  {searchQuery && (
+                    <button
+                      type="button"
+                      onClick={() => setSearchQuery("")}
+                      className="text-[#999999] hover:text-[#333333]"
+                    >
+                      <X className="h-3 w-3" />
+                    </button>
+                  )}
+                </form>
+
                 {navItems.map((item) => (
                   <div key={item.href}>
                     {item.children ? (
@@ -334,8 +393,7 @@ const Navbar = () => {
                             {item.children.map((child) => {
                               const nestedKey = `${item.label}.${child.label}`;
                               const hasNestedChildren =
-                                Array.isArray(child.children) &&
-                                child.children.length > 0;
+                                Array.isArray(child.children) && child.children.length > 0;
 
                               return hasNestedChildren ? (
                                 <div key={`${child.label}-${child.href}`}>
@@ -355,17 +413,14 @@ const Navbar = () => {
                                       className="p-2 -mr-2 hover:opacity-80"
                                       onClick={() =>
                                         setMobileNestedDropdown(
-                                          mobileNestedDropdown === nestedKey
-                                            ? null
-                                            : nestedKey,
+                                          mobileNestedDropdown === nestedKey ? null : nestedKey,
                                         )
                                       }
                                     >
                                       <ChevronDown
                                         className={cn(
                                           "h-4 w-4 transition-transform",
-                                          mobileNestedDropdown === nestedKey &&
-                                            "rotate-180",
+                                          mobileNestedDropdown === nestedKey && "rotate-180",
                                         )}
                                       />
                                     </button>
@@ -440,9 +495,7 @@ const Navbar = () => {
                               className="p-2 -mr-2"
                               onClick={() =>
                                 setMobileDropdown(
-                                  mobileDropdown === item.label
-                                    ? null
-                                    : item.label,
+                                  mobileDropdown === item.label ? null : item.label,
                                 )
                               }
                             >

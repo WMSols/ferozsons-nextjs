@@ -42,7 +42,7 @@ export default function ProductSearchSection({
               aria-label="Search for a product"
             />
             <Link
-            href={`/products?search=${encodeURIComponent(searchQuery)}`}
+            href={`/products?search=${encodeURIComponent(searchQuery.trim())}`}
               type="button"
               className="shrink-0 w-10 h-10 rounded-full border border-foreground/50 flex items-center justify-center text-foreground hover:bg-foreground/5 transition-colors"
               aria-label="Search"
