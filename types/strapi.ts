@@ -150,4 +150,5 @@ export interface StrapiFinancialHighlights {
   netProfit: string;
   eps: string;
   marketCap: string;
+  date: string;
 }

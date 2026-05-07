@@ -72,10 +72,12 @@ export default async function InvestorsPage({
 
   // 3. Map the data or fall back to defaults
   let displayHighlights = defaultHighlights;
+  let date;
 
   // Check if we received an array and it has at least one item
   if (strapiHighlights && strapiHighlights.length > 0) {
     const data = strapiHighlights[0]; // Assuming you only need the first record
+    date = data.date;
 
     // 1. Create this small helper above your array
 const formatCurrency = (value: string) => {
@@ -89,12 +91,16 @@ const formatCurrency = (value: string) => {
 
 // 2. Map your data cleanly
 displayHighlights = [
+
   { label: "Revenue", value: formatCurrency(data.revenue) },
   { label: "Net Profit", value: formatCurrency(data.netProfit) },
   { label: "EPS", value: formatCurrency(data.eps) },
   { label: "Market Cap", value: formatCurrency(data.marketCap) },
 ];
   }
+
+  // Format the date
+  const formattedDate = date ? new Date(date).toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' }) : 'N/A';
 
   return (
     <div className="pt-10">
@@ -105,6 +111,7 @@ displayHighlights = [
 
       <SectionWrapper containerClassName="max-w-4xl">
         <h2 className="text-2xl font-bold mb-8">Financial Highlights</h2>
+        <p className="my-2 text-muted-foreground text-sm">Figures as of {formattedDate} </p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
           {/* 4. Map over your newly transformed `displayHighlights` */}
           {displayHighlights.map((stat) => (
