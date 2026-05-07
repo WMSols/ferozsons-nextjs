@@ -29,7 +29,7 @@ export default function ProductDetailClient({
   const descriptionHtml = strapiBlocksToHtml(product.description);
   const faqFileUrl = getStrapiMediaUrl(product.faqFile?.url);
   const instructionsFileUrl = getStrapiMediaUrl(product.instructionsFile?.url);
-  const pamphletFileUrl = getStrapiMediaUrl(product.pamphletFile?.url);
+  const leafletFileUrl = getStrapiMediaUrl(product.leafletFile?.url);
 
   return (
     <>
@@ -47,7 +47,9 @@ export default function ProductDetailClient({
                 <ProductActions
                   faqFileUrl={faqFileUrl}
                   instructionsFileUrl={instructionsFileUrl}
-                  pamphletFileUrl={pamphletFileUrl}
+                  leafletFileUrl={leafletFileUrl}
+                  isFaqAvailable={product.isFaqAvailable}
+                  isInstructionAvailable={product.isInstructionAvailable}
                 />
               </div>
             </div>
@@ -65,10 +67,10 @@ export default function ProductDetailClient({
               keyFeatures={product.keyFeatures}
             />
              <p className="text-sm text-muted-foreground my-4">
-              Dosage: {product.dosage ?? ""}
+              Strength: {product.dosage ?? ""}
             </p>
             <p className="text-sm text-muted-foreground mb-4">
-              Concentration: {product.concentration ?? ""}
+              Presentation: {product.concentration ?? ""}
 
             </p>
             <p className="text-sm text-muted-foreground mb-4">

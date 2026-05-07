@@ -6,15 +6,19 @@ import Image from "next/image";
 import { FileText, Download, X } from "lucide-react";
 
 interface ProductActionsProps {
+  isFaqAvailable: boolean;
+  isInstructionAvailable: boolean;
   faqFileUrl: string | null;
   instructionsFileUrl: string | null;
-  pamphletFileUrl: string | null;
+  leafletFileUrl: string | null;
 }
 
 export default function ProductActions({
+  isFaqAvailable,
+  isInstructionAvailable,
   faqFileUrl,
   instructionsFileUrl,
-  pamphletFileUrl,
+  leafletFileUrl,
 }: ProductActionsProps) {
   // Renamed to popupMedia since it can be an image or a PDF now
   const [popupMedia, setPopupMedia] = useState<string | null>(null);
@@ -39,18 +43,24 @@ export default function ProductActions({
 
   return (
     <>
-      <div className="rounded-3xl p-8 bg-[#3b6a9e] flex flex-col gap-4">
-        <Link
+     {(isFaqAvailable || isInstructionAvailable || leafletFileUrl) &&
+      (
+        <div className="rounded-3xl p-8 bg-[#3b6a9e] flex flex-col gap-4">
+        {isFaqAvailable && (
+          <Link
           href="#"
-          onClick={(e) => handleOpenPopup(e, faqFileUrl, true)}
+          onClick={(e) =>{
+            e.preventDefault();
+            handleOpenPopup(e, faqFileUrl, true)}}
           className="w-full rounded-full py-3 px-4 text-center text-white font-medium border border-white bg-transparent hover:bg-white/10 transition-colors"
         >
           FAQs
         </Link>
+        )}
 
-        {instructionsFileUrl ? (
+        {isInstructionAvailable && (
           <a
-            href={instructionsFileUrl}
+          href="#"
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => {
@@ -65,39 +75,24 @@ export default function ProductActions({
             Instructions For Use
             <Download className="h-4 w-4" />
           </a>
-        ) : (
-          <Link
-            href="#"
-            onClick={(e) => handleOpenPopup(e, "/hero.jpg", true)}
-            className="w-full rounded-full py-3 px-4 text-center font-medium bg-white text-foreground hover:bg-gray-100 transition-colors"
-          >
-            Instructions For Use
-          </Link>
         )}
 
-        {pamphletFileUrl ? (
+        {leafletFileUrl && (
           <a
-            href={pamphletFileUrl}
+            href={leafletFileUrl}
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => {
               e.preventDefault();
-              handleOpenPopup(e, pamphletFileUrl);
+              handleOpenPopup(e, leafletFileUrl);
             }}
             className="flex items-center justify-center gap-2 w-full rounded-full py-3 px-4 text-center font-medium bg-white text-foreground hover:bg-gray-100 transition-colors"
           >
-            Product Information Pamphlet
+            Product Information Leaflet
           </a>
-        ) : (
-          <Link
-            href="#"
-            onClick={(e) => handleOpenPopup(e, "/hero.jpg", true)}
-            className="w-full rounded-full py-3 px-4 text-center font-medium bg-white text-foreground hover:bg-gray-100 transition-colors"
-          >
-            Product Information Pamphlet
-          </Link>
         )}
       </div>
+      )}
 
       {/* Media Popup Modal */}
       {popupMedia && (
