@@ -7,13 +7,15 @@ export function useProductFilters() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const categoryFromUrl = searchParams.get("category") ?? "";
+  const searchFromUrl = searchParams.get("search") ?? "";
 
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(searchFromUrl);
   const [page, setPage] = useState(1);
   const [filterMode, setFilterMode] = useState<ProductsFilterMode>(
     categoryFromUrl ? "category" : "prescribed",
   );
   const [selectedCategory, setSelectedCategory] = useState(categoryFromUrl);
+
   useEffect(() => {
     if (categoryFromUrl) {
       setFilterMode("category");
@@ -21,6 +23,12 @@ export function useProductFilters() {
       setPage(1);
     }
   }, [categoryFromUrl]);
+
+  useEffect(() => {
+    if (searchFromUrl) {
+      setSearch(searchFromUrl);
+    }
+  }, [searchFromUrl]);
 
   const resetPage = useCallback(() => setPage(1), []);
 

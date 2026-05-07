@@ -67,10 +67,12 @@ export interface StrapiProductDetail extends StrapiProduct {
     name: string;
     url: string;
   };
-  pamphletFile?: {
+  leafletFile?: {
     name: string;
     url: string;
   };
+    isFaqAvailable: boolean;
+  isInstructionAvailable: boolean;
 }
 
 // types/strapi.ts
