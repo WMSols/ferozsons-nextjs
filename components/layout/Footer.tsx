@@ -45,8 +45,7 @@ const Footer = ({ dark = false }: { dark?: boolean }) => {
           ))}
         </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6  md:items-start border-t border-white/10 mt-12 pt-4">
-
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6  md:items-start border-t border-white/10 mt-12 pt-4">
           {/* Left Column: Copyright */}
           <div className="justify-self-start">
             <p className="text-xs opacity-50">
@@ -58,7 +57,11 @@ const Footer = ({ dark = false }: { dark?: boolean }) => {
           {/* Center Column: SCEP and Jama-Punji logos */}
           <div className="flex gap-2 h-auto justify-self-center mt-2 md:mt-0">
             <div className="h-8 w-40 rounded-sm overflow-hidden">
-              <a href="https://sdms.secp.gov.pk" target="_blank" rel="noreferrer">
+              <a
+                href="https://sdms.secp.gov.pk"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <img
                   className="h-full w-full"
                   alt="secp logo"
@@ -80,21 +83,33 @@ const Footer = ({ dark = false }: { dark?: boolean }) => {
           {/* Right Column: Contact info and Links */}
           <div className="flex flex-col gap-3 justify-self-end text-left md:text-right w-full md:w-auto">
             <p className="text-sm opacity-70 leading-relaxed">
-              For any inquiries, concerns, or complaints, please contact:<br />
-              <strong className="font-medium text-white opacity-100">Syed Ghausuddin Saif</strong>, Company Secretary<br />
-              5 KM Sundar Raiwind Road, Lahore - 55150<br />
-              Email: <a href="mailto:cs@ferozsons-labs.com" className="hover:text-white transition-opacity">cs@ferozsons-labs.com</a>
+              For any inquiries, concerns, or complaints, please contact:
+              <br />
+              <strong className="font-medium text-white opacity-100">
+                Syed Ghausuddin Saif
+              </strong>
+              , Company Secretary
+              <br />
+              5 KM Sundar Raiwind Road, Lahore - 55150
+              <br />
+              Email:{" "}
+              <a
+                href="mailto:cs@ferozsons-labs.com"
+                className="hover:text-white transition-opacity"
+              >
+                cs@ferozsons-labs.com
+              </a>
             </p>
           </div>
-
         </div>
         <div className="py-6 text-sm border-t border-white/10 mt-4">
           <p className="text-center">
-            Managed by{" "}
+            Designed & Developed by{" "}
             <a
-            className="text-emerald-500 italic"
-             href="https://www.wmsols.com/"
-             target="_blank">
+              className="text-[#10B77A] font-semibold"
+              href="https://www.wmsols.com/"
+              target="_blank"
+            >
               WMsols
             </a>
           </p>
