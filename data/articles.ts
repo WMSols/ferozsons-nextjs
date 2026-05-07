@@ -1,14 +1,14 @@
 export interface Article {
   id: string;
   title: string;
-  excerpt: string;
+  excerpt: any[];
   date: string;
   category: string;
   image?: string;
   type: "news" | "story";
 }
 
-export const articles: Article[] = [
+export const articles = [
   {
     id: "1",
     title: "Ferozsons Laboratories Reports Strong Q3 2024 Results",

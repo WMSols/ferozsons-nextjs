@@ -29,7 +29,7 @@ function toArticle(item: StrapiNewsroom): Article {
   return {
     id: item.documentId || String(item.id),
     title: item.title,
-    excerpt: toExcerpt(item.content[0].children[0].text || ""),
+    excerpt: item.content,
     date: item.publishedAt || item.createdAt,
     category: "News",
     type: "news",
@@ -44,8 +44,8 @@ export function useLatestNewsroomArticles(limit: number = DEFAULT_LIMIT) {
     return [...items]
       .sort(
         (a, b) =>
-          new Date(b.publishedAt || b.createdAt).getTime() -
-          new Date(a.publishedAt || a.createdAt).getTime(),
+          new Date(b.createdAt || b.publishedAt).getTime() -
+          new Date(a.createdAt || a.publishedAt).getTime(),
       )
       .slice(0, limit)
       .map(toArticle);

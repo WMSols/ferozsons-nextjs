@@ -112,6 +112,7 @@ export interface StrapiNewsroom {
   documentId: string;
   title: string;
   slug: string;
+  category?: string;
   // Use 'any' here for the official renderer, or import 'BlocksContent' from the package if strict typing is preferred
   content: any[];
   createdAt: string;
