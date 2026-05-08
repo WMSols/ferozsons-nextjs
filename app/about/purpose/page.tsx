@@ -12,7 +12,7 @@ export const metadata = {
 
 export default function PurposePage() {
   return (
-    <div className="pt-10">
+    <div className="sm:pt-10 pt-20">
       <PageHero
         title="Our Purpose"
       />

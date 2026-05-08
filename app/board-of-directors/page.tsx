@@ -50,7 +50,7 @@ export default function BoardOfDirectorsPage() {
   };
 
   return (
-    <div className="pt-10">
+    <div className="sm:pt-10 pt-20">
       <PageHero
         title="Board of Directors"
         subtitle="Meet the leadership guiding Ferozsons Laboratories."

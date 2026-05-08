@@ -103,7 +103,7 @@ displayHighlights = [
   const formattedDate = date ? new Date(date).toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' }) : 'N/A';
 
   return (
-    <div className="pt-10">
+    <div className="sm:pt-10 pt-20">
       <PageHero
         title="Investors"
         subtitle="Financial information and governance for shareholders and the investment community."

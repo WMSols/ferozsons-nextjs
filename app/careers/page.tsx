@@ -38,7 +38,7 @@ export default async function CareersPage() {
   }
 
   return (
-    <div className="pt-10">
+    <div className="sm:pt-10 pt-20">
       <PageHero
         title="Careers"
         subtitle="Join our team and help shape the future of healthcare in Pakistan."

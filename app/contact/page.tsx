@@ -6,7 +6,7 @@ import ContactFormSection from "./components/ContactFormSection";
 
 const Contact = () => {
   return (
-    <div className="pt-10">
+    <div className="sm:pt-10 pt-20">
       <ContactHeroSection
         title="Contact Us"
         subtitle="We'd love to hear from you. Reach out with any questions, feedback, or inquiries."
