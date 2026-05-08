@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Merriweather } from "next/font/google";
-import "./globals.css";
+import "./globals.css"
 import Layout from "@/components/layout/Layout";
 import { QueryProvider } from "@/components/providers/QueryProvider";
 import { Toaster } from "@/components/ui/toaster";
@@ -19,9 +19,9 @@ const merriweather = Merriweather({
 });
 
 export const metadata: Metadata = {
-  title: { default: "Feroz Sons", template: "%s | Feroz Sons" },
+  title: { default: "Ferozsons Laboratories Limited", template: "%s | Ferozsons Laboratories Limited" },
   description: "Feroz Sons Website",
-  authors: [{ name: "Feroz Sons" }],
+  authors: [{ name: "Ferozsons Laboratories Limited" }],
 };
 
 export default function RootLayout({

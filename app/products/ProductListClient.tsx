@@ -26,7 +26,7 @@ export default function ProductListClient() {
   const filtered = filters.filteredBySearch(products);
 
   return (
-    <div className="pt-10">
+    <div className="sm:pt-10 pt-20">
       <PageHero
         title="Our Products"
         subtitle="Explore our comprehensive range of pharmaceutical products."

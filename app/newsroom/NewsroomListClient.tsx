@@ -30,7 +30,7 @@ export default function NewsroomListClient() {
           void fetchNextPage();
         }
       },
-      { rootMargin: "200px 0px" }
+      { rootMargin: "200px 0px" },
     );
 
     observer.observe(sentinelRef.current);
@@ -38,7 +38,7 @@ export default function NewsroomListClient() {
   }, [hasNextPage, fetchNextPage]);
 
   return (
-    <div className="pt-10">
+    <div className="sm:pt-10 pt-20">
       <PageHero
         title="Newsroom"
         subtitle="Stay updated with the latest news and developments from Ferozsons Laboratories."
@@ -68,7 +68,9 @@ export default function NewsroomListClient() {
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {items.map((article) => {
-                  const imageUrl = getStrapiImageUrl(article.featured_image?.url);
+                  const imageUrl = getStrapiImageUrl(
+                    article.featured_image?.url,
+                  );
 
                   return (
                     <Card
@@ -92,7 +94,22 @@ export default function NewsroomListClient() {
                         )}
                       </div>
                       <CardContent className="pt-4 flex flex-col flex-1">
-                        <h3 className="font-bold text-lg flex-1">{article.title}</h3>
+                        <div className="flex justify-between">
+                          <h3 className="font-bold text-lg flex-1">
+                            {article.title}
+                          </h3>
+                          <p className="text-xs text-muted-foreground">
+                            {" "}
+                            {new Date(article.createdAt).toLocaleDateString(
+                              "en-US",
+                              {
+                                month: "short",
+                                day: "numeric",
+                                year: "numeric",
+                              },
+                            )}
+                          </p>
+                        </div>
                         <Link href={`/newsroom/${article.slug}`}>
                           <Button
                             variant="outline"
