@@ -34,12 +34,12 @@ export default function CategoryPills({
               {cat.name}
             </Button>
           ))}
-          <Link
+          {/* <Link
             href="/products/weight-management"
             className="inline-flex h-9 px-3 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(90deg,rgba(59,115,172,0.8)_38.94%,rgba(181,44,149,0.8)_100%)] text-sm font-medium text-white transition-opacity hover:opacity-90"
           >
             Weight Management
-          </Link>
+          </Link> */}
         </>
       )}
     </div>

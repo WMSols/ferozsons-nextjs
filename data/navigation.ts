@@ -27,6 +27,7 @@ export const mainNavItems: NavItem[] = [
       { label: PRODUCTS_DROPDOWN_PLACEHOLDER_LABEL, href: "/products" },
       { label: "All Products", href: "/products" },
       { label: "Pharmaceuticals", href: "/products/pharmaceuticals" },
+      { label: "Weight Management", href: "/products/weight-management" },
       { label: "Medical Technologies", href: "/products/medical-technologies" },
     ],
   },

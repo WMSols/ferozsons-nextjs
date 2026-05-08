@@ -16,7 +16,7 @@ export default function PartnershipsClient() {
           title="Advancing Healthcare Through Purpose-Driven Partnerships"
           events={timelineEvents}
           animated
-          className="bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5 py-20"
+          className="bg-linear-to-br overflow-x-hidden from-primary/5 via-primary/10 to-primary/5 py-20"
         />
         <CTABanner />
       </div>

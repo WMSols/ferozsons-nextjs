@@ -50,7 +50,8 @@ const Navbar = () => {
     },
   });
 
-  const productCategories = categoriesQuery.data?.data ?? [];
+ const productCategories = categoriesQuery.data?.data ?? [];
+
 
   const navItems = mainNavItems.map((item) => {
     if (item.label !== "Products" || !item.children?.length) return item;

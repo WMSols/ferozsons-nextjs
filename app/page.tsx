@@ -41,7 +41,7 @@ export default function HomePage() {
         title="Our Journey"
         events={timelineEvents}
         animated
-        className="bg-secondary py-20"
+        className="bg-secondary py-20 overflow-x-hidden"
       />
       <LegacyBanner {...legacyData} />
       <QuoteSection quote={quoteText} />
