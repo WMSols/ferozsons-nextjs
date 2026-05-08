@@ -55,8 +55,8 @@ const Footer = ({ dark = false }: { dark?: boolean }) => {
           </div>
 
           {/* Center Column: SCEP and Jama-Punji logos */}
-          <div className="flex gap-2 h-auto justify-self-center mt-2 md:mt-0">
-            <div className="h-8 w-40 rounded-sm overflow-hidden">
+          <div className="flex gap-2 h-auto justify-self-center xs:px-0 px-2 mt-2 md:mt-0">
+            <div className="h-8 xs:w-40 w-32 rounded-sm overflow-hidden">
               <a
                 href="https://sdms.secp.gov.pk"
                 target="_blank"
@@ -69,7 +69,7 @@ const Footer = ({ dark = false }: { dark?: boolean }) => {
                 />
               </a>
             </div>
-            <div className="h-8 w-40 rounded-sm overflow-hidden">
+            <div className="h-8 xs:w-40 w-32  rounded-sm overflow-hidden">
               <a href="https://jamapunji.pk" target="_blank" rel="noreferrer">
                 <img
                   className="h-full w-full"

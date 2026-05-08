@@ -65,7 +65,8 @@ const BiopharmaSection: React.FC = () => {
         />
       </motion.div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-8">
+      {/* px-4 for ≤320px (S9+), px-6 for ≥375px (iPhone SE), px-8 for ≥640px+ */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 xs:px-6 sm:px-8">
         <div className="grid md:grid-cols-2 gap-20 items-center">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -146,7 +147,7 @@ const BiopharmaSection: React.FC = () => {
                   {item.label}
                 </div>
                 <div
-                  className="text-white text-3xl font-black"
+                  className="text-white sm:text-3xl text-2xl font-black pr-2"
                   style={{ fontFamily: "'Georgia', serif" }}
                 >
                   {item.value}

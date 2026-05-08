@@ -25,7 +25,7 @@ export default function MissionSection({
   backgroundImage,
 }: MissionSectionProps) {
   return (
-    <section className="mx-4 mt-8 lg:mx-6 lg:mt-12 border border-border rounded-[2rem] overflow-hidden shadow-sm bg-background">
+    <section className="mx-4 mt-8 lg:mx-6 lg:mt-12 border border-border rounded-4xl overflow-hidden shadow-sm bg-background">
       <div className="relative flex flex-col items-center justify-center px-6 py-16 md:px-12 md:py-24 lg:px-16 lg:py-32">
         {backgroundImage && (
           <div className="absolute inset-0 pointer-events-none">

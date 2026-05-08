@@ -766,7 +766,7 @@ const TherapeuticAreasSection: React.FC = () => {
 
   return (
     <section ref={ref} className="py-28 bg-white">
-      <div className="max-w-7xl mx-auto px-8">
+      <div className="max-w-7xl mx-auto px-5 xs:px-8">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}

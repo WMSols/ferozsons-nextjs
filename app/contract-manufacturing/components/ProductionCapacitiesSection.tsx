@@ -5,6 +5,7 @@ import type {
   InjectableCapacityRow,
   ProductionCapacityRow,
 } from "../data/types";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 export interface ProductionCapacitiesSectionProps {
   productionRows: ProductionCapacityRow[];
@@ -190,18 +191,21 @@ export function ProductionCapacitiesSection({
           >
             Daily Production Capacity
           </h3>
+          <p className="text-xs sm:hidden  flex items-center text-white/70 my-2">Scroll to right <ArrowRight size={13}/></p>
           <div
             style={{
               border: "1px solid rgba(255,255,255,0.07)",
               borderRadius: 20,
-              overflow: "hidden",
+              overflowX: "auto",
             }}
           >
+            {/* Injectables table */}
             <table
               style={{
                 width: "100%",
                 borderCollapse: "collapse",
                 fontSize: 14,
+                minWidth: 560,
               }}
             >
               <thead>
