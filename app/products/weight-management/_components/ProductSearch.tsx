@@ -1,7 +1,10 @@
+"use client"
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { useState } from "react";
 
 export default function ProductSearch() {
+  const [searchQuery, setSearchQuery] = useState("")
   return (
     <section className="bg-white py-14 md:py-16">
       <div className="container">
@@ -16,17 +19,20 @@ export default function ProductSearch() {
           <div className="flex w-full items-center gap-3 border-b border-blue-950/25 pb-2 md:flex-1">
             <input
               type="search"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Searching for a product?"
               className="h-10 w-full bg-transparent text-[14px] text-blue-950 placeholder:text-blue-950/45 focus:outline-none"
               aria-label="Search for a product"
             />
-            <button
+            <Link
+            href={`/products?search=${encodeURIComponent(searchQuery.trim())}`}
               type="button"
               className="grid h-10 w-10 place-items-center rounded-full border border-blue-950/40 text-blue-950 transition-colors hover:bg-blue-950/[0.04]"
               aria-label="Search"
             >
               <ArrowRight className="h-4 w-4" />
-            </button>
+            </Link>
           </div>
 
           <Link

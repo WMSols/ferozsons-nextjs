@@ -25,7 +25,7 @@ export default function TreatmentOptions() {
       <div className="container pb-16 pt-14 md:pb-20 md:pt-16">
         <h2 className="max-w-3xl text-[28px] leading-tight text-blue-950 sm:text-[34px]">
           Explore our available weight-management{" "}
-          <span className="font-serif bg-gradient-to-r from-blue-700 via-purple-600 to-pink-500 bg-clip-text text-transparent">
+          <span className="font-serif bg-linear-to-r from-blue-700 via-purple-600 to-pink-500 bg-clip-text text-transparent">
             treatment options
           </span>
         </h2>
