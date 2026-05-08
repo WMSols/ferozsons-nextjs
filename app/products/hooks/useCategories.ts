@@ -10,9 +10,9 @@ export function useCategories() {
       return res.json();
     },
   });
-
+ 
   return {
-    categories: categoriesQuery.data?.data ?? [],
+    categories:  categoriesQuery.data?.data ?? [],
     isLoading: categoriesQuery.isLoading,
   };
 }

@@ -43,10 +43,10 @@ export default function ProductActions({
 
   return (
     <>
-     {(isFaqAvailable || isInstructionAvailable || leafletFileUrl) &&
+     {((isFaqAvailable && faqFileUrl ) || (isInstructionAvailable && instructionsFileUrl)|| leafletFileUrl) &&
       (
         <div className="rounded-3xl p-8 bg-[#3b6a9e] flex flex-col gap-4">
-        {isFaqAvailable && (
+        {(isFaqAvailable && faqFileUrl ) && (
           <Link
           href="#"
           onClick={(e) =>{
@@ -58,7 +58,7 @@ export default function ProductActions({
         </Link>
         )}
 
-        {isInstructionAvailable && (
+        {(isInstructionAvailable && instructionsFileUrl) && (
           <a
           href="#"
             target="_blank"
