@@ -16,7 +16,7 @@ interface ArticleCardProps {
 export default function ArticleCard({
   article,
   linkHref = "/newsroom",
-  showDate = false,
+  showDate = true,
 }: ArticleCardProps) {
   const imageUrl = getStrapiImageUrl(article.image);
 
@@ -37,7 +37,7 @@ export default function ArticleCard({
         )}
       </div>
       <CardContent className="flex flex-1 flex-col pt-6">
-        <div className="flex items-center gap-3 mb-2">
+        <div className="flex items-center gap-3 justify-between mb-2">
           <p className="text-xs font-semibold text-primary uppercase tracking-wider">
             {article.category}
           </p>

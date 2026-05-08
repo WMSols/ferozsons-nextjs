@@ -4,7 +4,9 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
-
+import { motion } from "framer-motion";
+import { StaggerFadeUp } from "../animations/StaggerFadeUp";
+import { StaggerFadeUpInView } from "../animations/StaggerFadeUpInView";
 interface TherapeuticItem {
   label: string;
   image: string;
@@ -56,10 +58,12 @@ export default function TherapeuticsGrid({ items }: TherapeuticsGridProps) {
         </p>
 
         {/* Card Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 ">
+        <StaggerFadeUpInView
+          className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 "
+        >
           {visibleItems.map(({ label, image }) => (
             <Link
-             href={`/products?category=${encodeURIComponent(label.toLowerCase())}`}
+              href={`/products?category=${encodeURIComponent(label.toLowerCase())}`}
               key={label}
               className="bg-[#3b6a9e] rounded-2xl md:rounded-3xl hover:scale-102 transition-all duration-300 w-full aspect-square flex flex-col p-4 sm:p-4 md:p-6"
             >
@@ -79,7 +83,7 @@ export default function TherapeuticsGrid({ items }: TherapeuticsGridProps) {
               </div>
             </Link>
           ))}
-        </div>
+        </StaggerFadeUpInView>
 
         {/* Pagination */}
         {totalPages > 1 && (

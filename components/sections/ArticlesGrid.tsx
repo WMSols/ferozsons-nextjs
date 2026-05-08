@@ -24,7 +24,7 @@ export default function ArticlesGrid({
   viewAllLink,
   viewAllText = "View All",
   columns = 3,
-  showDate = false,
+  showDate = true,
   animated = true,
 }: ArticlesGridProps) {
   const gridCols =

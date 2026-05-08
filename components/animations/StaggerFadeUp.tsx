@@ -25,7 +25,7 @@ export function StaggerFadeUp({ className, children }: Props) {
       variants={staggerContainer}
     >
       {Children.toArray(children).map((child, i) => (
-        <motion.div key={i} variants={fadeUp} style={{ display: "contents" }}>
+        <motion.div key={i} variants={fadeUp}>
           {child}
         </motion.div>
       ))}

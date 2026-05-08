@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ButtonMotion } from "@/components/animations/ButtonMotion";
 import { useState } from "react";
+import { StaggerFadeUpInView } from "../animations/StaggerFadeUpInView";
 interface ProductSearchSectionProps {
   label?: string;
   description: string;
@@ -23,7 +24,7 @@ export default function ProductSearchSection({
 
   const [searchQuery, setSearchQuery] = useState("")
   return (
-    <section className="w-full py-16 md:py-24 bg-product-bg">
+    <StaggerFadeUpInView className="w-full py-16 md:py-24 bg-product-bg">
       <div className="container mx-auto px-4 md:px-8 flex flex-col items-start text-left">
         <h2 className="text-sm font-bold font-sans text-foreground mb-4 md:mb-6">
           {label}
@@ -61,6 +62,6 @@ export default function ProductSearchSection({
           </ButtonMotion>
         </div>
       </div>
-    </section>
+    </StaggerFadeUpInView>
   );
 }

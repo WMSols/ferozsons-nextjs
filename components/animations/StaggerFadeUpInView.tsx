@@ -7,7 +7,7 @@ import { fadeUp } from "./variants";
 const staggerContainer = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.12 },
+    transition: { staggerChildren: 0.5 },
   },
 };
 
@@ -26,7 +26,7 @@ export function StaggerFadeUpInView({ className, children }: Props) {
       variants={staggerContainer}
     >
       {Children.toArray(children).map((child, i) => (
-        <motion.div key={i} variants={fadeUp} style={{ display: "contents" }}>
+        <motion.div key={i} variants={fadeUp}>
           {child}
         </motion.div>
       ))}

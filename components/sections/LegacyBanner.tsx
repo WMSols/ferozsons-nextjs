@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import BrandLockup from "@/components/shared/BrandLockup";
+import { StaggerFadeUpInView } from "../animations/StaggerFadeUpInView";
 
 interface LegacyBannerProps {
   backgroundImage: string;
@@ -22,7 +23,7 @@ export default function LegacyBanner({
 }: LegacyBannerProps) {
   return (
     <section className="w-full">
-      <div className="relative min-h-[60vh] flex flex-col items-center justify-center px-6 py-20 md:px-12 md:py-24 lg:px-16 lg:py-28">
+      <StaggerFadeUpInView className="relative min-h-[60vh] flex flex-col items-center justify-center px-6 py-20 md:px-12 md:py-24 lg:px-16 lg:py-28">
         <div className="absolute inset-0">
           <img
             src={backgroundImage}
@@ -31,11 +32,11 @@ export default function LegacyBanner({
             aria-hidden
           />
           <div
-            className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/60 to-black/50"
+            className="absolute inset-0 bg-linear-to-r from-black/70 via-black/60 to-black/50"
             aria-hidden
           />
         </div>
-        <div className="container relative z-10 flex flex-col items-start text-left mx-auto">
+        <StaggerFadeUpInView className="container relative z-10 flex flex-col items-start text-left mx-auto">
           {showBrandLockup && (
             <BrandLockup variant="light" className="mb-8 md:mb-10" />
           )}
@@ -60,8 +61,8 @@ export default function LegacyBanner({
               <ArrowRight className="h-4 w-4 shrink-0" />
             </Link>
           </Button>
-        </div>
-      </div>
+        </StaggerFadeUpInView>
+      </StaggerFadeUpInView>
     </section>
   );
 }
