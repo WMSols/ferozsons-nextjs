@@ -1,3 +1,5 @@
+import { BlocksContent } from "@strapi/blocks-react-renderer";
+
 export interface StrapiPagination {
   page: number;
   pageSize: number;
@@ -116,7 +118,7 @@ export interface StrapiNewsroom {
   slug: string;
   category?: string;
   // Use 'any' here for the official renderer, or import 'BlocksContent' from the package if strict typing is preferred
-  content: any[];
+  content: BlocksContent;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
