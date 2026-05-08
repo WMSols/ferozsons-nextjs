@@ -94,8 +94,8 @@ export default function NewsroomListClient() {
                         )}
                       </div>
                       <CardContent className="pt-4 flex flex-col flex-1">
-                        <div className="flex justify-between">
-                          <h3 className="font-bold text-lg flex-1">
+                        <div className="flex justify-between flex-1">
+                          <h3 className="font-bold text-lg ">
                             {article.title}
                           </h3>
                           <p className="text-xs text-muted-foreground">
