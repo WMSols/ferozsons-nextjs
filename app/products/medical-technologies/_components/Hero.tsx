@@ -27,7 +27,7 @@ export function Hero() {
           xl:w-[1000px] xl:h-[1000px] xl:-mb-[380px]"
         >
           <Image
-            src="/medical-technologies/hero-sphere.png"
+            src="/medical-technologies/hero-sphere.webp"
             alt="Ferozsons sphere"
             fill
             className="object-contain "

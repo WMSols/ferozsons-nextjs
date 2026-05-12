@@ -16,12 +16,12 @@ export default function BrandLockup({
   return (
     <div className={cn("flex items-center gap-4", className)}>
       <img
-        src="ferozsons-f-white.png"
+        src="ferozsons-f-white.webp"
         alt="Ferozsons logo"
         className={cn("shrink-0", size === "lg" ? "h-20" : "h-16")}
       />
       <img
-        src="people-trust-us.png"
+        src="people-trust-us.webp"
         alt="People Trust Us"
         className={cn("shrink-0", size === "lg" ? "h-24 md:h-28" : "h-16 md:h-20")}
       />

@@ -6,16 +6,16 @@ import Image from "next/image";
 const partners = [
   {
     name: "Boston Scientific",
-    logo: "/medical-technologies/boston-scientific.png",
+    logo: "/medical-technologies/boston-scientific.webp",
     url: "https://www.bostonscientific.com",
     bgColor: "bg-emerald-50"
   },
   { name: "NIHON KOHDEN",
-    logo: "/medical-technologies/nihon-kohden.png",
+    logo: "/medical-technologies/nihon-kohden.webp",
   url: "https://www.nihonkohden.com",
 bgColor: "bg-violet-50" },
   { name: "Butterfly",
-    logo: "/medical-technologies/butterfly.png",
+    logo: "/medical-technologies/butterfly.webp",
   url: "https://www.butterflynetwork.com",
 bgColor: "bg-rose-50" },
 ];

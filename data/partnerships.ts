@@ -12,7 +12,7 @@ export const partnerships: Partnership[] = [
     description:
       "A joint venture focused on manufacturing and distributing innovative biopharmaceutical products, including interferon-based therapies for hepatitis treatment across Pakistan.",
     since: "2006",
-    logo: "/partnerships/bago.png",
+    logo: "/partnerships/bago.webp",
     website: "https://www.bago.com/en",
   },
   {
@@ -20,7 +20,7 @@ export const partnerships: Partnership[] = [
     description:
       "Partnership focused on probiotic healthcare products, bringing Swedish innovation to improve gut health across Pakistan.",
     since: "2016",
-    logo: "/partnerships/biogaia.png",
+    logo: "/partnerships/biogaia.webp",
     website: "https://www.biogaia.com",
   },
   {
@@ -28,7 +28,7 @@ export const partnerships: Partnership[] = [
     description:
       "Collaboration bringing cutting-edge medical devices and technologies for cardiovascular and other interventional procedures.",
     since: "2018",
-    logo: "/partnerships/boston-scientific.png",
+    logo: "/partnerships/boston-scientific.webp",
     website: "https://www.bostonscientific.com",
   },
   {
@@ -36,7 +36,7 @@ export const partnerships: Partnership[] = [
     description:
       "Bringing revolutionary handheld ultrasound technology to make point-of-care imaging accessible and affordable.",
     since: "2020",
-    logo: "/partnerships/butterfly-network.png",
+    logo: "/partnerships/butterfly-network.webp",
     website: "https://www.butterflynetwork.com",
   },
 
@@ -45,7 +45,7 @@ export const partnerships: Partnership[] = [
     description:
       "Strategic partnership for hepatitis C treatments including Sovaldi, Harvoni, and Epclusa. Together, we are transforming the treatment landscape for hepatitis C in Pakistan.",
     since: "2015",
-    logo: "/partnerships/gilead.png",
+    logo: "/partnerships/gilead.webp",
     website: "https://www.gilead.com",
   },
   {
@@ -53,7 +53,7 @@ export const partnerships: Partnership[] = [
     description:
       "Alliance for advanced medical monitoring equipment, expanding diagnostic capabilities throughout Pakistani healthcare facilities.",
     since: "2014",
-    logo: "/partnerships/nihon-kohden.png",
+    logo: "/partnerships/nihon-kohden.webp",
     website: "https://www.nihonkohden.com",
   },
 ];

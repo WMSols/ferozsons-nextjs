@@ -13,7 +13,7 @@ const Footer = ({ dark = false }: { dark?: boolean }) => {
           <div>
             <Link href="/" className="inline-block mb-4">
               <Image
-                src="/Ferozsons-Logo-1000x250px3.png"
+                src="/Ferozsons-Logo-1000x250px3.webp"
                 alt="Ferozsons Laboratories Limited"
                 width={200}
                 height={50}
@@ -65,7 +65,7 @@ const Footer = ({ dark = false }: { dark?: boolean }) => {
                 <img
                   className="h-full w-full"
                   alt="secp logo"
-                  src={"/images/secp-logo.jpg"}
+                  src={"/images/secp-logo.webp"}
                 />
               </a>
             </div>
@@ -74,7 +74,7 @@ const Footer = ({ dark = false }: { dark?: boolean }) => {
                 <img
                   className="h-full w-full"
                   alt="jamapunji logo"
-                  src={"/images/jama-punji-logo.png"}
+                  src={"/images/jama-punji-logo.webp"}
                 />
               </a>
             </div>

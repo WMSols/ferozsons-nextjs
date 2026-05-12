@@ -6,21 +6,21 @@ export const currentClients: CurrentClient[] = [
     country: "Italy",
     initial: "C",
     color: "#c0392b",
-    image: "/images/contract-manufacturing/chiesi.png",
+    image: "/images/contract-manufacturing/chiesi.webp",
   },
   {
     name: "LCI",
     country: "Lucky Core Industries",
     initial: "L",
     color: "#1a6eb5",
-    image: "/images/contract-manufacturing/lucky.png",
+    image: "/images/contract-manufacturing/lucky.webp",
   },
   {
     name: "Hoechst Pakistan",
     country: "Pakistan",
     initial: "H",
     color: "#2a7f62",
-    image: "/images/contract-manufacturing/hoechst.png",
+    image: "/images/contract-manufacturing/hoechst.webp",
   },
 ];
 

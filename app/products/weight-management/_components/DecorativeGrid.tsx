@@ -1,14 +1,14 @@
 import Image from "next/image";
 
 const tiles = [
-  "/weight-management/slider-images/dbdgb.png",
-  "/weight-management/slider-images/dytetybnty.png",
-  "/weight-management/slider-images/fnfnf.png",
-  "/weight-management/slider-images/hndgh.png",
-  "/weight-management/slider-images/nfnfn.png",
-  "/weight-management/slider-images/rtvgrtbvt.png",
-  "/weight-management/slider-images/smt.png",
-  "/weight-management/slider-images/tkito.png",
+  "/weight-management/slider-images/dbdgb.webp",
+  "/weight-management/slider-images/dytetybnty.webp",
+  "/weight-management/slider-images/fnfnf.webp",
+  "/weight-management/slider-images/hndgh.webp",
+  "/weight-management/slider-images/nfnfn.webp",
+  "/weight-management/slider-images/rtvgrtbvt.webp",
+  "/weight-management/slider-images/smt.webp",
+  "/weight-management/slider-images/tkito.webp",
 
 ];
 

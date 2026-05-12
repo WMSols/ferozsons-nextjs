@@ -35,14 +35,14 @@ export default function TreatmentOptions() {
             <TreatmentCard
               title="Sematide (GLP-1)"
               description="A modern weight management option with clinically supported dosing and patient-focused care."
-              imageSrc="/weight-management/weightloss.png"
+              imageSrc="/weight-management/weightloss.webp"
               linkHref="/products?category=weight-management"
               variant="gradient"
             />
             <TreatmentCard
               title="Zeptide (GLP-1 + GIP)"
               description="Dual-pathway support designed to align with evolving weight management approaches."
-              imageSrc="/weight-management/weightloss.png"
+              imageSrc="/weight-management/weightloss.webp"
               linkHref="/products?category=weight-management"
               variant="light"
             />

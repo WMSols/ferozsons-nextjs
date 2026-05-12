@@ -1,19 +1,19 @@
 import Image from "next/image";
 
 const topTiles = [
-  "/images/pharmacuticals-slider-images/bdfb.png",
-  "/images/pharmacuticals-slider-images/frerfref.png",
-  "/images/pharmacuticals-slider-images/h5h5hty.png",
-  "/images/pharmacuticals-slider-images/hjbjbjb.png",
-  "/images/pharmacuticals-slider-images/hyh.png",
+  "/images/pharmacuticals-slider-images/bdfb.webp",
+  "/images/pharmacuticals-slider-images/frerfref.webp",
+  "/images/pharmacuticals-slider-images/h5h5hty.webp",
+  "/images/pharmacuticals-slider-images/hjbjbjb.webp",
+  "/images/pharmacuticals-slider-images/hyh.webp",
 ];
 
 const bottomTiles = [
-  "/images/pharmacuticals-slider-images/nuyt.png",
-  "/images/pharmacuticals-slider-images/omega.png",
-  "/images/pharmacuticals-slider-images/revreerv.png",
-  "/images/pharmacuticals-slider-images/rvrttr.png",
-  "/images/pharmacuticals-slider-images/veee.png",
+  "/images/pharmacuticals-slider-images/nuyt.webp",
+  "/images/pharmacuticals-slider-images/omega.webp",
+  "/images/pharmacuticals-slider-images/revreerv.webp",
+  "/images/pharmacuticals-slider-images/rvrttr.webp",
+  "/images/pharmacuticals-slider-images/veee.webp",
 ];
 
 export default function Hero() {

@@ -3,7 +3,7 @@ import HeroFullScreen from "@/components/sections/HeroFullScreen";
 export default function HeroSection() {
   return (
     <HeroFullScreen
-      backgroundImage="/partnerships/partnerships-hero.png"
+      backgroundImage="/partnerships/partnerships-hero.webp"
       overlayClassName="bg-gradient-to-b from-black/30 via-black/20 to-black/40"
       className="min-h-[100vh]"
     >

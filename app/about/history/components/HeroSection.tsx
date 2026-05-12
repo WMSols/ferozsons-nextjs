@@ -27,7 +27,7 @@ export default function HeroSection() {
     >
       {/* 1. Hero Image Container */}
       <div
-      
+
         style={{
           position: "relative",
           width: "100%",
@@ -41,7 +41,7 @@ export default function HeroSection() {
             y: yImage,
             position: "absolute",
             inset: -50, // Expanded slightly to hide edges during parallax movement
-            backgroundImage: "url('/images/about-history/banner-history.png')", // Replace with your actual image path
+            backgroundImage: "url('/images/about-history/banner-history.webp')", // Replace with your actual image path
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}

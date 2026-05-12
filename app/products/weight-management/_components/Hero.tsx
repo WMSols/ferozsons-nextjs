@@ -64,7 +64,7 @@ export default function Hero() {
           <div className="relative mx-auto w-full max-w-[520px]">
             <div className="relative aspect-square w-full">
               <Image
-                src="/ferozsons-foam-logo.png"
+                src="/ferozsons-foam-logo.webp"
                 alt="Weight management featured product graphic"
                 fill
                 className="object-contain"

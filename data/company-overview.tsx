@@ -8,31 +8,31 @@ export const statsData: StatItem[] = [
 ];
 
 export const therapeuticsData = [
-  { label: "Cardiology", image: "/images/Icons-Therapeutic-Areas/cardiology.png" },
-  { label: "Oncology", image: "/images/Icons-Therapeutic-Areas/oncology.png" },
+  { label: "Cardiology", image: "/images/Icons-Therapeutic-Areas/cardiology.webp" },
+  { label: "Oncology", image: "/images/Icons-Therapeutic-Areas/oncology.webp" },
   {
     label: "Hepatology",
-    image: "/images/Icons-Therapeutic-Areas/hepatology.png",
+    image: "/images/Icons-Therapeutic-Areas/hepatology.webp",
     portfolioLink: "/products",
   },
-  { label: "Pulmonology", image: "/images/Icons-Therapeutic-Areas/pulmonology.png" },
+  { label: "Pulmonology", image: "/images/Icons-Therapeutic-Areas/pulmonology.webp" },
 
   //Note: Pictures are missing from clients end
-  { label: "Antiviral", image: "/images/Icons-Therapeutic-Areas/antiviral.png" },
-  { label: "Antibiotics", image: "/images/Icons-Therapeutic-Areas/antibiotics.png" },
+  { label: "Antiviral", image: "/images/Icons-Therapeutic-Areas/antiviral.webp" },
+  { label: "Antibiotics", image: "/images/Icons-Therapeutic-Areas/antibiotics.webp" },
   {
     label: "Cough Syrup & Lozenges",
-    image: "/images/Icons-Therapeutic-Areas/cough-syrup.png",
+    image: "/images/Icons-Therapeutic-Areas/cough-syrup.webp",
   },
-  { label: "Gastroenterology", image: "/images/Icons-Therapeutic-Areas/gastroenterology.png" },
-  { label: "Urology", image: "/images/Icons-Therapeutic-Areas/urology.png" },
+  { label: "Gastroenterology", image: "/images/Icons-Therapeutic-Areas/gastroenterology.webp" },
+  { label: "Urology", image: "/images/Icons-Therapeutic-Areas/urology.webp" },
   {
     label: "Weight-Management",
-    image: "/images/Icons-Therapeutic-Areas/weight-management.png",
+    image: "/images/Icons-Therapeutic-Areas/weight-management.webp",
   },
-  { label: "Dermatology", image: "/images/Icons-Therapeutic-Areas/dermatology.png" },
-  { label: "Psychiatry", image: "/images/Icons-Therapeutic-Areas/psychiatry.png" },
-  // { label: "Pain Relief", image: "/images/Icons-Therapeutic-Areas/pulmonology.png" },
+  { label: "Dermatology", image: "/images/Icons-Therapeutic-Areas/dermatology.webp" },
+  { label: "Psychiatry", image: "/images/Icons-Therapeutic-Areas/psychiatry.webp" },
+  // { label: "Pain Relief", image: "/images/Icons-Therapeutic-Areas/pulmonology.webp" },
 ];
 
 export const introText =
@@ -55,7 +55,7 @@ export const hepatitisSections: ContentSplitItem[] = [
     title: "A Breakthrough in Hepatitis Treatment Access",
     description:
       "Our partnership with Gilead Sciences has enabled thousands of patients to access breakthrough hepatitis C treatments, with Pakistan among the first countries to implement the access program.",
-    image: "/images/Icons-Therapeutic-Arease/black-right.jpg",
+    image: "/images/Icons-Therapeutic-Arease/black-right.webp",
     ctaText: "Explore products",
     ctaLink: "/products",
     ctaVariant: "filled",
@@ -63,7 +63,7 @@ export const hepatitisSections: ContentSplitItem[] = [
   {
     description:
       "We continue to strengthen our portfolio and manufacturing capabilities to meet evolving patient needs and support healthcare systems with reliable, high-quality medicines.",
-    image: "/images/Icons-Therapeutic-Arease/black-left.png",
+    image: "/images/Icons-Therapeutic-Arease/black-left.webp",
     ctaText: "Our story",
     ctaLink: "/about",
     ctaVariant: "outline",
@@ -71,7 +71,7 @@ export const hepatitisSections: ContentSplitItem[] = [
 ];
 
 export const legacyData = {
-  backgroundImage: "/legacy-bg.png",
+  backgroundImage: "/legacy-bg.webp",
   title: (
     <>
       <span className="whitespace-nowrap">
@@ -96,5 +96,5 @@ export const bottomCtaData = {
     "At Ferozsons, we believe healthcare is more than just prescriptions. It's about compassion, innovation, and a deep commitment to improving lives across Pakistan.",
   ctaText: "Learn More",
   ctaLink: "/about",
-  image: "/care-beyond.jpg",
+  image: "/care-beyond.webp",
 };

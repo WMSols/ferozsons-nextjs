@@ -1,7 +1,7 @@
 export const ceoBio = {
   name: "Osman Khalid Waheed",
   title: "Chief Executive Officer",
-  image: "/ceo-message/ceo.PNG",
+  image: "/ceo-message/ceo.webp",
   linkedIn: "https://pk.linkedin.com/in/okwaheed",
 };
 
