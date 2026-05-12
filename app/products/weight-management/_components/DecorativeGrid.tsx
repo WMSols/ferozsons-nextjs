@@ -17,7 +17,7 @@ export default function DecorativeGrid() {
   const col2 = [...tiles, ...tiles];
 
   return (
-    <div className="relative overflow-hidden rounded-[40px] bg-gray-50/50 p-4 border border-gray-100 shadow-inner">
+    <div className="relative overflow-hidden rounded-[40px] bg-gray-50/50 sm:p-4 p-2 border border-gray-100 shadow-inner">
       <style>{`
         @keyframes marquee-v-up {
           0% { transform: translateY(0); }
@@ -35,14 +35,14 @@ export default function DecorativeGrid() {
         }
       `}</style>
 
-      <div className="grid grid-cols-2 gap-6 h-[500px] md:h-[650px] lg:h-[700px] overflow-hidden">
+      <div className="grid grid-cols-2 sm:gap-6 gap-3 h-[500px] md:h-[650px] lg:h-[700px] overflow-hidden">
         {/* Column 1: Up */}
         <div className="relative h-full overflow-hidden">
           <div className="flex flex-col gap-6 animate-v-up">
             {col1.map((c, i) => (
               <div
                 key={`col1-${i}`}
-                className="w-[140px] h-[170px] sm:w-[200px] sm:h-[240px] rounded-[32px] overflow-hidden relative shadow-xl border-4 border-white"
+                className="w-[120px] h-[170px] sm:w-[200px] sm:h-[240px] rounded-[32px] overflow-hidden relative shadow-xl border-4 border-white"
                 aria-hidden
               >
                 <Image
@@ -62,7 +62,7 @@ export default function DecorativeGrid() {
             {col2.reverse().map((c, i) => (
               <div
                 key={`col2-${i}`}
-                className="w-[140px] h-[170px] sm:w-[200px] sm:h-[240px] rounded-[32px] overflow-hidden relative shadow-xl border-4 border-white"
+                className="w-[120px] h-[170px] sm:w-[200px] sm:h-[240px] rounded-[32px] overflow-hidden relative shadow-xl border-4 border-white"
                 aria-hidden
               >
                 <Image
@@ -78,8 +78,8 @@ export default function DecorativeGrid() {
       </div>
 
       {/* Edge Fades */}
-      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-white via-white/80 to-transparent z-10 pointer-events-none" />
-      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white via-white/80 to-transparent z-10 pointer-events-none" />
+      <div className="absolute inset-x-0 top-0 h-32 bg-linear-to-b from-white via-white/80 to-transparent z-10 pointer-events-none" />
+      <div className="absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-white via-white/80 to-transparent z-10 pointer-events-none" />
     </div>
   );
 }
