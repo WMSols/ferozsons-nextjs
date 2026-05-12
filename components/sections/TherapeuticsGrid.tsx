@@ -58,31 +58,31 @@ export default function TherapeuticsGrid({ items }: TherapeuticsGridProps) {
         </p>
 
         {/* Card Grid */}
-        <StaggerFadeUpInView
-          className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 "
-        >
-          {visibleItems.map(({ label, image }) => (
-            <Link
-              href={`/products?category=${encodeURIComponent(label.toLowerCase())}`}
-              key={label}
-              className="bg-[#3b6a9e] rounded-2xl md:rounded-3xl hover:scale-102 transition-all duration-300 w-full aspect-square flex flex-col p-4 sm:p-4 md:p-6"
-            >
-              {/* Bumped mobile floor from 11px → text-sm (14px), rest of scale unchanged */}
-              <h3 className="font-kaisei text-white text-sm sm:text-sm md:text-base lg:text-xl font-bold text-left leading-tight break-words hyphens-auto">
-                {label}
-              </h3>
+        <StaggerFadeUpInView className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 ">
+          {visibleItems.map(({ label, image }) => {
+            return (
+              <Link
+                href={`/products?category=${label.toLowerCase()}`}
+                key={label}
+                className="bg-[#3b6a9e] rounded-2xl md:rounded-3xl hover:scale-102 transition-all duration-300 w-full aspect-square flex flex-col p-4 sm:p-4 md:p-6"
+              >
+                {/* Bumped mobile floor from 11px → text-sm (14px), rest of scale unchanged */}
+                <h3 className="font-kaisei text-white text-sm sm:text-sm md:text-base lg:text-xl font-bold text-left leading-tight break-words hyphens-auto">
+                  {label}
+                </h3>
 
-              {/* Image shrinks to give label room */}
-              <div className="flex-1 relative mt-1 min-h-0 min-w-0">
-                <Image
-                  src={image}
-                  alt={`${label} illustration`}
-                  fill
-                  className="object-contain p-1 sm:p-2"
-                />
-              </div>
-            </Link>
-          ))}
+                {/* Image shrinks to give label room */}
+                <div className="flex-1 relative mt-1 min-h-0 min-w-0">
+                  <Image
+                    src={image}
+                    alt={`${label} illustration`}
+                    fill
+                    className="object-contain p-1 sm:p-2"
+                  />
+                </div>
+              </Link>
+            );
+          })}
         </StaggerFadeUpInView>
 
         {/* Pagination */}

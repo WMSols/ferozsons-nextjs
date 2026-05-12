@@ -56,14 +56,21 @@ export function buildProductsUrl({
 
   // --- THIS IS THE UPDATED SECTION ---
   if (filterMode === "category" && selectedCategory) {
-    // This now checks if the selectedCategory matches the slug OR the name
+    // 1. Decode the URL string to handle things like %20
+    const decodedCategory = decodeURIComponent(selectedCategory);
+
+    // 2. Extract the first word.
+    // Splitting by /[\s-]+/ ensures it grabs the first word even if separated by spaces or hyphens
+    const firstWord = decodedCategory.trim().split(/[\s-]+/)[0];
+
+    // 3. Use $containsi (case-insensitive contains) instead of $eq
     params.set(
-      "filters[$or][0][product_category][slug][$eq]",
-      selectedCategory,
+      "filters[$or][0][product_category][slug][$containsi]",
+      firstWord,
     );
     params.set(
-      "filters[$or][1][product_category][name][$eq]",
-      selectedCategory,
+      "filters[$or][1][product_category][name][$containsi]",
+      firstWord,
     );
   }
   // -----------------------------------

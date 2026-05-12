@@ -12,7 +12,7 @@ export function useProductFilters() {
   const [search, setSearch] = useState(searchFromUrl);
   const [page, setPage] = useState(1);
   const [filterMode, setFilterMode] = useState<ProductsFilterMode>(
-    categoryFromUrl ? "category" : "prescribed",
+    categoryFromUrl ? "category" : "az",
   );
   const [selectedCategory, setSelectedCategory] = useState(categoryFromUrl);
 
