@@ -27,7 +27,7 @@ export async function generateMetadata({
     description:
       product.keyFeatures ??
       product.formulation ??
-      product.concentration ??
+      product.presentation ??
       undefined,
   };
 }

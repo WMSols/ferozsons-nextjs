@@ -22,7 +22,7 @@ export default function ProductDetailClient({
   const [selectedSize, setSelectedSize] = useState(0);
   const volumeOptions = product.volumeOptions ?? [];
   const selectedSizeLabel =
-    volumeOptions[selectedSize] ?? volumeOptions[0] ?? product.dosage ?? "";
+    volumeOptions[selectedSize] ?? volumeOptions[0] ?? product.strength ?? "";
 
   const imageUrl = getStrapiImageUrl(product.image?.url);
   const categoryName = product.product_category?.name ?? "";
@@ -67,10 +67,10 @@ export default function ProductDetailClient({
               keyFeatures={product.keyFeatures}
             />
              <p className="text-sm text-muted-foreground my-4">
-              Strength: {product.dosage ?? ""}
+              Strength: {product.strength ?? ""}
             </p>
             <p className="text-sm text-muted-foreground mb-4">
-              Presentation: {product.concentration ?? ""}
+              Presentation: {product.presentation ?? ""}
 
             </p>
             <p className="text-sm text-muted-foreground mb-4">

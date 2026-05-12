@@ -31,8 +31,8 @@ export interface StrapiProduct {
   name: string;
   slug: string;
   formulation?: string;
-  concentration?: string;
-  dosage?: string;
+  presentation?: string;
+  strength?: string;
   volumeOptions?: string[];
   keyFeatures?: string;
   prescriptionRequired?: boolean;
@@ -73,11 +73,10 @@ export interface StrapiProductDetail extends StrapiProduct {
     name: string;
     url: string;
   };
-    isFaqAvailable: boolean;
+  isFaqAvailable: boolean;
   isInstructionAvailable: boolean;
 }
 
-// types/strapi.ts
 
 // Base text node
 export interface StrapiTextNode {
