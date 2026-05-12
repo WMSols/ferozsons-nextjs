@@ -102,7 +102,7 @@ const Footer = ({ dark = false }: { dark?: boolean }) => {
             </p>
           </div>
         </div>
-        <div className="py-6 text-sm border-t border-white/10 mt-4">
+        <div className="py-6 text-sm font-light border-t border-white/10 mt-4">
           <p className="text-center">
             Designed & Developed by{" "}
             <a

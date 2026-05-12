@@ -1,4 +1,4 @@
-import { StrapiFinancialHighlights } from "@/types/strapi";
+import { BoardDirector, PharmaceuticalArea, StrapiFinancialHighlights } from "@/types/strapi";
 
 const STRAPI_BASE_URL =
   process.env.NEXT_PUBLIC_STRAPI_URL ?? "http://localhost:1337";
@@ -252,5 +252,52 @@ export async function getFinancialHighlights() {
   } catch (error) {
     console.error("Failed to fetch job posts:", error);
     financialHighlights = [];
+  }
+}
+
+
+export async function getBoardOfDirectors() {
+  let directors: BoardDirector[] = [];
+  const url = `${STRAPI_BASE_URL}/api/board-of-directors`;
+
+  try {
+    const res = await strapiFetch(url, {
+      cache: "no-store",
+    });
+
+    if (!res.ok) {
+      throw new Error(`HTTP ${res.status}`);
+    }
+
+    const json = await res.json();
+    // Maps the response to ensure we safely capture the required name and role fields
+    directors = Array.isArray(json?.data) ? json.data : [];
+    return directors;
+  } catch (error) {
+    console.error("Failed to fetch board of directors:", error);
+    return [];
+  }
+}
+
+export async function getPharmaceuticalAreas() {
+  let areas: PharmaceuticalArea[] = [];
+  // Using populate=* to ensure the image object is included in the response
+  const url = `${STRAPI_BASE_URL}/api/pharmaceutical-areas?populate=*`;
+
+  try {
+    const res = await strapiFetch(url, {
+      cache: "no-store",
+    });
+
+    if (!res.ok) {
+      throw new Error(`HTTP ${res.status}`);
+    }
+
+    const json = await res.json();
+    areas = Array.isArray(json?.data) ? json.data : [];
+    return areas;
+  } catch (error) {
+    console.error("Failed to fetch pharmaceutical areas:", error);
+    return [];
   }
 }

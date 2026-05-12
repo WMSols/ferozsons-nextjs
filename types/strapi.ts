@@ -154,3 +154,20 @@ export interface StrapiFinancialHighlights {
   marketCap: string;
   date: string;
 }
+
+export interface BoardDirector {
+  id?: number;
+  documentId?: string;
+  name: string;
+  role: string;
+}
+
+export interface PharmaceuticalArea {
+  id: number;
+  documentId: string;
+  name: string;
+  slug: string;
+  image: {
+    url: string;
+  } | null;
+}
