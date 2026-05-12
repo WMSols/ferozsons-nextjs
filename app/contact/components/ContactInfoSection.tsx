@@ -37,7 +37,7 @@ const ContactInfoSection = ({
         <ContactInfoItem
           icon={MapPin}
           title="Pharma Factory"
-          value="P.O.Ferozsons, Amangarh - Nowshera (Khyber Pakhtunkhwa)"
+          value="P.O.Ferozsons, Nowshera (Khyber Pakhtunkhwa) - 24160"
           phones={["+92-923-614295, 610159", "+92-923-611302"]}
           urls={["info@ferozsons-labs.com"]}
         />

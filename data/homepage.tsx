@@ -69,7 +69,7 @@ export const missionData = {
   headline:
     "We are a leading healthcare company driven by a commitment to patients, quality, and progress. Through innovation, global collaborations, and responsible growth, we strive to improve health outcomes, address unmet medical needs, and strengthen healthcare systems in the markets we serve.",
   description:
-    "Our Medical Technologies division operates through alliances with five globally renowned partners, delivering advanced medical devices across key specialties.",
+    "Our Medical Technologies division operates through alliances with our globally renowned partners, delivering advanced medical devices across key specialties.",
   ctaText: "Missions, Strategy & Values",
   ctaLink: "/about/purpose",
   secondaryLink: {
