@@ -28,7 +28,7 @@ export default function ProductSearch() {
             <Link
             href={`/products?search=${encodeURIComponent(searchQuery.trim())}`}
               type="button"
-              className="grid h-10 w-10 place-items-center rounded-full border border-blue-950/40 text-blue-950 transition-colors hover:bg-blue-950/[0.04]"
+              className={`grid h-10 w-10 place-items-center rounded-full border border-blue-950/40 text-blue-950 transition-colors hover:bg-blue-950/[0.04] ${searchQuery ? "": "pointer-events-none cursor-not-allowed"}`}
               aria-label="Search"
             >
               <ArrowRight className="h-4 w-4" />

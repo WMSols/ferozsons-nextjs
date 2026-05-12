@@ -43,10 +43,10 @@ export default function ProductSearchSection({
               aria-label="Search for a product"
             />
             <Link
-            href={`/products?search=${encodeURIComponent(searchQuery.trim())}`}
+              href={`/products?search=${encodeURIComponent(searchQuery.trim())}`}
               type="button"
-              className="shrink-0 w-10 h-10 rounded-full border border-foreground/50 flex items-center justify-center text-foreground hover:bg-foreground/5 transition-colors"
-              aria-label="Search"
+              className={`shrink-0 w-10 h-10 rounded-full border border-foreground/50 flex items-center justify-center text-foreground hover:bg-foreground/5 transition-colors ${searchQuery ? "": "pointer-events-none cursor-not-allowed"}`}
+              aria-label="Search products"
             >
               <ArrowRight className="h-4 w-4" />
             </Link>
