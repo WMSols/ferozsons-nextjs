@@ -74,7 +74,8 @@ export function useProductFilters() {
       return products.filter(
         (p) =>
           p.name.toLowerCase().includes(q) ||
-          (p.product_category?.name ?? "").toLowerCase().includes(q),
+         (p.product_category?.name ?? "").toLowerCase().includes(q) ||
+          p.formulation?.toLowerCase().includes(q),
       );
     },
     [search],

@@ -26,7 +26,14 @@ export default function CategoryPills({
           {categories.map((cat) => (
             <Button
               key={cat.documentId ?? cat.id}
-              variant={cat.slug.includes(selectedCategory) || cat.name.toLocaleLowerCase().includes(selectedCategory)  ? "default" : "outline"}
+              variant={
+              selectedCategory ?
+              (  cat.slug.includes(selectedCategory) ||
+                cat.name.toLocaleLowerCase().includes(selectedCategory)
+                  ? "default"
+                  : "outline") :
+                  'outline'
+              }
               size="sm"
               className="rounded-full text-xs capitalize"
               onClick={() => onSelect(cat.slug)}
