@@ -39,7 +39,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         )}
         <h3 className="font-bold text-lg">{product.name}</h3>
         <p className="text-sm text-muted-foreground">
-          {product.dosage ?? product.concentration ?? product.formulation ?? ""}
+          {product.strength ?? product.presentation ?? product.formulation ?? ""}
         </p>
         <Link href={`/products/${product.slug}`}>
           <Button

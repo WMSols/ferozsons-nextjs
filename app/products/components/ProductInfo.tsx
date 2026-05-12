@@ -24,7 +24,7 @@ export default function ProductInfo({
         </p>
       )}
       <p className="font-sans text-sm text-foreground mb-6 md:mb-8">
-        {product.dosage ?? product.concentration ?? product.formulation ?? ""}
+        {product.strength ?? product.presentation ?? product.formulation ?? ""}
       </p>
       {product?.availableOnline === true &&
         typeof product?.dvagoUrl === "string" &&
