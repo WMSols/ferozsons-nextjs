@@ -8,30 +8,30 @@ export const statsData: StatItem[] = [
 ];
 
 export const therapeuticsData = [
-  { label: "Cardiology", image: "/images/Icons-Therapeutic-Areas/cardiology.webp" },
-  { label: "Oncology", image: "/images/Icons-Therapeutic-Areas/oncology.webp" },
+  { name: "Cardiology", image: "/images/Icons-Therapeutic-Areas/cardiology.webp" },
+  { name: "Oncology", image: "/images/Icons-Therapeutic-Areas/oncology.webp" },
   {
-    label: "Hepatology",
+    name: "Hepatology",
     image: "/images/Icons-Therapeutic-Areas/hepatology.webp",
     portfolioLink: "/products",
   },
-  { label: "Pulmonology", image: "/images/Icons-Therapeutic-Areas/pulmonology.webp" },
+  { name: "Pulmonology", image: "/images/Icons-Therapeutic-Areas/pulmonology.webp" },
 
   //Note: Pictures are missing from clients end
-  { label: "Antiviral", image: "/images/Icons-Therapeutic-Areas/antiviral.webp" },
-  { label: "Antibiotics", image: "/images/Icons-Therapeutic-Areas/antibiotics.webp" },
+  { name: "Antiviral", image: "/images/Icons-Therapeutic-Areas/antiviral.webp" },
+  { name: "Antibiotics", image: "/images/Icons-Therapeutic-Areas/antibiotics.webp" },
   {
-    label: "Cough Syrup & Lozenges",
+    name: "Cough Syrup & Lozenges",
     image: "/images/Icons-Therapeutic-Areas/cough-syrup.webp",
   },
-  { label: "Gastroenterology", image: "/images/Icons-Therapeutic-Areas/gastroenterology.webp" },
-  { label: "Urology", image: "/images/Icons-Therapeutic-Areas/urology.webp" },
+  { name: "Gastroenterology", image: "/images/Icons-Therapeutic-Areas/gastroenterology.webp" },
+  { name: "Urology", image: "/images/Icons-Therapeutic-Areas/urology.webp" },
   {
-    label: "Weight-Management",
+    name: "Weight-Management",
     image: "/images/Icons-Therapeutic-Areas/weight-management.webp",
   },
-  { label: "Dermatology", image: "/images/Icons-Therapeutic-Areas/dermatology.webp" },
-  { label: "Psychiatry", image: "/images/Icons-Therapeutic-Areas/psychiatry.webp" },
+  { name: "Dermatology", image: "/images/Icons-Therapeutic-Areas/dermatology.webp" },
+  { name: "Psychiatry", image: "/images/Icons-Therapeutic-Areas/psychiatry.webp" },
   // { label: "Pain Relief", image: "/images/Icons-Therapeutic-Areas/pulmonology.webp" },
 ];
 

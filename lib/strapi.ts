@@ -1,4 +1,4 @@
-import { BoardDirector, PharmaceuticalArea, StrapiFinancialHighlights } from "@/types/strapi";
+import { BoardDirector,  StrapiFinancialHighlights, TherapeuticArea } from "@/types/strapi";
 
 const STRAPI_BASE_URL =
   process.env.NEXT_PUBLIC_STRAPI_URL ?? "http://localhost:1337";
@@ -286,8 +286,8 @@ export async function getBoardOfDirectors() {
   }
 }
 
-export async function getPharmaceuticalAreas() {
-  let areas: PharmaceuticalArea[] = [];
+export async function getTherapeuticAreas() {
+  let areas: TherapeuticArea[] = [];
   // Using populate=* to ensure the image object is included in the response
   const url = `${STRAPI_BASE_URL}/api/pharmaceutical-areas?populate=*`;
 

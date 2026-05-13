@@ -159,14 +159,17 @@ export interface BoardDirector {
   documentId?: string;
   name: string;
   role: string;
+  sortNumber: number;
 }
 
-export interface PharmaceuticalArea {
-  id: number;
-  documentId: string;
+export interface TherapeuticArea {
+  id?: number;
+  documentId?: string;
   name: string;
-  slug: string;
-  image: {
+  slug?: string;
+  image?: {
     url: string;
-  } | null;
+  } | string ;
+  sortNumber?: number;
+  portfolioLink?: string
 }

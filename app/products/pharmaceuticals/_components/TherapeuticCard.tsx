@@ -50,7 +50,7 @@ export default function TherapeuticCard({
       >
         {!placeholder && (
           <>
-            <h3 className="font-kaisei text-white text-2xl md:text-3xl font-bold text-left w-full">
+            <h3 className="font-kaisei text-white text-2xl capitalize md:text-3xl font-bold text-left w-full">
               {title}
             </h3>
             <div className="flex-1 w-full flex items-center justify-center mt-2">
