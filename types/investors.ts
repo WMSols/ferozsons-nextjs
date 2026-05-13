@@ -22,15 +22,21 @@ export interface StrapiReportFile {
   url: string;
 }
 
+// Updated to include date and createdAt which are necessary for the fallback sorting
 export interface StrapiInvestorReport {
   id: number;
   documentId: string;
   title: string;
-  slug: string;
+  slug: string | null;
   year?: number;
   quarter?: string;
   Quarter?: string;
-  report_file?: StrapiReportFile | null;
+  quarterNo?: string;
+  date?: string | null;
+  createdAt?: string;
+  updatedAt?: string;
+  publishedAt?: string;
+  report_file?: StrapiReportFile | null; // Assuming this is defined elsewhere
 }
 
 export interface StrapiInvestorReportsResponse {
