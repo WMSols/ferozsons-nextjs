@@ -9,7 +9,7 @@ export default async function BoardOfDirectorsPage() {
   const rawDirectors = await getBoardOfDirectors();
 
   // 2. Sort the data (Server-side)
-  const sortedDirectors = rawDirectors ?  sortBoardOfDirectors(rawDirectors) : boardMembers ;
+  const sortedDirectors = rawDirectors.length > 0 ?  sortBoardOfDirectors(rawDirectors) : boardMembers ;
 
   // 3. Pass the clean, sorted data to the Client Component
   return (

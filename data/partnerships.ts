@@ -98,13 +98,13 @@ export const timelineEvents = [
 ];
 
 export const boardMembers = [
-  { name: "Osman Khalid Waheed", role: "CEO and Director" },
-  { name: "Akhter Khalid Waheed", role: "Chairperson, Board of Directors" },
-  { name: "Amna Piracha Khan", role: "Director" },
-  { name: "Munize Azhar Peracha", role: "Director" },
-  { name: "Arshad Saeed Husain", role: "Director" },
-  { name: "Suleman Ghani", role: "Director" },
-  { name: "Shahid Anwar", role: "Director" },
+  { name: "Osman Khalid Waheed", role: "CEO and Director", sortNumber: 0 },
+  { name: "Akhter Khalid Waheed", role: "Chairperson, Board of Directors", sortNumber: 0 },
+  { name: "Amna Piracha Khan", role: "Director", sortNumber: 0 },
+  { name: "Munize Azhar Peracha", role: "Director", sortNumber: 0 },
+  { name: "Arshad Saeed Husain", role: "Director", sortNumber: 0 },
+  { name: "Suleman Ghani", role: "Director", sortNumber: 0 },
+  { name: "Shahid Anwar", role: "Director", sortNumber: 0 },
 ];
 
 export const csrInitiatives = [

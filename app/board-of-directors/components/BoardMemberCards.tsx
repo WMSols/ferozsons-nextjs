@@ -1,7 +1,6 @@
 "use client";
 import { User } from "lucide-react";
 import PageHero from "@/components/layout/PageHero";
-import { boardMembers } from "@/data/partnerships";
 import { motion } from "framer-motion";
 import { BoardDirector } from "@/types/strapi";
 
