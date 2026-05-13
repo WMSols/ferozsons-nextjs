@@ -276,7 +276,7 @@ export const csrSlideshowImages: csrSlideshowImage[] = [
   },
   {
     id: 6,
-    url: "/images/CSR/slideshow/img-7683.jpeg",
+    url: "/images/CSR/slideshow/img-7683.webp",
     width: 4032,
     height: 3024
   },
