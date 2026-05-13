@@ -120,6 +120,7 @@ export interface StrapiNewsroom {
   content: BlocksContent;
   createdAt: string;
   updatedAt: string;
+  date: string;
   publishedAt: string;
   featured_image?: StrapiNewsroomImage;
   og_image?: StrapiNewsroomImage;

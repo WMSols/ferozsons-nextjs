@@ -25,7 +25,13 @@ export function useNewsrooms() {
   });
 
   const pages = newsroomsQuery.data?.pages ?? [];
-  const items = pages.flatMap((page) => page.data ?? []);
+  const sortedItems = pages.flatMap((page) => page.data ?? []).sort(
+        (a, b) =>
+          new Date(b.date || b.createdAt || b.publishedAt).getTime() -
+          new Date(a.date || a.createdAt || a.publishedAt).getTime(),
+      )
+
+  const items = sortedItems;
   const pagination = pages[pages.length - 1]?.meta?.pagination;
 
   return {

@@ -100,7 +100,7 @@ export default function NewsroomListClient() {
                           </h3>
                           <p className="text-xs text-muted-foreground">
                             {" "}
-                            {new Date(article.createdAt).toLocaleDateString(
+                            {new Date(article.date || article.createdAt).toLocaleDateString(
                               "en-US",
                               {
                                 month: "short",
