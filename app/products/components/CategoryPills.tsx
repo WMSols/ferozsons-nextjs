@@ -15,6 +15,8 @@ export default function CategoryPills({
   onSelect,
   isLoading,
 }: CategoryPillsProps) {
+  console.log(selectedCategory);
+
   return (
     <div className="flex flex-wrap items-center gap-2 mb-8">
       {isLoading ? (
@@ -27,12 +29,16 @@ export default function CategoryPills({
             <Button
               key={cat.documentId ?? cat.id}
               variant={
-              selectedCategory ?
-              (  cat.slug.includes(selectedCategory) ||
-                cat.name.toLocaleLowerCase().includes(selectedCategory)
-                  ? "default"
-                  : "outline") :
-                  'outline'
+                selectedCategory
+                  ? cat.slug.includes(selectedCategory.split(" ")[0]) ||
+                    cat.name
+                      .toLocaleLowerCase()
+                      .includes(
+                        selectedCategory.split(" ")[0].toLocaleLowerCase(),
+                      )
+                    ? "default"
+                    : "outline"
+                  : "outline"
               }
               size="sm"
               className="rounded-full text-xs capitalize"
