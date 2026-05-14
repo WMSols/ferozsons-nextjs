@@ -55,8 +55,8 @@ export default function Hero() {
 
         <div className="mt-10 space-y-2 md:mt-12 md:space-y-4 relative">
           {/* Edge Fades */}
-          <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-pharma-page-bg to-transparent z-10 pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-pharma-page-bg to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 h-full left-0 w-20 bg-gradient-to-r from-pharma-page-bg to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 h-full right-0 w-20 bg-gradient-to-l from-pharma-page-bg to-transparent z-10 pointer-events-none" />
 
           {/* Row 1: Left moving */}
           <div className="relative">
