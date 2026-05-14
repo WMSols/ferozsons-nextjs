@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -10,7 +10,6 @@ import { StaggerFadeUpInView } from "../animations/StaggerFadeUpInView";
 import { TherapeuticArea } from "@/types/strapi";
 import { getStrapiImageUrl } from "@/lib/strapi";
 
-
 interface TherapeuticsGridProps {
   items: TherapeuticArea[];
 }
@@ -18,9 +17,14 @@ interface TherapeuticsGridProps {
 const ITEMS_PER_PAGE_MOBILE = 2;
 const ITEMS_PER_PAGE_DESKTOP = 4;
 
-export default function TherapeuticsGridClient({ items }: TherapeuticsGridProps) {
+export default function TherapeuticsGridClient({
+  items,
+}: TherapeuticsGridProps) {
   const [page, setPage] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const touchStartX = useRef<number>(0);
+  const isDragging = useRef(false);
+  const hasMoved = useRef(false);
 
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 767px)");
@@ -44,13 +48,13 @@ export default function TherapeuticsGridClient({ items }: TherapeuticsGridProps)
   const next = () => setPage((p) => Math.min(totalPages - 1, p + 1));
 
   //Therapuetic area image url resolving
-  const getImageUrl = (image: string | { url: string } | undefined): string | undefined => {
-    return typeof image === 'string' ? image : image?.url;
+  const getImageUrl = (
+    image: string | { url: string } | undefined,
+  ): string | undefined => {
+    return typeof image === "string" ? image : image?.url;
   };
 
-  const getTherapeuticImage = (
-    url: string | { url: string } | undefined
-  ) => {
+  const getTherapeuticImage = (url: string | { url: string } | undefined) => {
     const stringUrl = getImageUrl(url);
 
     if (!stringUrl) return undefined;
@@ -63,7 +67,6 @@ export default function TherapeuticsGridClient({ items }: TherapeuticsGridProps)
     // strapi image
     return getStrapiImageUrl(stringUrl);
   };
-
 
   return (
     <section className="pt-8 pb-16 md:pt-10 md:pb-20">
@@ -79,36 +82,68 @@ export default function TherapeuticsGridClient({ items }: TherapeuticsGridProps)
         </p>
 
         {/* Card Grid */}
-        <StaggerFadeUpInView className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 ">
-          {visibleItems.map((item) => {
-            return (
-              <Link
-                href={`/products?category=${item.name.toLowerCase()}`}
-                key={item.name}
-                className="bg-[#3b6a9e] rounded-2xl md:rounded-3xl hover:scale-102 transition-all duration-300 w-full aspect-square flex flex-col p-4 sm:p-4 md:p-6"
-              >
-                {/* Bumped mobile floor from 11px → text-sm (14px), rest of scale unchanged */}
-                <h3 className="font-kaisei capitalize text-white text-sm sm:text-sm md:text-base lg:text-xl font-bold text-left leading-tight wrap-break-words hyphens-auto">
-                  {item.name}
-                </h3>
+        <StaggerFadeUpInView>
+        <div
+          className="touch-pan-y select-none cursor-grab active:cursor-grabbing grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6"
+          onPointerDown={(e) => {
+            touchStartX.current = e.clientX;
+            isDragging.current = true;
+            hasMoved.current = false;
+            (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+          }}
+          onPointerMove={(e) => {
+            if (!isDragging.current) return;
+            if (Math.abs(e.clientX - touchStartX.current) > 5)
+              hasMoved.current = true;
+          }}
+          onPointerUp={(e) => {
+            if (!isDragging.current) return;
+            isDragging.current = false;
+            const dx = e.clientX - touchStartX.current;
+            if (hasMoved.current && Math.abs(dx) > 40) {
+              dx < 0 ? next() : prev();
+            }
+          }}
+          onPointerCancel={() => {
+            isDragging.current = false;
+          }}
+        >
 
-                {/* Image shrinks to give label room */}
-                <div className="flex-1 relative mt-1 min-h-0 min-w-0">
-                  { item.image ? (<Image
-                    src={getTherapeuticImage(item.image)!}
-                    alt={`${item.name} illustration`}
-                    fill
-                    className="object-contain p-1 sm:p-2"
-                  />):(
-                    <div className="flex justify-center items-center h-full">
-                      <h1 className="text-8xl text-white/10">{item.name.charAt(0)}</h1>
-                    </div>
-                  )}
-                </div>
-              </Link>
-            );
-          })}
-        </StaggerFadeUpInView>
+
+            {visibleItems.map((item) => {
+              return (
+                <Link
+                  href={`/products?category=${item.name.toLowerCase()}`}
+                  key={item.name}
+                  className="bg-[#3b6a9e] rounded-2xl md:rounded-3xl hover:scale-102 transition-all duration-300 w-full aspect-square flex flex-col p-4 sm:p-4 md:p-6"
+                >
+                  {/* Bumped mobile floor from 11px → text-sm (14px), rest of scale unchanged */}
+                  <h3 className="font-kaisei capitalize text-white text-sm sm:text-sm md:text-base lg:text-xl font-bold text-left leading-tight wrap-break-words hyphens-auto">
+                    {item.name}
+                  </h3>
+
+                  {/* Image shrinks to give label room */}
+                  <div className="flex-1 relative mt-1 min-h-0 min-w-0">
+                    {item.image ? (
+                      <Image
+                        src={getTherapeuticImage(item.image)!}
+                        alt={`${item.name} illustration`}
+                        fill
+                        className="object-contain p-1 sm:p-2"
+                      />
+                    ) : (
+                      <div className="flex justify-center items-center h-full">
+                        <h1 className="text-8xl text-white/10">
+                          {item.name.charAt(0)}
+                        </h1>
+                      </div>
+                    )}
+                  </div>
+                </Link>
+              );
+            })}
+        </div>
+          </StaggerFadeUpInView>
 
         {/* Pagination */}
         {totalPages > 1 && (
