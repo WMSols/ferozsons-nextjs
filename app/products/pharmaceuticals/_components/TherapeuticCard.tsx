@@ -55,12 +55,17 @@ export default function TherapeuticCard({
             </h3>
             <div className="flex-1 w-full flex items-center justify-center mt-2">
               <div className="relative w-[85%] h-[85%] md:w-[90%] md:h-[90%]">
+                {icon ? (
                 <Image
                   src={icon!}
                   alt={`${title} illustration`}
                   fill
                   className="object-contain"
-                />
+                />): (
+                  <div className="flex items-center justify-center h-full">
+                  <h1 className="text-8xl text-white/10">{title?.charAt(0)}</h1>
+                </div>
+                )}
               </div>
             </div>
 

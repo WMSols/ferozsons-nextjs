@@ -6,10 +6,15 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "http",
-        hostname: hostname ,
-        port: port,
+        hostname: "localhost" ,
+        port: "1337",
         pathname: "/uploads/**",
       },
+      {
+        protocol: "https",
+        hostname: "srv1615764.hstgr.cloud",
+        pathname: "/uploads/**"
+      }
     ],
   },
 };

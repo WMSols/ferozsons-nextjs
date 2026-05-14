@@ -94,12 +94,16 @@ export default function TherapeuticsGridClient({ items }: TherapeuticsGridProps)
 
                 {/* Image shrinks to give label room */}
                 <div className="flex-1 relative mt-1 min-h-0 min-w-0">
-                  <Image
+                  { item.image ? (<Image
                     src={getTherapeuticImage(item.image)!}
                     alt={`${item.name} illustration`}
                     fill
                     className="object-contain p-1 sm:p-2"
-                  />
+                  />):(
+                    <div className="flex justify-center items-center h-full">
+                      <h1 className="text-8xl text-white/10">{item.name.charAt(0)}</h1>
+                    </div>
+                  )}
                 </div>
               </Link>
             );
