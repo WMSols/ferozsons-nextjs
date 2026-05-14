@@ -83,38 +83,55 @@ export default function TherapeuticsGridClient({
 
         {/* Card Grid */}
         <StaggerFadeUpInView>
-        <div
-          className="touch-pan-y select-none cursor-grab active:cursor-grabbing grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6"
-          onPointerDown={(e) => {
-            touchStartX.current = e.clientX;
-            isDragging.current = true;
-            hasMoved.current = false;
-            (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
-          }}
-          onPointerMove={(e) => {
-            if (!isDragging.current) return;
-            if (Math.abs(e.clientX - touchStartX.current) > 5)
-              hasMoved.current = true;
-          }}
-          onPointerUp={(e) => {
-            if (!isDragging.current) return;
-            isDragging.current = false;
-            const dx = e.clientX - touchStartX.current;
-            if (hasMoved.current && Math.abs(dx) > 40) {
-              dx < 0 ? next() : prev();
-            }
-          }}
-          onPointerCancel={() => {
-            isDragging.current = false;
-          }}
-        >
+          <div
+            className="touch-pan-y select-none cursor-grab active:cursor-grabbing grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6"
+            onPointerDown={(e) => {
+              touchStartX.current = e.clientX;
+              isDragging.current = true;
+              hasMoved.current = false;
+            }}
+            onPointerMove={(e) => {
+              if (!isDragging.current) return;
 
+              const dx = e.clientX - touchStartX.current;
 
+              if (Math.abs(dx) > 10) {
+                hasMoved.current = true;
+              }
+            }}
+            onPointerUp={(e) => {
+              if (!isDragging.current) return;
+
+              isDragging.current = false;
+
+              const dx = e.clientX - touchStartX.current;
+
+              if (Math.abs(dx) > 40) {
+                if (dx < 0) {
+                  next();
+                } else {
+                  prev();
+                }
+              }
+
+              requestAnimationFrame(() => {
+                hasMoved.current = false;
+              });
+            }}
+            onPointerCancel={() => {
+              isDragging.current = false;
+            }}
+          >
             {visibleItems.map((item) => {
               return (
                 <Link
                   href={`/products?category=${item.name.toLowerCase()}`}
                   key={item.name}
+                  onClick={(e) => {
+                    if (hasMoved.current) {
+                      e.preventDefault();
+                    }
+                  }}
                   className="bg-[#3b6a9e] rounded-2xl md:rounded-3xl hover:scale-102 transition-all duration-300 w-full aspect-square flex flex-col p-4 sm:p-4 md:p-6"
                 >
                   {/* Bumped mobile floor from 11px → text-sm (14px), rest of scale unchanged */}
@@ -142,8 +159,8 @@ export default function TherapeuticsGridClient({
                 </Link>
               );
             })}
-        </div>
-          </StaggerFadeUpInView>
+          </div>
+        </StaggerFadeUpInView>
 
         {/* Pagination */}
         {totalPages > 1 && (
