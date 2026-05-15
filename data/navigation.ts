@@ -67,7 +67,7 @@ export const footerLinks = {
     { label: "About Us", href: "/about" },
     { label: "Products", href: "/products" },
     { label: "Partnerships", href: "/partnerships" },
-    { label: "Investors", href: "/investors" },
+    { label: "Investor Information", href: "/investors" },
   ],
   column2: [
     { label: "Newsroom", href: "/newsroom" },

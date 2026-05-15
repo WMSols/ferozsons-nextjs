@@ -105,7 +105,7 @@ displayHighlights = [
   return (
     <div className="sm:pt-10 pt-20">
       <PageHero
-        title="Investors"
+        title="Investor Information"
         subtitle="Financial information and governance for shareholders and the investment community."
       />
 
