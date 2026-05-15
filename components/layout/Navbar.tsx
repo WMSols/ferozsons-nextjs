@@ -331,7 +331,7 @@ const Navbar = () => {
           />
           <div className="ixl:hidden absolute top-full left-0 right-0 mt-2 z-50 px-4">
             <div className="rounded-[20px] bg-[#FFFFFF] shadow-[0_2px_12px_rgba(0,0,0,0.08)] border border-[#CCCCCC]/30 overflow-hidden">
-              <div className="px-4 py-4 space-y-1">
+              <div className="px-4 py-4 space-y-1 max-h-[75vh] overflow-y-auto">
 
                 {/* Mobile search — always at the top */}
                 <form
