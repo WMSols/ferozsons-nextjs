@@ -15,7 +15,7 @@ export default function CategoryPills({
   onSelect,
   isLoading,
 }: CategoryPillsProps) {
-  console.log(selectedCategory);
+ 
 
   return (
     <div className="flex flex-wrap items-center gap-2 mb-8">

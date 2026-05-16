@@ -1,20 +1,30 @@
 import { useState, useCallback, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
+
 import type { ProductsFilterMode } from "@/lib/strapi";
-import type { StrapiProduct } from "@/types/strapi";
 
 export function useProductFilters() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const categoryFromUrl = searchParams.get("category") ?? "";
-  const searchFromUrl = searchParams.get("search") ?? "";
 
-  const [search, setSearch] = useState(searchFromUrl);
+  const categoryFromUrl =
+    searchParams.get("category") ?? "";
+
+  const searchFromUrl =
+    searchParams.get("search") ?? "";
+
+  const [search, setSearch] =
+    useState(searchFromUrl);
+
   const [page, setPage] = useState(1);
-  const [filterMode, setFilterMode] = useState<ProductsFilterMode>(
-    categoryFromUrl ? "category" : "az",
-  );
-  const [selectedCategory, setSelectedCategory] = useState(categoryFromUrl);
+
+  const [filterMode, setFilterMode] =
+    useState<ProductsFilterMode>(
+      categoryFromUrl ? "category" : "az",
+    );
+
+  const [selectedCategory, setSelectedCategory] =
+    useState(categoryFromUrl);
 
   useEffect(() => {
     if (categoryFromUrl) {
@@ -29,12 +39,49 @@ export function useProductFilters() {
       setSearch(searchFromUrl);
     }
   }, [searchFromUrl]);
+  useEffect(() => {
+  const params = new URLSearchParams(
+    searchParams.toString(),
+  );
 
-  const resetPage = useCallback(() => setPage(1), []);
+  if (search.trim()) {
+    params.set("search", search);
+  } else {
+    params.delete("search");
+  }
+
+  router.replace(
+    `/products?${params.toString()}`,
+    {
+      scroll: false,
+    },
+  );
+}, [search]);
+
+  // RESET PAGE WHEN SEARCH CHANGES
+  useEffect(() => {
+    setPage(1);
+  }, [search]);
+
+  const resetPage = useCallback(
+    () => setPage(1),
+    [],
+  );
 
   const clearUrlCategory = useCallback(() => {
     if (searchParams.get("category")) {
-      router.replace("/products", { scroll: false });
+      const params = new URLSearchParams(
+        searchParams.toString(),
+      );
+
+      params.delete("category");
+
+      router.replace(
+        `/products?${params.toString()}`,
+        {
+          scroll: false,
+        },
+      );
     }
   }, [searchParams, router]);
 
@@ -48,8 +95,7 @@ export function useProductFilters() {
   const setCategoryMode = useCallback(() => {
     setFilterMode("category");
     resetPage();
-    clearUrlCategory();
-  }, [resetPage, clearUrlCategory]);
+  }, [resetPage]);
 
   const setAzMode = useCallback(() => {
     setFilterMode("az");
@@ -60,38 +106,45 @@ export function useProductFilters() {
 
   const toggleCategory = useCallback(
     (slug: string) => {
-      setSelectedCategory((prev) => (prev === slug ? "" : slug));
-      resetPage();
-      clearUrlCategory();
-    },
-    [resetPage, clearUrlCategory],
-  );
+      setSelectedCategory((prev) =>
+        prev === slug ? "" : slug,
+      );
 
-  const filteredBySearch = useCallback(
-    (products: StrapiProduct[]) => {
-      if (!search.trim()) return products;
-      const q = search.toLowerCase();
-      return products.filter(
-        (p) =>
-          p.name.toLowerCase().includes(q) ||
-         (p.product_category?.name ?? "").toLowerCase().includes(q) ||
-          p.formulation?.toLowerCase().includes(q),
+      resetPage();
+
+      const params = new URLSearchParams(
+        searchParams.toString(),
+      );
+
+      if (slug) {
+        params.set("category", slug);
+      } else {
+        params.delete("category");
+      }
+
+      router.replace(
+        `/products?${params.toString()}`,
+        {
+          scroll: false,
+        },
       );
     },
-    [search],
+    [resetPage, router, searchParams],
   );
 
   return {
     search,
     setSearch,
+
     page,
     setPage,
+
     effectiveCategory: selectedCategory,
     effectiveFilterMode: filterMode,
+
     setPrescribed,
     setCategoryMode,
     setAzMode,
     toggleCategory,
-    filteredBySearch,
   };
 }

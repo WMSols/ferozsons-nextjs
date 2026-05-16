@@ -1,9 +1,11 @@
 "use client";
 
 import PageHero from "@/components/layout/PageHero";
+
 import { useProducts } from "./hooks/useProducts";
 import { useCategories } from "./hooks/useCategories";
 import { useProductFilters } from "./hooks/useProductFilters";
+
 import ProductSearch from "./components/ProductSearch";
 import ProductFilterTabs from "./components/ProductFilterTabs";
 import CategoryPills from "./components/CategoryPills";
@@ -13,7 +15,12 @@ import ProductPagination from "./components/ProductPagination";
 
 export default function ProductListClient() {
   const filters = useProductFilters();
-  const { categories, isLoading: isCategoriesLoading } = useCategories();
+
+  const {
+    categories,
+    isLoading: isCategoriesLoading,
+  } = useCategories();
+
   const {
     products,
     pageCount,
@@ -21,9 +28,12 @@ export default function ProductListClient() {
     total,
     isLoading,
     isError,
-  } = useProducts(filters.effectiveCategory, filters.effectiveFilterMode, filters.page);
-
-  const filtered = filters.filteredBySearch(products);
+  } = useProducts(
+    filters.effectiveCategory,
+    filters.effectiveFilterMode,
+    filters.page,
+    filters.search,
+  );
 
   return (
     <div className="sm:pt-10 pt-20">
@@ -34,40 +44,66 @@ export default function ProductListClient() {
 
       <section className="py-12">
         <div className="container">
-          <ProductSearch value={filters.search} onChange={filters.setSearch} />
+          <ProductSearch
+            value={filters.search}
+            onChange={filters.setSearch}
+          />
 
           <ProductFilterTabs
-            activeMode={filters.effectiveFilterMode}
-            onPrescribed={filters.setPrescribed}
-            onCategory={filters.setCategoryMode}
+            activeMode={
+              filters.effectiveFilterMode
+            }
+            onPrescribed={
+              filters.setPrescribed
+            }
+            onCategory={
+              filters.setCategoryMode
+            }
             onAz={filters.setAzMode}
           />
 
-          {filters.effectiveFilterMode === "category" && (
+          {filters.effectiveFilterMode ===
+            "category" && (
             <CategoryPills
               categories={categories}
-              selectedCategory={filters.effectiveCategory}
-              onSelect={filters.toggleCategory}
-              isLoading={isCategoriesLoading}
+              selectedCategory={
+                filters.effectiveCategory
+              }
+              onSelect={
+                filters.toggleCategory
+              }
+              isLoading={
+                isCategoriesLoading
+              }
             />
           )}
 
           {isError && (
             <p className="text-center text-destructive py-8">
-              Failed to load products. Please try again.
+              Failed to load products.
+              Please try again.
             </p>
           )}
 
-          {!isError && isLoading && <ProductsSkeleton />}
+          {!isError && isLoading && (
+            <ProductsSkeleton />
+          )}
 
           {!isError && !isLoading && (
             <>
-              <ProductGrid products={filtered} />
+              <ProductGrid
+                products={products}
+              />
+
               <ProductPagination
-                currentPage={currentPage}
+                currentPage={
+                  currentPage
+                }
                 pageCount={pageCount}
                 total={total}
-                onPageChange={filters.setPage}
+                onPageChange={
+                  filters.setPage
+                }
               />
             </>
           )}

@@ -1,4 +1,8 @@
-import { BoardDirector,  StrapiFinancialHighlights, TherapeuticArea } from "@/types/strapi";
+import {
+  BoardDirector,
+  StrapiFinancialHighlights,
+  TherapeuticArea,
+} from "@/types/strapi";
 
 const STRAPI_BASE_URL =
   process.env.NEXT_PUBLIC_STRAPI_URL ?? "http://localhost:1337";
@@ -41,6 +45,7 @@ export interface BuildProductsUrlParams {
   pageSize?: number;
   filterMode: ProductsFilterMode;
   selectedCategory: string;
+  search?: string;
 }
 
 export function buildProductsUrl({
@@ -48,41 +53,75 @@ export function buildProductsUrl({
   pageSize = 25,
   filterMode,
   selectedCategory,
+  search = "",
 }: BuildProductsUrlParams): string {
   const params = new URLSearchParams();
+
   params.set("populate", "*");
-  params.set("pagination[page]", String(page));
-  params.set("pagination[pageSize]", String(pageSize));
 
-  // --- THIS IS THE UPDATED SECTION ---
-  if (filterMode === "category" && selectedCategory) {
-    // 1. Decode the URL string to handle things like %20
-    const decodedCategory = decodeURIComponent(selectedCategory);
+  params.set(
+    "pagination[page]",
+    String(page),
+  );
 
-    // 2. Extract the first word.
-    // Splitting by /[\s-]+/ ensures it grabs the first word even if separated by spaces or hyphens
-    const firstWord = decodedCategory.trim().split(/[\s-]+/)[0];
+  params.set(
+    "pagination[pageSize]",
+    String(pageSize),
+  );
 
-    // 3. Use $containsi (case-insensitive contains) instead of $eq
-    params.set(
-      "filters[$or][0][product_category][slug][$containsi]",
-      firstWord,
+  // SEARCH FILTERS
+  const trimmedSearch =
+    search.trim();
+
+  if (trimmedSearch) {
+    params.append(
+      "filters[$or][0][name][$containsi]",
+      trimmedSearch,
     );
-    params.set(
+
+    params.append(
       "filters[$or][1][product_category][name][$containsi]",
+      trimmedSearch,
+    );
+
+    params.append(
+      "filters[$or][2][formulation][$containsi]",
+      trimmedSearch,
+    );
+  }
+
+  // CATEGORY FILTERS
+  if (
+    filterMode === "category" &&
+    selectedCategory
+  ) {
+    const decodedCategory =
+      decodeURIComponent(
+        selectedCategory,
+      );
+
+    const firstWord =
+      decodedCategory
+        .trim()
+        .split(/[\s-]+/)[0];
+
+    params.set(
+      "filters[product_category][slug][$containsi]",
       firstWord,
     );
   }
-  // -----------------------------------
 
+  // A-Z SORTING
   if (filterMode === "az") {
     params.set("sort", "name:asc");
   }
 
-  // Requires a boolean `commonlyPrescribed` field on the Product content-type in Strapi.
-  // Remove this block if the field does not exist to avoid 400 errors.
+  // PRESCRIBED FILTER
   if (filterMode === "prescribed") {
-    params.set("filters[commonlyPrescribed][$eq]", "true");
+    params.set(
+      "filters[commonlyPrescribed][$eq]",
+      "true",
+    );
   }
 
   return `${STRAPI_BASE_URL}/api/products?${params.toString()}`;
@@ -261,7 +300,6 @@ export async function getFinancialHighlights() {
     financialHighlights = [];
   }
 }
-
 
 export async function getBoardOfDirectors() {
   let directors: BoardDirector[] = [];
