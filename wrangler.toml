@@ -9,6 +9,6 @@ directory = ".open-next/assets"
 binding = "ASSETS"
 # Add your custom domain here
 routes = [
-  { pattern = "ferozsons-labs.com", custom_domain = true },
-  { pattern = "www.ferozsons-labs.com", custom_domain = true } # Optional, if you want www support
+  { pattern = "ferozsons-labs.pk", custom_domain = true },
+  { pattern = "www.ferozsons-labs.pk", custom_domain = true } # Optional, if you want www support
 ]
