@@ -30,7 +30,7 @@ export default function CategoryPills({
               key={cat.documentId ?? cat.id}
               variant={
                 selectedCategory
-                  ? cat.slug.includes(selectedCategory.split(" ")[0]) ||
+                  ? cat.slug === selectedCategory.split(" ")[0] ||
                     cat.name
                       .toLocaleLowerCase()
                       .includes(

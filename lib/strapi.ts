@@ -95,21 +95,22 @@ export function buildProductsUrl({
     filterMode === "category" &&
     selectedCategory
   ) {
-    const decodedCategory =
-      decodeURIComponent(
-        selectedCategory,
-      );
-
+    const decodedCategory = selectedCategory.replace(/%20/,'-');
     const firstWord =
       decodedCategory
         .trim()
         .split(/[\s-]+/)[0];
 
     params.set(
-      "filters[product_category][slug][$containsi]",
-      firstWord,
+      "filters[product_category][slug][$eqi]",decodedCategory
     );
+    console.log(selectedCategory);
+    //  params.append(
+    //   "filters[$or][1][product_category][$containsi]",
+    //   trimmedSearch,
+    // )
   }
+  
 
   // A-Z SORTING
   if (filterMode === "az") {
