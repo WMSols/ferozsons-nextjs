@@ -11,7 +11,15 @@ const TherapeuticsGrid = async () => {
       // use fallback data incase of no data from backend
       const sortedAreas = therapeuticsDataStrapi.length > 0 ? sortTherapeuticAreas(therapeuticsDataStrapi) : therapeuticsData
   return (
-        <TherapeuticsGridClient items={sortedAreas} />
+      <>
+        {
+            therapeuticsDataStrapi ? (
+                  <TherapeuticsGridClient items={sortedAreas} />
+            ):(
+                  <div className='text-muted-foreground'>Loading theraputic areas...</div>
+            )
+        }
+        </>
   )
 }
 

@@ -11,11 +11,17 @@ export default function ArticlesGridClient() {
   }
 
   return (
+    <>
+    {isLoading ? (
+      <div className="text-muted-foreground">Loading latest articles...</div>
+    ):(  
     <ArticlesGrid
       articles={latestArticles}
       title="Latest Articles"
       viewAllLink="/newsroom"
       viewAllText="View All"
-    />
+    />)}
+  
+    </>
   );
 }

@@ -9,6 +9,7 @@ import { StaggerFadeUp } from "../animations/StaggerFadeUp";
 import { StaggerFadeUpInView } from "../animations/StaggerFadeUpInView";
 import { TherapeuticArea } from "@/types/strapi";
 import { getStrapiImageUrl } from "@/lib/strapi";
+import { useCategories } from "@/app/products/hooks/useCategories";
 
 interface TherapeuticsGridProps {
   items: TherapeuticArea[];
@@ -67,6 +68,19 @@ export default function TherapeuticsGridClient({
     // strapi image
     return getStrapiImageUrl(stringUrl);
   };
+    const {
+      categories,
+      isLoading
+    } = useCategories()
+  
+  const getCategorySlug = (title: string) => {
+      // 1. Use .find() instead of .filter()
+      // 2. Add the optional chaining operator (?.) before .slug
+      const categorySlug = (!isLoading) && categories.find((c) => c.name === title)?.slug;
+      
+      console.log(categorySlug);
+      return categorySlug;
+  }
 
   return (
     <section className="pt-8 pb-16 md:pt-10 md:pb-20">
@@ -122,10 +136,11 @@ export default function TherapeuticsGridClient({
               isDragging.current = false;
             }}
           >
-            {visibleItems.map((item) => {
+            {visibleItems ? (
+              visibleItems.map((item) => {
               return (
                 <Link
-                  href={`/products?category=${item.name.toLowerCase()}`}
+                  href={`/products?category=${getCategorySlug(item.name)}`}
                   key={item.name}
                   onClick={(e) => {
                     if (hasMoved.current) {
@@ -158,7 +173,9 @@ export default function TherapeuticsGridClient({
                   </div>
                 </Link>
               );
-            })}
+            })): (
+              <div className="text-muted-foreground">Theraputic Areas loading...</div>
+            )}
           </div>
         </StaggerFadeUpInView>
 

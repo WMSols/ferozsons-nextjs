@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-
+import { useCategories } from "../../hooks/useCategories";
 type TherapeuticCardProps = {
-  title?: string;
+  title: string;
   icon?: string;
   description?: string;
   portfolioLink?: string;
@@ -31,6 +31,20 @@ export default function TherapeuticCard({
     setVisible(false);
     setTimeout(() => setIsOpen(false), 300);
   };
+
+  const {
+    categories,
+    isLoading
+  } = useCategories()
+
+const getCategorySlug = (title: string) => {
+    // 1. Use .find() instead of .filter()
+    // 2. Add the optional chaining operator (?.) before .slug
+    const categorySlug = (!isLoading) && categories.find((c) => c.name === title)?.slug;
+    
+    console.log(categorySlug);
+    return categorySlug;
+}
 
   useEffect(() => {
     if (!isOpen) return;
@@ -106,7 +120,7 @@ export default function TherapeuticCard({
             </div>
 
             <a
-              href={`/products?category=${title?.toLowerCase()}`}
+              href={`/products?category=${getCategorySlug(title)}`}
               className="mt-6 inline-block border border-[#3b6a9e] text-[#3b6a9e] text-sm px-5 py-2.5 rounded-lg hover:bg-[#3b6a9e] hover:text-white transition-colors duration-200"
             >
               View Our {title} Portfolio
