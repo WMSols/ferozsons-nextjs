@@ -78,7 +78,6 @@ export default function TherapeuticsGridClient({
       // 2. Add the optional chaining operator (?.) before .slug
       const categorySlug = (!isLoading) && categories.find((c) => c.name === title)?.slug;
       
-      console.log(categorySlug);
       return categorySlug;
   }
 
@@ -161,8 +160,6 @@ export default function TherapeuticsGridClient({
                         src={getTherapeuticImage(item.image)!}
                         alt={`${item.name} illustration`}
                         fill
-                        quality={80}
-                        priority={false}
                         className="object-contain p-1 sm:p-2"
                       />
                     ) : (
