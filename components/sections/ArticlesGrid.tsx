@@ -16,6 +16,7 @@ interface ArticlesGridProps {
   columns?: 2 | 3;
   showDate?: boolean;
   animated?: boolean;
+  isLoading?: boolean;
 }
 
 export default function ArticlesGrid({
@@ -26,6 +27,7 @@ export default function ArticlesGrid({
   columns = 3,
   showDate = true,
   animated = true,
+  isLoading
 }: ArticlesGridProps) {
   const gridCols =
     columns === 2
@@ -59,13 +61,17 @@ export default function ArticlesGrid({
             )}
           </div>
         )}
-        {animated ? (
-          <StaggerGrid className={`grid ${gridCols} gap-8`}>
-            {cards}
-          </StaggerGrid>
-        ) : (
-          <div className={`grid ${gridCols} gap-8`}>{cards}</div>
-        )}
+      {isLoading ? (
+        <div className="text-muted-foreground py-12 text-center">
+          Loading latest articles...
+        </div>
+      ) : animated ? (
+        <StaggerGrid className={`grid ${gridCols} gap-8`}>
+          {cards}
+        </StaggerGrid>
+      ) : (
+        <div className={`grid ${gridCols} gap-8`}>{cards}</div>
+      )}
       </div>
     </section>
   );

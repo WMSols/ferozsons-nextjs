@@ -343,9 +343,8 @@ export async function getBoardOfDirectors(): Promise<ApiResult<BoardDirector[]>>
   };
 }
 
-export async function getTherapeuticAreas(): Promise<ApiResult<TherapeuticArea[]>> {
+export async function getTherapeuticAreas(): Promise<TherapeuticArea[]> {
   let areas: TherapeuticArea[] = [];
-  let error: string | undefined;
   const url = `${STRAPI_BASE_URL}/api/pharmaceutical-areas?populate=*`;
 
   try {
@@ -360,13 +359,8 @@ export async function getTherapeuticAreas(): Promise<ApiResult<TherapeuticArea[]
     const json = await res.json();
     areas = Array.isArray(json?.data) ? json.data : [];
   } catch (err) {
-    error = err instanceof Error ? err.message : String(err);
     console.error("Failed to fetch pharmaceutical areas:", err);
   }
 
-  return {
-    data: areas,
-    loading: false,
-    error,
-  };
+  return areas;
 }

@@ -13,6 +13,7 @@ import { useCategories } from "@/app/products/hooks/useCategories";
 
 interface TherapeuticsGridProps {
   items: TherapeuticArea[];
+  loading: boolean;
 }
 
 const ITEMS_PER_PAGE_MOBILE = 2;
@@ -20,6 +21,7 @@ const ITEMS_PER_PAGE_DESKTOP = 4;
 
 export default function TherapeuticsGridClient({
   items,
+  loading
 }: TherapeuticsGridProps) {
   const [page, setPage] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
@@ -94,7 +96,12 @@ export default function TherapeuticsGridClient({
           healthcare.
         </p>
 
-        {/* Card Grid */}
+       {
+        loading ? (
+          <div className="text-muted-foreground">Therapeutic Areas loading...</div>
+        ): (
+          <>
+           {/* Card Grid */}
         <StaggerFadeUpInView>
           <div
             className="touch-pan-y select-none cursor-grab active:cursor-grabbing grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6"
@@ -214,6 +221,9 @@ export default function TherapeuticsGridClient({
             </div>
           </div>
         )}
+        </>
+        )
+       }
       </div>
     </section>
   );

@@ -17,14 +17,9 @@ import ProductSearchSection from "@/components/sections/ProductSearchSection";
 import TimelineSection from "@/components/sections/TimelineSection";
 import LegacyBanner from "@/components/sections/LegacyBanner";
 import QuoteSection from "@/components/sections/QuoteSection";
-const TherapeuticsGrid = dynamic(
-  () => import("@/components/sections/TherapeuticsGrid"),
-  { loading: () => <div>Loading</div> },
-);
-const ArticlesGridClient = dynamic(
-  () => import("@/components/sections/ArticlesGridClient"),
-  { loading: () => <div>Loading</div> },
-);
+import TherapeuticsGrid from "@/components/sections/TherapeuticsGrid";
+import ArticlesGridClient from "@/components/sections/ArticlesGridClient";
+;
 
 export default function HomePage() {
 

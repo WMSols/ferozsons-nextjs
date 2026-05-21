@@ -1,20 +1,17 @@
+"use client";
+
 import { therapeuticsData } from '@/data/company-overview';
 import { sortTherapeuticAreas } from '@/lib/getSortedTherapeuticAreas';
-import {  getTherapeuticAreas } from '@/lib/strapi';
-import React from 'react'
+import { useTherapeuticAreas } from '@/app/products/hooks/useTherapeuticAreas';
 import TherapeuticsGridClient from './TherapeuticsGridClient';
 
+export default function TherapeuticsGrid() {
+  const { therapeuticAreas, isLoading } = useTherapeuticAreas();
+  const sortedAreas =
+    therapeuticAreas.length > 0
+      ? sortTherapeuticAreas(therapeuticAreas)
+      : therapeuticsData;
 
 
-const TherapeuticsGrid = async () => {
-      const { data: therapeuticsDataStrapi } = await getTherapeuticAreas();
-      // use fallback data incase of no data from backend
-      const sortedAreas = therapeuticsDataStrapi.length > 0 ? sortTherapeuticAreas(therapeuticsDataStrapi) : therapeuticsData
-  return (
-      <>
-        <TherapeuticsGridClient items={sortedAreas} />
-        </>
-  )
+  return <TherapeuticsGridClient loading={isLoading} items={sortedAreas} />;
 }
-
-export default TherapeuticsGrid

@@ -28,7 +28,7 @@ const getTherapeuticImage = (
   return getStrapiImageUrl(stringUrl);
 };
 
-  const { data: therapeuticsDataStrapi } = await getTherapeuticAreas();
+  const therapeuticsDataStrapi = await getTherapeuticAreas();
   // use fallback data incase of no data from backend
   const sortedAreas = therapeuticsDataStrapi.length > 0 ? sortTherapeuticAreas(therapeuticsDataStrapi) : therapeuticsData
 
