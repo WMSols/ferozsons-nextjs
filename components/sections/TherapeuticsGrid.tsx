@@ -12,13 +12,7 @@ const TherapeuticsGrid = async () => {
       const sortedAreas = therapeuticsDataStrapi.length > 0 ? sortTherapeuticAreas(therapeuticsDataStrapi) : therapeuticsData
   return (
       <>
-        {
-            therapeuticsDataStrapi ? (
-                  <TherapeuticsGridClient items={sortedAreas} />
-            ):(
-                  <div className='text-muted-foreground'>Loading theraputic areas...</div>
-            )
-        }
+        <TherapeuticsGridClient items={sortedAreas} />
         </>
   )
 }
