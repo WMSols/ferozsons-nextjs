@@ -81,7 +81,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between gap-8 px-8 py-4">
           <Link href="/" className="flex items-center shrink-0">
             <Image
-              src="/Ferozsons-Logo-1000x250px3.webp"
+              src="/Ferozsons-Logo-1000x250px3.avif"
               alt="Ferozsons Laboratories Limited"
               width={200}
               height={50}
@@ -304,7 +304,7 @@ const Navbar = () => {
       <div className="flex ixl:hidden items-center justify-between rounded-[20px] bg-[#FFFFFF] shadow-[0_2px_12px_rgba(0,0,0,0.08)] px-4 py-3">
         <Link href="/" className="flex items-center shrink-0">
           <Image
-            src="/Ferozsons-Logo-1000x250px3.webp"
+            src="/Ferozsons-Logo-1000x250px3.avif"
             alt="Ferozsons Laboratories Limited"
             width={160}
             height={40}

@@ -38,6 +38,12 @@ export function getStrapiMediaUrl(url: string | undefined): string {
   return getStrapiImageUrl(url);
 }
 
+export interface ApiResult<T> {
+  data: T;
+  loading: boolean;
+  error?: string;
+}
+
 export type ProductsFilterMode = "category" | "prescribed" | "az";
 
 export interface BuildProductsUrlParams {
@@ -283,9 +289,11 @@ export async function submitJobApplication(payload: JobApplicationPayload) {
   return res;
 }
 
-export async function getFinancialHighlights() {
+export async function getFinancialHighlights(): Promise<ApiResult<StrapiFinancialHighlights[]>> {
   let financialHighlights: StrapiFinancialHighlights[] = [];
+  let error: string | undefined;
   const url = `${STRAPI_BASE_URL}/api/financial-highlights`;
+
   try {
     const res = await strapiFetch(url, {
       cache: "no-store",
@@ -295,15 +303,21 @@ export async function getFinancialHighlights() {
     }
     const json = await res.json();
     financialHighlights = Array.isArray(json?.data) ? json.data : [];
-    return financialHighlights;
-  } catch (error) {
-    console.error("Failed to fetch job posts:", error);
-    financialHighlights = [];
+  } catch (err) {
+    error = err instanceof Error ? err.message : String(err);
+    console.error("Failed to fetch financial highlights:", err);
   }
+
+  return {
+    data: financialHighlights,
+    loading: false,
+    error,
+  };
 }
 
-export async function getBoardOfDirectors() {
+export async function getBoardOfDirectors(): Promise<ApiResult<BoardDirector[]>> {
   let directors: BoardDirector[] = [];
+  let error: string | undefined;
   const url = `${STRAPI_BASE_URL}/api/board-of-directors`;
 
   try {
@@ -316,18 +330,22 @@ export async function getBoardOfDirectors() {
     }
 
     const json = await res.json();
-    // Maps the response to ensure we safely capture the required name and role fields
     directors = Array.isArray(json?.data) ? json.data : [];
-    return directors;
-  } catch (error) {
-    console.error("Failed to fetch board of directors:", error);
-    return [];
+  } catch (err) {
+    error = err instanceof Error ? err.message : String(err);
+    console.error("Failed to fetch board of directors:", err);
   }
+
+  return {
+    data: directors,
+    loading: false,
+    error,
+  };
 }
 
-export async function getTherapeuticAreas() {
+export async function getTherapeuticAreas(): Promise<ApiResult<TherapeuticArea[]>> {
   let areas: TherapeuticArea[] = [];
-  // Using populate=* to ensure the image object is included in the response
+  let error: string | undefined;
   const url = `${STRAPI_BASE_URL}/api/pharmaceutical-areas?populate=*`;
 
   try {
@@ -341,9 +359,14 @@ export async function getTherapeuticAreas() {
 
     const json = await res.json();
     areas = Array.isArray(json?.data) ? json.data : [];
-    return areas;
-  } catch (error) {
-    console.error("Failed to fetch pharmaceutical areas:", error);
-    return [];
+  } catch (err) {
+    error = err instanceof Error ? err.message : String(err);
+    console.error("Failed to fetch pharmaceutical areas:", err);
   }
+
+  return {
+    data: areas,
+    loading: false,
+    error,
+  };
 }

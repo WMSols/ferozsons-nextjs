@@ -161,6 +161,8 @@ export default function TherapeuticsGridClient({
                         src={getTherapeuticImage(item.image)!}
                         alt={`${item.name} illustration`}
                         fill
+                        quality={80}
+                        priority={false}
                         className="object-contain p-1 sm:p-2"
                       />
                     ) : (

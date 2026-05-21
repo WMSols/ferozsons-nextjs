@@ -6,7 +6,7 @@ import { boardMembers } from "@/data/partnerships";
 
 export default async function BoardOfDirectorsPage() {
   // 1. Fetch the raw data (Server-side)
-  const rawDirectors = await getBoardOfDirectors();
+  const { data: rawDirectors } = await getBoardOfDirectors();
 
   // 2. Sort the data (Server-side)
   const sortedDirectors = rawDirectors.length > 0 ?  sortBoardOfDirectors(rawDirectors) : boardMembers ;

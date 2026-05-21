@@ -3,7 +3,7 @@ import type { HeroSlide } from "@/components/sections/HeroCarousel";
 export const heroSlides: HeroSlide[] = [
   {
     id: 1,
-    image: "/hero.webp",
+    image: "/hero.avif",
     title: "Putting Patients First",
     description:
       "A patient-centric pharmaceutical company committed to advancing care by addressing critical unmet medical needs in Pakistan and internationally.",
@@ -19,7 +19,7 @@ export const heroSlides: HeroSlide[] = [
   },
   {
     id: 2,
-    image: "/legacy-bg.webp",
+    image: "/legacy-bg.avif",
     title: (
       <>
         Advancing Healthcare
@@ -42,7 +42,7 @@ export const heroSlides: HeroSlide[] = [
   },
   {
     id: 3,
-    image: "/hero-3.webp",
+    image: "/hero-3.avif",
     title: (
       <>
         Partnering with World-
@@ -76,7 +76,7 @@ export const missionData = {
     text: "Why invest in Ferozsons?",
     href: "/about/history",
   },
-  backgroundImage: "/mission-bg.webp",
+  backgroundImage: "/mission-bg.avif",
 };
 
 export const productSearchData = {
@@ -89,7 +89,7 @@ export const productSearchData = {
 };
 
 export const legacyData = {
-  backgroundImage: "/legacy-bg.webp",
+  backgroundImage: "/legacy-bg.avif",
   title: (
     <>
       Our legacy is built on <span className="text-hero-accent">integrity</span>

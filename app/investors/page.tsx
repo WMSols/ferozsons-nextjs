@@ -68,7 +68,7 @@ export default async function InvestorsPage({
   const { pageCount, total } = reportsResponse.meta.pagination;
 
   // 2. Fetch Financial Highlights from backend
-  const strapiHighlights = await getFinancialHighlights();
+  const { data: strapiHighlights } = await getFinancialHighlights();
 
   // 3. Map the data or fall back to defaults
   let displayHighlights = defaultHighlights;

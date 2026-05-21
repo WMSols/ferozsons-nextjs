@@ -15,7 +15,7 @@ const CTABanner = ({
   description = "At Ferozsons, we believe healthcare is more than just prescriptions. It's about compassion, innovation, and a deep commitment to improving lives across Pakistan.",
   ctaText = "Learn More",
   ctaLink = "/about",
-  image = "/care-beyond.webp",
+  image = "/care-beyond.avif",
   showCTA = true,
 }: CTABannerProps) => {
   return (
