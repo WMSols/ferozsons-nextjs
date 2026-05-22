@@ -63,7 +63,7 @@ const Footer = ({ dark = false }: { dark?: boolean }) => {
                 rel="noreferrer"
               >
                 <img
-                  className="h-full w-full"
+                  className="h-full w-full aspect-auto"
                   alt="secp logo"
                   src={"/images/secp-logo.webp"}
                 />
@@ -72,7 +72,7 @@ const Footer = ({ dark = false }: { dark?: boolean }) => {
             <div className="h-8 xs:w-40 w-32  rounded-sm overflow-hidden">
               <a href="https://jamapunji.pk" target="_blank" rel="noreferrer">
                 <img
-                  className="h-full w-full"
+                  className="h-full w-full aspect-auto"
                   alt="jamapunji logo"
                   src={"/images/jama-punji-logo.webp"}
                 />
