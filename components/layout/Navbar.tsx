@@ -138,7 +138,7 @@ const Navbar = () => {
         ref={navContainerRef}
         className={cn(
           "hidden ixl:block bg-[#000000] shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 relative",
-          activePrimaryDropdown ? "rounded-t-[20px]" : "rounded-[20px]"
+          activePrimaryDropdown ? "rounded-t-[25px]" : "rounded-[25px]"
         )}
       >
         <div className="flex items-center justify-between gap-8 px-8 py-4">

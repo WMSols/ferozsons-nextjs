@@ -14,7 +14,12 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "srv1615764.hstgr.cloud",
         pathname: "/uploads/**"
-      }
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "/**",  
+      },
     ],
   },
 };

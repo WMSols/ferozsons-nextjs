@@ -11,7 +11,7 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="sm:pt-10 pt-20">
+    <div className="pt-20 sm:pt-30">
       <PageHero
         title="About Us"
         subtitle="Committed to improving the quality of life through innovative healthcare solutions."

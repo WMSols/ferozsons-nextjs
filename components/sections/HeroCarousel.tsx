@@ -60,7 +60,8 @@ export default function HeroCarousel({
   );
 
   return (
-    <section className="mx-4 mt-4 lg:mx-6 lg:mt-6 relative flex min-h-[100vh] flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-hero-border bg-background px-6 xs:py-20  shadow-sm md:px-12 md:py-24 lg:px-16 lg:py-28">
+  
+    <section className=" relative flex min-h-[calc(100vh-2rem)] flex-col items-center justify-center overflow-hidden rounded-b-3xl border border-hero-border bg-background px-6 xs:py-20 shadow-sm md:px-12 md:py-24 lg:px-16 lg:py-28">
       {slides.map((slide, index) => {
         const isActive = current === index;
         const isPrev = prev === index;
@@ -88,9 +89,9 @@ export default function HeroCarousel({
                 />
               </HeroImageZoom>
               <div
-                className="absolute inset-0 bg-linear-to-b from-hero-overlay/80 via-hero-overlay/60 to-hero-overlay/40"
-                aria-hidden
-              />
+  className="absolute inset-0 bg-linear-to-b from-hero-overlay/95 via-hero-overlay/80 to-hero-overlay/60"
+  aria-hidden
+/>
             </div>
 
             {isActive && (
