@@ -192,6 +192,9 @@
   max-width: 1400px;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 /* Mission card: subtle circular pattern (right on desktop, bottom on mobile) */
 .mission-card-pattern {
   background-color: hsl(var(--mission-card));
