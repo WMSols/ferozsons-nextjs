@@ -13,6 +13,7 @@ import type { StrapiCategoriesResponse } from "@/types/strapi";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [desktopMenuOpen, setDesktopMenuOpen] = useState(false);
   const [activePrimaryDropdown, setActivePrimaryDropdown] = useState<string | null>(null);
   const [mobileDropdown, setMobileDropdown] = useState<string | null>(null);
   const [desktopSearchOpen, setDesktopSearchOpen] = useState(false);
@@ -36,6 +37,7 @@ const Navbar = () => {
     setSearchQuery("");
     setDesktopSearchOpen(false);
     setMobileOpen(false);
+    setDesktopMenuOpen(false);
   };
 
   const categoriesQuery = useQuery({
@@ -54,7 +56,8 @@ const Navbar = () => {
 
     return (
       <div className="absolute top-full left-0 right-0 z-50 before:absolute before:inset-x-0 before:-top-8 before:h-8 before:bg-transparent">
-        <div className="bg-[#000000] border-t border-white/20 rounded-b-[20px] shadow-2xl p-10 pt-20 animate-in fade-in duration-300 ease-in">
+        {/* Removed pt-20 to ensure standard uniform padding and flush alignment with Row 2 */}
+        <div className="bg-[#000000] border-t border-white/20 rounded-b-[25px] shadow-2xl p-10 animate-in fade-in duration-300 ease-in">
           <div className="grid grid-cols-12 gap-8">
             
             {/* Left Column: Title & Description */}
@@ -67,7 +70,7 @@ const Navbar = () => {
               )}
             </div>
 
-            {/* Middle Column: Links (Smaller if image exists, larger if Products Grid) */}
+            {/* Middle Column: Links */}
             <div className={cn(
               "border-l border-white/10 pl-8 flex flex-col justify-start",
               item.megaImage ? "col-span-4" : "col-span-3"
@@ -77,8 +80,11 @@ const Navbar = () => {
                   <Link
                     key={`${child.label}-${child.href}`}
                     href={child.href}
-                    className="text-white text-sm font-medium hover:text-[#89bdf2] transition-colors w-fit border-b border-white hover:border-[#89bdf2] pb-0.5"
-                    onClick={() => setActivePrimaryDropdown(null)}
+                    className="text-white text-sm font-medium hover:text-[#89bdf2] transition-colors w-fit border-b border-transparent hover:border-[#89bdf2] pb-0.5"
+                    onClick={() => {
+                      setActivePrimaryDropdown(null);
+                      setDesktopMenuOpen(false);
+                    }}
                   >
                     {child.label}
                   </Link>
@@ -102,7 +108,10 @@ const Navbar = () => {
                   <Link 
                     href={item.megaImageLink || item.href} 
                     className="text-white/80 text-sm flex items-center gap-2 hover:text-white transition-colors"
-                    onClick={() => setActivePrimaryDropdown(null)}
+                    onClick={() => {
+                      setActivePrimaryDropdown(null);
+                      setDesktopMenuOpen(false);
+                    }}
                   >
                     {item.megaImageSubtitle} <ArrowRight className="h-4 w-4" />
                   </Link>
@@ -116,7 +125,10 @@ const Navbar = () => {
                       key={cat.slug || cat.name}
                       href={`/products?category=${encodeURIComponent(cat.slug || cat.name)}`}
                       className="text-white/80 text-sm hover:text-white transition-colors"
-                      onClick={() => setActivePrimaryDropdown(null)}
+                      onClick={() => {
+                        setActivePrimaryDropdown(null);
+                        setDesktopMenuOpen(false);
+                      }}
                     >
                       {cat.name}
                     </Link>
@@ -137,111 +149,158 @@ const Navbar = () => {
       <div 
         ref={navContainerRef}
         className={cn(
-          "hidden ixl:block bg-[#000000] shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 relative",
+          "hidden ixl:flex flex-col bg-[#000000] shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 relative",
           activePrimaryDropdown ? "rounded-t-[25px]" : "rounded-[25px]"
         )}
       >
-        <div className="flex items-center justify-between gap-8 px-8 py-4">
-          <Link href="/" className="flex items-center shrink-0">
-            <Image
-              src="/Ferozsons-Logo-1000x250px3.avif"
-              alt="Ferozsons Laboratories Limited"
-              width={200}
-              height={50}
-              className="h-10 w-auto"
-              priority
-            />
-          </Link>
-
-          {/* Desktop Search View */}
-          {desktopSearchOpen ? (
-            <div className="flex-1 flex items-center justify-end w-full animate-in fade-in zoom-in-95 duration-300">
-               <form
-                  onSubmit={handleSearchSubmit}
-                  className="flex flex-1 items-center gap-3 bg-[#1A1A1A] rounded-full px-4 py-2 mx-8 max-w-4xl"
-                >
-                  <input
-                    ref={desktopSearchRef}
-                    type="text"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Search ferozsons-labs.com"
-                    className="flex-1 text-sm text-white placeholder:text-[#999999] outline-none bg-transparent"
-                  />
-                  <button
-                    type="submit"
-                    className="bg-white text-black p-2 rounded-full hover:bg-gray-200 transition-colors"
-                  >
-                    <Search className="h-4 w-4" />
-                  </button>
-                </form>
-                <button
-                  className="text-white hover:text-gray-300 ml-4 shrink-0"
-                  onClick={() => setDesktopSearchOpen(false)}
-                >
-                  <X className="h-6 w-6" />
-                </button>
+        {desktopSearchOpen ? (
+          /* Full-width Search View */
+          <div className="flex items-center justify-between w-full px-8 py-4 animate-in fade-in zoom-in-95 duration-300 gap-6">
+            <div className="flex items-center gap-4 shrink-0">
+              <Search className="h-5 w-5 text-white" />
+              <span className="text-white text-sm font-medium hidden lg:block">
+                Search Ferozsons Products
+              </span>
             </div>
-          ) : (
-            <>
-              {/* Main Nav Links */}
-              <nav className="flex items-center gap-6 flex-1 justify-start pl-8 animate-in fade-in duration-300">
-                {mainNavItems.map((item) => (
-                  <div
-                    key={item.href}
-                    className="static"
-                    onMouseEnter={() => item.children && setActivePrimaryDropdown(item.label)}
-                    onMouseLeave={() => setActivePrimaryDropdown(null)}
-                  >
-                    <Link
-                      href={item.href}
-                      className={cn(
-                        "flex items-center gap-1 text-sm font-medium text-[#FFFFFF] transition-all px-4 py-2 rounded-full",
-                        activePrimaryDropdown === item.label ? "bg-white/10" : "hover:text-gray-300",
-                        pathname === item.href && "text-white"
-                      )}
-                    >
-                      {item.label}
-                    </Link>
-                    {renderMegaMenu(item)}
-                  </div>
-                ))}
-              </nav>
 
-              {/* Secondary Nav & Search Trigger */}
-              <div className="flex items-center gap-6 shrink-0 animate-in fade-in duration-300">
-                {secondaryNavItems.map((item) => (
-                  <div
-                    key={item.href}
-                    className="static"
-                    onMouseEnter={() => item.children && setActivePrimaryDropdown(item.label)}
-                    onMouseLeave={() => setActivePrimaryDropdown(null)}
-                  >
-                    <Link
-                      href={item.href}
-                      className={cn(
-                        "flex items-center gap-1 text-sm font-medium text-[#FFFFFF] transition-all px-4 py-2 rounded-full",
-                        activePrimaryDropdown === item.label ? "bg-white/10" : "hover:text-gray-300",
-                        pathname === item.href && "text-white"
-                      )}
-                    >
-                      {item.label}
-                    </Link>
-                    {renderMegaMenu(item)}
-                  </div>
-                ))}
-                
+            <form
+              onSubmit={handleSearchSubmit}
+              className="flex flex-1 items-center gap-4"
+            >
+              <div className="flex-1 flex items-center bg-[#222222] rounded-full px-5 py-3">
+                <input
+                  ref={desktopSearchRef}
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search ferozsons-labs.com"
+                  className="w-full text-sm text-white placeholder:text-[#999999] outline-none bg-transparent"
+                />
+              </div>
+              <button
+                type="submit"
+                className="bg-white text-black p-3.5 rounded-[15px] hover:bg-gray-200 transition-colors shrink-0"
+              >
+                <Search className="h-6 w-6" />
+              </button>
+            </form>
+
+            <button
+              className="text-white hover:text-gray-300 shrink-0 ml-2"
+              onClick={() => setDesktopSearchOpen(false)}
+              aria-label="Close search"
+            >
+              <X className="h-6 w-6" />
+            </button>
+          </div>
+        ) : (
+          /* Default & Menu Open States */
+          <div className="flex flex-col w-full">
+            {/* Row 1: Logo & Action Icons */}
+            <div className="flex items-center justify-between px-8 py-4 w-full">
+              <Link 
+                href="/" 
+                className="flex items-center shrink-0" 
+                onClick={() => {
+                  setDesktopMenuOpen(false);
+                  setActivePrimaryDropdown(null);
+                }}
+              >
+                <Image
+                  src="/Ferozsons-Logo-1000x250px3.avif"
+                  alt="Ferozsons Laboratories Limited"
+                  width={200}
+                  height={50}
+                  className="h-10 w-auto"
+                  priority
+                />
+              </Link>
+              
+              <div className="flex items-center gap-6 shrink-0">
                 <button
-                  className="text-[#FFFFFF] hover:text-gray-300 ml-2"
-                  onClick={() => setDesktopSearchOpen(true)}
+                  className="text-[#FFFFFF] hover:text-gray-300"
+                  onClick={() => {
+                    setDesktopSearchOpen(true);
+                    setDesktopMenuOpen(false);
+                    setActivePrimaryDropdown(null);
+                  }}
                   aria-label="Open search"
                 >
                   <Search className="h-5 w-5" />
                 </button>
+                <button
+                  className="text-[#FFFFFF] hover:text-gray-300"
+                  onClick={() => {
+                    setDesktopMenuOpen(!desktopMenuOpen);
+                    setActivePrimaryDropdown(null);
+                  }}
+                  aria-label="Toggle menu"
+                >
+                  {desktopMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                </button>
               </div>
-            </>
-          )}
-        </div>
+            </div>
+
+            {/* Row 2: Expanded Nav Items */}
+            {desktopMenuOpen && (
+              <div className="flex items-center justify-between px-8 pb-5 pt-2 w-full animate-in fade-in slide-in-from-top-2 duration-300">
+                <nav className="flex items-center gap-4 flex-1 justify-start">
+                  {mainNavItems.map((item) => (
+                    <div
+                      key={item.href}
+                      className="static"
+                      onMouseEnter={() => item.children && setActivePrimaryDropdown(item.label)}
+                      onMouseLeave={() => setActivePrimaryDropdown(null)}
+                    >
+                      <Link
+                        href={item.href}
+                        className={cn(
+                          "flex items-center gap-1 text-sm font-medium text-[#FFFFFF] transition-all px-4 py-2 rounded-full",
+                          activePrimaryDropdown === item.label ? "bg-white/15" : "hover:text-gray-300",
+                          pathname === item.href && "text-white"
+                        )}
+                        onClick={() => {
+                          setDesktopMenuOpen(false);
+                          setActivePrimaryDropdown(null);
+                        }}
+                      >
+                        {item.label}
+                      </Link>
+                      {renderMegaMenu(item)}
+                    </div>
+                  ))}
+                </nav>
+
+                <div className="flex items-center gap-4 shrink-0">
+                  {secondaryNavItems.map((item) => (
+                    <div
+                      key={item.href}
+                      className="static"
+                      onMouseEnter={() => item.children && setActivePrimaryDropdown(item.label)}
+                      onMouseLeave={() => setActivePrimaryDropdown(null)}
+                    >
+                      <Link
+                        href={item.href}
+                        className={cn(
+                          "flex items-center gap-1 text-sm font-medium text-[#FFFFFF] transition-all px-4 py-2 rounded-full",
+                          activePrimaryDropdown === item.label ? "bg-white/15" : "hover:text-gray-300",
+                          pathname === item.href && "text-white"
+                        )}
+                        onClick={() => {
+                          setDesktopMenuOpen(false);
+                          setActivePrimaryDropdown(null);
+                        }}
+                      >
+                        {item.label}
+                      </Link>
+                      {renderMegaMenu(item)}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Mobile (Simplified) */}
