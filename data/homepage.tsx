@@ -76,15 +76,14 @@ export const productSearchData = {
 };
 
 export const legacyData = {
-  backgroundImage: "/legacy-bg.avif",
+  backgroundImage: "/home-legacy.png",
   title: (
     <>
-      Our legacy is built on <span className="text-hero-accent">integrity</span>
-      <span className="text-white">,</span>
-      {""}
-      <span className="text-hero-accent">quality</span>
-      <span className="text-white">,</span> and{" "}
-      <span className="text-hero-accent">patient-first</span> care.
+      Our legacy is built on
+      integrity,
+      quality, and {" "}
+    <br className="hidden sm:block" />
+      patient-first care.
     </>
   ),
   description:

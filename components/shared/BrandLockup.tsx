@@ -18,12 +18,12 @@ export default function BrandLockup({
       <img
         src="ferozsons-f-white.webp"
         alt="Ferozsons logo"
-        className={cn("shrink-0", size === "lg" ? "h-20" : "h-16")}
+        className={cn("shrink-0", size === "lg" ? "h-24" : "h-16")}
       />
       <img
         src="people-trust-us.webp"
         alt="People Trust Us"
-        className={cn("shrink-0", size === "lg" ? "h-24 md:h-28" : "h-16 md:h-20")}
+        className={cn("shrink-0", size === "lg" ? "h-24 md:h-32" : "h-16 md:h-20")}
       />
     </div>
   );

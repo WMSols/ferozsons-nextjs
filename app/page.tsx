@@ -30,17 +30,17 @@ export default function HomePage() {
         <TherapeuticsGrid />
       </Suspense>
       <MissionSection {...missionData} />
+        <LegacyBanner {...legacyData} />
       <Suspense fallback={<div className="text-muted-foreground text-sm">Articles Loading...</div>}>
         <ArticlesGridClient />
       </Suspense>
       <ProductSearchSection {...productSearchData} />
-      <TimelineSection
+      {/* <TimelineSection
         title="Our Journey"
         events={timelineEvents}
         animated
         className="bg-secondary py-20 overflow-x-hidden"
-      />
-      <LegacyBanner {...legacyData} />
+      /> */}
       <QuoteSection quote={quoteText} />
       <CTABanner />
     </>

@@ -32,15 +32,15 @@ export default function LegacyBanner({
             aria-hidden
           />
           <div
-            className="absolute inset-0 bg-linear-to-r from-black/70 via-black/60 to-black/50"
+            className="absolute inset-0 bg-linear-to-r from-black/40 via-black/40 to-black/50"
             aria-hidden
           />
         </div>
         <StaggerFadeUpInView className="container relative z-10 flex flex-col items-start text-left mx-auto">
           {showBrandLockup && (
-            <BrandLockup variant="light" className="mb-8 md:mb-10" />
+            <BrandLockup variant="light"  />
           )}
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white max-w-6xl">
+          <h2 className="font-serif text-4xl  md:text-5xl lg:text-6xl font-bold leading-tight text-white max-w-6xl">
             {title}
           </h2>
           <p className="mt-6 max-w-xl text-base md:text-lg font-normal leading-relaxed text-white">
@@ -58,7 +58,6 @@ export default function LegacyBanner({
               <span className="whitespace-normal text-center sm:text-left">
                 {ctaText}
               </span>
-              <ArrowRight className="h-4 w-4 shrink-0" />
             </Link>
           </Button>
         </StaggerFadeUpInView>
