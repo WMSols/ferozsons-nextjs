@@ -17,7 +17,7 @@ export default function HeroFullScreen({
   return (
     <section
       className={cn(
-        "relative w-full min-h-[100vh] flex flex-col items-center justify-center",
+        "relative w-full min-h-[100vh] overflow-hidden rounded-b-3xl flex flex-col items-center justify-center",
         className,
       )}
     >

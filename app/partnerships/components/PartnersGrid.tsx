@@ -55,7 +55,7 @@ export default function PartnersGrid({
 
   return (
     <SectionWrapper className={cn("py-12 md:py-16", className)}>
-      <h2 className="font-kaisei text-3xl md:text-5xl font-bold text-center mb-12 md:mb-14 text-foreground">
+      <h2 className="font-kaisei text-3xl md:text-5xl  text-center mb-12 md:mb-14 text-primary">
         Our Trusted Partners
       </h2>
 
