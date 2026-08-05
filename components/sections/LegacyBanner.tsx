@@ -23,7 +23,7 @@ export default function LegacyBanner({
 }: LegacyBannerProps) {
   return (
     <section className="w-full">
-      <StaggerFadeUpInView className="relative min-h-[60vh] flex flex-col items-center justify-center px-6 py-20 md:px-12 md:py-24 lg:px-16 lg:py-28">
+      <StaggerFadeUpInView className="relative min-h-[60vh] flex flex-col items-center justify-center px-2 py-20 md:px-12 md:py-24 lg:px-16 lg:py-28">
         <div className="absolute inset-0">
           <img
             src={backgroundImage}
@@ -40,7 +40,7 @@ export default function LegacyBanner({
           {showBrandLockup && (
             <BrandLockup variant="light"  />
           )}
-          <h2 className="font-serif text-4xl  md:text-5xl lg:text-6xl font-bold leading-tight text-white max-w-6xl">
+          <h2 className="font-serif text-3xl  md:text-5xl lg:text-6xl sm:font-bold leading-tight text-white max-w-6xl">
             {title}
           </h2>
           <p className="mt-6 max-w-xl text-base md:text-lg font-normal leading-relaxed text-white">
@@ -53,7 +53,7 @@ export default function LegacyBanner({
           >
             <Link
               href={ctaLink}
-              className="flex flex-col items-center justify-center gap-y-2 min-w-0 sm:flex-row sm:gap-x-2 sm:justify-start"
+              className="flex flex-col items-center justify-center gap-y-2 min-w-10 sm:flex-row sm:gap-x-2 sm:justify-start"
             >
               <span className="whitespace-normal text-center sm:text-left">
                 {ctaText}

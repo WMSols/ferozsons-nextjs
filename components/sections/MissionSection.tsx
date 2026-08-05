@@ -26,7 +26,7 @@ export default function MissionSection({
 }: MissionSectionProps) {
   return (
     <section className="mx-4 mt-8 lg:mx-6 lg:mt-12  rounded-4xl overflow-hidden  bg-background">
-      <div className="relative flex flex-col items-center justify-center px-6 py-16 md:px-12 md:py-24 lg:px-16 lg:py-32">
+      <div className="relative flex flex-col items-center justify-center px-2 py-16 md:px-12 md:py-24 lg:px-16 lg:py-32">
         <StaggerFadeUpInView className="container relative z-10 flex flex-col items-center text-center">
           <h2 className="mb-6 md:mb-8 text-sm md:text-base uppercase font-sans  tracking-wide">
             {label}

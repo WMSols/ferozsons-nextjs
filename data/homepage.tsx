@@ -94,3 +94,16 @@ export const legacyData = {
 
 export const quoteText =
   "Our social investments in education and health also help create access for patients who are unable to afford treatment.";
+
+  export const ceoMessageData = [
+  {
+    id: 1,
+    quote: "“Ferozsons invests significantly in medical and public education programs aimed at patient awareness and disease prevention.”",
+    authorName: "Osman Khalid Waheed",
+    authorTitle: "CEO Ferozsons Laboratories Limited",
+    buttonText: "Message From The CEO",
+    buttonLink: "/about/ceo-message",
+    // Placeholder image resembling a public health/education program
+    backgroundImage: "/home-subimage-2.png",
+  }
+];

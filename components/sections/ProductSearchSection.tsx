@@ -1,9 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ButtonMotion } from "@/components/animations/ButtonMotion";
 import { useState } from "react";
 import { StaggerFadeUpInView } from "../animations/StaggerFadeUpInView";
 interface ProductSearchSectionProps {
@@ -25,15 +24,15 @@ export default function ProductSearchSection({
   const [searchQuery, setSearchQuery] = useState("")
   return (
     <StaggerFadeUpInView className="w-full py-16 md:py-24 bg-product-bg">
-      <div className="container mx-auto px-4 md:px-8 flex flex-col items-start text-left">
-        <h2 className="text-sm font-bold font-sans text-foreground mb-4 md:mb-6">
+      <div className="container mx-auto px-4 md:px-8 flex flex-col text-left">
+        <h2 className="text-sm  font-sans uppercase text-center  mb-4 md:mb-6">
           {label}
         </h2>
-        <h3 className="font-serif text-2xl md:text-4xl lg:text-[2.75rem] font-bold leading-tight text-foreground max-w-[800px]">
+        <h3 className="font-serif text-2xl md:text-4xl lg:text-[2.75rem] font-bold leading-tight  ">
           {description}
         </h3>
-        <div className="flex flex-col md:flex-row items-center gap-6 mt-12 w-full max-w-4xl">
-          <div className="flex items-center gap-2 flex-1 w-full md:w-auto border-b border-foreground/30 min-w-0">
+        <div className="flex flex-col md:flex-row md:items-center gap-6 mt-12 w-full max-w-4xl">
+          <div className="flex items-center px-4 py-1 gap-2 flex-1 w-full md:w-auto border rounded-full border-foreground/30 min-w-0">
             <input
               type="search"
               value={searchQuery}
@@ -45,21 +44,17 @@ export default function ProductSearchSection({
             <Link
               href={`/products?search=${encodeURIComponent(searchQuery.trim())}`}
               type="button"
-              className={`shrink-0 w-10 h-10 rounded-full border border-foreground/50 flex items-center justify-center text-foreground hover:bg-foreground/5 transition-colors ${searchQuery ? "": "pointer-events-none cursor-not-allowed"}`}
+              className={`shrink-0 w-10 h-10 rounded-full  flex items-center justify-center text-foreground hover:bg-foreground/5 transition-colors ${searchQuery ? "": "pointer-events-none cursor-not-allowed"}`}
               aria-label="Search products"
             >
-              <ArrowRight className="h-4 w-4" />
+              <Search className="h-6 w-6 text-gray-500" />
             </Link>
           </div>
-          <ButtonMotion>
-            <Button
-              asChild
-              variant="outline"
-              className="rounded-full border-2 border-foreground/40 bg-transparent text-primary hover:bg-foreground/5 shrink-0"
+            <button
+              className="rounded-full py-3.5 px-10   bg-[#3B73AC] text-white hover:bg-[#2A5A8C] shrink-0"
             >
               <Link href={ctaLink}>{ctaText}</Link>
-            </Button>
-          </ButtonMotion>
+            </button>
         </div>
       </div>
     </StaggerFadeUpInView>
