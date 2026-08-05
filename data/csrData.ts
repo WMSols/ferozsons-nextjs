@@ -287,3 +287,44 @@ export const csrSlideshowImages: csrSlideshowImage[] = [
     height: 1024
   }
 ];
+
+// CSR Impact Card Data
+export const CSRImpactCardData = [
+  {
+    id: 1,
+    heading: "Creating Stronger Communities Through Lasting Impact",
+    description: "Ferozsons' corporate vision has always centred on creating a better world for the people around us. Our Impact focus spans four pillars: education, healthcare, arts & culture, and community — because we believe that health, knowledge, and creative expression are equally essential to a flourishing society. Many of these initiatives are supported year on year as part of our enduring commitment to Pakistan and beyond.",
+    image: "/home-subimage-2.png",
+  }
+];
+
+// CSR Investors cards data
+export const CSRInvestorsCardsData = [
+  {
+    id: 1,
+    title: "Ferozsons Solar Park",
+    paragraphs: [
+      "Our 1 MW solar park reflects our commitment to environmental stewardship by harnessing clean, renewable energy to power our operations. By reducing our reliance on conventional grid electricity, the facility supports our efforts to improve energy efficiency and advance a more sustainable operating model.",
+      "The solar park is expected to generate approximately 1.3–1.7 GWh of renewable electricity annually, avoiding an estimated 750–900 tonnes of CO₂ emissions each year. This investment represents a meaningful step in reducing our operational carbon footprint while contributing to Pakistan's transition towards a cleaner energy future."
+    ],
+    // Placeholder image for solar park
+    image: "/images/CSR/Solar.png", 
+    linkText: "Learn about our Environmental, Social & Governance Policy",
+    linkHref: "/investors",
+    imagePosition: "left"
+  },
+  {
+    id: 2,
+    title: "Water Effluent Plant",
+    paragraphs: [
+      "Our Effluent Treatment Plant (ETP) reflects our commitment to responsible water management and environmental stewardship.",
+      "By treating wastewater before its discharge, we help minimize our environmental impact, promote regulatory compliance, and support the sustainable use of water resources.",
+      "Through effective wastewater treatment, we help protect local water resources and ecosystems while advancing our broader commitment to environmental sustainability."
+    ],
+    // Placeholder image for water facility
+    image: "/images/CSR/Water.png", 
+    linkText: "Learn more about our Environment, Health & Safety Policy",
+    linkHref: "/investors",
+    imagePosition: "right"
+  }
+];

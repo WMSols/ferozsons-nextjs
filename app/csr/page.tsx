@@ -1,3 +1,5 @@
+// Note : This page is the ESG page but the route is /csr because the navigation link is labeled "ESG" but points to /csr. The page content is about ESG initiatives, so the route is kept as /csr for consistency with the navigation label.
+
 "use client";
 
 import { useState } from "react";
@@ -12,6 +14,8 @@ import CSRInitiativeGrid from "./components/CSRInitiativeGrid";
 import CSRPillarOverview from "./components/CSRPillarOverview";
 import CSRVisionSection from "./components/CSRVisionSection";
 import CSRSlidesshow from "./components/CSRSlidesshow";
+import CSRImpactCard from "./components/CSRImpactCard";
+import CSRInvestorsCards from "./components/CSRInvestorsCards";
 
 // ─── Page ───────────────────────────────────────────────────────────────────
 const metadata = {
@@ -42,9 +46,10 @@ export default function CreatingImpactPage() {
       />
 
 
-      <CSRSlidesshow/>
       <CSRVisionSection />
-
+      <CSRImpactCard/>
+      <CSRInvestorsCards/>
+      <CSRSlidesshow/>
       <CSRPillarOverview
         activeCategory={activeCategory}
         onCategoryChange={setActiveCategory}

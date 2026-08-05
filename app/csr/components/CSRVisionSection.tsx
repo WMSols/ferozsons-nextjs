@@ -1,25 +1,29 @@
 export default function CSRVisionSection() {
   return (
-    <section className="py-14">
-      <div className="container max-w-3xl text-center">
-        <h2 className="text-2xl font-semibold text-foreground mb-4">
-          Our Impact Vision
-        </h2>
-        <p className="text-muted-foreground leading-relaxed">
-          Ferozsons' corporate vision has always centred on creating a better
-          world for the people around us. Our Impact focus spans four pillars:{" "}
-          <strong className="text-foreground font-medium">education</strong>,{" "}
-          <strong className="text-foreground font-medium">healthcare</strong>,{" "}
-          <strong className="text-foreground font-medium">
-            arts &amp; culture
-          </strong>
-          , and{" "}
-          <strong className="text-foreground font-medium">community</strong> —
-          because we believe that health, knowledge, and creative expression are
-          equally essential to a flourishing society. Many of these initiatives
-          are supported year on year as part of our enduring commitment to
-          Pakistan and beyond.
-        </p>
+    <section className="py-16 md:py-24">
+      <div className="container px-4 md:px-8">
+        <div className="max-w-3xl">
+          {/* Main Heading */}
+          <h2 className="text-5xl md:text-6xl lg:text-[4.5rem] font-serif font-medium text-foreground mb-8 leading-[1.1]">
+            Creating Impact <br />
+            Beyond <span className="text-[#3B73AC] italic">Medicine</span>
+          </h2>
+          
+          {/* Subheading Lead */}
+          <p className="text-xl md:text-2xl text-foreground mb-8 leading-relaxed">
+            Our commitment to sustainability extends beyond business to create lasting value for people, communities, and the planet.
+          </p>
+          
+          {/* Body Paragraph */}
+          <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
+            At Ferozsons, giving back is not a programme—it is part of our deep purpose. We are
+            committed to building a legacy that is bigger than our footprint, fueling non-profits and
+            Civil Society Organizations (CSOs) to help Pakistan meet key Sustainable Development
+            Goals. Our approach to sustainability embraces environmental responsibility, social
+            impact, and strong governance, ensuring that the value we create today contributes to
+            a healthier, more resilient future.
+          </p>
+        </div>
       </div>
     </section>
   );
