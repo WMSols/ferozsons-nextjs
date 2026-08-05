@@ -52,6 +52,7 @@ const Footer = ({ dark = false }: { dark?: boolean }) => {
               © {new Date().getFullYear()} Ferozsons Laboratories Limited. All
               rights reserved.
             </p>
+            <p className=" text-xs ">Last date website was updated:{new Date().toLocaleDateString()}</p>
           </div>
 
           {/* Center Column: SCEP and Jama-Punji logos */}

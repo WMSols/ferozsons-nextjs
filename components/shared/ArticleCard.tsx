@@ -1,84 +1,71 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
 import { getStrapiImageUrl } from "@/lib/strapi";
 import type { Article } from "@/data/articles";
-import { StrapiNewsroom } from "@/types/strapi";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 
 interface ArticleCardProps {
   article: Article;
   linkHref?: string;
-  showDate?: boolean;
 }
 
 export default function ArticleCard({
   article,
   linkHref = "/newsroom",
-  showDate = true,
 }: ArticleCardProps) {
   const imageUrl = getStrapiImageUrl(article.image);
 
   return (
-    <Card className="flex h-full flex-col overflow-hidden hover:shadow-md transition-shadow">
-      <div className="relative h-48 shrink-0 overflow-hidden bg-muted">
+    <div className="flex flex-col h-full group cursor-pointer">
+      {/* Image Container - Deeply rounded corners without outer card borders */}
+      <div className="relative w-full aspect-[4/3] sm:aspect-[3/2] rounded-[32px] overflow-hidden mb-6 bg-muted">
         {imageUrl ? (
           <Image
             src={imageUrl}
             alt={article.title}
             fill
-            className="object-cover object-center"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            
           />
         ) : (
           <div className="h-full w-full bg-muted" />
         )}
       </div>
-      <CardContent className="flex flex-1 flex-col pt-6">
-        <div className="flex items-center gap-3 justify-between mb-2">
-          <p className="text-xs font-semibold text-primary uppercase tracking-wider">
-            {article.category}
-          </p>
-          {showDate && (
-            <span className="text-xs text-muted-foreground">
-              {new Date(article.date).toLocaleDateString("en-US", {
-                month: "short",
-                day: "numeric",
-                year: "numeric",
-              })}
-            </span>
-          )}
+      
+      {/* Content */}
+      <div className="flex flex-col flex-1">
+        <h3 className="font-medium text-xl lg:text-2xl mb-4 line-clamp-2 text-foreground">
+          {article.title}
+        </h3>
+        
+        {/* Adjusted prose for tighter margins and text wrapping */}
+        <div className="mb-6 prose prose-sm prose-slate max-w-none line-clamp-2 text-muted-foreground/80">
+          <BlocksRenderer
+            content={article.excerpt}
+            blocks={{
+              link: ({ children, url }) => {
+                const isExternal = url.startsWith("http");
+                if (isExternal) {
+                  return (
+                    <a className="text-[#3B73AC]" href={url} target="_blank" rel="noopener noreferrer">
+                      {children}
+                    </a>
+                  );
+                }
+                return <Link href={url}>{children}</Link>;
+              },
+            }}
+          />
         </div>
-        <h3 className="font-bold text-lg mb-2 line-clamp-2">{article.title}</h3>
-           <div className="mt-6 prose prose-slate max-w-none line-clamp-3">
-              <BlocksRenderer
-                content={article.excerpt}
-                // Optional: You can override specific elements.
-                // Here we intercept links to use Next.js <Link> for internal routing if desired.
-                blocks={{
-                  link: ({ children, url }) => {
-                    const isExternal = url.startsWith("http");
-                    if (isExternal) {
-                      return (
-                        <a className="text-blue-600" href={url} target="_blank" rel="noopener noreferrer">
-                          {children}
-                        </a>
-                      );
-                    }
-                    return <Link href={url}>{children}</Link>;
-                  },
-                }}
-              />
-            </div>
+        
+        {/* Simple text link as per the Figma design */}
         <Link
           href={linkHref}
-          className="mt-auto inline-flex items-center text-sm text-primary font-medium pt-4 hover:underline"
+          className="mt-auto  text-sm font-semibold text-[#3B73AC] hover:text-[#294e74] underline underline-offset-4 transition-colors"
         >
-          Read More <ArrowRight className="ml-1 h-3 w-3" />
+          Read full article
         </Link>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }

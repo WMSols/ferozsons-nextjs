@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
-import { Menu, X, Search, ChevronDown, ArrowRight } from "lucide-react";
+import { Menu, X, Search, ChevronDown, ChevronRight, ChevronLeft, ArrowRight } from "lucide-react";
 import { mainNavItems, secondaryNavItems, NavItem } from "@/data/navigation";
 import { getCategoriesUrl, strapiFetch } from "@/lib/strapi";
 import { cn } from "@/lib/utils";
@@ -50,13 +50,12 @@ const Navbar = () => {
 
   const productCategories = categoriesQuery.data?.data ?? [];
 
-  // Reusable component block for the Mega Menu
+  // Reusable component block for the Mega Menu (Desktop)
   const renderMegaMenu = (item: NavItem) => {
     if (!item.children || activePrimaryDropdown !== item.label) return null;
 
     return (
       <div className="absolute top-full left-0 right-0 z-50 before:absolute before:inset-x-0 before:-top-8 before:h-8 before:bg-transparent">
-        {/* Removed pt-20 to ensure standard uniform padding and flush alignment with Row 2 */}
         <div className="bg-[#000000] border-t border-white/20 rounded-b-[25px] shadow-2xl p-10 animate-in fade-in duration-300 ease-in">
           <div className="grid grid-cols-12 gap-8">
             
@@ -303,7 +302,7 @@ const Navbar = () => {
         )}
       </div>
 
-      {/* Mobile (Simplified) */}
+      {/* Mobile Header (Collapsed State) */}
       <div className="flex ixl:hidden items-center justify-between rounded-[20px] bg-[#000000] shadow-[0_2px_12px_rgba(0,0,0,0.08)] px-4 py-3">
         <Link href="/" className="flex items-center shrink-0">
           <Image
@@ -317,171 +316,96 @@ const Navbar = () => {
         </Link>
         <button
           className="p-2 text-[#FFFFFF]"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
+          onClick={() => setMobileOpen(true)}
+          aria-label="Open menu"
         >
-          {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          <Menu className="h-6 w-6" />
         </button>
       </div>
 
+      {/* Mobile Menu (Full Screen Overlay) */}
       {mobileOpen && (
-        <>
-          <button
-            type="button"
-            className="ixl:hidden fixed inset-0 z-40 bg-black/20"
-            aria-label="Close menu"
-            onClick={() => setMobileOpen(false)}
-          />
-          <div className="ixl:hidden absolute top-full left-0 right-0 mt-2 z-50 px-4">
-            <div className="rounded-[20px] bg-[#000000] shadow-[0_2px_12px_rgba(0,0,0,0.08)] border border-[#CCCCCC]/30 overflow-hidden">
-              <div className="px-4 py-4 space-y-1 max-h-[75vh] overflow-y-auto">
+        <div className="ixl:hidden fixed inset-0 z-100 bg-[#000000] flex flex-col animate-in fade-in slide-in-from-top-[50px] duration-300">
+          
+          {/* Mobile Menu Header */}
+          <div className="flex items-center justify-between px-6 py-6">
+            <Link 
+              href="/" 
+              className="flex items-center shrink-0" 
+              onClick={() => {
+                setMobileOpen(false);
+                setMobileDropdown(null);
+              }}
+            >
+              <Image
+                src="/Ferozsons-Logo-1000x250px3.avif"
+                alt="Ferozsons Laboratories Limited"
+                width={160}
+                height={40}
+                className="h-8 w-auto"
+                priority
+              />
+            </Link>
+            <button
+              className="p-2 text-[#FFFFFF]"
+              onClick={() => {
+                setMobileOpen(false);
+                setMobileDropdown(null);
+              }}
+              aria-label="Close menu"
+            >
+              <X className="h-6 w-6" />
+            </button>
+          </div>
 
-                {/* Mobile search */}
-                <form
-                  onSubmit={handleSearchSubmit}
-                  className="flex items-center gap-2 bg-[#1A1A1A] rounded-lg px-3 py-2 mb-3"
-                >
-                  <Search className="h-4 w-4 text-white/50 shrink-0" />
-                  <input
-                    type="text"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Search for products..."
-                    className="flex-1 text-sm text-white placeholder:text-white/50 outline-none bg-transparent"
-                  />
-                </form>
-
-                {/* Main Mobile Nav Items */}
-                {mainNavItems.map((item) => (
-                  <div key={item.href}>
-                    {item.children ? (
-                      <>
-                        <div className="flex items-center justify-between w-full py-3 text-base font-medium text-[#FFFFFF]">
-                          <Link
-                            href={item.href}
-                            className="flex-1 hover:opacity-80 text-left"
-                            onClick={() => {
-                              setMobileOpen(false);
-                              setMobileDropdown(null);
-                            }}
-                          >
-                            {item.label}
-                          </Link>
-                          <button
-                            className="p-2 -mr-2"
-                            onClick={() =>
-                              setMobileDropdown(
-                                mobileDropdown === item.label ? null : item.label,
-                              )
-                            }
-                          >
-                            <ChevronDown
-                              className={cn(
-                                "h-4 w-4 transition-transform",
-                                mobileDropdown === item.label && "rotate-180",
-                              )}
-                            />
-                          </button>
-                        </div>
-                        {mobileDropdown === item.label && (
-                          <div className="pl-4 pb-2 space-y-1 flex flex-col">
-                            {item.children.map((child) => (
-                                <Link
-                                  key={`${child.label}-${child.href}`}
-                                  href={child.href}
-                                  className="py-2 text-sm text-white/70 hover:text-white"
-                                  onClick={() => {
-                                    setMobileOpen(false);
-                                    setMobileDropdown(null);
-                                  }}
-                                >
-                                  {child.label}
-                                </Link>
-                            ))}
-                            {/* Inject Strapi Categories into mobile Products dropdown */}
-                            {item.label === "Products" && productCategories.map((cat) => (
-                               <Link
-                                 key={`mob-cat-${cat.slug || cat.name}`}
-                                 href={`/products?category=${encodeURIComponent(cat.slug || cat.name)}`}
-                                 className="py-2 pl-4 text-sm text-white/40 hover:text-white"
-                                 onClick={() => {
-                                   setMobileOpen(false);
-                                   setMobileDropdown(null);
-                                 }}
-                               >
-                                 {cat.name}
-                               </Link>
-                            ))}
-                          </div>
-                        )}
-                      </>
-                    ) : (
-                      <Link
-                        href={item.href}
-                        className="block py-3 text-base font-medium text-[#FFFFFF] hover:opacity-80"
-                        onClick={() => setMobileOpen(false)}
-                      >
-                        {item.label}
-                      </Link>
-                    )}
-                  </div>
-                ))}
-
-                {/* Secondary Mobile Nav Items */}
-                <div className="border-t border-white/20 pt-3 mt-3 space-y-1">
-                  {secondaryNavItems.map((item) => (
-                    <div key={item.href}>
+          {/* Mobile Menu Content */}
+          <div className="flex-1 overflow-y-auto px-6 py-4">
+            {!mobileDropdown ? (
+              /* Main Menu List */
+              <div className="flex flex-col gap-10 animate-in fade-in slide-in-from-left-4 duration-300">
+                <div className="flex flex-col gap-6">
+                  {mainNavItems.map((item) => (
+                    <div key={item.href} className="flex items-center justify-between">
                       {item.children ? (
-                        <>
-                          <div className="flex items-center justify-between w-full py-3 text-sm font-medium text-[#FFFFFF]">
-                            <Link
-                              href={item.href}
-                              className="flex-1 hover:opacity-80 text-left"
-                              onClick={() => {
-                                setMobileOpen(false);
-                                setMobileDropdown(null);
-                              }}
-                            >
-                              {item.label}
-                            </Link>
-                            <button
-                              className="p-2 -mr-2"
-                              onClick={() =>
-                                setMobileDropdown(
-                                  mobileDropdown === item.label ? null : item.label,
-                                )
-                              }
-                            >
-                              <ChevronDown
-                                className={cn(
-                                  "h-4 w-4 transition-transform",
-                                  mobileDropdown === item.label && "rotate-180",
-                                )}
-                              />
-                            </button>
-                          </div>
-                          {mobileDropdown === item.label && (
-                            <div className="pl-4 pb-2 space-y-1 flex flex-col">
-                              {item.children.map((child) => (
-                                  <Link
-                                    key={`${child.label}-${child.href}`}
-                                    href={child.href}
-                                    className="py-2 text-sm text-white/70 hover:text-white"
-                                    onClick={() => {
-                                      setMobileOpen(false);
-                                      setMobileDropdown(null);
-                                    }}
-                                  >
-                                    {child.label}
-                                  </Link>
-                              ))}
-                            </div>
-                          )}
-                        </>
+                        <button
+                          className="flex items-center justify-between w-full text-left group"
+                          onClick={() => setMobileDropdown(item.label)}
+                        >
+                          <span className="font-serif text-3xl text-white group-hover:text-gray-300 transition-colors">
+                            {item.label}
+                          </span>
+                          <ChevronRight className="h-6 w-6 text-white" />
+                        </button>
                       ) : (
                         <Link
                           href={item.href}
-                          className="block py-3 text-sm font-medium text-[#FFFFFF] hover:opacity-80"
+                          className="font-serif text-3xl text-white w-full text-left hover:text-gray-300 transition-colors"
+                          onClick={() => setMobileOpen(false)}
+                        >
+                          {item.label}
+                        </Link>
+                      )}
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex flex-col gap-6">
+                  {secondaryNavItems.map((item) => (
+                    <div key={item.href} className="flex items-center justify-between">
+                      {item.children ? (
+                        <button
+                          className="flex items-center justify-between w-full text-left group"
+                          onClick={() => setMobileDropdown(item.label)}
+                        >
+                          <span className="font-serif text-2xl text-white group-hover:text-gray-300 transition-colors">
+                            {item.label}
+                          </span>
+                          <ChevronRight className="h-5 w-5 text-white" />
+                        </button>
+                      ) : (
+                        <Link
+                          href={item.href}
+                          className="font-serif text-2xl text-white w-full text-left hover:text-gray-300 transition-colors"
                           onClick={() => setMobileOpen(false)}
                         >
                           {item.label}
@@ -491,9 +415,90 @@ const Navbar = () => {
                   ))}
                 </div>
               </div>
-            </div>
+            ) : (
+              /* Submenu Drilldown */
+              <div className="flex flex-col pb-10 animate-in fade-in slide-in-from-right-4 duration-300">
+                <button
+                  onClick={() => setMobileDropdown(null)}
+                  className="text-white/50 mb-6 w-fit text-left flex items-center gap-2 text-sm hover:text-white transition-colors"
+                >
+                  <ChevronLeft className="h-4 w-4" /> Back to menu
+                </button>
+                
+                {(() => {
+                  const activeItem = [...mainNavItems, ...secondaryNavItems].find(i => i.label === mobileDropdown);
+                  if (!activeItem) return null;
+
+                  return (
+                    <div className="flex flex-col">
+                      <h2 className="font-serif text-[2rem] leading-tight text-white inline-block border-b-2 border-white pb-2 mb-8 w-fit">
+                        {activeItem.label}
+                      </h2>
+                      
+                      <div className="flex flex-col gap-6 mb-12">
+                        {activeItem.children?.map(child => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            className="text-white text-lg font-medium hover:text-[#89bdf2] hover:underline underline-offset-4 transition-all"
+                            onClick={() => {
+                              setMobileOpen(false);
+                              setMobileDropdown(null);
+                            }}
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+
+                        {/* Inject Strapi Categories into mobile Products dropdown */}
+                        {activeItem.label === "Products" && productCategories.map(cat => (
+                          <Link
+                            key={cat.slug || cat.name}
+                            href={`/products?category=${encodeURIComponent(cat.slug || cat.name)}`}
+                            className="text-white text-lg font-medium hover:text-[#89bdf2] hover:underline underline-offset-4 transition-all"
+                            onClick={() => {
+                              setMobileOpen(false);
+                              setMobileDropdown(null);
+                            }}
+                          >
+                            {cat.name}
+                          </Link>
+                        ))}
+                      </div>
+
+                      {/* Image Card for Mega Menu */}
+                      {activeItem.megaImage && (
+                        <div className="relative w-full h-[250px] rounded-2xl overflow-hidden group">
+                          <Image
+                            src={activeItem.megaImage}
+                            alt={activeItem.megaImageTitle || activeItem.label}
+                            fill
+                            className="object-cover"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-5">
+                            <h3 className="text-white font-semibold text-lg mb-1 leading-tight">
+                              {activeItem.megaImageTitle}
+                            </h3>
+                            <Link 
+                              href={activeItem.megaImageLink || activeItem.href} 
+                              className="text-white/80 text-xs font-medium flex items-center gap-2 hover:text-white transition-colors"
+                              onClick={() => {
+                                setMobileOpen(false);
+                                setMobileDropdown(null);
+                              }}
+                            >
+                              {activeItem.megaImageSubtitle} <ArrowRight className="h-3 w-3" />
+                            </Link>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })()}
+              </div>
+            )}
           </div>
-        </>
+        </div>
       )}
     </header>
   );

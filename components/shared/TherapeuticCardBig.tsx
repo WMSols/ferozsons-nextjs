@@ -35,7 +35,8 @@ export default function TherapeuticCardBig({
     <div
       onClick={onClick}
       className={cn(
-        "relative w-full h-[300px] md:h-[500px] rounded-[32px] overflow-hidden transition-all duration-700 ease-out cursor-pointer shadow-lg",
+        // Increased mobile height to 450px for the taller portrait layout
+        "relative w-full h-[450px] md:h-[500px] rounded-[32px] overflow-hidden transition-all duration-700 ease-out cursor-pointer shadow-lg",
         isActive ? "scale-100 opacity-100" : "scale-90 opacity-60 hover:opacity-80"
       )}
     >
@@ -48,21 +49,24 @@ export default function TherapeuticCardBig({
       />
       
       {/* Dark gradient overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-8 md:p-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between w-full gap-4">
-          <h3 className="text-white text-3xl md:text-4xl pb-5 font-medium w-full md:w-2/3 leading-tight line-clamp-2">
+      <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-8 md:p-10">
+        
+        {/* Adjusted flex layout for perfect mobile centering while keeping desktop intact */}
+        <div className="flex flex-col items-center justify-center h-full md:h-auto md:flex-row md:items-end md:justify-between w-full gap-2 md:gap-4">
+          <h3 className="text-white text-4xl md:pb-5 font-medium w-full md:w-2/3 leading-tight line-clamp-2 text-center md:text-left">
             {item.name}
           </h3>
           
           <Link
             href={linkHref}
-            className="text-white/90 text-sm font-medium underline underline-offset-4 hover:text-white transition-colors shrink-0"
+            className="text-white/90 text-sm font-medium underline underline-offset-4 hover:text-white transition-colors shrink-0 md:pb-5"
             // Prevent the card's onClick from firing when clicking the link directly
             onClick={(e) => e.stopPropagation()} 
           >
             Explore Range
           </Link>
         </div>
+
       </div>
     </div>
   );

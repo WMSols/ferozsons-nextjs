@@ -62,7 +62,7 @@ export default function HeroCarousel({
 
   return (
   
-    <section className=" relative flex min-h-screen flex-col items-center justify-center overflow-hidden rounded-b-3xl border border-hero-border bg-background px-20 xs:pt-32 shadow-sm md:px-12 md:pt-24 lg:px-16 lg:pt-32">
+    <section className=" relative flex min-h-screen flex-col items-center justify-center overflow-hidden rounded-b-3xl border border-hero-border bg-background px-8 xs:pt-32 shadow-sm md:px-12 md:pt-24 lg:px-16 lg:pt-32">
       {slides.map((slide, index) => {
         const isActive = current === index;
         const isPrev = prev === index;
@@ -72,9 +72,6 @@ export default function HeroCarousel({
             key={slide.id}
             className="absolute inset-0 flex flex-col items-center justify-center"
             style={{
-              // active: fully visible on top
-              // prev: fading out below active
-              // others: hidden behind
               opacity: isActive ? 1 : 0,
               zIndex: isActive ? 10 : isPrev ? 5 : 0,
               transition: "opacity 1200ms ease-in-out",
@@ -97,16 +94,16 @@ export default function HeroCarousel({
 
             {isActive && (
               <StaggerFadeUp
-                className={`container relative z-10 px-32 pt-24 -pb-10 flex w-full flex-col ${
+                className={`container relative z-10 sm:px-32 pt-24 -pb-10 flex w-full flex-col ${
                   slide.align === "left"
                     ? "items-start text-left"
                     : ""
                 }`}
               >
-                <h1 className="font-serif text-5xl  font-bold leading-tight text-hero-heading sm:text-5xl md:text-6xl lg:text-[3.8rem] max-w-4xl">
+                <h1 className="font-kaisei text-5xl  font-bold leading-tight text-hero-heading sm:text-5xl md:text-6xl lg:text-[3.8rem] max-w-4xl">
                   {slide.title}
                 </h1>
-                <p className="mt-6 max-w-3xl text-base   leading-relaxed text-white md:text-2xl">
+                <p className=" mt-8 sm:mt-6 max-w-3xl text-base   leading-relaxed text-white md:text-2xl">
                   {slide.description}
                 </p>
                 <ButtonMotion>

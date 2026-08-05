@@ -1,9 +1,5 @@
 "use client";
 
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { ButtonMotion } from "@/components/animations/ButtonMotion";
 import { StaggerGrid } from "@/components/animations/StaggerGrid";
 import ArticleCard from "@/components/shared/ArticleCard";
 import type { Article } from "@/data/articles";
@@ -11,10 +7,8 @@ import type { Article } from "@/data/articles";
 interface ArticlesGridProps {
   articles: Article[];
   title?: string;
-  viewAllLink?: string;
-  viewAllText?: string;
+  subtitle?: string;
   columns?: 2 | 3;
-  showDate?: boolean;
   animated?: boolean;
   isLoading?: boolean;
 }
@@ -22,10 +16,8 @@ interface ArticlesGridProps {
 export default function ArticlesGrid({
   articles,
   title,
-  viewAllLink,
-  viewAllText = "View All",
+  subtitle,
   columns = 3,
-  showDate = true,
   animated = true,
   isLoading
 }: ArticlesGridProps) {
@@ -33,45 +25,45 @@ export default function ArticlesGrid({
     columns === 2
       ? "grid-cols-1 md:grid-cols-2"
       : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3";
+      
   const cards = articles.map((article) => (
     <ArticleCard
       key={article.id}
       article={article}
-      showDate={showDate}
-      linkHref={viewAllLink ?? "/newsroom"}
     />
   ));
 
   return (
-    <section className="bg-secondary py-20">
-      <div className="container">
-        {(title || viewAllLink) && (
-          <div className="flex items-center justify-between mb-10">
-            {title && (
-              <h2 className="text-2xl md:text-3xl font-bold">{title}</h2>
+    <section className="bg-background py-24">
+      <div className="container mx-auto px-4">
+        
+        {/* Updated Centered Header */}
+        {(title || subtitle) && (
+          <div className="flex flex-col items-center justify-center text-center mb-16 gap-6">
+            {subtitle && (
+              <span className="text-xs font-semibold tracking-widest text-muted-foreground uppercase">
+                {subtitle}
+              </span>
             )}
-            {viewAllLink && (
-              <ButtonMotion>
-                <Button variant="outline" asChild className="rounded-full">
-                  <Link href={viewAllLink}>
-                    {viewAllText} <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </ButtonMotion>
+            {title && (
+              <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-kaisei font-bold leading-tight  max-w-4xl">
+                {title}
+              </h2>
             )}
           </div>
         )}
-      {isLoading ? (
-        <div className="text-muted-foreground py-12 text-center">
-          Loading latest articles...
-        </div>
-      ) : animated ? (
-        <StaggerGrid className={`grid ${gridCols} gap-8`}>
-          {cards}
-        </StaggerGrid>
-      ) : (
-        <div className={`grid ${gridCols} gap-8`}>{cards}</div>
-      )}
+
+        {isLoading ? (
+          <div className="text-muted-foreground py-12 text-center">
+            Loading latest articles...
+          </div>
+        ) : animated ? (
+          <StaggerGrid className={`grid ${gridCols} gap-8 md:gap-10`}>
+            {cards}
+          </StaggerGrid>
+        ) : (
+          <div className={`grid ${gridCols} gap-8 md:gap-10`}>{cards}</div>
+        )}
       </div>
     </section>
   );

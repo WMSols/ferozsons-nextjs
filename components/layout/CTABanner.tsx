@@ -23,7 +23,7 @@ const CTABanner = ({
       <div className="container">
         <div className="flex flex-col items-center justify-center  max-w-4xl mx-auto">
           <div className="text-center flex flex-col gap-12 items-center">
-            <h2 className="text-4xl md:text-7xl leading-snug  mb-4">
+            <h2 className="text-4xl text-black md:text-7xl font-bold leading-snug  mb-4">
               {title}
             </h2>
             <p className=" text-[20px] max-w-4xl mb-6 leading-relaxed">

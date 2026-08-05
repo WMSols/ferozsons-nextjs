@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { TherapeuticArea } from "@/types/strapi";
 import { useCategories } from "@/app/products/hooks/useCategories";
@@ -17,6 +17,11 @@ export default function TherapeuticsGridClient({
   loading
 }: TherapeuticsGridProps) {
   const [activeIndex, setActiveIndex] = useState(0);
+
+  // Refs for swipe tracking
+  const touchStartX = useRef<number>(0);
+  const isDragging = useRef(false);
+  const hasMoved = useRef(false);
 
   const { categories, isLoading: categoriesLoading } = useCategories();
 
@@ -61,8 +66,44 @@ export default function TherapeuticsGridClient({
       ) : (
         <div className="relative w-full max-w-[1600px] mx-auto flex flex-col items-center">
           
-          {/* Carousel Track */}
-          <div className="relative w-full flex justify-center items-center h-[420px] md:h-[520px]">
+          {/* Carousel Track with Swipe Listeners */}
+          <div 
+            className="relative w-full flex justify-center items-center h-[420px] md:h-[520px] touch-pan-y select-none"
+            onPointerDown={(e) => {
+              touchStartX.current = e.clientX;
+              isDragging.current = true;
+              hasMoved.current = false;
+            }}
+            onPointerMove={(e) => {
+              if (!isDragging.current) return;
+              const dx = e.clientX - touchStartX.current;
+              // If moved more than 10px, flag it as a drag (prevents accidental clicks)
+              if (Math.abs(dx) > 10) {
+                hasMoved.current = true;
+              }
+            }}
+            onPointerUp={(e) => {
+              if (!isDragging.current) return;
+              isDragging.current = false;
+              const dx = e.clientX - touchStartX.current;
+              
+              // Trigger slide change if dragged far enough
+              if (Math.abs(dx) > 40) {
+                if (dx < 0) {
+                  nextSlide(); // Swiped left -> Next
+                } else {
+                  prevSlide(); // Swiped right -> Previous
+                }
+              }
+              // Reset drag flag shortly after to allow clicks again
+              requestAnimationFrame(() => {
+                hasMoved.current = false;
+              });
+            }}
+            onPointerCancel={() => {
+              isDragging.current = false;
+            }}
+          >
             {items.map((item, index) => {
               const length = items.length;
               
@@ -112,7 +153,11 @@ export default function TherapeuticsGridClient({
                     item={item}
                     isActive={isActive}
                     linkHref={linkHref}
-                    onClick={() => !isActive && setActiveIndex(index)}
+                    onClick={() => {
+                      // Prevent slide change if the user was just swiping
+                      if (hasMoved.current) return;
+                      if (!isActive) setActiveIndex(index);
+                    }}
                   />
                 </div>
               );
