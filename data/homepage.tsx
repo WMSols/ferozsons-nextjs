@@ -3,8 +3,13 @@ import type { HeroSlide } from "@/components/sections/HeroCarousel";
 export const heroSlides: HeroSlide[] = [
   {
     id: 1,
-    image: "/hero.avif",
-    title: "Putting Patients First Since 1956",
+    image: "/Hero-1.png",
+    title: (
+      <>
+        Putting Patients First
+        <br className="hidden sm:block" /> Since 1956
+      </>
+    ),
     description:
       "A patient-centric pharmaceutical company committed to advancing care by addressing critical unmet medical needs in Pakistan and internationally.",
     ctaText: "Learn more",
@@ -14,7 +19,7 @@ export const heroSlides: HeroSlide[] = [
   },
   {
     id: 2,
-    image: "/legacy-bg.avif",
+    image: "/Hero-2.png",
     title: (
       <>
         Advancing Healthcare
@@ -29,7 +34,7 @@ export const heroSlides: HeroSlide[] = [
   },
   {
     id: 3,
-    image: "/hero-3.avif",
+    image: "/Hero-3.png",
     title: (
       <>
         Innovation Through
@@ -53,15 +58,11 @@ export const heroSlides: HeroSlide[] = [
 export const missionData = {
   label: "Our Mission",
   headline:
-    "We are a leading healthcare company driven by a commitment to patients, quality, and progress. Through innovation, global collaborations, and responsible growth, we strive to improve health outcomes, address unmet medical needs, and strengthen healthcare systems in the markets we serve.",
+    "Committed to advancing health through science, innovation, and patient care.",
   description:
     "Our Medical Technologies division operates through alliances with our globally renowned partners, delivering advanced medical devices across key specialties.",
   ctaText: "Missions, Strategy & Values",
   ctaLink: "/about/purpose",
-  secondaryLink: {
-    text: "Why invest in Ferozsons?",
-    href: "/about/history",
-  },
   backgroundImage: "/mission-bg.avif",
 };
 

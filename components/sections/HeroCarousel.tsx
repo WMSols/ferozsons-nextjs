@@ -62,7 +62,7 @@ export default function HeroCarousel({
 
   return (
   
-    <section className=" relative flex min-h-screen flex-col items-center justify-center overflow-hidden rounded-b-3xl border border-hero-border bg-background px-6 xs:pt-32 shadow-sm md:px-12 md:pt-24 lg:px-16 lg:pt-32">
+    <section className=" relative flex min-h-screen flex-col items-center justify-center overflow-hidden rounded-b-3xl border border-hero-border bg-background px-20 xs:pt-32 shadow-sm md:px-12 md:pt-24 lg:px-16 lg:pt-32">
       {slides.map((slide, index) => {
         const isActive = current === index;
         const isPrev = prev === index;
@@ -90,23 +90,23 @@ export default function HeroCarousel({
                 />
               </HeroImageZoom>
               <div
-  className="absolute inset-0 bg-linear-to-b from-hero-overlay/95 via-hero-overlay/80 to-hero-overlay/60"
+  className="absolute inset-0 bg-black/50 "
   aria-hidden
 />
             </div>
 
             {isActive && (
               <StaggerFadeUp
-                className={`container relative z-10 flex w-full flex-col ${
+                className={`container relative z-10 px-32 pt-24 -pb-10 flex w-full flex-col ${
                   slide.align === "left"
                     ? "items-start text-left"
                     : ""
                 }`}
               >
-                <h1 className="font-serif text-4xl xs:text-4xl font-bold leading-tight text-hero-heading sm:text-5xl md:text-6xl lg:text-[3.5rem] max-w-4xl">
+                <h1 className="font-serif text-5xl  font-bold leading-tight text-hero-heading sm:text-5xl md:text-6xl lg:text-[3.8rem] max-w-4xl">
                   {slide.title}
                 </h1>
-                <p className="mt-6 max-w-3xl text-base xs:text-xl font-normal leading-relaxed text-white md:text-2xl">
+                <p className="mt-6 max-w-3xl text-base   leading-relaxed text-white md:text-2xl">
                   {slide.description}
                 </p>
                 <ButtonMotion>
@@ -125,23 +125,10 @@ export default function HeroCarousel({
         );
       })}
 
-      <div className="absolute bottom-8 left-0 right-0 z-20 flex justify-center gap-3">
-        {slides.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => goToSlide(index)}
-            aria-label={`Go to slide ${index + 1}`}
-            className={`h-2 rounded-full transition-all duration-500 ease-out ${
-              current === index
-                ? "w-8 bg-[#89bdf2]"
-                : "w-2 bg-white/50 hover:bg-white/80"
-            }`}
-          />
-        ))}
-      </div>
-      <div className="absolute bottom-4 px-4 right-0 z-20 flex flex-col items-center gap-2 text-center text-sm  text-white">
+    
+      {/* <div className="absolute bottom-4 px-4 left-0 right-0 z-20 flex flex-col items-center gap-2 text-center text-sm  text-white">
         Scroll To Explore <ArrowDown className="animate-bounce text-white" size={20} />
-      </div>
+      </div> */}
     </section>
   );
 }

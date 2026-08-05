@@ -35,7 +35,7 @@ export default function TherapeuticCardBig({
     <div
       onClick={onClick}
       className={cn(
-        "relative w-full h-[400px] md:h-[500px] rounded-[32px] overflow-hidden transition-all duration-700 ease-out cursor-pointer shadow-lg",
+        "relative w-full h-[300px] md:h-[500px] rounded-[32px] overflow-hidden transition-all duration-700 ease-out cursor-pointer shadow-lg",
         isActive ? "scale-100 opacity-100" : "scale-90 opacity-60 hover:opacity-80"
       )}
     >
@@ -50,7 +50,7 @@ export default function TherapeuticCardBig({
       {/* Dark gradient overlay for text readability */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-8 md:p-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between w-full gap-4">
-          <h3 className="text-white text-3xl md:text-4xl font-medium w-full md:w-2/3 leading-tight line-clamp-2">
+          <h3 className="text-white text-3xl md:text-4xl pb-5 font-medium w-full md:w-2/3 leading-tight line-clamp-2">
             {item.name}
           </h3>
           
