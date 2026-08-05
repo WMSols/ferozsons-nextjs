@@ -34,7 +34,6 @@ export default function HomePage() {
       <Suspense fallback={<div className="text-muted-foreground text-sm">Articles Loading...</div>}>
         <ArticlesGridClient />
       </Suspense>
-      <QuoteSection quote={quoteText} />
       <CTABanner />
     </>
   );

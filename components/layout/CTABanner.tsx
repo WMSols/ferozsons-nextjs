@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 interface CTABannerProps {
-  title?: string;
+  title?: string | React.ReactNode;
   description?: string;
   ctaText?: string;
   ctaLink?: string;
@@ -11,7 +11,7 @@ interface CTABannerProps {
 }
 
 const CTABanner = ({
-  title = "Care That Goes Beyond Medicine",
+  title = (<span>Care That Goes <br /> Beyond Medicine</span>),
   description = "At Ferozsons, we believe healthcare is more than just prescriptions. It's about compassion, innovation, and a deep commitment to improving lives across Pakistan.",
   ctaText = "Learn More",
   ctaLink = "/about",
@@ -21,23 +21,16 @@ const CTABanner = ({
   return (
     <section className="bg-primary/10 py-16 md:py-20">
       <div className="container">
-        <div className="flex flex-col md:flex-row items-center gap-10 max-w-4xl mx-auto">
-          <div className="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden shrink-0 border-4 border-primary/20">
-            <img
-              src={image}
-              alt={title}
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="text-center md:text-left">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+        <div className="flex flex-col items-center justify-center  max-w-4xl mx-auto">
+          <div className="text-center flex flex-col gap-12 items-center">
+            <h2 className="text-4xl md:text-7xl leading-snug  mb-4">
               {title}
             </h2>
-            <p className="text-muted-foreground mb-6 leading-relaxed">
+            <p className=" text-[20px] max-w-4xl mb-6 leading-relaxed">
               {description}
             </p>
             {showCTA && (
-              <Button asChild className="rounded-full px-8">
+              <Button asChild className="rounded-full px-8 py-6">
                 <Link href={ctaLink}>{ctaText}</Link>
               </Button>
             )}
