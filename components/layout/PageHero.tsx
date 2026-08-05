@@ -16,7 +16,7 @@ const PageHero = ({
 }: PageHeroProps) => {
   return (
     <section
-      className={` -mt-[6.6rem] relative py-16 md:py-24 overflow-hidden ${
+      className={` rounded-b-3xl relative py-16 md:py-24 overflow-hidden ${
         backgroundImage ? "text-white min-h-screen flex items-center" : "bg-transparent"
       }`}
     >
@@ -56,7 +56,7 @@ const PageHero = ({
             </BreadcrumbList>
           </Breadcrumb>
         )} */}
-        <h1 className={`text-3xl md:text-5xl lg:text-6xl font-bold ${backgroundImage ? "text-white" : "text-foreground"}`}>
+        <h1 className={`text-5xl lg:text-8xl font-bold ${backgroundImage ? "text-white" : "text-foreground"}`}>
           {title}
         </h1>
         {subtitle && (

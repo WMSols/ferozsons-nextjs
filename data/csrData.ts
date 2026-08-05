@@ -245,18 +245,6 @@ export interface csrSlideshowImage {
 
 export const csrSlideshowImages: csrSlideshowImage[] = [
   {
-    id: 1,
-    url: "/images/CSR/slideshow/1_banner-creating-impact.webp",
-    width: 6400,
-    height: 4267
-  },
-  {
-    id: 2,
-    url: "/images/CSR/slideshow/art-.webp",
-    width: 1536,
-    height: 1024
-  },
-  {
     id: 3,
     url: "/images/CSR/slideshow/art-breathes-life.webp",
     width: 1024,
@@ -273,12 +261,6 @@ export const csrSlideshowImages: csrSlideshowImage[] = [
     url: "/images/CSR/slideshow/education_khalid-waheed-campus-the-citizens-foundation.webp",
     width: 1536,
     height: 1024
-  },
-  {
-    id: 6,
-    url: "/images/CSR/slideshow/img-7683.webp",
-    width: 4032,
-    height: 3024
   },
   {
     id: 7,
