@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { HeroImageZoom } from "@/components/animations/HeroImageZoom";
 import { StaggerFadeUp } from "@/components/animations/StaggerFadeUp";
 import { ButtonMotion } from "@/components/animations/ButtonMotion";
+import { ArrowDown } from "lucide-react";
 
 export interface HeroSlide {
   id: number;
@@ -61,7 +62,7 @@ export default function HeroCarousel({
 
   return (
   
-    <section className=" relative flex min-h-[calc(100vh-2rem)] flex-col items-center justify-center overflow-hidden rounded-b-3xl border border-hero-border bg-background px-6 xs:py-20 shadow-sm md:px-12 md:py-24 lg:px-16 lg:py-28">
+    <section className=" relative flex min-h-screen flex-col items-center justify-center overflow-hidden rounded-b-3xl border border-hero-border bg-background px-6 xs:pt-32 shadow-sm md:px-12 md:pt-24 lg:px-16 lg:pt-32">
       {slides.map((slide, index) => {
         const isActive = current === index;
         const isPrev = prev === index;
@@ -99,13 +100,13 @@ export default function HeroCarousel({
                 className={`container relative z-10 flex w-full flex-col ${
                   slide.align === "left"
                     ? "items-start text-left"
-                    : "items-center text-center"
+                    : ""
                 }`}
               >
-                <h1 className="font-serif text-2xl xs:text-4xl font-bold leading-tight text-hero-heading sm:text-5xl md:text-6xl lg:text-[3.5rem] max-w-4xl">
+                <h1 className="font-serif text-4xl xs:text-4xl font-bold leading-tight text-hero-heading sm:text-5xl md:text-6xl lg:text-[3.5rem] max-w-4xl">
                   {slide.title}
                 </h1>
-                <p className="mt-6 max-w-3xl text-base xs:text-xl font-normal leading-relaxed text-hero-body md:text-2xl">
+                <p className="mt-6 max-w-3xl text-base xs:text-xl font-normal leading-relaxed text-white md:text-2xl">
                   {slide.description}
                 </p>
                 <ButtonMotion>
@@ -137,6 +138,9 @@ export default function HeroCarousel({
             }`}
           />
         ))}
+      </div>
+      <div className="absolute bottom-4 px-4 right-0 z-20 flex flex-col items-center gap-2 text-center text-sm  text-white">
+        Scroll To Explore <ArrowDown className="animate-bounce text-white" size={20} />
       </div>
     </section>
   );

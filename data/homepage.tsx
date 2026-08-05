@@ -4,18 +4,13 @@ export const heroSlides: HeroSlide[] = [
   {
     id: 1,
     image: "/hero.avif",
-    title: "Putting Patients First",
+    title: "Putting Patients First Since 1956",
     description:
       "A patient-centric pharmaceutical company committed to advancing care by addressing critical unmet medical needs in Pakistan and internationally.",
     ctaText: "Learn more",
     ctaLink: "/about/company-overview",
     align: "center",
-    footer: (
-      <p className="mt-20 max-w-2xl text-lg font-normal text-hero-heading md:text-xl">
-        Reach New Peaks With{" "}
-        <span className="font-semibold text-[#89bdf2]">Ferozsons</span>
-      </p>
-    ),
+
   },
   {
     id: 2,
@@ -31,28 +26,19 @@ export const heroSlides: HeroSlide[] = [
     ctaText: "Learn more",
     ctaLink: "/about/ceo-message",
     align: "center",
-    footer: (
-      <p className="mt-20 max-w-4xl text-sm font-bold tracking-wide text-hero-heading md:text-base uppercase">
-        <span className="text-[#89bdf2]">People</span> depend on reliable
-        healthcare, <span className="text-[#89bdf2]">trust</span> is built
-        through consistency, and accountability guides{" "}
-        <span className="text-[#89bdf2]">us</span> forward.
-      </p>
-    ),
   },
   {
     id: 3,
     image: "/hero-3.avif",
     title: (
       <>
-        Partnering with World-
+        Innovation Through
         <br className="hidden md:block" />
-        Leading Innovators to
-        <br className="hidden md:block" /> Advance Healthcare
+        Global Partnerships
       </>
     ),
     description: (
-      <span className="text-black">
+      <span className="">
         Our collaborations with internationally recognized partners such as
         Gilead Sciences, Boston Scientific, Bagó Group, and BioGaia strengthen
         our ability to deliver advanced healthcare solutions.
