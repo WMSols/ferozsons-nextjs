@@ -36,7 +36,7 @@ export default function ContractManufacturing() {
 
   return (
     <div
-      className="w-full overflow-x-hidden -mt-[6.6rem] "
+      className="w-full overflow-x-hidden"
       style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}
     >
       {/* ── Google Fonts ── */}
@@ -50,8 +50,8 @@ export default function ContractManufacturing() {
 
       <HeroSection heroRef={heroRef} heroY={heroY} />
       <StatementSection />
+       <EgmpSlideshowSection/>
       <FacilityHighlightsSection cards={facilityCards} />
-      <EgmpSlideshowSection/>
         <ClientsSection
         currentClients={currentClients}
         legacyClients={legacyClients}

@@ -13,7 +13,7 @@ export interface ClosingCtaSectionProps {
 export function ClosingCtaSection({ ctaRef, ctaBgY }: ClosingCtaSectionProps) {
   return (
     <section
-      id="contact"
+      id="partner"
       ref={ctaRef}
       className="relative py-32 overflow-hidden text-center"
       style={{ background: "#0a1628" }}

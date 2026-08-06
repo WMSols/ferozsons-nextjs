@@ -26,10 +26,10 @@ export const mainNavItems: NavItem[] = [
     megaImageLink: "/about",
     children: [
       { label: "Our History", href: "/about/history" },
-      { label: "Company Overview", href: "/about/overview" },
+      { label: "Company Overview", href: "/about/company-overview" },
       { label: "Purpose", href: "/about/purpose" },
       { label: "Message from the CEO", href: "/about/ceo-message" },
-      { label: "Board of Directors", href: "/about/board" },
+      { label: "Board of Directors", href: "/board-of-directors" },
     ],
   },
   {
@@ -53,11 +53,6 @@ export const mainNavItems: NavItem[] = [
     megaImageTitle: "Global Network",
     megaImageSubtitle: "See Our Partners",
     megaImageLink: "/partnerships",
-    children: [
-      { label: "International Partners", href: "/partnerships/international" },
-      { label: "Local Alliances", href: "/partnerships/local" },
-      { label: "Joint Ventures", href: "/partnerships/jv" },
-    ],
   },
   {
     label: "Global Presence",
@@ -67,25 +62,16 @@ export const mainNavItems: NavItem[] = [
     megaImageTitle: "International Reach",
     megaImageSubtitle: "Explore Our Markets",
     megaImageLink: "/global-presence",
-    children: [
-      { label: "Export Markets", href: "/global-presence/exports" },
-      { label: "International Operations", href: "/global-presence/operations" },
-      { label: "Global Distribution", href: "/global-presence/distribution" },
-    ],
   },
   {
     label: "Manufacturing",
-    href: "/manufacturing",
+    href: "/contract-manufacturing",
     description: "State-of-the-art facilities ensuring the highest standards of quality and safety in every product we make.",
     megaImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800",
     megaImageTitle: "World-Class Facilities",
     megaImageSubtitle: "Tour Our Plants",
-    megaImageLink: "/manufacturing",
-    children: [
-      { label: "Contract Manufacturing", href: "/manufacturing/contract" },
-      { label: "Quality Assurance", href: "/manufacturing/qa" },
-      { label: "Facilities", href: "/manufacturing/facilities" },
-    ],
+    megaImageLink: "/contract-manufacturing",
+
   },
   {
     label: "ESG",
@@ -95,11 +81,6 @@ export const mainNavItems: NavItem[] = [
     megaImageTitle: "Sustainable Future",
     megaImageSubtitle: "Read Our ESG Report",
     megaImageLink: "/csr",
-    children: [
-      { label: "Environmental Impact", href: "/esg/environment" },
-      { label: "Social Responsibility", href: "/esg/social" },
-      { label: "Corporate Governance", href: "/esg/governance" },
-    ]
   },
 ];
 
@@ -113,10 +94,10 @@ export const secondaryNavItems: NavItem[] = [
     megaImageSubtitle: "Visit Investor Relations",
     megaImageLink: "/investors",
     children: [
-      { label: "Financial Reports", href: "/investors/reports" },
-      { label: "Stock Information", href: "/investors/stock" },
-      { label: "Corporate Governance", href: "/investors/governance" },
-      { label: "Investor Notices", href: "/investors/notices" },
+      { label: "Newsroom ", href: "/newsroom" },
+      { label: "Investors Information", href: "/investors" },
+      { label: "Our Impact", href: "/csr" },
+      { label: "Contact Us", href: "/investors/notices" },
     ],
   },
   {
@@ -127,12 +108,6 @@ export const secondaryNavItems: NavItem[] = [
     megaImageTitle: "Grow With Us",
     megaImageSubtitle: "Explore Opportunities",
     megaImageLink: "/careers",
-    children: [
-      { label: "Life at Ferozsons", href: "/careers/life" },
-      { label: "Current Openings", href: "/careers/jobs" },
-      { label: "Internship Programs", href: "/careers/internships" },
-      { label: "Diversity & Inclusion", href: "/careers/diversity" },
-    ],
   },
 ];
 export const footerLinks = {

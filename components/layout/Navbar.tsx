@@ -18,7 +18,7 @@ const Navbar = () => {
   const [mobileDropdown, setMobileDropdown] = useState<string | null>(null);
   const [desktopSearchOpen, setDesktopSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  
+
   const pathname = usePathname();
   const router = useRouter();
   const desktopSearchRef = useRef<HTMLInputElement>(null);
@@ -50,15 +50,20 @@ const Navbar = () => {
 
   const productCategories = categoriesQuery.data?.data ?? [];
 
+  // Helper to check if an item should trigger a dropdown (even if children is removed)
+  const hasDropdown = (item: NavItem) => {
+    return !!(item.children && item.children.length > 0) || item.label === "Products" || !!item.megaImage;
+  };
+
   // Reusable component block for the Mega Menu (Desktop)
   const renderMegaMenu = (item: NavItem) => {
-    if (!item.children || activePrimaryDropdown !== item.label) return null;
+    if (!hasDropdown(item) || activePrimaryDropdown !== item.label) return null;
 
     return (
       <div className="absolute top-full left-0 right-0 z-50 before:absolute before:inset-x-0 before:-top-8 before:h-8 before:bg-transparent">
         <div className="bg-[#000000] border-t border-white/20 rounded-b-[25px] shadow-2xl p-10 animate-in fade-in duration-300 ease-in">
           <div className="grid grid-cols-12 gap-8">
-            
+
             {/* Left Column: Title & Description */}
             <div className="col-span-3 flex flex-col gap-4">
               <h2 className="text-4xl font-serif text-white">{item.label}</h2>
@@ -71,11 +76,13 @@ const Navbar = () => {
 
             {/* Middle Column: Links */}
             <div className={cn(
-              "border-l border-white/10 pl-8 flex flex-col justify-start",
+              "flex flex-col justify-start",
+              (item.children && item.children.length > 0) && "border-l border-white/10 pl-8",
               item.megaImage ? "col-span-4" : "col-span-3"
             )}>
               <div className="grid gap-4">
-                {item.children.map((child) => (
+                {/* Optional chaining added here */}
+                {item.children?.map((child) => (
                   <Link
                     key={`${child.label}-${child.href}`}
                     href={child.href}
@@ -104,8 +111,8 @@ const Navbar = () => {
                   <h3 className="text-white font-semibold text-xl mb-1">
                     {item.megaImageTitle}
                   </h3>
-                  <Link 
-                    href={item.megaImageLink || item.href} 
+                  <Link
+                    href={item.megaImageLink || item.href}
                     className="text-white/80 text-sm flex items-center gap-2 hover:text-white transition-colors"
                     onClick={() => {
                       setActivePrimaryDropdown(null);
@@ -145,7 +152,7 @@ const Navbar = () => {
   return (
     <header className="fixed w-[90%] mx-auto left-0 right-0 z-50 top-6">
       {/* Desktop */}
-      <div 
+      <div
         ref={navContainerRef}
         className={cn(
           "hidden ixl:flex flex-col bg-[#000000] shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 relative",
@@ -197,9 +204,9 @@ const Navbar = () => {
           <div className="flex flex-col w-full">
             {/* Row 1: Logo & Action Icons */}
             <div className="flex items-center justify-between px-8 py-4 w-full">
-              <Link 
-                href="/" 
-                className="flex items-center shrink-0" 
+              <Link
+                href="/"
+                className="flex items-center shrink-0"
                 onClick={() => {
                   setDesktopMenuOpen(false);
                   setActivePrimaryDropdown(null);
@@ -214,7 +221,7 @@ const Navbar = () => {
                   priority
                 />
               </Link>
-              
+
               <div className="flex items-center gap-6 shrink-0">
                 <button
                   className="text-[#FFFFFF] hover:text-gray-300"
@@ -248,7 +255,7 @@ const Navbar = () => {
                     <div
                       key={item.href}
                       className="static"
-                      onMouseEnter={() => item.children && setActivePrimaryDropdown(item.label)}
+                      onMouseEnter={() => hasDropdown(item) && setActivePrimaryDropdown(item.label)}
                       onMouseLeave={() => setActivePrimaryDropdown(null)}
                     >
                       <Link
@@ -275,7 +282,7 @@ const Navbar = () => {
                     <div
                       key={item.href}
                       className="static"
-                      onMouseEnter={() => item.children && setActivePrimaryDropdown(item.label)}
+                      onMouseEnter={() => hasDropdown(item) && setActivePrimaryDropdown(item.label)}
                       onMouseLeave={() => setActivePrimaryDropdown(null)}
                     >
                       <Link
@@ -325,13 +332,13 @@ const Navbar = () => {
 
       {/* Mobile Menu (Full Screen Overlay) */}
       {mobileOpen && (
-        <div className="ixl:hidden fixed inset-0 z-100 bg-[#000000] flex flex-col animate-in fade-in slide-in-from-top-[50px] duration-300">
-          
+        <div className="ixl:hidden fixed inset-0 z-[100] bg-[#000000] flex flex-col animate-in fade-in slide-in-from-top-[50px] duration-300">
+
           {/* Mobile Menu Header */}
           <div className="flex items-center justify-between px-6 py-6">
-            <Link 
-              href="/" 
-              className="flex items-center shrink-0" 
+            <Link
+              href="/"
+              className="flex items-center shrink-0"
               onClick={() => {
                 setMobileOpen(false);
                 setMobileDropdown(null);
@@ -366,7 +373,7 @@ const Navbar = () => {
                 <div className="flex flex-col gap-6">
                   {mainNavItems.map((item) => (
                     <div key={item.href} className="flex items-center justify-between">
-                      {item.children ? (
+                      {hasDropdown(item) ? (
                         <button
                           className="flex items-center justify-between w-full text-left group"
                           onClick={() => setMobileDropdown(item.label)}
@@ -392,7 +399,7 @@ const Navbar = () => {
                 <div className="flex flex-col gap-6">
                   {secondaryNavItems.map((item) => (
                     <div key={item.href} className="flex items-center justify-between">
-                      {item.children ? (
+                      {hasDropdown(item) ? (
                         <button
                           className="flex items-center justify-between w-full text-left group"
                           onClick={() => setMobileDropdown(item.label)}
@@ -424,7 +431,7 @@ const Navbar = () => {
                 >
                   <ChevronLeft className="h-4 w-4" /> Back to menu
                 </button>
-                
+
                 {(() => {
                   const activeItem = [...mainNavItems, ...secondaryNavItems].find(i => i.label === mobileDropdown);
                   if (!activeItem) return null;
@@ -434,8 +441,9 @@ const Navbar = () => {
                       <h2 className="font-serif text-[2rem] leading-tight text-white inline-block border-b-2 border-white pb-2 mb-8 w-fit">
                         {activeItem.label}
                       </h2>
-                      
+
                       <div className="flex flex-col gap-6 mb-12">
+                        {/* Optional chaining on children here */}
                         {activeItem.children?.map(child => (
                           <Link
                             key={child.href}
@@ -479,8 +487,8 @@ const Navbar = () => {
                             <h3 className="text-white font-semibold text-lg mb-1 leading-tight">
                               {activeItem.megaImageTitle}
                             </h3>
-                            <Link 
-                              href={activeItem.megaImageLink || activeItem.href} 
+                            <Link
+                              href={activeItem.megaImageLink || activeItem.href}
                               className="text-white/80 text-xs font-medium flex items-center gap-2 hover:text-white transition-colors"
                               onClick={() => {
                                 setMobileOpen(false);

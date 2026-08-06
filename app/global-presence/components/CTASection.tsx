@@ -1,7 +1,7 @@
 export default function CTASection() {
   return (
     <div className="bg-[#F7F7F7] py-16 md:pt-32 md:pb-36">
-    <section className="py-16 md:py-24 bg-[#EAF2F8]">
+    <section className="py-16 md:py-24 bg-[#E5F2FF]">
       <div className="container mx-auto px-4 md:px-8 flex flex-col items-center text-center max-w-4xl">
         <h2 className="text-3xl md:text-4xl lg:text-[2.8rem]  font-bold  mb-6 leading-tight">
           Start a Conversation with <br className="hidden sm:block" />
