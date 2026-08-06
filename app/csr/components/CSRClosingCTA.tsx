@@ -1,31 +1,26 @@
+import Link from "next/link";
+
 export default function CSRClosingCTA() {
   return (
-    <section className="border-t border-border bg-muted/40 py-16">
-      <div className="container max-w-2xl text-center">
-        <h2 className="text-2xl font-semibold text-foreground mb-3">
-          Join us in building a better Pakistan
+    <section className="py-16 md:py-24 bg-[#EBEFF4]">
+      <div className="container mx-auto px-4 md:px-8 flex flex-col items-center text-center max-w-4xl">
+        <h2 className="text-3xl md:text-4xl lg:text-[2.5rem]  font-bold  mb-6">
+          Join us in building a better world
         </h2>
-        <p className="text-muted-foreground leading-relaxed mb-6">
-          Whether you're a partner organisation, a donor, or simply someone who
-          cares — there are many ways to support the causes we champion. We
-          welcome collaborations that align with our vision of a healthy,
-          educated, and humane society.
+        
+        <p className="text-foreground/80 text-base md:text-lg leading-relaxed mb-10 max-w-3xl">
+          We believe that health, knowledge, conservation and creative expression
+          are equally essential to a sustainable society. Many of these
+          initiatives are supported year on year as part of our enduring
+          commitment to our Planet.
         </p>
-        <a
+        
+        <Link
           href="/contact"
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-foreground text-background text-sm font-medium hover:opacity-90 transition-opacity"
+          className="inline-flex items-center justify-center bg-black text-white font-medium text-sm md:text-base px-10 py-3.5 rounded-full hover:bg-black/80 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
         >
           Get in touch
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M5 12h14M13 6l6 6-6 6"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </a>
+        </Link>
       </div>
     </section>
   );

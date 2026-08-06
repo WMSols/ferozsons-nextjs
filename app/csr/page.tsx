@@ -16,6 +16,7 @@ import CSRVisionSection from "./components/CSRVisionSection";
 import CSRSlidesshow from "./components/CSRSlidesshow";
 import CSRImpactCard from "./components/CSRImpactCard";
 import CSRInvestorsCards from "./components/CSRInvestorsCards";
+import CorporateGovernanceSection from "./components/CorporateGovernanceSection";
 
 // ─── Page ───────────────────────────────────────────────────────────────────
 const metadata = {
@@ -42,7 +43,7 @@ export default function CreatingImpactPage() {
       <PageHero
         title="Environmental, Social and Governance"
         subtitle=""
-        backgroundImage="/images/CSR/ESG-Hero-Image.PNG"
+        backgroundImage="/images/CSR/ESG-Hero-Image.webp"
       />
 
 
@@ -53,7 +54,6 @@ export default function CreatingImpactPage() {
       <CSRPillarOverview
         activeCategory={activeCategory}
         onCategoryChange={setActiveCategory}
-        countFor={countFor}
       />
 
       <section className="pb-20">
@@ -67,7 +67,7 @@ export default function CreatingImpactPage() {
           <CSRInitiativeGrid filtered={filtered} />
         </div>
       </section>
-
+      <CorporateGovernanceSection/>
       <CSRClosingCTA />
     </>
   );

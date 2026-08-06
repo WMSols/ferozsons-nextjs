@@ -56,7 +56,7 @@ const PageHero = ({
             </BreadcrumbList>
           </Breadcrumb>
         )} */}
-        <h1 className={`text-5xl lg:text-8xl font-bold ${backgroundImage ? "text-white" : "text-foreground"}`}>
+        <h1 className={`text-5xl md:ml-12  lg:text-8xl font-bold ${backgroundImage ? "text-white" : "text-foreground"}`}>
           {title}
         </h1>
         {subtitle && (

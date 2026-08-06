@@ -47,8 +47,8 @@ export default function TherapeuticsGridClient({
         <h2 className="text-xs font-semibold tracking-widest text-muted-foreground uppercase mb-6">
           Product List
         </h2>
-        <h3 className="text-3xl md:text-5xl font-serif font-bold mb-6 text-foreground">
-          A broad portfolio of pharmaceutical solutions
+        <h3 className="text-3xl md:text-[96px]  font-bold mb-6 ">
+          A broad portfolio of <br/> pharmaceutical solutions
         </h3>
         <p className="text-muted-foreground text-sm md:text-lg max-w-3xl mx-auto leading-relaxed">
           Through continuous development and strategic partnerships, we offer medicines across several therapeutic areas to support modern healthcare.
