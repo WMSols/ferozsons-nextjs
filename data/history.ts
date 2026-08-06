@@ -22,6 +22,11 @@ export const timelineData: TimelineItem[] = [
     description:
       "Ferozsons Laboratories Limited was thus established in 1954 as one of the first Pharmaceutical manufacturing companies in Pakistan, and has now entered its seventh decade of serving the cause of health and well-being in Pakistan and a growing number of international markets.",
     imageSrc: "/images/about-history/1954.jpg",
+  }, {
+    year: "1956",
+    description:
+      "Ferozsons Laboratories Limited was thus established in 1954 as one of the first Pharmaceutical manufacturing companies in Pakistan, and has now entered its seventh decade of serving the cause of health and well-being in Pakistan and a growing number of international markets.",
+    imageSrc: "/images/about-history/1956.webp",
   },
   {
     year: "1960",
@@ -110,5 +115,10 @@ export const timelineData: TimelineItem[] = [
     description:
       "Ferozsons Laboratories launched Sematide (Semaglutide), Pakistan's first locally manufactured GLP-1 medicine, representing a landmark achievement in bringing advanced biopharmaceutical innovation to the local healthcare market.",
     imageSrc: "/images/about-history/history-2024.jpg",
+  },{
+    year: "2025",
+    description:
+      "Ferozsons Laboratories launched Sematide (Semaglutide), Pakistan's first locally manufactured GLP-1 medicine, representing a landmark achievement in bringing advanced biopharmaceutical innovation to the local healthcare market.",
+    imageSrc: "/images/about-history/2025.webp",
   },
 ];

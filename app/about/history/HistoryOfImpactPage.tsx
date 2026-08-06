@@ -8,6 +8,7 @@ import YearSection from "./components/YearSection";
 import { YEARS } from "./data/history";
 import { useActiveYear } from "./hooks/useActiveYear";
 import { useIsMobile } from "./hooks/useIsMobile";
+import PageHero from "@/components/layout/PageHero";
 
 export default function HistoryOfImpactPage() {
   const isMobile = useIsMobile();
@@ -21,7 +22,7 @@ export default function HistoryOfImpactPage() {
         *{box-sizing:border-box}
       `}</style>
       <main
-      className="-mt-24"
+      className=""
         style={{
           fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
           background: "#fff",
@@ -29,7 +30,10 @@ export default function HistoryOfImpactPage() {
           overflow: "hidden",
         }}
       >
-        <HeroSection />
+        <PageHero
+        backgroundImage="/images/about-history/1961.webp"
+        title="Company History"
+        />
 
         <div
           style={{
