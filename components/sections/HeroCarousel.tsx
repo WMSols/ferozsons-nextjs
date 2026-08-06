@@ -62,7 +62,7 @@ export default function HeroCarousel({
 
   return (
   
-    <section className=" relative flex min-h-screen flex-col items-center justify-center overflow-hidden rounded-b-3xl border border-hero-border bg-background px-8 xs:pt-32 shadow-sm md:px-12 md:pt-24 lg:px-16 lg:pt-32">
+    <section className=" relative flex min-h-screen sm:min-h-[93vh] flex-col items-center justify-center overflow-hidden rounded-b-3xl border border-hero-border bg-background px-8 xs:pt-32 shadow-sm md:px-12 md:pt-24 lg:px-16 lg:pt-32">
       {slides.map((slide, index) => {
         const isActive = current === index;
         const isPrev = prev === index;

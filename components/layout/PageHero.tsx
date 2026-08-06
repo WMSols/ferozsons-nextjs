@@ -17,7 +17,7 @@ const PageHero = ({
   return (
     <section
       className={` rounded-b-3xl relative py-16 md:py-24 overflow-hidden ${
-        backgroundImage ? "text-white min-h-screen flex items-center" : "bg-transparent"
+        backgroundImage ? "text-white min-h-screen sm:min-h-[93vh] flex items-center" : "bg-transparent"
       }`}
     >
       {backgroundImage && (

@@ -5,9 +5,9 @@ export default function HeroSection() {
     <HeroFullScreen
       backgroundImage="/partnerships/Partnerships-Hero.png"
       overlayClassName=" bg-gradient-to-b from-black/20 via-black/30 to-black/40"
-      className="min-h-[100vh] "
+      className="min-h-screen sm:min-h-[93vh] "
     >
-      <div className="flex flex-col items-center justify-center min-h-[100vh]">
+      <div className="flex flex-col items-center justify-center min-h-full">
         <div className="flex-1 flex items-center w-full container">
           <h1 className="font-kaisei text-6xl   lg:text-8xl font-bold text-white tracking-wide">
             Our Trusted Partners
