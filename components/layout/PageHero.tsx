@@ -27,7 +27,7 @@ const PageHero = ({
             alt=""
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-black/30" />
         </div>
       )}
       <div className="container relative z-10">

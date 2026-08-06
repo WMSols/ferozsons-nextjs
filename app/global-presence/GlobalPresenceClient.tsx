@@ -1,15 +1,20 @@
 "use client";
 
+import PageHero from "@/components/layout/PageHero";
 import CTASection from "./components/CTASection";
 import GlobalExports from "./components/GlobalExports";
-import HeroSection from "./components/HeroSection";
 import MessageSection from "./components/MessageSection";
+import GlobalTrustCard from "./components/GlobalTrustCard";
 
 export default function GlobalPresenceClient() {
   return (
-    <div className="mt-[-6.6rem] bg-[#e8e8e8]">
-      <HeroSection />
-      <GlobalExports />
+    <div className="bg-[#F7F7F7]">
+  <PageHero
+  backgroundImage="/global-presence/GP-Hero.webp"
+  title="Global Presence"
+  />
+        <GlobalExports />
+        <GlobalTrustCard/>
       <MessageSection />
       <section id="global-presence-cta">
         <CTASection />

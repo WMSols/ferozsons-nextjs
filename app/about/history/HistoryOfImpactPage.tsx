@@ -9,6 +9,7 @@ import { YEARS } from "./data/history";
 import { useActiveYear } from "./hooks/useActiveYear";
 import { useIsMobile } from "./hooks/useIsMobile";
 import PageHero from "@/components/layout/PageHero";
+import HistoryOverview from "./components/HistoryOverview";
 
 export default function HistoryOfImpactPage() {
   const isMobile = useIsMobile();
@@ -34,7 +35,7 @@ export default function HistoryOfImpactPage() {
         backgroundImage="/images/about-history/1961.webp"
         title="Company History"
         />
-
+      <HistoryOverview/>
         <div
           style={{
             maxWidth: 1400,
