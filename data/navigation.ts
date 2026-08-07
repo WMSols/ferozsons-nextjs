@@ -122,7 +122,6 @@ export const footerLinks = {
 
     { label: "Careers", href: "/careers" },
     { label: "Contact Us", href: "/contact" },
-    // { label: "Patients", href: "/patients" },
   ],
   column3: [
     { label: "Creating Impact", href: "/csr" },

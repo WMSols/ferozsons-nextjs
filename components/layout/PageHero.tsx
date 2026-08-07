@@ -60,7 +60,7 @@ const PageHero = ({
           {title}
         </h1>
         {subtitle && (
-          <p className={`mt-6 text-lg md:text-xl max-w-3xl leading-relaxed ${backgroundImage ? "text-white/90" : "text-muted-foreground"}`}>
+          <p className={`mt-6 md:ml-12 text-lg font-normal md:text-xl max-w-3xl leading-relaxed ${backgroundImage ? "text-white" : "text-muted-foreground"}`}>
             {subtitle}
           </p>
         )}
