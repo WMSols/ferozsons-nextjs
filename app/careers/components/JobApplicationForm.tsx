@@ -79,7 +79,7 @@ const JobApplicationModal = ({ isOpen, onClose, job } : JobApplicationProps) => 
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/50 p-4 sm:p-6">
-      <div className="relative w-full max-w-2xl max-h-[90vh] rounded-xl overflow-y-scroll bg-white shadow-2xl">
+      <div className="relative w-full px-6 max-h-[90vh] rounded-xl overflow-y-scroll bg-white shadow-2xl">
         <button
           onClick={onClose}
           className="absolute right-4 top-4 text-gray-500 transition-colors hover:text-gray-700"
@@ -121,11 +121,11 @@ const JobApplicationModal = ({ isOpen, onClose, job } : JobApplicationProps) => 
             </div>
             <div className="my-4">
               <h1 className="font-semibold">Skills</h1>
-              <div className="flex gap-2">
+              <div className="flex gap-2 sm:flex-row flex-col">
                 {job.skills?.split(",").map((skill: string, idx: number) => (
                   <span
                     key={idx}
-                    className="text-xs rounded-full bg-blue-100 px-1.5 py-0.5 text-blue-600"
+                    className="text-xs rounded-full bg-blue-100 px-1.5 py-1 text-blue-600"
                   >
                     {skill}
                   </span>

@@ -65,7 +65,7 @@ export default function PositionCard({
           </div>
           <p className="text-muted-foreground text-sm my-2 line-clamp-4">{overview}</p>
           {/* Skills */}
-          <div className="flex gap-2">
+          <div className="flex gap-2 sm:flex-row flex-col">
             {skills?.split(",").map((skill, idx) => (
               <span
                 key={idx}

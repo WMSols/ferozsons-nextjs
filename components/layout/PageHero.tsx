@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator, BreadcrumbPage } from "@/components/ui/breadcrumb";
+import { ArrowDown } from "lucide-react";
 
 interface PageHeroProps {
   title: string;
@@ -65,6 +66,7 @@ const PageHero = ({
           </p>
         )}
       </div>
+        <ArrowDown className="text-white absolute bottom-4 left-1/2 transform -translate-x-1/2 animate-bounce sm:hidden block" />
     </section>
   );
 };
