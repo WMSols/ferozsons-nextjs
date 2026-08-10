@@ -42,7 +42,7 @@ export const mainNavItems: NavItem[] = [
       { label: "All Products", href: "/products/all" },
       { label: "Pharmaceuticals", href: "/products/pharmaceuticals" },
       { label: "Medical Technologies", href: "/products/devices" },
-      { label: "Report a product concern", href: "/report" },
+      { label: "Report a product concern", href: "/products/product-concern" },
     ],
   },
   {
