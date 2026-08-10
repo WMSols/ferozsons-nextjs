@@ -42,15 +42,9 @@ export default function Hero() {
 
       <div className="pt-10 md:pt-14 lg:pt-20 overflow-hidden">
         <div className="container">
-          <div className="max-w-3xl">
-            <h1 className="font-serif text-[38px] font-extrabold leading-[1.05] tracking-[-0.02em] text-pharma-text-primary md:text-[48px]">
-              Pharmaceuticals
+            <h1 className="text-[38px] font-bold text-center leading-[1.05] tracking-[-0.02em] text-pharma-text-primary md:text-[48px]">
+              Advancing healthcare through innovative <br/> medicines across multiple therapeutic areas.
             </h1>
-            <p className="mt-4 max-w-105 text-[16px] leading-relaxed text-pharma-text-secondary">
-              Advancing healthcare through innovative medicines across multiple
-              therapeutic areas.
-            </p>
-          </div>
         </div>
 
         <div className="mt-10 space-y-2 md:mt-12 md:space-y-4 relative">
