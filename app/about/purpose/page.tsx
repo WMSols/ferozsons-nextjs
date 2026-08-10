@@ -1,8 +1,9 @@
 import PageHero from "@/components/layout/PageHero";
-import CTABanner from "@/components/layout/CTABanner";
-import ValuesGrid from "@/components/sections/ValuesGrid";
 import SectionWrapper from "@/components/shared/SectionWrapper";
-import { values, missionCommitments } from "@/data/purpose";
+import CeoSection from "./components/CeoSection";
+import CommitSection from "./components/CommitSection";
+import OurValues from "./components/OurValues";
+import BottomCTA from "./components/BottomCTA";
 
 export const metadata = {
   title: "Our Purpose",
@@ -12,87 +13,81 @@ export const metadata = {
 
 export default function PurposePage() {
   return (
-    <div className="sm:pt-10 pt-20">
+    <div className="bg-[#F7F7F7]">
       <PageHero
         title="Our Purpose"
+        backgroundImage="/images/about-purpose/Hero.webp"
       />
 
       {/* Purpose Statement */}
       <SectionWrapper
         className="py-20 md:py-28"
-        containerClassName="max-w-3xl text-center"
+        containerClassName="max-w-5xl text-center"
       >
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold leading-snug text-foreground">
-          Our purpose is to advance health and improve lives by placing patients
-          at the center of everything we do.
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">
+          We advance health and improve lives by placing patients at the center of everything we do.
         </h2>
-        <p className="mt-8 text-muted-foreground leading-relaxed text-lg">
-          We are committed to integrating responsibility, trust, and ethical
-          decision-making into our values, culture, and business practices to
-          ensure meaningful and sustainable impact.
+        <p className="mt-8 font-light text-lg">
+          Responsibility, trust, and ethical decision-making are reflected into our values, shaping our culture, guiding our actions, and driving sustainable impact.
         </p>
       </SectionWrapper>
 
-      {/* Vision */}
+      {/* CEO Section */}
+      <CeoSection />
+      
+      {/* Commitment Section */}
+      <CommitSection />
+
+      {/* Mission & Vision Sections (Stacked & Reordered) */}
       <SectionWrapper
-        className="bg-secondary py-16 md:py-20"
+        className="py-16 md:py-24 bg-[#F8F9FA]"
         containerClassName="max-w-4xl"
       >
-        <div className="grid md:grid-cols-[1fr_2fr] gap-10 items-start">
+        <div className="flex flex-col gap-16">
+          
+          {/* Mission */}
           <div>
-            <p className="text-primary font-medium tracking-wider uppercase text-sm mb-2">
-              Our Vision
-            </p>
-            <div className="w-16 h-1 bg-primary rounded-full" />
-          </div>
-          <p className="text-foreground text-lg md:text-xl font-serif leading-relaxed">
-            To achieve leadership in healthcare by placing patients at the
-            center of everything we do, earning trust every day through
-            innovation, responsibility, and unwavering commitment to quality.
-          </p>
-        </div>
-      </SectionWrapper>
-
-      {/* Mission */}
-      <SectionWrapper containerClassName="max-w-4xl">
-        <div className="grid md:grid-cols-[1fr_2fr] gap-10 items-start">
-          <div>
-            <p className="text-primary font-medium tracking-wider uppercase text-sm mb-2">
+            <h2 className="text-3xl md:text-4xl font-serif font-medium text-foreground mb-6">
               Our Mission
-            </p>
-            <div className="w-16 h-1 bg-primary rounded-full" />
+            </h2>
+            <div className="space-y-6 text-foreground/90 text-lg md:text-xl font-light leading-relaxed">
+              <p>
+                We aim to improve the quality of life by providing
+                innovative healthcare solutions, ensuring patient
+                access to quality treatment and cure.
+              </p>
+              <p>
+                In doing so, we are committed to creating long-term
+                shareholder value, investing in the growth and
+                development of our people, fostering a culture of
+                collaboration and excellence, and upholding the
+                highest standards of ethics and transparency.
+              </p>
+            </div>
           </div>
+
+          {/* Vision */}
           <div>
-            <p className="text-foreground text-lg leading-relaxed mb-8">
-              Our mission is to improve quality of life by delivering innovative
-              healthcare solutions that expand patient access to effective
-              treatments and cures. In pursuing this mission, we are committed
-              to:
-            </p>
-            <ul className="space-y-4">
-              {missionCommitments.map((item, i) => (
-                <li key={i} className="flex items-start gap-4">
-                  <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary text-xs font-bold">
-                    {i + 1}
-                  </span>
-                  <span className="text-muted-foreground leading-relaxed">
-                    {item}
-                  </span>
-                </li>
-              ))}
-            </ul>
+            <h2 className="text-3xl md:text-4xl font-serif font-medium text-foreground mb-6">
+              Vision
+            </h2>
+            <div className="text-foreground/90 text-lg md:text-xl font-light leading-relaxed">
+              <p>
+                We will strive to attain market leadership by putting
+                patients first and seeing every day as a new
+                opportunity to earn trust and credibility
+              </p>
+            </div>
           </div>
+
         </div>
       </SectionWrapper>
 
-      {/* Values */}
-      <ValuesGrid
-        label="Our Values"
-        title="What Guides Us Every Day"
-        values={values}
-      />
+      {/* New Core Values Section */}
+      <OurValues />
 
-      <CTABanner />
+      {/* New Bottom CTA Section */}
+      <BottomCTA />
     </div>
   );
 }
