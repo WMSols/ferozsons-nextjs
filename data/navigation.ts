@@ -97,7 +97,7 @@ export const secondaryNavItems: NavItem[] = [
       { label: "Newsroom ", href: "/newsroom" },
       { label: "Investors Information", href: "/investors" },
       { label: "Our Impact", href: "/csr" },
-      { label: "Contact Us", href: "/investors/notices" },
+      { label: "Contact Us", href: "/contact" },
     ],
   },
   {
