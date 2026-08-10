@@ -161,6 +161,9 @@ export interface BoardDirector {
   name: string;
   role: string;
   sortNumber: number;
+  bio?:string;
+  description?:string;
+  image?: { url: string };
 }
 
 export interface TherapeuticArea {

@@ -3,6 +3,7 @@ import { getBoardOfDirectors } from "@/lib/strapi";
 import { sortBoardOfDirectors } from "./_lib/getSortedDirectors"; // or wherever you saved this
 import BoardMemberCards from "./components/BoardMemberCards";
 import { boardMembers } from "@/data/partnerships";
+import PageHero from "@/components/layout/PageHero";
 
 export default async function BoardOfDirectorsPage() {
   // 1. Fetch the raw data (Server-side)
@@ -13,6 +14,12 @@ export default async function BoardOfDirectorsPage() {
 
   // 3. Pass the clean, sorted data to the Client Component
   return (
+    <>
+    <PageHero
+    title="Board of Directors"
+    backgroundImage="/images/Bod-Hero.webp"
+    subtitle=""/>
       <BoardMemberCards members={sortedDirectors} />
+      </>
   );
 }
