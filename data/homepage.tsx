@@ -69,7 +69,7 @@ export const missionData = {
 export const productSearchData = {
   label: "Products",
   description:
-    "Across a portfolio of over 140 products, every medicine reflects our commitment to quality and patient care, supported by over 1,000 professionals.",
+    "Our portfolio of more than 140 products reflects our unwavering commitment to putting patients first through quality and innovation.",
   searchPlaceholder: "Searching for a product?",
   ctaText: "Explore Our Complete Portfolio",
   ctaLink: "/products",

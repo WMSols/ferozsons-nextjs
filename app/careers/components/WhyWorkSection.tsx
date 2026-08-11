@@ -11,7 +11,7 @@ export default function WhyWorkSection() {
           <h2 className="text-4xl md:text-5xl font-bold  mb-6">
             Build Your Future at <span className="text-[#3B73AC]">Ferozsons</span>
           </h2>
-          <p className="text-base md:text-lg leading-relaxed">
+          <p className="text-base  text-black font-light md:text-lg leading-relaxed">
             At Ferozsons, every role contributes to a larger purpose. Join a collaborative team that's
             driving innovation, expanding access to healthcare, and putting patients first.
           </p>

@@ -64,10 +64,10 @@ export default function NewsroomListClient() {
           
           {/* Section Heading & Subheading */}
           <div className="text-center mb-16 md:mb-20">
-            <h2 className="text-4xl md:text-5xl font-serif font-medium text-foreground mb-4">
+            <h2 className="text-4xl md:text-5xl  font-medium text-foreground mb-4">
               What's New at Ferozsons?
             </h2>
-            <p className="text-muted-foreground text-lg md:text-xl font-light max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-lg md:text-xl font-light max-w-4xl mx-auto">
               Stay updated with the latest news and developments from Ferozsons Laboratories Limited
             </p>
           </div>

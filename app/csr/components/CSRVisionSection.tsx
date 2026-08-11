@@ -4,18 +4,18 @@ export default function CSRVisionSection() {
       <div className="container px-4 md:px-8">
         <div className="max-w-3xl">
           {/* Main Heading */}
-          <h2 className="text-5xl md:text-6xl lg:text-[4.5rem] font-serif font-medium text-foreground mb-8 leading-[1.1]">
+          <h2 className="text-5xl md:text-6xl lg:text-[4.5rem]  font-bold text-black mb-8 leading-[1.1]">
             Creating Impact <br />
             Beyond <span className="text-[#3B73AC] italic">Medicine</span>
           </h2>
           
           {/* Subheading Lead */}
-          <p className="text-xl md:text-2xl text-foreground mb-8 leading-relaxed">
-            Our commitment to sustainability extends beyond business to create lasting value for people, communities, and the planet.
+          <p className="text-xl md:text-2xl text-black mb-8 leading-relaxed">
+            Our commitment to sustainability extends beyond <br/> business to create lasting value for people,<br/> communities, and the planet.
           </p>
           
           {/* Body Paragraph */}
-          <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
+          <p className="text-black text-sm md:text-base leading-relaxed">
             At Ferozsons, giving back is not a programme—it is part of our deep purpose. We are
             committed to building a legacy that is bigger than our footprint, fueling non-profits and
             Civil Society Organizations (CSOs) to help Pakistan meet key Sustainable Development

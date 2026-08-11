@@ -24,11 +24,11 @@ export default function CSRImpactCard() {
 
         {/* Content */}
         <div className="relative z-10 px-6 py-12 md:px-16 lg:px-24 max-w-3xl md:max-w-4xl lg:max-w-5xl">
-          <h2 className="text-white text-3xl sm:text-4xl md:text-5xl font-kaisei font-medium leading-tight mb-6 md:mb-8">
+          <h2 className="text-white text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-6 md:mb-8">
             {data.heading}
           </h2>
           
-          <p className="text-white/90 text-sm md:text-base lg:text-lg leading-relaxed">
+          <p className="text-white text-sm md:text-base lg:text-lg leading-relaxed">
             {data.description}
           </p>
         </div>

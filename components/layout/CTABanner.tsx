@@ -18,7 +18,7 @@ const CTABanner = ({
   showCTA = true,
 }: CTABannerProps) => {
   return (
-    <section className="bg-primary/10 py-16 md:py-20">
+    <section className="bg-[#E5F2FF] py-16 md:py-20">
       <div className="container">
         <div className="flex flex-col items-center justify-center  max-w-4xl mx-auto">
           <div className="text-center flex flex-col gap-12 items-center">

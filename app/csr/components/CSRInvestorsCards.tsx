@@ -36,14 +36,14 @@ export default function CSRInvestorsCards() {
                 "flex flex-col justify-center",
                 isImageRight ? "order-2 md:order-1" : "order-2 md:order-2"
               )}>
-                <h2 className="text-3xl md:text-4xl lg:text-[2.5rem] font-serif font-medium text-foreground mb-6 md:mb-8 leading-tight">
+                <h2 className="text-3xl md:text-4xl lg:text-[2.5rem] font-serif font-medium text-black mb-6 md:mb-8 leading-tight">
                   {card.title}
                 </h2>
                 
                 {/* Paragraphs Wrapper */}
-                <div className="space-y-5 md:space-y-6 mb-8 md:mb-10">
+                <div className="space-y-5 max-w-3xl text-black md:space-y-6 mb-8 md:mb-10">
                   {card.paragraphs.map((paragraph, idx) => (
-                    <p key={idx} className="text-foreground/80 text-sm md:text-base leading-relaxed">
+                    <p key={idx} className=" text-sm md:text-base leading-relaxed">
                       {paragraph}
                     </p>
                   ))}

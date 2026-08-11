@@ -33,10 +33,10 @@ export default function BoardMemberCards({ members }: BoardMemberProps) {
         
         {/* Section Heading & Subheading */}
         <div className="text-center max-w-4xl mx-auto mb-16 md:mb-20">
-          <h2 className="text-4xl md:text-5xl font-serif font-medium text-foreground mb-6">
+          <h2 className="text-4xl md:text-5xl  font-bold text-black mb-6">
             The Leaders Behind Ferozsons
           </h2>
-          <p className="font-sans text-base md:text-lg leading-relaxed font-light">
+          <p className=" text-base md:text-lg  font-light">
             Guided by integrity and driven by purpose, we are committed to putting patients first
             through innovation, collaboration, excellence, and ethical leadership.
           </p>

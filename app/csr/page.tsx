@@ -17,6 +17,7 @@ import CSRSlidesshow from "./components/CSRSlidesshow";
 import CSRImpactCard from "./components/CSRImpactCard";
 import CSRInvestorsCards from "./components/CSRInvestorsCards";
 import CorporateGovernanceSection from "./components/CorporateGovernanceSection";
+import KWCampus from "./components/KWCampus";
 
 // ─── Page ───────────────────────────────────────────────────────────────────
 const metadata = {
@@ -50,6 +51,7 @@ export default function CreatingImpactPage() {
       <CSRVisionSection />
       <CSRImpactCard/>
       <CSRInvestorsCards/>
+      <KWCampus/>
       <CSRSlidesshow/>
       <CSRPillarOverview
         activeCategory={activeCategory}

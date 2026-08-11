@@ -9,7 +9,7 @@ export default function HeroSection() {
     >
       <div className="flex flex-col items-center justify-center min-h-full">
         <div className="flex-1 flex items-center w-full container">
-          <h1 className="font-kaisei text-6xl   lg:text-8xl font-bold text-white tracking-wide">
+          <h1 className="ml-6 text-6xl   lg:text-8xl font-bold text-white tracking-wide">
             Our Trusted Partners
           </h1>
         </div>
