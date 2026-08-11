@@ -36,11 +36,11 @@ export default function CEOMessagePage() {
           <div className="order-1 md:order-2 ">
         <div className="flex flex-col h-full pb-6  justify-between">
          <div className="flex flex-col gap-8 border-[#3B73AC] border-t-2 pt-6 mb-4">
-           <h1 className="text-3xl font-bold font-serif">
+           <h1 className="text-3xl font-bold text-black">
             Osman Khalid Waheed
           </h1>
-          <p className="text-md tracking-[0.2em] uppercase text-primary mb-2">
-            CEO Ferozsons Laboratories Limited
+          <p className="text-xl   text-black font-light mb-2">
+            Chief Executive Officer & President 
           </p>
            <a
               href={ceoBio.linkedIn}
@@ -59,11 +59,11 @@ export default function CEOMessagePage() {
           </div>
         </div>
       </SectionWrapper>
-      <div id="ceo-message" className=" scroll-mt-28 max-w-5xl mx-auto space-y-6 md:space-y-8 lg:space-y-10 mb-16 md:mb-24">
+      <div id="ceo-message" className=" scroll-mt-28 max-w-4xl mx-auto text-black space-y-6 md:space-y-8 lg:space-y-10 mb-16 md:mb-24">
                   {ceoMessageParagraphs.map((paragraph, i) => (
               <p
                 key={i}
-                className=" leading-relaxed text-xl"
+                className=" leading-relaxed text-2xl"
               >
                 {paragraph}
               </p>
