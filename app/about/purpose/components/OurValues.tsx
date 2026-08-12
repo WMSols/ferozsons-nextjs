@@ -9,7 +9,7 @@ export default function OurValues() {
           src="/images/about-purpose/Our-Values.webp"
           alt="Values Background"
           fill
-          className="object-cover opacity-20 mix-blend-overlay"
+          className="object-cover opacity-50"
         />
       </div>
 

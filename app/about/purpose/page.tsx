@@ -22,13 +22,13 @@ export default function PurposePage() {
       {/* Purpose Statement */}
       <SectionWrapper
         className="py-20 md:py-28"
-        containerClassName="max-w-5xl text-center"
+        containerClassName="max-w-8xl text-center text-black"
       >
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">
-          We advance health and improve lives by placing patients at the center of everything we do.
+        <h2 className="text-2xl md:text-[3.3rem] font-bold">
+          We advance health and improve lives by placing <br className="hidden md:block"/> patients at the center of everything we do.
         </h2>
-        <p className="mt-8 font-light text-lg">
-          Responsibility, trust, and ethical decision-making are reflected into our values, shaping our culture, guiding our actions, and driving sustainable impact.
+        <p className="mt-8 font-light text-xl md:text-[24px]">
+          Responsibility, trust, and ethical decision-making are reflected into our values, shaping our<br className="hidden md:block"/> culture, guiding our actions, and driving sustainable impact.
         </p>
       </SectionWrapper>
 
@@ -41,26 +41,26 @@ export default function PurposePage() {
       {/* Mission & Vision Sections (Stacked & Reordered) */}
       <SectionWrapper
         className="py-16 md:py-24 bg-[#F8F9FA]"
-        containerClassName="max-w-4xl"
+        containerClassName=""
       >
-        <div className="flex flex-col gap-16">
+        <div className="flex flex-col gap-16 text-left">
           
           {/* Mission */}
-          <div>
-            <h2 className="text-3xl md:text-4xl font-serif font-medium text-foreground mb-6">
+          <div >
+            <h2 className="text-3xl md:text-4xl font-serif font-medium text-black mb-6">
               Our Mission
             </h2>
-            <div className="space-y-6 text-foreground/90 text-lg md:text-xl font-light leading-relaxed">
+            <div className="space-y-6 text-black text-lg md:text-[24px] sm:max-w-3xl font-normal leading-relaxed">
               <p>
-                We aim to improve the quality of life by providing
-                innovative healthcare solutions, ensuring patient
+                We aim to improve the quality of life by providing <br className="hidden md:block"/>
+                innovative healthcare solutions, ensuring patient <br className="hidden md:block"/>
                 access to quality treatment and cure.
               </p>
               <p>
-                In doing so, we are committed to creating long-term
-                shareholder value, investing in the growth and
-                development of our people, fostering a culture of
-                collaboration and excellence, and upholding the
+                In doing so, we are committed to creating long-term <br className="hidden md:block"/>
+                shareholder value, investing in the growth and <br className="hidden md:block"/>
+                development of our people, fostering a culture of <br className="hidden md:block"/>
+                collaboration and excellence, and upholding the <br className="hidden md:block"/>
                 highest standards of ethics and transparency.
               </p>
             </div>
@@ -68,13 +68,13 @@ export default function PurposePage() {
 
           {/* Vision */}
           <div>
-            <h2 className="text-3xl md:text-4xl font-serif font-medium text-foreground mb-6">
+            <h2 className="text-3xl md:text-4xl font-serif font-medium text-black mb-6">
               Vision
             </h2>
-            <div className="text-foreground/90 text-lg md:text-xl font-light leading-relaxed">
+            <div className="text-black text-lg md:text-[24px] font-normal leading-relaxed">
               <p>
-                We will strive to attain market leadership by putting
-                patients first and seeing every day as a new
+                We will strive to attain market leadership by putting <br className="hidden md:block"/>
+                patients first and seeing every day as a new <br className="hidden md:block"/>
                 opportunity to earn trust and credibility
               </p>
             </div>

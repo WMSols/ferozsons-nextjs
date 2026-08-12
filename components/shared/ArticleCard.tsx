@@ -18,7 +18,7 @@ export default function ArticleCard({
   return (
     <div className="flex flex-col h-full group cursor-pointer">
       {/* Image Container - Deeply rounded corners without outer card borders */}
-      <div className="relative w-full aspect-[4/3] sm:aspect-[3/2] rounded-[32px] overflow-hidden mb-6 bg-muted">
+      <div className="relative w-full aspect-[4/3] sm:aspect-[3/2] rounded-[32px]  md:min-h-[340px] overflow-hidden mb-6 bg-muted">
         {imageUrl ? (
           <Image
             src={imageUrl}
@@ -34,12 +34,12 @@ export default function ArticleCard({
       
       {/* Content */}
       <div className="flex flex-col flex-1">
-        <h3 className="font-medium text-xl lg:text-2xl mb-4 line-clamp-2 text-foreground">
+        <h3 className=" font-sans text-xl lg:text-2xl mb-4 line-clamp-2 ">
           {article.title}
         </h3>
         
         {/* Adjusted prose for tighter margins and text wrapping */}
-        <div className="mb-6 prose prose-sm prose-slate max-w-none line-clamp-2 text-muted-foreground/80">
+        <div className="mb-6 text-sm prose prose-sm prose-slate max-w-none line-clamp-2 ">
           <BlocksRenderer
             content={article.excerpt}
             blocks={{

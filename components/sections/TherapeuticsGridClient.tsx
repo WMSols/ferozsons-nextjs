@@ -42,16 +42,16 @@ export default function TherapeuticsGridClient({
   };
 
   return (
-    <section className="bg-background py-16 md:py-24 overflow-hidden">
+    <section className="bg-background py-16 md:py-24 text-black overflow-hidden">
       <div className="container mx-auto px-4 text-center mb-16">
-        <h2 className="text-xs font-semibold tracking-widest text-muted-foreground uppercase mb-6">
+        <span className=" font-light   uppercase ">
           Product List
-        </h2>
-        <h3 className="text-3xl md:text-[96px]  font-bold mb-6 ">
+        </span>
+        <h3 className="text-3xl md:text-[82px]  font-bold mb-10 mt-8 ">
           A broad portfolio of <br/> pharmaceutical solutions
         </h3>
-        <p className="text-muted-foreground text-sm md:text-lg max-w-3xl mx-auto leading-relaxed">
-          Through continuous development and strategic partnerships, we offer medicines across several therapeutic areas to support modern healthcare.
+        <p className=" text-sm md:text-lg max-w-3xl mx-auto leading-relaxed">
+          Through continuous development and strategic partnerships, we offer medicines<br className="hidden md:block"/> across several therapeutic areas to support modern healthcare.
         </p>
       </div>
 

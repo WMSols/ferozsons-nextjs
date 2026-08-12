@@ -34,18 +34,16 @@ const HeroSection = ({
             className="w-full h-full object-cover"
           />
           {/* Dark gradient overlay for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/30 to-black/20" />
         </div>
       )}
 
       <div className="container relative z-10 w-full flex flex-col h-full justify-center">
         
         {/* Title Section */}
-        <div className={showInvestorInfo ? "text-center mb-16" : "md:ml-12"}>
+        <div className={showInvestorInfo ? "text-center -mt-8 mb-20" : "md:ml-12"}>
           <h1 
-            className={`text-4xl sm:text-5xl lg:text-6xl ${
-              showInvestorInfo ? "font-serif font-medium" : "font-bold"
-            } ${backgroundImage ? "text-white" : "text-foreground"}`}
+            className={`text-4xl sm:text-5xl lg:text-6xl font-bold ${backgroundImage ? "text-white" : "text-foreground"}`}
           >
             {title}
           </h1>
@@ -73,7 +71,7 @@ const HeroSection = ({
               rel="noopener noreferrer"
               className="flex items-center gap-5"
             >
-              <div className="w-14 h-14 rounded-full  backdrop-blur-sm border border-transparent flex items-center justify-center shrink-0">
+              <div className="w-20 h-20 rounded-full  backdrop-blur-sm border border-transparent flex items-center justify-center shrink-0">
                 <Image
                   src="/images/White-logo.webp"
                   alt="FEROZ Symbol"
@@ -81,7 +79,7 @@ const HeroSection = ({
                 />
               </div>
               <div className="flex flex-col">
-                <h3 className="text-white text-2xl font-sans font-bold tracking-wide">
+                <h3 className="text-white text-2xl sm:text-[2rem] font-sans font-bold tracking-wide">
                   FEROZ
                 </h3>
                 <p className="text-white/80 text-sm font-light tracking-wide mt-0.5">
@@ -96,7 +94,7 @@ const HeroSection = ({
                 href="https://www.psx.com.pk/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-14 h-14 rounded-full  backdrop-blur-sm border border-transparent flex items-center justify-center shrink-0 p-3"
+                className="w-20 h-20 rounded-full  backdrop-blur-sm border border-transparent flex items-center justify-center shrink-0 p-3"
               >
                 <Image
                   src="/images/PSX-Symbol.webp"
@@ -105,7 +103,7 @@ const HeroSection = ({
                 />
               </a>
               <div className="flex flex-col">
-                <h3 className="text-white text-2xl font-sans font-bold tracking-wide">
+                <h3 className="text-white text-2xl sm:text-[2rem] font-sans font-bold tracking-wide">
                   Pakistan Stock Exchange
                 </h3>
                 <a

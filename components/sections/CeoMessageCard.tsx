@@ -24,7 +24,7 @@ export default function CEOMessageCard() {
         <div className="absolute inset-0 bg-black/20  transition-opacity duration-500"></div>
 
         {/* Content */}
-        <div className="relative z-10 px-6 py-12 md:py-28 md:px-16 lg:px-24 max-w-3xl md:max-w-5xl lg:max-w-[75rem]">
+        <div className="relative z-10 px-6 mt-24 py-12 md:py-28 md:px-16 lg:px-26 max-w-3xl md:max-w-5xl lg:max-w-[75rem]">
           <h2 className="text-white text-3xl sm:mt-8 md:mt-12 md:text-4xl lg:text-[3.25rem] font-serif font-medium leading-tight mb-8 md:mb-12">
             {data.quote}
           </h2>
@@ -33,14 +33,14 @@ export default function CEOMessageCard() {
             <p className="text-white font-bold text-base md:text-lg tracking-wide">
               {data.authorName}
             </p>
-            <p className="text-white/80 text-xs md:text-sm font-medium tracking-wider uppercase">
+            <p className="text-white/80 text-xs md:text-sm font-medium tracking-wider ">
               {data.authorTitle}
             </p>
           </div>
           
           <Link
             href={data.buttonLink}
-            className="inline-block bg-[#3B73AC] hover:bg-[#294e74] text-white font-medium text-sm md:text-base px-6 md:px-8 py-3 md:py-3.5 rounded-full transition-all duration-300 hover:shadow-md"
+            className="inline-block bg-[#3B73AC] font-light hover:bg-[#294e74] text-white  text-sm md:text-base px-6 md:px-10 py-3 md:py-3.5 rounded-full transition-all duration-300 hover:shadow-md"
           >
             {data.buttonText}
           </Link>

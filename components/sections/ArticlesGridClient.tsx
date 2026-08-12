@@ -11,7 +11,7 @@ export default function ArticlesGridClient() {
       <ArticlesGrid
         articles={latestArticles}
         subtitle="Latest Articles"
-        title="Discover the Stories Driving Better Healthcare."
+        title={(<span> Discover the Stories Driving<br className="hidden md:block"/> Better Healthcare.</span>)}
         isLoading={isLoading}
       />
     </>

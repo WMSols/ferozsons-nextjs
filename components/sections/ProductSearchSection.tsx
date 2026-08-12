@@ -3,11 +3,11 @@
 import Link from "next/link";
 import { ArrowRight, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import { StaggerFadeUpInView } from "../animations/StaggerFadeUpInView";
 interface ProductSearchSectionProps {
   label?: string;
-  description: string;
+  description: string | ReactNode;
   searchPlaceholder?: string;
   ctaText?: string;
   ctaLink?: string;
@@ -24,21 +24,21 @@ export default function ProductSearchSection({
   const [searchQuery, setSearchQuery] = useState("")
   return (
     <StaggerFadeUpInView className="w-full py-16 md:py-24 bg-product-bg">
-      <div className="container mx-auto px-4 md:px-8 flex flex-col text-left">
-        <h2 className="text-sm  font-sans uppercase text-center  mb-4 md:mb-6">
+      <div className="container mx-auto px-4 md:px-8 flex text-black flex-col text-left">
+        <h2 className="font-sans uppercase text-center  mb-4 md:mb-16">
           {label}
         </h2>
-        <h3 className=" text-2xl md:text-4xl lg:text-[2.75rem] font-bold leading-tight  ">
+        <h3 className=" text-2xl md:text-4xl lg:text-[56px] font-bold leading-normal  ">
           {description}
         </h3>
         <div className="flex flex-col md:flex-row md:items-center gap-6 mt-12 w-full max-w-4xl">
-          <div className="flex items-center px-4 py-1 gap-2 flex-1 w-full md:w-auto border rounded-full border-foreground/30 min-w-0">
+          <div className="flex items-center px-4 py-1 gap-2 flex-1 w-full md:w-auto border rounded-full border-primary min-w-0">
             <input
               type="search"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={searchPlaceholder}
-              className="flex-1 min-w-0 py-2 bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none"
+              className="flex-1 min-w-0 py-2 pl-4 bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none"
               aria-label="Search for a product"
             />
             <Link

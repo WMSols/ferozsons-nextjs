@@ -52,7 +52,7 @@ export default function CSRInvestorsCards() {
                 {/* Call to Action Link */}
                 <Link
                   href={card.linkHref}
-                  className="text-[#3B73AC] text-sm md:text-base font-medium underline underline-offset-4 hover:text-[#294e74] transition-colors w-fit"
+                  className="text-[#3B73AC] text-sm md:text-base mt-4 font-medium underline underline-offset-4 hover:text-[#294e74] transition-colors w-fit"
                 >
                   {card.linkText}
                 </Link>

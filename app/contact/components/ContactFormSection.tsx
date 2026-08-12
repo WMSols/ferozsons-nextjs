@@ -2,14 +2,14 @@ import ContactForm from "./ContactForm";
 
 const ContactFormSection = () => {
   return (
-    <div className="w-full flex flex-col">
+    <div className="w-full flex flex-col py-10">
       {/* Heading & Subheading */}
       <div className="mb-8 max-w-3xl">
-        <h2 className="text-4xl md:text-5xl  font-bold  mb-4">
+        <h2 className="text-4xl md:text-5xl text-black  font-bold  mb-8">
           Let's Start a Conversation
         </h2>
-        <p className=" text-base md:text-lg leading-relaxed">
-          Whether you have a question about our products, partnerships, career
+        <p className=" text-base mb-10 md:text-lg text-black ">
+          Whether you have a question about our products, partnerships, career <br className="hidden md:block"/>
           opportunities, or anything else, our team is ready to help.
         </p>
       </div>

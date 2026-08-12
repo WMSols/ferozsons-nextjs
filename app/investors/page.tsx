@@ -116,12 +116,13 @@ export default async function InvestorsPage({
 
   return (
     <div className="bg-background">
+      <div className=" px-0 sm:px-10">
       <HeroSection
         title="Investor Information"
         subtitle="Financial information and governance for shareholders and the investment community."
         backgroundImage="/images/investor-hero.webp"
         showInvestorInfo={true}
-      />
+      /></div>
 
       {/* OVERLAPPING TAB LOGIC */}
       <div className="relative z-20 -mt-14 md:-mt-20 flex justify-center w-full px-4">

@@ -60,14 +60,14 @@ export default function NewsroomListClient() {
       />
 
       <section className="py-16 md:py-24 bg-background">
-        <div className="container mx-auto px-4 max-w-7xl">
+        <div className="container mx-auto px-4 max-w-8xl">
           
           {/* Section Heading & Subheading */}
-          <div className="text-center mb-16 md:mb-20">
-            <h2 className="text-4xl md:text-5xl  font-medium text-foreground mb-4">
+          <div className="text-center mb-16 md:mb-28">
+            <h2 className="text-4xl md:text-5xl  font-bold text-black mb-12">
               What's New at Ferozsons?
             </h2>
-            <p className="text-muted-foreground text-lg md:text-xl font-light max-w-4xl mx-auto">
+            <p className="text-black text-lg md:text-[24px] font-light max-w-5xl  mx-auto">
               Stay updated with the latest news and developments from Ferozsons Laboratories Limited
             </p>
           </div>
@@ -92,7 +92,7 @@ export default function NewsroomListClient() {
 
           {!isError && !isLoading && items.length > 0 && (
             <>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12 ">
                 {items.map((article) => {
                   const imageUrl = getStrapiImageUrl(
                     article.featured_image?.url,
@@ -126,13 +126,13 @@ export default function NewsroomListClient() {
                       {/* Content Area */}
                       <div className="flex flex-col flex-1 px-2">
                         <Link href={`/newsroom/${article.slug}`} className="hover:text-primary transition-colors">
-                          <h3 className="font-medium text-xl md:text-2xl text-foreground leading-snug mb-3">
+                          <span className="font-medium text-xl md:text-2xl text-black line-clamp-2 leading-snug mb-3">
                             {article.title}
-                          </h3>
+                          </span>
                         </Link>
                         
                         {/* Excerpt / Description extracted from rich text */}
-                        <p className="text-sm text-muted-foreground line-clamp-2 mb-6">
+                        <p className="text-sm text-black line-clamp-2 mb-6">
                           {excerpt}
                         </p>
                         

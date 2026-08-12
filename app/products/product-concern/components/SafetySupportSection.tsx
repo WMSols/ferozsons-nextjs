@@ -3,35 +3,35 @@ import Link from "next/link";
 
 export default function SafetySupportSection() {
   return (
-    <section className="py-16 md:py-24 bg-[#F8F9FA]">
-      <div className="container mx-auto px-4 max-w-6xl flex flex-col gap-16 md:gap-24">
+    <section className="py-16 md:py-24 bg-[#F8F9FA] mt-8 sm:mt-20">
+      <div className="container text-black mx-auto px-4 max-w-8xl flex flex-col gap-16 md:gap-24">
         
         {/* Top Part: Intro & Text (from first screenshot) */}
-        <div className="text-center max-w-4xl mx-auto flex flex-col items-center">
-          <span className="text-xs md:text-sm tracking-wider text-muted-foreground uppercase mb-6 md:mb-8">
+        <div className="text-center max-w-6xl mx-auto flex flex-col items-center">
+          <span className="text-xs md:text-base font-light  uppercase mb-6 md:mb-16">
             Safety Support
           </span>
           
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-8 md:mb-10 leading-[1.15]">
-            Advancing Patient Safety Through Your Feedback
+          <h2 className="text-4xl md:text-5xl lg:text-[4.5rem] font-bold  mb-8 md:mb-10 leading-[1.15]">
+            Advancing Patient Safety<br className="hidden md:block"/> Through Your Feedback
           </h2>
           
-          <div className="space-y-6 text-foreground/80 text-base md:text-lg leading-relaxed px-2 md:px-0">
+          <div className="space-y-6  text-base md:text-lg leading-relaxed px-2 md:px-0">
             <p>
-              Guided by our Patients First commitment, Ferozsons Laboratories Limited encourages healthcare professionals, and
-              patients to report any side effects, adverse events, or product quality concerns associated with our medicines. If you
-              experience a side effect while taking a Ferozsons medicine, please seek medical advice from your doctor or
+              Guided by our Patients First commitment, Ferozsons Laboratories Limited encourages healthcare professionals, and<br className="hidden md:block"/>
+              patients to report any side effects, adverse events, or product quality concerns associated with our medicines. If you<br className="hidden md:block"/>
+              experience a side effect while taking a Ferozsons medicine, please seek medical advice from your doctor or<br className="hidden md:block"/>
               healthcare provider.
             </p>
             <p>
-              Your reports help us continually monitor the safety, quality, and effectiveness of our products, supporting our
+              Your reports help us continually monitor the safety, quality, and effectiveness of our products, supporting our<br className="hidden md:block"/>
               ongoing commitment to patient well-being.
             </p>
           </div>
         </div>
 
         {/* Bottom Part: Channels Image Card (from second screenshot) */}
-        <div className="relative w-full rounded-[2rem] md:rounded-[3rem] overflow-hidden min-h-[500px] md:min-h-[650px] flex items-center shadow-xl group">
+        <div className="relative w-full rounded-[2rem] md:rounded-[3rem] overflow-hidden min-h-[500px] md:min-h-[850px] flex items-center shadow-xl group">
           
           {/* Background Image - Placeholder for low-light phone user */}
           <Image
@@ -47,9 +47,9 @@ export default function SafetySupportSection() {
           <div className="absolute inset-0 bg-black/45 transition-opacity duration-500"></div>
 
           {/* Card Content */}
-          <div className="relative z-10 px-6 py-12 md:px-16 lg:px-24 max-w-5xl">
+          <div className="relative z-10 px-6 py-12 md:px-16 lg:px-24 max-w-7xl">
             <h3 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-10 md:mb-12">
-              Ferozsons Laboratories Limited provides the following four channels for reporting adverse events related to our products:
+              Ferozsons Laboratories Limited provides<br className="hidden md:block"/> the following four channels for reporting<br className="hidden md:block"/> adverse events related to our products:
             </h3>
 
             {/* List of Channels */}

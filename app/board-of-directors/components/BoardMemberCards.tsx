@@ -12,8 +12,8 @@ interface BoardMemberProps {
 }
 
 // Constants for fallbacks when backend data is missing
-const PLACEHOLDER_IMAGE = "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800";
-const PLACEHOLDER_DESC = "Ferozsons Laboratories Limited is dedicated to maintaining the highest standards of corporate governance. Detailed biographical information for this board member will be updated shortly. They bring extensive experience and strategic vision to the leadership team, ensuring our continued commitment to excellence, innovation, and putting patients first.";
+const PLACEHOLDER_IMAGE = "/ceo-message/ceo.webp";
+const PLACEHOLDER_DESC = "Ferozsons Laboratories Limited is dedicated to maintaining the highest standards of corporate governance. Detailed biographical information for this board member will be updated shortly. They bring extensive experience and strategic vision to the leadership team, ensuring our continued commitment to excellence, innovation, and putting patients first.Ferozsons Laboratories Limited is dedicated to maintaining the highest standards of corporate governance. Detailed biographical information for this board member will be updated shortly. They bring extensive experience and strategic vision to the leadership team, ensuring our continued commitment to excellence, innovation, and putting patients firstFerozsons Laboratories Limited is dedicated to maintaining the highest standards of corporate governance. Detailed biographical information for this board member will be updated shortly. They bring extensive experience and strategic vision to the leadership team, ensuring our continued commitment to excellence, innovation, and putting patients first.";
 
 export default function BoardMemberCards({ members }: BoardMemberProps) {
   const [selectedMember, setSelectedMember] = useState<BoardDirector | null>(null);
@@ -29,15 +29,15 @@ export default function BoardMemberCards({ members }: BoardMemberProps) {
 
   return (
     <section className="py-16 md:py-24 bg-background pt-24">
-      <div className="container mx-auto px-4 max-w-7xl">
+      <div className="container mx-auto px-4 max-w-8xl">
         
         {/* Section Heading & Subheading */}
         <div className="text-center max-w-4xl mx-auto mb-16 md:mb-20">
           <h2 className="text-4xl md:text-5xl  font-bold text-black mb-6">
             The Leaders Behind Ferozsons
           </h2>
-          <p className=" text-base md:text-lg  font-light">
-            Guided by integrity and driven by purpose, we are committed to putting patients first
+          <p className=" text-base md:text-[22px] text-black  font-light">
+            Guided by integrity and driven by purpose, we are committed to putting patients first<br className="hidden md:block"/>
             through innovation, collaboration, excellence, and ethical leadership.
           </p>
         </div>
@@ -66,17 +66,17 @@ export default function BoardMemberCards({ members }: BoardMemberProps) {
                       src={PLACEHOLDER_IMAGE}
                       alt={`${member.name} Placeholder`}
                       fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105 grayscale opacity-80 "
+                      className="object-cover transition-transform duration-700 group-hover:scale-105 "
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                   )}
                 </div>
 
                 {/* Text Content */}
-                <h3 className="text-2xl font-medium text-foreground mb-2">
+                <h3 className="text-2xl font-medium font-sans mb-2">
                   {member.name}
                 </h3>
-                <p className="text-sm text-muted-foreground mb-4 font-light">
+                <p className="text-sm text-[#565656] mb-4 font-light">
                   {member.role}
                 </p>
                 <button
@@ -122,7 +122,7 @@ export default function BoardMemberCards({ members }: BoardMemberProps) {
               </button>
 
               {/* Scrollable Content Area */}
-              <div className="overflow-y-auto w-full p-6 md:p-10 lg:p-12 flex flex-col md:flex-row gap-8 lg:gap-12 custom-scrollbar">
+              <div className="overflow-y-auto w-full p-6 md:p-10 lg:py-18  flex flex-col md:flex-row gap-8 lg:gap-12 custom-scrollbar">
                 
                 {/* Left Side: Image */}
                 <div className="w-full md:w-[40%] shrink-0">
@@ -142,7 +142,7 @@ export default function BoardMemberCards({ members }: BoardMemberProps) {
                         src={PLACEHOLDER_IMAGE}
                         alt={`${selectedMember.name} Placeholder`}
                         fill
-                        className="object-cover grayscale opacity-80 "
+                        className="object-cover  "
                         sizes="(max-width: 768px) 100vw, 40vw"
                         priority
                       />
@@ -152,15 +152,15 @@ export default function BoardMemberCards({ members }: BoardMemberProps) {
 
                 {/* Right Side: Details */}
                 <div className="w-full md:w-[60%] flex flex-col pt-2 md:pt-4">
-                  <h3 className="text-3xl md:text-4xl font-medium text-foreground mb-2">
+                  <h3 className="text-3xl md:text-4xl font-medium font-sans mb-2">
                     {selectedMember.name}
                   </h3>
-                  <p className="text-sm md:text-base text-muted-foreground mb-8 pb-6 border-b border-gray-100">
+                  <p className="text-sm md:text-base text-[#565656] mb-8 pb-6 border-b border-gray-100">
                     {selectedMember.role}
                   </p>
                   
                   {/* Bio Content - Conditional Rendering */}
-                  <div className="prose prose-slate max-w-none text-foreground/80 text-sm md:text-base leading-relaxed whitespace-pre-wrap">
+                  <div className=" max-w-none text-black text-sm  leading-relaxed whitespace-pre-wrap">
                     {selectedMember.bio || selectedMember.description || PLACEHOLDER_DESC}
                   </div>
                 </div>

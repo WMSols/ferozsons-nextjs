@@ -11,7 +11,7 @@ export const heroSlides: HeroSlide[] = [
       </>
     ),
     description:
-      "A patient-centric pharmaceutical company committed to advancing care by addressing critical unmet medical needs in Pakistan and internationally.",
+      (<span>A patient-centric pharmaceutical company committed<br className="hidden sm:block" /> to advancing care by addressing critical unmet medical<br className="hidden sm:block" /> needs in Pakistan and internationally.</span>),
     ctaText: "Learn more",
     ctaLink: "/about/company-overview",
     align: "center",
@@ -27,7 +27,7 @@ export const heroSlides: HeroSlide[] = [
       </>
     ),
     description:
-      "A patient-centric healthcare organization focused on addressing critical unmet medical needs in Pakistan and international markets.",
+      (<span>A patient-centric healthcare organization focused on <br className="hidden sm:block" /> addressing critical unmet medical needs in Pakistan and <br className="hidden sm:block" /> international markets.</span>),
     ctaText: "Learn more",
     ctaLink: "/about/ceo-message",
     align: "center",
@@ -45,8 +45,8 @@ export const heroSlides: HeroSlide[] = [
     description: (
       <span className="">
         Our collaborations with internationally recognized partners such as
-        Gilead Sciences, Boston Scientific, Bagó Group, and BioGaia strengthen
-        our ability to deliver advanced healthcare solutions.
+        Gilead <br className="hidden sm:block" /> Sciences, Boston Scientific, Bagó Group, and BioGaia strengthen
+        our ability <br className="hidden sm:block" /> to deliver advanced healthcare solutions.
       </span>
     ),
     ctaText: "Explore Our Partnerships",
@@ -58,9 +58,9 @@ export const heroSlides: HeroSlide[] = [
 export const missionData = {
   label: "Our Mission",
   headline:
-    "Committed to advancing health through science, innovation, and patient care.",
+    (<span>Committed to advancing health<br className="hidden md:block"/> through science, innovation,<br className="hidden md:block"/> and patient care.</span>),
   description:
-    "Our Medical Technologies division operates through alliances with our globally renowned partners, delivering advanced medical devices across key specialties.",
+    (<span>Our Medical Technologies division operates through alliances with our globally<br className="hidden md:block"/> renowned partners, delivering advanced medical devices across key specialties.</span>),
   ctaText: "Missions, Strategy & Values",
   ctaLink: "/about/purpose",
   backgroundImage: "/mission-bg.avif",
@@ -69,9 +69,9 @@ export const missionData = {
 export const productSearchData = {
   label: "Products",
   description:
-    "Our portfolio of more than 140 products reflects our unwavering commitment to putting patients first through quality and innovation.",
+    (<span>Our portfolio of more than 140 products reflects<br className="hidden sm:block" /> our unwavering commitment to putting patients<br className="hidden sm:block" /> first through quality and innovation.</span>),
   searchPlaceholder: "Searching for a product?",
-  ctaText: "Explore Our Complete Portfolio",
+  ctaText: "Explore our complete portfolio",
   ctaLink: "/products",
 };
 
@@ -79,7 +79,7 @@ export const legacyData = {
   backgroundImage: "/home-legacy.png",
   title: (
     <>
-      Our legacy is built on
+      Our legacy is built on<br className="hidden sm:block" />
       integrity,
       quality, and {" "}
     <br className="hidden sm:block" />

@@ -24,6 +24,7 @@ export default function ReportFilterTabs({
 }: ReportFilterTabsProps) {
   return (
     <div className="mb-6 flex flex-wrap gap-2">
+      <div className={` rounded-full ${!activeType ? "border-3 border-blue-500 p-0.5" : ""}`}>
       <Button
         asChild
         variant={!activeType ? "default" : "outline"}
@@ -34,10 +35,11 @@ export default function ReportFilterTabs({
           All
         </Link>
       </Button>
+      </div>
 
       {reportTypes.map((type) => (
+        <div key={type.documentId ?? type.id} className={` rounded-full ${ activeType?.toLowerCase() === type.name.toLowerCase() ? "border-3 border-blue-500 p-0.5":""}`}>
         <Button
-          key={type.documentId ?? type.id}
           asChild
           variant={
             activeType?.toLowerCase() === type.name.toLowerCase()
@@ -45,12 +47,13 @@ export default function ReportFilterTabs({
               : "outline"
           }
           size="sm"
-          className="rounded-full"
+          className={`rounded-full `}
         >
           <Link href={getFilterHref(type.name)} scroll={false}>
             {type.name}
           </Link>
         </Button>
+        </div>
       ))}
     </div>
   );

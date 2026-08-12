@@ -2,16 +2,16 @@ import Link from "next/link";
 
 export default function CSRClosingCTA() {
   return (
-    <section className="py-16 md:py-24 bg-[#EBEFF4]">
-      <div className="container mx-auto px-4 md:px-8 flex flex-col items-center text-center max-w-4xl">
-        <h2 className="text-3xl md:text-4xl lg:text-[2.5rem]  font-bold  mb-6">
+    <section className="py-16  bg-[#E7ECF2]">
+      <div className="container mx-auto px-4 md:px-8 text-black flex flex-col items-center text-center max-w-4xl">
+        <h2 className="text-3xl md:text-4xl   font-bold  mb-12">
           Join us in building a better world
         </h2>
         
-        <p className="text-foreground/80 text-base md:text-lg leading-relaxed mb-10 max-w-3xl">
+        <p className=" text-base md:text-lg leading-relaxed mb-10 max-w-4xl">
           We believe that health, knowledge, conservation and creative expression
-          are equally essential to a sustainable society. Many of these
-          initiatives are supported year on year as part of our enduring
+          are equally essential to<br className="hidden md:block"/> a sustainable society. Many of these
+          initiatives are supported year on year as part of our<br className="hidden md:block"/> enduring
           commitment to our Planet.
         </p>
         

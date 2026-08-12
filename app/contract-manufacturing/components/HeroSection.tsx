@@ -58,7 +58,7 @@ export function HeroSection({ heroRef, heroY }: HeroSectionProps) {
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0, transition: { duration: 0.7 } },
               }}
-              className="text-white/90 text-lg md:text-xl font-sans  lg:text-2xl leading-relaxed max-w-3xl mb-10"
+              className="text-white/90 text-lg md:text-xl font-sans  lg:text-2xl leading-relaxed max-w-5xl mb-10"
             >
               A fully cGMP-compliant pharmaceutical manufacturing facility
               delivering world-class formulations for domestic and global

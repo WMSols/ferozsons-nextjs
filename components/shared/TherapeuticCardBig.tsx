@@ -36,7 +36,7 @@ export default function TherapeuticCardBig({
       onClick={onClick}
       className={cn(
         // Increased mobile height to 450px for the taller portrait layout
-        "relative w-full h-[450px] md:h-[500px] rounded-[32px] overflow-hidden transition-all duration-700 ease-out cursor-pointer shadow-lg",
+        "relative w-full md:w-195 h-[450px]  rounded-[32px] overflow-hidden transition-all duration-700 ease-out cursor-pointer shadow-lg",
         isActive ? "scale-100 opacity-100" : "scale-90 opacity-60 hover:opacity-80"
       )}
     >
@@ -53,13 +53,13 @@ export default function TherapeuticCardBig({
         
         {/* Adjusted flex layout for perfect mobile centering while keeping desktop intact */}
         <div className="flex flex-col items-center justify-center h-full md:h-auto md:flex-row md:items-end md:justify-between w-full gap-2 md:gap-4">
-          <h3 className="text-white text-4xl md:pb-5 font-medium w-full md:w-2/3 leading-tight line-clamp-2 text-center md:text-left">
+          <h3 className="text-white font-sans text-5xl md:pb-5 font-medium w-full md:w-2/3 leading-tight line-clamp-2 text-center md:text-left">
             {item.name}
           </h3>
           
           <Link
             href={linkHref}
-            className="text-white/90 text-sm font-medium underline underline-offset-4 hover:text-white transition-colors shrink-0 md:pb-5"
+            className="text-white/90  font-medium underline underline-offset-4 hover:text-white transition-colors shrink-0 md:pb-5"
             // Prevent the card's onClick from firing when clicking the link directly
             onClick={(e) => e.stopPropagation()} 
           >

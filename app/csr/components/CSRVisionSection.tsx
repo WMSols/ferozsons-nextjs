@@ -16,11 +16,11 @@ export default function CSRVisionSection() {
           
           {/* Body Paragraph */}
           <p className="text-black text-sm md:text-base leading-relaxed">
-            At Ferozsons, giving back is not a programme—it is part of our deep purpose. We are
-            committed to building a legacy that is bigger than our footprint, fueling non-profits and
-            Civil Society Organizations (CSOs) to help Pakistan meet key Sustainable Development
-            Goals. Our approach to sustainability embraces environmental responsibility, social
-            impact, and strong governance, ensuring that the value we create today contributes to
+            At Ferozsons, giving back is not a programme—it is part of our deep purpose. We are<br className="hidden md:block"/>
+            committed to building a legacy that is bigger than our footprint, fueling non-profits and<br className="hidden md:block"/>
+            Civil Society Organizations (CSOs) to help Pakistan meet key Sustainable Development<br className="hidden md:block"/>
+            Goals. Our approach to sustainability embraces environmental responsibility, social<br className="hidden md:block"/>
+            impact, and strong governance, ensuring that the value we create today contributes to<br className="hidden md:block"/>
             a healthier, more resilient future.
           </p>
         </div>

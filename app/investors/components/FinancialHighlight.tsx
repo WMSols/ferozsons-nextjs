@@ -8,7 +8,7 @@ export default function FinancialHighlight({
   value,
 }: FinancialHighlightProps) {
   return (
-    <div className="bg-[#DCE4EC] rounded-[1.5rem] flex flex-col items-center justify-center p-6 md:p-8 text-center h-48 md:h-56 w-full shadow-sm hover:shadow-md transition-shadow">
+    <div className="bg-[#CBD9E7] rounded-[1.5rem] flex flex-col items-center justify-center p-6 md:p-8 text-center h-48 md:h-56 w-full shadow-sm hover:shadow-md transition-shadow">
       {/* Value Text (Centered) */}
       <h3 className="text-[#3B73AC] text-2xl md:text-3xl font-serif font-medium leading-snug whitespace-pre-line">
         {value}

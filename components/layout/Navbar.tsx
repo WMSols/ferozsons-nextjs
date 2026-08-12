@@ -50,7 +50,7 @@ const Navbar = () => {
 
   const productCategories = categoriesQuery.data?.data ?? [];
 
-  // Helper to check if an item should trigger a dropdown (even if children is removed)
+  // Helper to check if an item should trigger a dropdown
   const hasDropdown = (item: NavItem) => {
     return !!(item.children && item.children.length > 0) || item.label === "Products" || !!item.megaImage;
   };
@@ -59,73 +59,88 @@ const Navbar = () => {
   const renderMegaMenu = (item: NavItem) => {
     if (!hasDropdown(item) || activePrimaryDropdown !== item.label) return null;
 
+    // Check if we actually have sub-links to display in the middle column
+    const hasSubLinks = item.children && item.children.length > 0;
+
     return (
       <div className="absolute top-full left-0 right-0 z-50 before:absolute before:inset-x-0 before:-top-8 before:h-8 before:bg-transparent">
-        <div className="bg-[#000000] border-t border-white/20 rounded-b-[25px] shadow-2xl p-10 animate-in fade-in duration-300 ease-in">
-          <div className="grid grid-cols-12 gap-8">
+        {/* Adjusted padding to hug the ceiling (px-10 pb-10 pt-6) */}
+        <div className="bg-[#000000] border-t border-white/20 rounded-b-[25px] shadow-2xl px-10 pb-10 pt-6 animate-in fade-in duration-300 ease-in">
+          {/* Removed top padding (py-8 to pb-4) to bring elements higher */}
+          <div className="grid grid-cols-13 gap-4 pb-4">
 
             {/* Left Column: Title & Description */}
-            <div className="col-span-3 flex flex-col gap-4">
-              <h2 className="text-4xl font-serif text-white">{item.label}</h2>
+            <div className="col-span-4 flex flex-col gap-4">
+              {/* Added font-serif and leading-none to hug the top edge perfectly */}
+              <h2 className="text-5xl font-serif leading-none text-white">{item.label}</h2>
               {item.description && (
-                <p className="text-white/70 text-sm leading-relaxed pr-4">
+                <p className="text-white/70 text-sm leading-relaxed pr-4 mt-2">
                   {item.description}
                 </p>
               )}
             </div>
 
-            {/* Middle Column: Links */}
-            <div className={cn(
-              "flex flex-col justify-start",
-              (item.children && item.children.length > 0) && "border-l border-white/10 pl-8",
-              item.megaImage ? "col-span-4" : "col-span-3"
-            )}>
-              <div className="grid gap-4">
-                {/* Optional chaining added here */}
-                {item.children?.map((child) => (
-                  <Link
-                    key={`${child.label}-${child.href}`}
-                    href={child.href}
-                    className="text-white text-sm font-medium hover:text-[#89bdf2] transition-colors w-fit border-b border-transparent hover:border-[#89bdf2] pb-0.5"
-                    onClick={() => {
-                      setActivePrimaryDropdown(null);
-                      setDesktopMenuOpen(false);
-                    }}
-                  >
-                    {child.label}
-                  </Link>
-                ))}
+            {/* Middle Column: Links (Only renders if there are children) */}
+            {hasSubLinks && (
+              <div className={cn(
+                "flex flex-col justify-start border-l border-white/10 pl-8",
+                item.megaImage ? "col-span-4" : "col-span-3"
+              )}>
+                <div className="grid gap-4">
+                  {item.children?.map((child) => (
+                    <Link
+                      key={`${child.label}-${child.href}`}
+                      href={child.href}
+                      className="text-white text-sm font-medium hover:text-[#89bdf2] transition-colors w-fit border-b border-transparent hover:border-[#89bdf2] pb-0.5"
+                      onClick={() => {
+                        setActivePrimaryDropdown(null);
+                        setDesktopMenuOpen(false);
+                      }}
+                    >
+                      {child.label}
+                    </Link>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Right Column: Image Card OR Dynamic Product Categories Grid */}
             {item.megaImage ? (
-              <div className="col-span-5 h-full min-h-[300px] relative rounded-xl overflow-hidden group">
+              <div className={cn(
+                "h-full min-h-[250px] -mb-4 relative rounded-xl overflow-hidden group",
+                // Dynamically span 7 cols, push to column 7, and add top margin if there are no sub-links
+                hasSubLinks ? "col-span-5" : "col-span-7 col-start-7 mt-14"
+              )}>
                 <Image
                   src={item.megaImage}
                   alt={item.megaImageTitle || item.label}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6">
-                  <h3 className="text-white font-semibold text-xl mb-1">
-                    {item.megaImageTitle}
-                  </h3>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6">
+                  {item.megaImageTitle && (
+                    <h3 className="text-white font-semibold text-xl mb-1">
+                      {item.megaImageTitle}
+                    </h3>
+                  )}
                   <Link
                     href={item.megaImageLink || item.href}
-                    className="text-white/80 text-sm flex items-center gap-2 hover:text-white transition-colors"
+                    className="text-white/80 text-sm flex items-center justify-between hover:text-white transition-colors"
                     onClick={() => {
                       setActivePrimaryDropdown(null);
                       setDesktopMenuOpen(false);
                     }}
                   >
-                    {item.megaImageSubtitle} <ArrowRight className="h-4 w-4" />
+                    {item.megaImageSubtitle} <ArrowRight className="h-8 w-8" />
                   </Link>
                 </div>
               </div>
             ) : (
               item.label === "Products" && (
-                <div className="col-span-6 grid grid-cols-2 gap-x-8 gap-y-4 content-start">
+                <div className={cn(
+                  "grid grid-cols-2 gap-x-8 gap-y-4 content-start border-l border-white/10 pl-8",
+                  hasSubLinks ? "col-span-5" : "col-span-7 col-start-7 mt-14"
+                )}>
                   {productCategories.map((cat) => (
                     <Link
                       key={cat.slug || cat.name}
@@ -443,7 +458,6 @@ const Navbar = () => {
                       </h2>
 
                       <div className="flex flex-col gap-6 mb-12">
-                        {/* Optional chaining on children here */}
                         {activeItem.children?.map(child => (
                           <Link
                             key={child.href}

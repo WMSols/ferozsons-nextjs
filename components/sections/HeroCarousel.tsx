@@ -100,10 +100,10 @@ export default function HeroCarousel({
                     : ""
                 }`}
               >
-                <h1 className="font-kaisei text-5xl  font-bold leading-tight text-hero-heading sm:text-5xl md:text-6xl lg:text-[3.8rem] max-w-4xl">
+                <h1 className=" text-5xl  font-bold leading-tight text-hero-heading sm:text-5xl md:text-6xl lg:text-[82px] max-w-4xl">
                   {slide.title}
                 </h1>
-                <p className=" mt-8 sm:mt-6 max-w-3xl text-base   leading-relaxed text-white md:text-2xl">
+                <p className=" mt-8 sm:mt-6 max-w-3xl text-base font-normal md:text-xl   leading-relaxed text-white  ">
                   {slide.description}
                 </p>
                 <ButtonMotion>

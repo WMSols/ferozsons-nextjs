@@ -13,7 +13,7 @@ const Contact = () => {
       <div className="bg-background">
         <section className="py-16 md:py-24">
           {/* Stacked Layout with centered max-width */}
-          <div className="container max-w-5xl mx-auto px-4 flex flex-col gap-16 md:gap-24">
+          <div className="container max-w-6xl mx-auto px-4 flex flex-col gap-16 md:gap-24">
             <ContactFormSection />
             <ContactInfoSection />
           </div>

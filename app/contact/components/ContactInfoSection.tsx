@@ -3,11 +3,11 @@ const ContactInfoSection = () => {
     <div className="w-full flex flex-col gap-6">
       
       {/* Top Span Card: Corporate Headquarters */}
-      <div className="bg-[#E5F2FF] rounded-[2rem] p-10 md:p-14 flex flex-col items-center text-center w-full">
-        <h2 className="text-3xl md:text-4xl font-serif font-medium text-foreground mb-6">
+      <div className="bg-[#E5F2FF] rounded-[2rem] p-10 md:px-18 md:py-28 flex flex-col items-center text-center w-full">
+        <h2 className="text-3xl md:text-4xl  font-bold text-black mb-12">
           Corporate Headquarters
         </h2>
-        <p className="font-bold text-foreground text-sm md:text-base mb-2">
+        <p className="font-bold text-black text-sm md:text-base mb-2">
           Ferozsons Laboratories Limited
         </p>
         <p className=" text-sm md:text-base mb-8 max-w-sm leading-relaxed font-light">
@@ -34,10 +34,10 @@ const ContactInfoSection = () => {
         
         {/* Registered Office */}
         <div className="bg-[#E5F2FF] rounded-[2rem] p-10 md:p-14 flex flex-col items-center text-center h-full">
-          <h2 className="text-3xl font-serif font-medium text-foreground mb-6">
+          <h2 className="text-4xl  font-bold text-black mb-10">
             Registered Office
           </h2>
-          <p className="font-bold text-foreground text-sm md:text-base mb-2">
+          <p className="font-bold text-black text-sm md:text-base mb-2">
             Ferozsons Laboratories Limited
           </p>
           <p className=" text-sm md:text-base mb-8 max-w-[250px] leading-relaxed font-light">
@@ -77,7 +77,7 @@ const ContactInfoSection = () => {
 
         {/* Pharma Factory */}
         <div className="bg-[#E5F2FF] rounded-[2rem] p-10 md:p-14 flex flex-col items-center text-center h-full">
-          <h2 className="text-3xl font-serif font-medium text-foreground mb-6">
+          <h2 className="text-4xl  font-bold text-black mb-10">
             Pharma Factory
           </h2>
           <p className="font-bold  text-sm md:text-base mb-2">

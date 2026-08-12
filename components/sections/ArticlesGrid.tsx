@@ -3,10 +3,11 @@
 import { StaggerGrid } from "@/components/animations/StaggerGrid";
 import ArticleCard from "@/components/shared/ArticleCard";
 import type { Article } from "@/data/articles";
+import { ReactNode } from "react";
 
 interface ArticlesGridProps {
   articles: Article[];
-  title?: string;
+  title?: string | ReactNode;
   subtitle?: string;
   columns?: 2 | 3;
   animated?: boolean;
@@ -39,14 +40,14 @@ export default function ArticlesGrid({
         
         {/* Updated Centered Header */}
         {(title || subtitle) && (
-          <div className="flex flex-col items-center justify-center text-center mb-16 gap-6">
+          <div className="flex flex-col items-center text-black justify-center text-center mb-24 gap-16">
             {subtitle && (
-              <span className="text-xs font-semibold tracking-widest text-muted-foreground uppercase">
+              <p className=" font-light  uppercase">
                 {subtitle}
-              </span>
+              </p>
             )}
             {title && (
-              <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-kaisei font-bold leading-tight  max-w-4xl">
+              <h2 className="text-4xl md:text-5xl lg:text-[82px] font-kaisei font-bold leading-normal  max-w-6xl">
                 {title}
               </h2>
             )}

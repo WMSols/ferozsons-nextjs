@@ -90,16 +90,16 @@ export default function SafetyReportingForm() {
     <section className="py-16 md:py-24 bg-[#F8F9FA]">
       <div className="container mx-auto px-4 max-w-6xl flex flex-col items-center">
         
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-foreground">
+        <h2 className="text-3xl  font-bold text-center mb-10 md:mb-20 text-black">
           Safety Reporting Form
         </h2>
 
         {/* Visual Toggle */}
-        <div className="bg-black rounded-[2rem] p-1.5 flex w-full max-w-[500px] mb-16 md:mb-20 shadow-lg">
+        <div className="bg-black rounded-[2rem] py-2 px-1.5 flex w-full max-w-[500px] mb-16 md:mb-20 shadow-lg">
           <button
             type="button"
             onClick={() => setActiveTab("patient")}
-            className={`flex-1 p-6 rounded-[1.75rem] text-center transition-all duration-300 font-bold ${
+            className={`flex-1 py-8 px-6 rounded-[1.75rem] text-center text-xl transition-all duration-300 font-bold ${
               activeTab === "patient"
                 ? "bg-[#3B73AC] text-white shadow-md"
                 : "text-white hover:bg-white/10"
@@ -110,7 +110,7 @@ export default function SafetyReportingForm() {
           <button
             type="button"
             onClick={() => setActiveTab("hcp")}
-            className={`flex-1 p-6 flex items-center justify-center rounded-[1.75rem] text-center transition-all duration-300 font-bold leading-tight ${
+            className={`flex-1 py-8 px-6 flex items-center justify-center text-xl rounded-[1.75rem] text-center transition-all duration-300 font-bold leading-tight ${
               activeTab === "hcp"
                 ? "bg-[#3B73AC] text-white shadow-md"
                 : "text-white hover:bg-white/10"
@@ -129,7 +129,7 @@ export default function SafetyReportingForm() {
               
               {/* Patient Information Section */}
               <div>
-                <h3 className="text-xl md:text-2xl font-bold text-foreground/80 mb-6">
+                <h3 className="text-xl md:text-2xl font-semibold font-sans  text-black mb-6">
                   Patient Information
                 </h3>
                 <input
@@ -168,7 +168,7 @@ export default function SafetyReportingForm() {
 
               {/* Suspected Drug Details Section */}
               <div>
-                <h3 className="text-xl md:text-2xl font-bold text-foreground/80 mb-6">
+                <h3 className="text-xl md:text-2xl font-semibold font-sans  text-black mb-6">
                   Suspected Drug Details
                 </h3>
                 <div className="flex flex-col gap-5">
@@ -195,7 +195,7 @@ export default function SafetyReportingForm() {
 
               {/* Adverse Event Details Section */}
               <div>
-                <h3 className="text-xl md:text-2xl font-bold text-foreground/80 mb-6">
+                <h3 className="text-xl md:text-2xl font-semibold font-sans  text-black mb-6">
                   Adverse Event Details
                 </h3>
                 <div className="flex flex-wrap gap-4 mb-5">
@@ -214,7 +214,7 @@ export default function SafetyReportingForm() {
               
               {/* Seriousness Section */}
               <div>
-                <h3 className="text-xl md:text-2xl font-bold text-foreground/80 mb-6">
+                <h3 className="text-xl md:text-2xl font-semibold font-sans  text-black mb-6">
                   Seriousness
                 </h3>
                 <div className="flex flex-col sm:flex-row gap-4 mb-6">
@@ -240,7 +240,7 @@ export default function SafetyReportingForm() {
 
               {/* Outcome Section */}
               <div>
-                <h3 className="text-xl md:text-2xl font-bold text-foreground/80 mb-6">
+                <h3 className="text-xl md:text-2xl font-semibold font-sans  text-black mb-6">
                   Outcome
                 </h3>
                 <div className="flex flex-col gap-3">
@@ -262,7 +262,7 @@ export default function SafetyReportingForm() {
 
               {/* Pregnancy Exposure Section */}
               <div>
-                <h3 className="text-xl md:text-2xl font-bold text-foreground/80 mb-6">
+                <h3 className="text-xl md:text-2xl font-semibold font-sans  text-black mb-6">
                   Pregnancy Exposure
                 </h3>
                 <div className="flex flex-wrap gap-4">
@@ -273,7 +273,7 @@ export default function SafetyReportingForm() {
 
               {/* Reporter Information Section */}
               <div>
-                <h3 className="text-xl md:text-2xl font-bold text-foreground/80 mb-6">
+                <h3 className="text-xl md:text-2xl font-semibold font-sans  text-black mb-6">
                   Reporter Information
                 </h3>
                 <div className="flex flex-col gap-5">

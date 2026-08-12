@@ -34,7 +34,7 @@ const EgmpSlideshowSection = () => {
           {/* Slides Track */}
           <div 
             // Fluid height that hugs the landscape aspect ratio based on screen width
-            className="relative w-full flex justify-center items-center h-[60vw] sm:h-[45vw] md:h-[40vw] lg:h-[500px] xl:h-[550px] touch-pan-y select-none"
+            className="relative w-full flex justify-center items-center h-[60vw] sm:h-[45vw] md:h-[30vw] lg:h-[500px] xl:h-[600px] touch-pan-y select-none"
             onPointerDown={(e) => {
               touchStartX.current = e.clientX;
               isDragging.current = true;
@@ -105,7 +105,7 @@ const EgmpSlideshowSection = () => {
                 <div
                   key={index}
                   // Enforced landscape aspect ratio (3:2) instead of full-height stretching
-                  className="absolute w-[85%] sm:w-[70%] md:w-[60%] lg:w-[50%] aspect-[3/2] transition-all duration-700 ease-out rounded-2xl md:rounded-[32px] overflow-hidden shadow-lg"
+                  className="absolute w-[85%] sm:w-[70%] md:w-[60%] lg:w-[60%] aspect-[3/2] transition-all duration-700 ease-out rounded-2xl md:rounded-[32px] overflow-hidden shadow-lg"
                   style={{ transform, zIndex, opacity, pointerEvents }}
                   onClick={() => {
                     if (hasMoved.current || isActive) return;
@@ -124,7 +124,7 @@ const EgmpSlideshowSection = () => {
                   {/* Dim non-active slides to draw focus to the center */}
                   <div 
                     className={cn(
-                      "absolute inset-0 bg-white/30 transition-opacity duration-700 pointer-events-none",
+                      "absolute inset-0  transition-opacity duration-700 pointer-events-none",
                       isActive ? "opacity-0" : "opacity-100"
                     )}
                   />

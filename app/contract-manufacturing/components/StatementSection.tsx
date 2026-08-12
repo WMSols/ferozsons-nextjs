@@ -8,12 +8,12 @@ export function StatementSection() {
       <div className="container mx-auto px-4 md:px-6 ">
         <FadeInSection>
           {/* Section Heading */}
-          <h2 className="text-[#3B73AC] text-xl md:text-3xl font-serif mb-8 md:mb-16">
+          <h2 className="text-[#3B73AC] text-xl md:text-3xl mb-8 md:mb-20">
             Contract Manufacturing
           </h2>
           
           {/* Text Content */}
-          <div className="space-y-6 text-xl font-sans md:text-3xl leading-relaxed">
+          <div className="space-y-4 text-xl font-normal text-black md:text-[28px] ">
             <p>
               Ferozsons Laboratories Limited operates a fully cGMP-compliant manufacturing facility, equipped
               with modern production and analytical technologies and certified under quality standards.

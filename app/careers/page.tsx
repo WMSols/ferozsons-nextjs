@@ -46,7 +46,7 @@ export default async function CareersPage() {
       <WhyWorkSection />
 {/* Open Positions Section */}
       <div className="flex flex-col items-center justify-center pb-16 md:pb-20">
-        <h2 className="text-3xl  font-bold mb-10 text-center">Open Positions</h2>
+        <h2 className="text-5xl  font-bold mb-12 md:mb-24 text-center">Open Positions</h2>
         
         <div className="space-y-4 w-full  px-6">
           {jobs.length === 0 ? (
