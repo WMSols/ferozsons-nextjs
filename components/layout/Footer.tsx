@@ -22,7 +22,7 @@ const Footer = ({ dark = false }: { dark?: boolean }) => {
             </Link>
             <p className="text-sm opacity-70 leading-relaxed">
               Committed to improving the quality of life through innovative
-              healthcare solutions since 1954.
+              healthcare solutions since 1956.
             </p>
           </div>
 
@@ -52,7 +52,13 @@ const Footer = ({ dark = false }: { dark?: boolean }) => {
               © {new Date().getFullYear()} Ferozsons Laboratories Limited. All
               rights reserved.
             </p>
-            <p className=" text-xs ">Last date website was updated: 05/08/2026</p>
+           
+            <p className="text-xs text-muted-foreground">“In case your complaint has not been properly redressed by us, you may lodge your 
+complaint with Securities and Exchange Commission of Pakistan (the “SECP”). 
+However, please note that SECP will entertain only those complaints which were at first 
+directly requested to be redressed by the company and the company has failed to 
+redress the same. Further, the complaints that are not relevant to SECP’s regulatory 
+domain/competence shall not be entertained by the SECP.</p>
           </div>
 
           {/* Center Column: SCEP and Jama-Punji logos */}
@@ -114,6 +120,7 @@ const Footer = ({ dark = false }: { dark?: boolean }) => {
               WMsols
             </a>
           </p>
+           <p className=" text-center text-xs ">Last date website was updated: 05/08/2026</p>
         </div>
       </div>
     </footer>

@@ -61,7 +61,7 @@ export default function OurValues() {
         </div>
 
         {/* "PEOPLE TRUST US" Bottom Right Image Placeholder */}
-        <div className="absolute  right-4 -bottom-24 md:-right-24 w-40 h-28 md:w-56 md:h-72 opacity-60">
+        <div className="absolute hidden sm:block  right-4 -bottom-24 md:-right-24 w-40 h-28 md:w-56 md:h-72 opacity-60">
           <Image
             src="/people-trust-us.webp"
             alt="People Trust Us"

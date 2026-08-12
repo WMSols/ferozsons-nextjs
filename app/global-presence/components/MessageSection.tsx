@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function MessageSection() {
   return (
-    <section className="py-12 md:py-20 px-4 md:px-8 container mx-auto">
+    <section className="sm:py-12 md:py-20 px-4 md:px-8 container mx-auto">
       <div className="relative w-full rounded-4xl md:rounded-[3rem] overflow-hidden min-h-[600px] md:min-h-[700px] flex items-center shadow-lg group">
         
         {/* Background Image - Placeholder representing international partners */}

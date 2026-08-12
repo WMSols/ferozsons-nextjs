@@ -1,17 +1,18 @@
 import Image from "next/image";
+import { ReactNode } from "react";
 
 interface GlobalTrustCardProps {
   backgroundImage?: string;
-  tagline?: string;
+  tagline?: string | ReactNode;
 }
 
 export default function GlobalTrustCard({
   backgroundImage = "/global-presence/Secondary-GP.webp",
-  tagline = "Delivering trusted, high-quality pharmaceutical products to over 30 countries",
+  tagline = (<span>Delivering trusted, high-quality pharmaceutical<br className="hidden md:block"/> products to over 30 countries</span>),
 }: GlobalTrustCardProps) {
   return (
-    <section className="   ">
-      <div className="relative w-full  overflow-hidden min-h-[500px] md:min-h-[850px] flex flex-col justify-between  shadow-lg group">
+    <section className="md:min-h-screen mt-8 sm:mt-12  py-10">
+      <div className="relative w-full  overflow-hidden min-h-[500px] md:min-h-screen flex flex-col justify-between  shadow-lg group">
         
         {/* Background Image */}
         <Image
@@ -23,8 +24,6 @@ export default function GlobalTrustCard({
           priority
         />
         
-        {/* Subtle Dark Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/40 transition-opacity duration-500" />
 
         {/* Top-Right Container for Icon */}
         <div className="relative mb-10  z-10 flex justify-end w-full">
@@ -39,8 +38,8 @@ export default function GlobalTrustCard({
         </div>
 
         {/* Bottom Center Tagline */}
-        <div className="relative p-8 md:p-12 lg:p-16 z-10 w-full max-w-2xl mx-auto text-center">
-          <p className="text-white/90 text-lg md:text-2xl font-light leading-relaxed tracking-wide drop-shadow-md">
+        <div className="relative p-8 md:p-12 lg:p-16 z-10 w-full max-w-4xl mx-auto text-center">
+          <p className="text-white text-lg md:text-2xl font-light leading-relaxed  drop-shadow-md">
             {tagline}
           </p>
         </div>
