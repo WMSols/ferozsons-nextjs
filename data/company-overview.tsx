@@ -1,5 +1,6 @@
 import type { StatItem } from "@/components/sections/StatsSection";
 import type { ContentSplitItem } from "@/components/sections/ContentSplitSection";
+import type { TherapeuticArea } from "@/types/strapi";
 
 export const statsData: StatItem[] = [
   { number: "1500+", label: "EMPLOYEES" },
@@ -7,7 +8,7 @@ export const statsData: StatItem[] = [
   { number: "70", label: "YEARS OF TRUSTED SERVICE" },
 ];
 
-export const therapeuticsData = [
+export const therapeuticsData: TherapeuticArea[] = [
   { name: "Cardiology", image: "/images/Icons-Therapeutic-Areas/cardiology.webp" },
   { name: "Oncology", image: "/images/Icons-Therapeutic-Areas/oncology.webp" },
   {
