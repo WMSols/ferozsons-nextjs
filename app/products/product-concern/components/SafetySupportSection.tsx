@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function SafetySupportSection() {
   return (
     <section className="py-16 md:py-24 bg-[#F8F9FA] mt-8 sm:mt-20">
-      <div className="container text-black mx-auto px-4 max-w-8xl flex flex-col gap-16 md:gap-24">
+      <div className="container text-black mx-auto px-4 max-w-9xl flex flex-col gap-16 md:gap-24">
         
         {/* Top Part: Intro & Text (from first screenshot) */}
         <div className="text-center max-w-6xl mx-auto flex flex-col items-center">
@@ -12,7 +12,7 @@ export default function SafetySupportSection() {
             Safety Support
           </span>
           
-          <h2 className="text-4xl md:text-5xl lg:text-[4.5rem] font-bold  mb-8 md:mb-10 leading-[1.15]">
+          <h2 className="text-4xl md:text-5xl lg:text-[4.5rem] font-bold  mb-8 md:mb-14 leading-[1.15]">
             Advancing Patient Safety<br className="hidden md:block"/> Through Your Feedback
           </h2>
           
@@ -47,13 +47,13 @@ export default function SafetySupportSection() {
           <div className="absolute inset-0 bg-black/45 transition-opacity duration-500"></div>
 
           {/* Card Content */}
-          <div className="relative z-10 px-6 py-12 md:px-16 lg:px-24 max-w-7xl">
-            <h3 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-10 md:mb-12">
+          <div className="relative z-10 px-6 py-12 md:px-16 lg:px-24 max-w-8xl">
+            <h3 className="text-white text-3xl md:text-4xl lg:text-[3.3rem] font-bold leading-tight mb-10 md:mb-12">
               Ferozsons Laboratories Limited provides<br className="hidden md:block"/> the following four channels for reporting<br className="hidden md:block"/> adverse events related to our products:
             </h3>
 
             {/* List of Channels */}
-            <div className="text-white/90 text-base md:text-lg space-y-5 md:space-y-6">
+            <div className="text-white/90 text-base md:text-[1.5rem] space-y-5 md:space-y-6">
               <div className="flex gap-3 items-start">
                 <span className="shrink-0">1.</span>
                 <p>
@@ -84,7 +84,7 @@ export default function SafetySupportSection() {
               <div className="flex gap-3 items-start">
                 <span className="shrink-0">4.</span>
                 <p>
-                  You can also complete the form below to report a product concern, adverse event, or
+                  You can also complete the form below to report a product concern, adverse event, or<br className="hidden md:block"/>
                   suspected side effect.
                 </p>
               </div>

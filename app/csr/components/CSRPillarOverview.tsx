@@ -24,8 +24,8 @@ export default function CSRPillarOverview({
             const isActive = activeCategory === key;
 
             return (
+              <a  key={key} href="#initiative-grid">
               <button
-                key={key}
                 onClick={() => onCategoryChange(isActive ? "all" : key)}
                 className={cn(
                   "relative w-full aspect-[4/5] rounded-[32px] overflow-hidden group focus:outline-none transition-all duration-300",
@@ -58,6 +58,7 @@ export default function CSRPillarOverview({
                   </span>
                 </div>
               </button>
+              </a>
             );
           })}
         </div>

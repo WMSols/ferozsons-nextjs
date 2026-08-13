@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { CSRImpactCardData } from "@/data/csrData";
+import { StaggerFadeUpInView } from "@/components/animations/StaggerFadeUpInView";
 
 export default function CSRImpactCard() {
   // Accessing the first item in the array
@@ -24,6 +25,7 @@ export default function CSRImpactCard() {
 
         {/* Content */}
         <div className="relative z-10 px-6 py-12 md:px-16 lg:px-24 max-w-3xl md:max-w-4xl lg:max-w-5xl">
+          <StaggerFadeUpInView>
           <h2 className="text-white text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-6 md:mb-8">
             {data.heading}
           </h2>
@@ -31,6 +33,7 @@ export default function CSRImpactCard() {
           <p className="text-white text-sm md:text-base lg:text-lg leading-relaxed">
             {data.description}
           </p>
+          </StaggerFadeUpInView>
         </div>
         
       </div>

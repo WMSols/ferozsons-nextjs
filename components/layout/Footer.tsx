@@ -1,8 +1,52 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { footerLinks } from "@/data/navigation";
 
 const Footer = ({ dark = false }: { dark?: boolean }) => {
+  // Set the fallback date as the initial state
+  const [displayDate, setDisplayDate] = useState("05/08/2026");
+
+  useEffect(() => {
+    const fetchUpdateDate = async () => {
+      try {
+        const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL || "https://srv1615764.hstgr.cloud";
+        const res = await fetch(`${baseUrl}/api/website-update-date`);
+        
+        if (res.ok) {
+          const json = await res.json();
+          console.log("Strapi Date Data:", json); 
+          
+          // Removed '.attributes' from the chain
+          const rawDate = json?.data?.lastUpdated; 
+          
+          if (rawDate) {
+            const dateObj = new Date(rawDate);
+            
+            setDisplayDate(
+              dateObj.toLocaleString("en-GB", {
+                day: "2-digit",
+                month: "2-digit",
+                year: "numeric",
+                // hour: "2-digit",   
+                // minute: "2-digit", 
+                // second: "2-digit", 
+              })
+            );
+          }
+        } else {
+          console.warn(`Strapi fetch failed with status: ${res.status}`);
+        }
+      } catch (error) {
+        console.error("Failed to fetch website update date:", error);
+      }
+    };
+
+    fetchUpdateDate();
+  }, []);
+
   return (
     <footer
       className={`reveal-section text-navy-foreground ${dark ? "bg-black" : "bg-navy"}`}
@@ -53,7 +97,7 @@ const Footer = ({ dark = false }: { dark?: boolean }) => {
               rights reserved.
             </p>
            
-            <p className="text-xs text-muted-foreground">“In case your complaint has not been properly redressed by us, you may lodge your 
+            <p className="text-xs text-muted-foreground mt-2">“In case your complaint has not been properly redressed by us, you may lodge your 
 complaint with Securities and Exchange Commission of Pakistan (the “SECP”). 
 However, please note that SECP will entertain only those complaints which were at first 
 directly requested to be redressed by the company and the company has failed to 
@@ -120,7 +164,10 @@ domain/competence shall not be entertained by the SECP.</p>
               WMsols
             </a>
           </p>
-           <p className=" text-center text-xs ">Last date website was updated: 05/08/2026</p>
+          {/* Dynamic Date Rendered Here */}
+          <p className="text-center text-xs mt-2 text-muted-foreground">
+            Last date website was updated: {displayDate}
+          </p>
         </div>
       </div>
     </footer>

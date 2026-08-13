@@ -36,7 +36,7 @@ export default function TherapeuticCardBig({
       onClick={onClick}
       className={cn(
         // Increased mobile height to 450px for the taller portrait layout
-        "relative w-full md:w-195 h-[450px]  rounded-[32px] overflow-hidden transition-all duration-700 ease-out cursor-pointer shadow-lg",
+        "relative w-full md:w-195 h-[600px]  rounded-[32px] overflow-hidden transition-all duration-700 ease-out cursor-pointer shadow-lg",
         isActive ? "scale-100 opacity-100" : "scale-90 opacity-60 hover:opacity-80"
       )}
     >

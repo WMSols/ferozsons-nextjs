@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CSRInvestorsCardsData } from "@/data/csrData";
 import { cn } from "@/lib/utils";
+import { StaggerFadeUpInView } from "@/components/animations/StaggerFadeUpInView";
 
 export default function CSRInvestorsCards() {
   return (
@@ -12,10 +13,12 @@ export default function CSRInvestorsCards() {
           const isImageRight = card.imagePosition === "right";
 
           return (
+            <StaggerFadeUpInView key={card.id}>
             <div 
-              key={card.id}
+              
               className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 lg:gap-24 items-center"
             >
+             
               {/* Image Container */}
               <div className={cn(
                 "relative w-full aspect-[4/3] rounded-[32px] overflow-hidden shadow-sm",
@@ -58,7 +61,7 @@ export default function CSRInvestorsCards() {
                 </Link>
               </div>
             </div>
-          );
+         </StaggerFadeUpInView>  );
         })}
       </div>
     </section>

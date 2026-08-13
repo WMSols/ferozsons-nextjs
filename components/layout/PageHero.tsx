@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator, BreadcrumbPage } from "@/components/ui/breadcrumb";
 import { ArrowDown } from "lucide-react";
+import { StaggerFadeUp } from "../animations/StaggerFadeUp";
 
 interface PageHeroProps {
   title: string;
@@ -17,8 +18,8 @@ const PageHero = ({
 }: PageHeroProps) => {
   return (
     <section
-      className={` rounded-b-3xl relative py-16 md:py-24 overflow-hidden ${
-        backgroundImage ? "text-white min-h-screen sm:min-h-[93vh] flex items-center" : "bg-transparent"
+      className={` rounded-b-[3.1rem] relative py-16 md:py-24 overflow-hidden ${
+        backgroundImage ? "text-white min-h-[93vh] flex items-center" : "bg-transparent"
       }`}
     >
       {backgroundImage && (
@@ -57,16 +58,18 @@ const PageHero = ({
             </BreadcrumbList>
           </Breadcrumb>
         )} */}
+        <StaggerFadeUp>
         <h1 className={`text-5xl md:ml-12  lg:text-8xl font-bold ${backgroundImage ? "text-white" : "text-foreground"}`}>
           {title}
         </h1>
+        </StaggerFadeUp>
         {subtitle && (
           <p className={`mt-6 md:ml-12 text-lg font-normal md:text-xl max-w-3xl leading-relaxed ${backgroundImage ? "text-white" : "text-muted-foreground"}`}>
             {subtitle}
           </p>
         )}
       </div>
-        <ArrowDown className="text-white absolute bottom-4 left-1/2 transform -translate-x-1/2 animate-bounce sm:hidden block" />
+       
     </section>
   );
 };

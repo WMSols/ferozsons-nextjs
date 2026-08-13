@@ -20,9 +20,9 @@ const HeroSection = ({
 }: PageHeroProps) => {
   return (
     <section
-      className={`rounded-b-[2rem] md:rounded-b-[3.5rem] relative py-16 md:py-24 overflow-hidden ${
+      className={`rounded-b-[3.1rem] md:rounded-b-[3.5rem] relative py-16 md:py-24 overflow-hidden ${
         backgroundImage
-          ? "text-white min-h-screen sm:min-h-[93vh] flex items-center"
+          ? "text-white min-h-[93vh] flex items-center"
           : "bg-transparent"
       }`}
     >
@@ -41,7 +41,7 @@ const HeroSection = ({
       <div className="container relative z-10 w-full flex flex-col h-full justify-center">
         
         {/* Title Section */}
-        <div className={showInvestorInfo ? "text-center -mt-8 mb-20" : "md:ml-12"}>
+        <div className={showInvestorInfo ? "text-center mt-4 mb-20" : "md:ml-12"}>
           <h1 
             className={`text-4xl sm:text-5xl lg:text-6xl font-bold ${backgroundImage ? "text-white" : "text-foreground"}`}
           >
@@ -121,7 +121,6 @@ const HeroSection = ({
         )}
       </div>
 
-      <ArrowDown className="text-white absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce sm:hidden block" />
     </section>
   );
 };

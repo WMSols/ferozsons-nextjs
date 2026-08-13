@@ -1,20 +1,13 @@
 "use client";
 
-import type { RefObject } from "react";
-import type { MotionValue } from "framer-motion";
+
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-export interface HeroSectionProps {
-  heroRef: RefObject<HTMLElement | null>;
-  heroY: MotionValue<string>;
-}
-
-export function HeroSection({ heroRef, heroY }: HeroSectionProps) {
+export function HeroSection() {
   return (
     <section
-      ref={heroRef}
-      className="relative min-h-screen sm:min-h-[93vh] flex items-center overflow-hidden rounded-b-[2rem] md:rounded-b-[3rem]"
+      className="relative min-h-[95vh] flex items-center overflow-hidden rounded-b-[3.1rem]"
     >
       {/* Background Image & Overlay */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -30,7 +23,6 @@ export function HeroSection({ heroRef, heroY }: HeroSectionProps) {
       </div>
 
       <motion.div
-        style={{ y: heroY }}
         className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-16 py-20 mt-16"
       >
         <div className="max-w-4xl">
@@ -48,7 +40,7 @@ export function HeroSection({ heroRef, heroY }: HeroSectionProps) {
                 hidden: { opacity: 0, y: 30 },
                 visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
               }}
-              className="text-6xl sm:text-7xl md:text-8xl lg:text-[6.5rem] font-bold text-white leading-none mb-6 tracking-tight"
+              className="text-5xl sm:text-7xl md:text-8xl lg:text-[6.5rem] font-bold text-white leading-none mb-6 tracking-tight"
             >
               Manufacturing
             </motion.h1>

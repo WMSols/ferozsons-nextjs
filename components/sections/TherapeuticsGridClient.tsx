@@ -6,6 +6,7 @@ import { TherapeuticArea } from "@/types/strapi";
 import { useCategories } from "@/app/products/hooks/useCategories";
 import { cn } from "@/lib/utils";
 import TherapeuticCardBig from "@/components/shared/TherapeuticCardBig";
+import { StaggerFadeUpInView } from "../animations/StaggerFadeUpInView";
 
 interface TherapeuticsGridProps {
   items: TherapeuticArea[];
@@ -42,17 +43,19 @@ export default function TherapeuticsGridClient({
   };
 
   return (
-    <section className="bg-background py-16 md:py-24 text-black overflow-hidden">
+    <section className="bg-background py-16 md:py-24 mt-8 text-black overflow-hidden">
       <div className="container mx-auto px-4 text-center mb-16">
+        <StaggerFadeUpInView>
         <span className=" font-light   uppercase ">
           Product List
         </span>
         <h3 className="text-3xl md:text-[82px]  font-bold mb-10 mt-8 ">
           A broad portfolio of <br/> pharmaceutical solutions
         </h3>
-        <p className=" text-sm md:text-lg max-w-3xl mx-auto leading-relaxed">
+        <p className=" text-sm md:text-lg max-w-3xl mx-auto mb-10 leading-relaxed">
           Through continuous development and strategic partnerships, we offer medicines<br className="hidden md:block"/> across several therapeutic areas to support modern healthcare.
         </p>
+        </StaggerFadeUpInView>
       </div>
 
       {loading ? (
@@ -68,7 +71,7 @@ export default function TherapeuticsGridClient({
           
           {/* Carousel Track with Swipe Listeners */}
           <div 
-            className="relative w-full flex justify-center items-center h-[420px] md:h-[520px] touch-pan-y select-none"
+            className="relative w-full mt-16 flex justify-center items-center h-[420px] md:h-[520px] touch-pan-y select-none"
             onPointerDown={(e) => {
               touchStartX.current = e.clientX;
               isDragging.current = true;
@@ -149,6 +152,7 @@ export default function TherapeuticsGridClient({
                   className="absolute w-[85%] md:w-[65%] lg:w-[45%] transition-all duration-700 ease-out"
                   style={{ transform, zIndex, opacity, pointerEvents }}
                 >
+                
                   <TherapeuticCardBig
                     item={item}
                     isActive={isActive}

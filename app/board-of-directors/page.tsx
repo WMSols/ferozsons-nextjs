@@ -1,6 +1,6 @@
 // app/board-of-directors/page.tsx
 import { getBoardOfDirectors } from "@/lib/strapi";
-import { sortBoardOfDirectors } from "./_lib/getSortedDirectors"; // or wherever you saved this
+import { sortBoardOfDirectors } from "./_lib/getSortedDirectors"; 
 import BoardMemberCards from "./components/BoardMemberCards";
 import { boardMembers } from "@/data/partnerships";
 import PageHero from "@/components/layout/PageHero";

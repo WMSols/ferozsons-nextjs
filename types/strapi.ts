@@ -153,6 +153,10 @@ export interface StrapiFinancialHighlights {
   eps: string;
   marketCap: string;
   date: string;
+  freeFloatOfShares: string;
+  peRatio: string;
+  dividendPayoutRatio: string;
+  breakupValueOfShares: string;
 }
 
 export interface BoardDirector {
@@ -173,7 +177,10 @@ export interface TherapeuticArea {
   slug?: string;
   image?: {
     url: string;
-  } | string ;
+  } | string;
+  pharma_image?: {
+    url: string;
+  } | string;
   sortNumber?: number;
-  portfolioLink?: string
+  portfolioLink?: string;
 }

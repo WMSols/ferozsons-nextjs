@@ -28,7 +28,7 @@ export default function BoardMemberCards({ members }: BoardMemberProps) {
   }
 
   return (
-    <section className="py-16 md:py-24 bg-background pt-24">
+    <section className="py-16 md:py-28 bg-background pt-24">
       <div className="container mx-auto px-4 max-w-8xl">
         
         {/* Section Heading & Subheading */}
@@ -73,10 +73,10 @@ export default function BoardMemberCards({ members }: BoardMemberProps) {
                 </div>
 
                 {/* Text Content */}
-                <h3 className="text-2xl font-medium font-sans mb-2">
+                <h3 className="text-2xl font-medium text-black font-sans mb-2">
                   {member.name}
                 </h3>
-                <p className="text-sm text-[#565656] mb-4 font-light">
+                <p className=" text-[#565656] mb-4 font-light">
                   {member.role}
                 </p>
                 <button

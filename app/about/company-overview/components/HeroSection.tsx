@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ArrowDown } from "lucide-react";
 import Image from "next/image";
+import Counter from "./Counter";
+import { StaggerFadeUp } from "@/components/animations/StaggerFadeUp";
 
 interface PageHeroProps {
   title: string;
@@ -17,9 +19,9 @@ const HeroSection = ({
 }: PageHeroProps) => {
   return (
     <section
-      className={`rounded-b-[2rem] md:rounded-b-[3.5rem] relative py-16 md:py-24 overflow-hidden ${
+      className={`rounded-b-[2rem] md:rounded-b-[3.1rem] relative py-16 md:py-24 overflow-hidden ${
         backgroundImage
-          ? "text-white min-h-screen sm:min-h-[93vh] flex flex-col"
+          ? "text-white min-h-[93vh] flex flex-col"
           : "bg-black"
       }`}
     >
@@ -35,7 +37,8 @@ const HeroSection = ({
       )}
 
       {/* Main Content Area */}
-      <div className="container relative z-10 w-full flex-1 flex flex-col justify-center">
+      <StaggerFadeUp className="flex flex-col flex-1">
+      <div className="container relative z-10 w-full flex-1 flex flex-col justify-center mt-24">
         
         <div className={showInvestorInfo ? "text-center mb-16" : "text-center"}>
           <h1 
@@ -45,38 +48,30 @@ const HeroSection = ({
           >
             {title}
           </h1>
-          
-          {subtitle && !showInvestorInfo && (
-            <p
-              className={`mt-6 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed ${
-                backgroundImage ? "text-white" : "text-white"
-              }`}
-            >
-              {subtitle}
-            </p>
-          )}
         </div>
       </div>
-
+            </StaggerFadeUp>
       {/* New Stats Section at the Bottom */}
+      <StaggerFadeUp>
       {!showInvestorInfo && (
         <div className="relative z-10 w-auto  md:w-1/2 mx-auto pb-8 md:pb-12 pt-12">
           <div className="grid grid-cols-3 gap-2 px-2 md:px-0  text-center ">
             <div className="flex flex-col items-center pt-4 md:pt-0">
-              <h1 className="text-white text-4xl md:text-5xl font-bold mb-4">1500+</h1>
+              <h1 className="text-white text-4xl md:text-5xl font-bold mb-4"><Counter target="1500"/>+</h1>
               <span className="text-white text-sm md:text-base">Employees</span>
             </div>
             <div className="flex flex-col items-center pt-4 md:pt-0">
-              <h1 className="text-white text-4xl md:text-5xl font-bold mb-4">70+</h1>
+              <h1 className="text-white text-4xl md:text-5xl font-bold mb-4"><Counter target="70"/>+</h1>
               <span className="text-white text-sm md:text-base">Years of Trusted Service</span>
             </div>
             <div className="flex flex-col items-center pt-4 md:pt-0">
-              <h1 className="text-white text-4xl md:text-5xl font-bold mb-4">30+</h1>
+              <h1 className="text-white text-4xl md:text-5xl font-bold mb-4"><Counter target="30"/>+</h1>
               <span className="text-white text-sm md:text-base">Countries We Export To</span>
             </div>
           </div>
         </div>
       )}
+      </StaggerFadeUp>
     </section>
   );
 };

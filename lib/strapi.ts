@@ -318,7 +318,7 @@ export async function getFinancialHighlights(): Promise<ApiResult<StrapiFinancia
 export async function getBoardOfDirectors(): Promise<ApiResult<BoardDirector[]>> {
   let directors: BoardDirector[] = [];
   let error: string | undefined;
-  const url = `${STRAPI_BASE_URL}/api/board-of-directors`;
+  const url = `${STRAPI_BASE_URL}/api/board-of-directors?populate=image`;
 
   try {
     const res = await strapiFetch(url, {
@@ -363,4 +363,33 @@ export async function getTherapeuticAreas(): Promise<TherapeuticArea[]> {
   }
 
   return areas;
+}
+/**
+ * Submit a Safety Report to the Strapi backend.
+ */
+export async function submitSafetyReport(data: any) {
+  // Clean up empty strings for date fields to prevent Strapi validation errors
+  const cleanedData = Object.fromEntries(
+    Object.entries(data).map(([key, value]) => [
+      key,
+      value === "" ? null : value,
+    ])
+  );
+
+  const res = await fetch(`${STRAPI_BASE_URL}/api/safety-reports`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${STRAPI_BEARER_TOKEN}`,
+    },
+    body: JSON.stringify({ data: cleanedData }),
+  });
+
+  if (!res.ok) {
+    const errorData = await res.json().catch(() => null);
+    console.error("Strapi Error:", errorData);
+    throw new Error(errorData?.error?.message || "Failed to submit safety report");
+  }
+
+  return res.json();
 }

@@ -4,6 +4,7 @@ import { StaggerGrid } from "@/components/animations/StaggerGrid";
 import ArticleCard from "@/components/shared/ArticleCard";
 import type { Article } from "@/data/articles";
 import { ReactNode } from "react";
+import { StaggerFadeUpInView } from "../animations/StaggerFadeUpInView";
 
 interface ArticlesGridProps {
   articles: Article[];
@@ -35,21 +36,25 @@ export default function ArticlesGrid({
   ));
 
   return (
-    <section className="bg-background py-24">
+    <section className="bg-background pt-16 pb-20">
       <div className="container mx-auto px-4">
         
         {/* Updated Centered Header */}
         {(title || subtitle) && (
-          <div className="flex flex-col items-center text-black justify-center text-center mb-24 gap-16">
+          <div className="flex flex-col items-center text-black justify-center text-center mb-12 gap-16">
             {subtitle && (
+              <StaggerFadeUpInView>
               <p className=" font-light  uppercase">
                 {subtitle}
               </p>
+              </StaggerFadeUpInView>
             )}
             {title && (
-              <h2 className="text-4xl md:text-5xl lg:text-[82px] font-kaisei font-bold leading-normal  max-w-6xl">
+              <StaggerFadeUpInView>
+              <h2 className="text-4xl md:text-5xl lg:text-[82px]  font-bold leading-normal  max-w-6xl">
                 {title}
               </h2>
+              </StaggerFadeUpInView>
             )}
           </div>
         )}

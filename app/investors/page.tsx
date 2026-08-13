@@ -96,12 +96,10 @@ export default async function InvestorsPage({
       { label: "Net Profit", value: formatCurrency(data.netProfit) },
       { label: "EPS", value: formatCurrency(data.eps) },
       { label: "Market Cap", value: formatCurrency(data.marketCap) },
-      
-      // New mock data appended to the grid
-      { label: "Free Float of Shares", value: "PKR\n13.858B" },
-      { label: "PE Ratio", value: "Y:Z" },
-      { label: "Dividend Payout Ratio", value: "X:Y" },
-      { label: "Breakup Value of Shares", value: "XXXXX" },
+     { label: "Free Float of Shares", value: formatCurrency(data.freeFloatOfShares) },
+      { label: "PE Ratio", value: data.peRatio},
+      { label: "Dividend Payout Ratio", value: data.dividendPayoutRatio },
+      { label: "Breakup Value of Shares", value: formatCurrency(data.breakupValueOfShares) },
     ];
   }
 

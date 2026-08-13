@@ -1,3 +1,4 @@
+import { StaggerFadeUpInView } from "@/components/animations/StaggerFadeUpInView";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -23,13 +24,16 @@ export default function CareersCTA() {
       <div className="container relative z-10 mx-auto px-6 py-10 md:py-20 md:px-12 lg:px-20 w-full">
         <div className="max-w-5xl flex flex-col">
           <div className=" -mt-4 md:-mt-12">
+            <StaggerFadeUpInView>
           <h2 className="text-5xl md:text-7xl  font-bold text-white leading-[1.3] mb-8">
             Join our team and help shape the future of healthcare.
           </h2>
-          
+          </StaggerFadeUpInView>
+          <StaggerFadeUpInView>
           <p className="text-white text-xl md:text-2xl leading-relaxed mb-12 max-w-xl">
             We are committed to employee development through continuous learning and leadership opportunities.
           </p>
+          </StaggerFadeUpInView>
           </div>
           
           <Link 

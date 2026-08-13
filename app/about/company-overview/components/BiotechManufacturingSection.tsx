@@ -1,3 +1,4 @@
+import { StaggerFadeUpInView } from "@/components/animations/StaggerFadeUpInView";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -23,10 +24,13 @@ export default function BiotechManufacturingSection() {
             
             {/* Left Column: Text & CTA */}
             <div className="w-full  flex flex-col gap-12">
+              <StaggerFadeUpInView>
               <h2 className="text-white text-4xl md:text-6xl  font-bold leading-normal mb-16">
                 Advancing Biotech Manufacturing<br/> and Pharmaceutical Capabilities in<br/> Pakistan
               </h2>
+              </StaggerFadeUpInView>
               <div className="flex md:flex-row flex-col justify-between">
+                <StaggerFadeUpInView>
               <div className="text-white space-y-6 max-w-xl text-lg  leading-relaxed mb-10">
                 <p>
                   In partnership with the Bagó Group of Argentina, in 2006 <br/> we established <a href="https://bfbio.com/" className="underline" target="_blank">BF Biosciences Limited</a>, 
@@ -45,12 +49,13 @@ export default function BiotechManufacturingSection() {
                 Learn More About BF Biosciences &rarr;
               </Link>
               </div>
+              </StaggerFadeUpInView>
              
             
 
             {/* Right Column: 4 Stat Cards */}
-            <div className="  h-1/2  gap-4 grid grid-cols-2 ">
-              
+           
+              <StaggerFadeUpInView  className="  h-1/2  gap-4  hidden sm:grid grid-cols-2 ">
               {/* Card 1 - Logo Placeholder */}
               <div className="bg-[#FF00FF40]/70 backdrop-blur-xs  rounded-2xl md:rounded-[2rem] p-2 h-36 w-48 flex flex-col items-center justify-center text-center aspect-square">
                 <Image
@@ -80,7 +85,8 @@ export default function BiotechManufacturingSection() {
                 <span className="text-white text-xs  uppercase ">First In Pakistan</span>
               </div>
               
-            </div>
+            </StaggerFadeUpInView>
+            
             </div>
             </div>
           </div>

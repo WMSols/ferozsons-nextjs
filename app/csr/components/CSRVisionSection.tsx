@@ -1,9 +1,12 @@
+import { StaggerFadeUpInView } from "@/components/animations/StaggerFadeUpInView";
+
 export default function CSRVisionSection() {
   return (
     <section className="py-16 md:py-24">
       <div className="container px-4 md:px-8">
         <div className="max-w-3xl">
           {/* Main Heading */}
+          <StaggerFadeUpInView>
           <h2 className="text-5xl md:text-6xl lg:text-[4.5rem]  font-bold text-black mb-8 leading-[1.1]">
             Creating Impact <br />
             Beyond <span className="text-[#3B73AC] italic">Medicine</span>
@@ -23,6 +26,7 @@ export default function CSRVisionSection() {
             impact, and strong governance, ensuring that the value we create today contributes to<br className="hidden md:block"/>
             a healthier, more resilient future.
           </p>
+          </StaggerFadeUpInView>
         </div>
       </div>
     </section>

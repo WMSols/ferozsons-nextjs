@@ -10,7 +10,7 @@ export default function CSRInitiativeGrid({
 }: CSRInitiativeGridProps) {
   return (
     <>
-      <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+      <div id="initiative-grid" className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3 scroll-mt-72 sm:scroll-mt-48">
         {filtered.map((initiative) => (
           <CSRInitiativeCard key={initiative.id} initiative={initiative} />
         ))}

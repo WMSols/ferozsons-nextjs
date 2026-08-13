@@ -1,3 +1,4 @@
+import { StaggerFadeUpInView } from "@/components/animations/StaggerFadeUpInView";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -24,6 +25,7 @@ export default function KWCampus() {
                 <div className="max-w-5xl flex flex-col items-start">
 
                     {/* Logo Lockup */}
+                    <StaggerFadeUpInView>
                     <div className="flex items-center -mb-8">
                         <div className="w-14 h-14 md:w-36 md:h-36  flex items-center justify-center shrink-0">
                             <img src="/ferozsons-f-white.webp" alt="Ferozsons white logo" />
@@ -32,6 +34,8 @@ export default function KWCampus() {
                             <img src="/people-trust-us.webp" alt="People Trust Us white logo" />
                         </span>
                     </div>
+                    </StaggerFadeUpInView>
+                    <StaggerFadeUpInView>
                     <div className="-mt-4">
 
 
@@ -50,6 +54,7 @@ export default function KWCampus() {
                             schooling to one of the country's most underserved regions.
                         </p>
                     </div>
+                    </StaggerFadeUpInView>
                     {/* CTA Button */}
                     <Link
                         href="/about/purpose"

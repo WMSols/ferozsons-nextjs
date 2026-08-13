@@ -19,14 +19,14 @@ const CommitSection = ({
   showCTA = true,
 }: CTABannerProps) => {
   return (
-    <section className="bg-[#E5F2FF] py-16 md:py-20">
+    <section className="bg-[#E5F2FF] py-16 md:py-32">
       <div className="container">
-        <div className="flex flex-col items-center justify-center  max-w-7xl mx-auto">
+        <div className="flex flex-col items-center justify-center  max-w-9xl mx-auto">
           <div className="text-center flex flex-col gap-4 items-center">
-            <h2 className="text-4xl text-black md:text-[4.6rem] font-bold leading-snug  mb-4">
+            <h2 className="text-4xl text-black md:text-[5rem] font-bold leading-snug  mb-4">
               {title}
             </h2>
-            <p className=" text-[24px] max-w-6xl mb-6 text-black leading-normal">
+            <p className=" text-2xl md:text-[1.6rem] max-w-9xl mb-6 text-black leading-normal">
               {description}
             </p>
             {showCTA && (

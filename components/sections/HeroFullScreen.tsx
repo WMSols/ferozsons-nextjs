@@ -18,7 +18,7 @@ export default function HeroFullScreen({
   return (
     <section
       className={cn(
-        "relative w-full  overflow-hidden rounded-b-3xl flex flex-col items-center justify-center",
+        "relative w-full  overflow-hidden rounded-b-[3.1rem] flex flex-col items-center justify-center",
         className,
       )}
     >
@@ -34,7 +34,6 @@ export default function HeroFullScreen({
         <div className={cn("absolute inset-0 z-[1]", overlayClassName)} />
       </div>
       <div className="relative z-10 w-full">{children}</div>
-      <ChevronDown className="h-8 w-8 animate-bounce sm:hidden block absolute text-white bottom-0 "/>
     </section>
   );
 }

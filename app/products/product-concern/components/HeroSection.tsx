@@ -17,7 +17,7 @@ const HeroSection = ({
 }: PageHeroProps) => {
   return (
     <section
-      className={` rounded-b-3xl relative py-16 md:py-24 overflow-hidden ${
+      className={` rounded-b-[3.1rem] relative py-16 md:py-24 overflow-hidden ${
         backgroundImage ? "text-white min-h-screen sm:min-h-[93vh] flex items-center" : "bg-transparent"
       }`}
     >
