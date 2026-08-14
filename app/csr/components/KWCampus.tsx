@@ -8,7 +8,7 @@ export default function KWCampus() {
             {/* Background Image Placeholder */}
             <div className="absolute inset-0 z-0">
                 <Image
-                    src="/images/csr/initiatives/Quality-Impact.webp"
+                    src="/images/CSR/initiatives/Quality-Impact.webp"
                     alt="Students at Khalid Waheed Campus"
                     fill
                     className="object-cover"
