@@ -17,10 +17,8 @@ export default function TherapeuticCardBig({
   linkHref,
   onClick,
 }: TherapeuticCardBigProps) {
-  // Using a reliable placeholder for development until actual images are provided
   const placeholderImage = "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800";
 
-  // Safely resolve the image URL whether it's a string, Strapi object, or undefined
   const getImageUrl = (img: string | { url: string } | undefined) => {
     if (!img) return undefined;
     return typeof img === "string" ? img : img.url;
@@ -35,9 +33,10 @@ export default function TherapeuticCardBig({
     <div
       onClick={onClick}
       className={cn(
-        // Increased mobile height to 450px for the taller portrait layout
-        "relative w-full md:w-195 h-[600px]  rounded-[32px] overflow-hidden transition-all duration-700 ease-out cursor-pointer shadow-lg",
-        isActive ? "scale-100 opacity-100" : "scale-90 opacity-60 hover:opacity-80"
+        // Taller base height so the center active card is large. 
+        // Side cards will automatically shrink because of the parent's scale() transform.
+        "relative w-full h-[420px] md:h-[400px] lg:h-[460px] xl:h-[500px] rounded-[2rem] overflow-hidden transition-all duration-700 ease-out cursor-pointer shadow-lg",
+        isActive ? "opacity-100" : "opacity-40 hover:opacity-70"
       )}
     >
       <Image
@@ -48,10 +47,7 @@ export default function TherapeuticCardBig({
         sizes="(max-width: 768px) 100vw, 60vw"
       />
       
-      {/* Dark gradient overlay for text readability */}
-      <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-8 md:p-10">
-        
-        {/* Adjusted flex layout for perfect mobile centering while keeping desktop intact */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-8 md:p-10">
         <div className="flex flex-col items-center justify-center h-full md:h-auto md:flex-row md:items-end md:justify-between w-full gap-2 md:gap-4">
           <h3 className="text-white font-sans text-5xl md:pb-5 font-medium w-full md:w-2/3 leading-tight line-clamp-2 text-center md:text-left">
             {item.name}
@@ -59,14 +55,12 @@ export default function TherapeuticCardBig({
           
           <Link
             href={linkHref}
-            className="text-white/90  font-medium underline underline-offset-4 hover:text-white transition-colors shrink-0 md:pb-5"
-            // Prevent the card's onClick from firing when clicking the link directly
+            className="text-white/90 font-medium underline underline-offset-4 hover:text-white transition-colors shrink-0 md:pb-5"
             onClick={(e) => e.stopPropagation()} 
           >
             Explore Range
           </Link>
         </div>
-
       </div>
     </div>
   );

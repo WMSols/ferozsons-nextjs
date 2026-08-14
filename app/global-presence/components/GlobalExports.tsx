@@ -50,7 +50,7 @@ export default function GlobalExports() {
   };
 
   return (
-    <section className="relative  rounded-t-[3.3rem] bg-[#e8e8e8] sm:px-0 px-4 pt-12 sm:pt-16  lg:rounded-t-[4.2rem] lg:pb-20">
+    <section className="relative  rounded-t-[3.3rem] sm:px-0 px-4 pt-12 sm:pt-16  lg:rounded-t-[4.2rem] lg:pb-20">
       <div className="container">
         <h2 className="text-center font-kaisei font-bold text-4xl hidden sm:block leading-[1.05] tracking-tight text-black sm:text-5xl">
           Global Exports Excellence

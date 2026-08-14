@@ -71,7 +71,8 @@ export default function TherapeuticsGridClient({
           
           {/* Carousel Track with Swipe Listeners */}
           <div 
-            className="relative w-full mt-16 flex justify-center items-center h-[420px] md:h-[520px] touch-pan-y select-none"
+            // Adjusted container height to comfortably fit the large center card
+            className="relative w-full mt-16 flex justify-center items-center h-[450px] md:h-[450px] lg:h-[520px] xl:h-[560px] touch-pan-y select-none"
             onPointerDown={(e) => {
               touchStartX.current = e.clientX;
               isDragging.current = true;
@@ -80,7 +81,6 @@ export default function TherapeuticsGridClient({
             onPointerMove={(e) => {
               if (!isDragging.current) return;
               const dx = e.clientX - touchStartX.current;
-              // If moved more than 10px, flag it as a drag (prevents accidental clicks)
               if (Math.abs(dx) > 10) {
                 hasMoved.current = true;
               }
@@ -90,15 +90,10 @@ export default function TherapeuticsGridClient({
               isDragging.current = false;
               const dx = e.clientX - touchStartX.current;
               
-              // Trigger slide change if dragged far enough
               if (Math.abs(dx) > 40) {
-                if (dx < 0) {
-                  nextSlide(); // Swiped left -> Next
-                } else {
-                  prevSlide(); // Swiped right -> Previous
-                }
+                if (dx < 0) nextSlide(); 
+                else prevSlide();
               }
-              // Reset drag flag shortly after to allow clicks again
               requestAnimationFrame(() => {
                 hasMoved.current = false;
               });
@@ -110,18 +105,16 @@ export default function TherapeuticsGridClient({
             {items.map((item, index) => {
               const length = items.length;
               
-              // Math to handle infinite loop wrapping smoothly
               let offset = index - activeIndex;
               if (offset > Math.floor(length / 2)) offset -= length;
               else if (offset < -Math.floor(length / 2)) offset += length;
 
               const isActive = offset === 0;
-              // Add fallback logic for very short lists (e.g. only 2 items)
               const isPrev = offset === -1 || (offset < 0 && length === 2);
               const isNext = offset === 1 || (offset > 0 && length === 2);
 
               // Base styles for hidden cards
-              let transform = "translateX(0) scale(0.8)";
+              let transform = "translateX(0) scale(0.6)";
               let zIndex = 0;
               let opacity = 0;
               let pointerEvents: "none" | "auto" = "none";
@@ -133,12 +126,13 @@ export default function TherapeuticsGridClient({
                 opacity = 1;
                 pointerEvents = "auto";
               } else if (isPrev) {
-                transform = "translateX(-105%) scale(0.85)";
+                // Stronger scale difference (0.75) to make side cards visibly smaller
+                transform = "translateX(-105%) scale(0.75)";
                 zIndex = 5;
                 opacity = 1;
                 pointerEvents = "auto";
               } else if (isNext) {
-                transform = "translateX(105%) scale(0.85)";
+                transform = "translateX(105%) scale(0.75)";
                 zIndex = 5;
                 opacity = 1;
                 pointerEvents = "auto";
@@ -149,16 +143,15 @@ export default function TherapeuticsGridClient({
               return (
                 <div
                   key={item.name}
-                  className="absolute w-[85%] md:w-[65%] lg:w-[45%] transition-all duration-700 ease-out"
+                  // Wider base width ensures the center card gets that distinct landscape look
+                  className="absolute w-[85%] md:w-[60%] lg:w-[50%] xl:w-[55%] transition-all duration-700 ease-out"
                   style={{ transform, zIndex, opacity, pointerEvents }}
                 >
-                
                   <TherapeuticCardBig
                     item={item}
                     isActive={isActive}
                     linkHref={linkHref}
                     onClick={() => {
-                      // Prevent slide change if the user was just swiping
                       if (hasMoved.current) return;
                       if (!isActive) setActiveIndex(index);
                     }}
