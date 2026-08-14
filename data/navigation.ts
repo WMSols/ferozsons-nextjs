@@ -57,7 +57,7 @@ export const mainNavItems: NavItem[] = [
     label: "Global Presence",
     href: "/global-presence",
     description: "Expanding our footprint across borders to ensure our healthcare solutions reach patients worldwide.",
-    megaImage: "/global-presence/secondary-GP.webp",
+    megaImage: "/global-presence/Secondary-GP.webp",
     megaImageSubtitle: "View Our Global Presence",
     megaImageLink: "/global-presence",
   },

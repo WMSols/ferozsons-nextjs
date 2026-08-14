@@ -120,6 +120,7 @@ const EgmpSlideshowSection = () => {
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 75vw"
                     priority={isActive}
+                    unoptimized={true}
                   />
                   {/* Dim non-active slides to draw focus to the center */}
                   <div 
