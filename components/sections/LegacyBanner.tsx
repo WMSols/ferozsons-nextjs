@@ -21,7 +21,7 @@ export default function LegacyBanner({
   showBrandLockup = true,
 }: LegacyBannerProps) {
   return (
-    <section className="w-full">
+    <section className="w-full mt-8">
       <StaggerFadeUpInView className="relative min-h-[60vh] flex flex-col  justify-center px-2 py-20 md:px-12 md:py-24 lg:px-24 lg:py-28">
         <div className="absolute inset-0">
           <img
@@ -48,15 +48,10 @@ export default function LegacyBanner({
           <Button
             asChild
             size="lg"
-            className="mt-10 h-auto w-full min-w-0 sm:w-auto rounded-full bg-primary px-6 py-4 sm:px-8 sm:py-4 text-sm sm:text-base font-semibold text-primary-foreground hover:opacity-90"
+            className="mt-10 h-12 w-full min-w-0 sm:w-auto rounded-full bg-primary px-8 text-base font-medium text-primary-foreground hover:opacity-90"
           >
-            <Link
-              href={ctaLink}
-              className="flex flex-col items-center justify-center gap-y-2 min-w-10 sm:flex-row sm:gap-x-2 sm:justify-start"
-            >
-              <span className="whitespace-normal text-center sm:text-left">
-                {ctaText}
-              </span>
+            <Link href={ctaLink}>
+              {ctaText}
             </Link>
           </Button>
         </StaggerFadeUpInView>

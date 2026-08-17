@@ -232,7 +232,7 @@ const JobApplicationModal = ({ isOpen, onClose, job } : JobApplicationProps) => 
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full rounded-full bg-[#1a65a4] py-3 text-center font-medium text-white transition-colors hover:bg-[#145084] disabled:bg-gray-400 disabled:cursor-not-allowed"
+              className="w-full h-12 rounded-full bg-[#1a65a4] text-center text-base font-medium text-white transition-colors hover:bg-[#145084] disabled:bg-gray-400 disabled:cursor-not-allowed"
             >
               {isSubmitting ? "Submitting..." : "Submit Application"}
             </button>

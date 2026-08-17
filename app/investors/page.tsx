@@ -125,7 +125,7 @@ export default async function InvestorsPage({
       {/* OVERLAPPING TAB LOGIC */}
       <div className="relative z-20 -mt-14 md:-mt-20 flex justify-center w-full px-4">
         <div className="bg-background rounded-t-[2rem] md:rounded-t-[3rem] w-full max-w-4xl px-8 pt-8 md:pt-10 pb-2 text-center">
-          <h2 className="text-2xl md:text-3xl lg:text-[2rem] font-serif font-medium text-[#3B73AC]">
+          <h2 className="text-2xl md:text-3xl lg:text-[2rem] font-semibold text-[#3B73AC]">
             Financial Highlights
           </h2>
         </div>

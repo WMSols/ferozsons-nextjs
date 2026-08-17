@@ -43,7 +43,7 @@ export default function TherapeuticsGridClient({
   };
 
   return (
-    <section className="bg-background py-16 md:py-24 mt-8 text-black overflow-hidden">
+    <section className="bg-background mt-8 pt-16 md:pt-24 pb-0 text-black overflow-hidden">
       <div className="container mx-auto px-4 text-center mb-16">
         <StaggerFadeUpInView>
         <span className=" font-light   uppercase ">
@@ -72,7 +72,7 @@ export default function TherapeuticsGridClient({
           {/* Carousel Track with Swipe Listeners */}
           <div 
             // Adjusted container height to comfortably fit the large center card
-            className="relative w-full mt-16 flex justify-center items-center h-[450px] md:h-[450px] lg:h-[520px] xl:h-[560px] touch-pan-y select-none"
+            className="relative w-full mt-16 flex justify-center items-center h-[620px] md:h-[600px] lg:h-[640px] xl:h-[700px] touch-pan-y select-none"
             onPointerDown={(e) => {
               touchStartX.current = e.clientX;
               isDragging.current = true;
@@ -113,49 +113,37 @@ export default function TherapeuticsGridClient({
               const isPrev = offset === -1 || (offset < 0 && length === 2);
               const isNext = offset === 1 || (offset > 0 && length === 2);
 
-              // Base styles for hidden cards
-              let transform = "translateX(0) scale(0.6)";
-              let zIndex = 0;
-              let opacity = 0;
-              let pointerEvents: "none" | "auto" = "none";
-
-              // Apply dynamic styles based on position
-              if (isActive) {
-                transform = "translateX(0) scale(1)";
-                zIndex = 10;
-                opacity = 1;
-                pointerEvents = "auto";
-              } else if (isPrev) {
-                // Stronger scale difference (0.75) to make side cards visibly smaller
-                transform = "translateX(-105%) scale(0.75)";
-                zIndex = 5;
-                opacity = 1;
-                pointerEvents = "auto";
-              } else if (isNext) {
-                transform = "translateX(105%) scale(0.75)";
-                zIndex = 5;
-                opacity = 1;
-                pointerEvents = "auto";
-              }
-
               const linkHref = `/products?category=${getCategorySlug(item.name)}`;
 
               return (
                 <div
                   key={item.name}
-                  // Wider base width ensures the center card gets that distinct landscape look
-                  className="absolute w-[85%] md:w-[60%] lg:w-[50%] xl:w-[55%] transition-all duration-700 ease-out"
-                  style={{ transform, zIndex, opacity, pointerEvents }}
+                  className={cn(
+                    "absolute left-1/2 top-1/2 w-[70%] md:w-[54%] lg:w-[50%] xl:w-[60%] -translate-x-1/2 -translate-y-1/2 transition-opacity duration-700 ease-out",
+                    isActive && "z-10 opacity-100 pointer-events-auto",
+                    (isPrev || isNext) && "z-[5] opacity-100 pointer-events-auto",
+                    !isActive && !isPrev && !isNext && "z-0 opacity-0 pointer-events-none"
+                  )}
                 >
-                  <TherapeuticCardBig
-                    item={item}
-                    isActive={isActive}
-                    linkHref={linkHref}
-                    onClick={() => {
-                      if (hasMoved.current) return;
-                      if (!isActive) setActiveIndex(index);
-                    }}
-                  />
+                  <div
+                    className={cn(
+                      "transition-transform duration-700 ease-out",
+                      isActive && "translate-x-0 scale-100",
+                      isPrev && "-translate-x-[95%] md:-translate-x-[90%] scale-75 sm:scale-[0.68] ",
+                      isNext && "translate-x-[95%] md:translate-x-[90%] scale-75 sm:scale-[0.68] ",
+                      !isActive && !isPrev && !isNext && "scale-[0.6]"
+                    )}
+                  >
+                    <TherapeuticCardBig
+                      item={item}
+                      isActive={isActive}
+                      linkHref={linkHref}
+                      onClick={() => {
+                        if (hasMoved.current) return;
+                        if (!isActive) setActiveIndex(index);
+                      }}
+                    />
+                  </div>
                 </div>
               );
             })}

@@ -55,7 +55,7 @@ export default function PositionCard({
             <h3 className=" text-3xl font-bold text-[#3B73AC]">{title}</h3>
                 <button
           onClick={() => setIsModalOpen(true)}
-          className="whitespace-nowrap rounded-full bg-[#1a65a4] px-8 py-4 hidden sm:block  font-medium text-white transition-colors hover:bg-[#145084]"
+          className="whitespace-nowrap rounded-full bg-[#1a65a4] h-12 px-8 hidden sm:inline-flex items-center justify-center text-base font-medium text-white transition-colors hover:bg-[#145084]"
         >
           Apply Now
         </button>
@@ -87,7 +87,7 @@ export default function PositionCard({
           </div> */}
                  <button
           onClick={() => setIsModalOpen(true)}
-          className="whitespace-nowrap rounded-full bg-[#1a65a4] px-8 py-4 mt-4 sm:hidden block   font-medium text-white transition-colors hover:bg-[#145084]"
+          className="whitespace-nowrap rounded-full bg-[#1a65a4] h-12 px-8 mt-4 sm:hidden inline-flex items-center justify-center text-base font-medium text-white transition-colors hover:bg-[#145084]"
         >
           Apply Now
         </button>

@@ -10,6 +10,7 @@ import HepatitisBreakthrough from "./components/HepatitisBreakthrough";
 import CareersCTA from "./components/CareersCTA";
 import TherapeuticsGrid from "@/components/sections/TherapeuticsGrid";
 import ArticlesGridClient from "@/components/sections/ArticlesGridClient";
+import CTABanner from "@/components/layout/CTABanner";
 
 const FerozsonAbout: React.FC = () => {
   return (
@@ -34,7 +35,8 @@ const FerozsonAbout: React.FC = () => {
       {/* <CtaSection /> */}
       <TherapeuticsGrid/>
       <ArticlesGridClient/>
-    </div>
+      <CTABanner/>
+    </div>  
   );
 };
 

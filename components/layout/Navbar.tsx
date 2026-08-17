@@ -23,12 +23,45 @@ const Navbar = () => {
   const router = useRouter();
   const desktopSearchRef = useRef<HTMLInputElement>(null);
   const navContainerRef = useRef<HTMLDivElement>(null);
+  const closeMenuTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const ignoreHamburgerHoverRef = useRef(false);
 
   useEffect(() => {
     if (desktopSearchOpen) {
       desktopSearchRef.current?.focus();
     }
   }, [desktopSearchOpen]);
+
+  const clearCloseMenuTimeout = () => {
+    if (closeMenuTimeoutRef.current) {
+      clearTimeout(closeMenuTimeoutRef.current);
+      closeMenuTimeoutRef.current = null;
+    }
+  };
+
+  const openDesktopMenu = () => {
+    if (ignoreHamburgerHoverRef.current) return;
+    clearCloseMenuTimeout();
+    setDesktopMenuOpen(true);
+    setActivePrimaryDropdown((current) => current ?? mainNavItems[0]?.label ?? null);
+  };
+
+  const closeDesktopMenu = () => {
+    clearCloseMenuTimeout();
+    setDesktopMenuOpen(false);
+    setActivePrimaryDropdown(null);
+  };
+
+  const scheduleCloseDesktopMenu = () => {
+    clearCloseMenuTimeout();
+    closeMenuTimeoutRef.current = setTimeout(() => {
+      closeDesktopMenu();
+    }, 160);
+  };
+
+  useEffect(() => {
+    return () => clearCloseMenuTimeout();
+  }, []);
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -65,7 +98,7 @@ const Navbar = () => {
     return (
       <div className="absolute top-full left-0 right-0 z-50 before:absolute before:inset-x-0 before:-top-8 before:h-8 before:bg-transparent">
         {/* Adjusted padding to hug the ceiling (px-10 pb-10 pt-6) */}
-        <div className="bg-[#000000] border-t border-white/20 rounded-b-[25px] shadow-2xl px-10 pb-10 pt-6 animate-in fade-in duration-300 ease-in">
+        <div className="bg-[#000000] border-t border-white/20 rounded-b-[25px] shadow-2xl px-10 pb-10 pt-6 origin-top animate-in fade-in slide-in-from-top-3 duration-300 ease-out">
           {/* Removed top padding (py-8 to pb-4) to bring elements higher */}
           <div className="grid grid-cols-13 gap-4 pb-4">
 
@@ -173,6 +206,8 @@ const Navbar = () => {
           "hidden ixl:flex flex-col bg-[#000000] shadow-[0_2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 relative",
           activePrimaryDropdown ? "rounded-t-[25px]" : "rounded-[25px]"
         )}
+        onMouseLeave={scheduleCloseDesktopMenu}
+        onMouseEnter={clearCloseMenuTimeout}
       >
         {desktopSearchOpen ? (
           /* Full-width Search View */
@@ -251,11 +286,21 @@ const Navbar = () => {
                 </button>
                 <button
                   className="text-[#FFFFFF] hover:text-gray-300"
+                  onMouseEnter={openDesktopMenu}
+                  onMouseLeave={() => {
+                    ignoreHamburgerHoverRef.current = false;
+                  }}
                   onClick={() => {
-                    setDesktopMenuOpen(!desktopMenuOpen);
-                    setActivePrimaryDropdown(null);
+                    if (desktopMenuOpen) {
+                      ignoreHamburgerHoverRef.current = true;
+                      closeDesktopMenu();
+                    } else {
+                      ignoreHamburgerHoverRef.current = false;
+                      openDesktopMenu();
+                    }
                   }}
                   aria-label="Toggle menu"
+                  aria-expanded={desktopMenuOpen}
                 >
                   {desktopMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
                 </button>
@@ -264,14 +309,13 @@ const Navbar = () => {
 
             {/* Row 2: Expanded Nav Items */}
             {desktopMenuOpen && (
-              <div className="flex items-center justify-between px-8 pb-5 pt-2 w-full animate-in fade-in slide-in-from-top-2 duration-300">
+              <div className="flex items-center justify-between px-8 pb-5 pt-2 w-full animate-in fade-in slide-in-from-top-3 duration-300 ease-out">
                 <nav className="flex items-center gap-4 flex-1 justify-start">
                   {mainNavItems.map((item) => (
                     <div
                       key={item.href}
                       className="static"
                       onMouseEnter={() => hasDropdown(item) && setActivePrimaryDropdown(item.label)}
-                      onMouseLeave={() => setActivePrimaryDropdown(null)}
                     >
                       <Link
                         href={item.href}
@@ -298,7 +342,6 @@ const Navbar = () => {
                       key={item.href}
                       className="static"
                       onMouseEnter={() => hasDropdown(item) && setActivePrimaryDropdown(item.label)}
-                      onMouseLeave={() => setActivePrimaryDropdown(null)}
                     >
                       <Link
                         href={item.href}
@@ -472,20 +515,24 @@ const Navbar = () => {
                           </Link>
                         ))}
 
-                        {/* Inject Strapi Categories into mobile Products dropdown */}
-                        {activeItem.label === "Products" && productCategories.map(cat => (
-                          <Link
-                            key={cat.slug || cat.name}
-                            href={`/products?category=${encodeURIComponent(cat.slug || cat.name)}`}
-                            className="text-white text-lg font-medium hover:text-[#89bdf2] hover:underline underline-offset-4 transition-all"
-                            onClick={() => {
-                              setMobileOpen(false);
-                              setMobileDropdown(null);
-                            }}
-                          >
-                            {cat.name}
-                          </Link>
-                        ))}
+                        {activeItem.label === "Products" && productCategories.length > 0 && (
+                          <>
+                            <div className="h-px w-full bg-white/20" aria-hidden />
+                            {productCategories.map((cat) => (
+                              <Link
+                                key={cat.slug || cat.name}
+                                href={`/products?category=${encodeURIComponent(cat.slug || cat.name)}`}
+                                className="text-white/50 text-lg font-medium hover:text-white transition-colors"
+                                onClick={() => {
+                                  setMobileOpen(false);
+                                  setMobileDropdown(null);
+                                }}
+                              >
+                                {cat.name}
+                              </Link>
+                            ))}
+                          </>
+                        )}
                       </div>
 
                       {/* Image Card for Mega Menu */}

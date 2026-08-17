@@ -14,7 +14,7 @@ export default function BrandLockup({
   const suffix = variant === "light" ? "light" : "dark";
 
   return (
-    <div className={cn("flex items-center gap-4 ml-4 sm:ml-8 ", className)}>
+    <div className={cn("flex items-center sm:gap-4 ml-4 sm:ml-8 ", className)}>
       <img
         src="ferozsons-f-white.webp"
         alt="Ferozsons logo"
@@ -23,7 +23,7 @@ export default function BrandLockup({
       <img
         src="people-trust-us.webp"
         alt="People Trust Us"
-        className={cn("shrink-0 h-20 md:h-36")}
+        className={cn("shrink-0 h-28 md:h-36")}
       />
     </div>
   );

@@ -20,7 +20,7 @@ const HeroSection = ({
 }: PageHeroProps) => {
   return (
     <section
-      className={`rounded-b-[3.1rem] md:rounded-b-[3.5rem] relative py-16 md:py-24 overflow-hidden ${
+      className={`rounded-b-[3.1rem] md:rounded-b-[3.5rem] relative pb-16 pt-10 md:pb-24 md:pt-12 overflow-hidden ${
         backgroundImage
           ? "text-white min-h-[93vh] flex items-center"
           : "bg-transparent"
@@ -41,7 +41,7 @@ const HeroSection = ({
       <div className="container relative z-10 w-full flex flex-col h-full justify-center">
         
         {/* Title Section */}
-        <div className={showInvestorInfo ? "text-center mt-4 mb-20" : "md:ml-12"}>
+        <div className={showInvestorInfo ? "text-center mt-2 mb-20" : "md:ml-12"}>
           <h1 
             className={`text-4xl sm:text-5xl lg:text-6xl font-bold ${backgroundImage ? "text-white" : "text-foreground"}`}
           >
@@ -62,7 +62,7 @@ const HeroSection = ({
 
         {/* Specific Investor Information Block */}
         {showInvestorInfo && (
-          <div className="flex flex-col gap-8 md:ml-12 lg:ml-24 max-w-xl">
+          <div className="flex flex-col gap-8 md:ml-8  max-w-4xl">
             
             {/* Feroz Symbol */}
             <a
@@ -79,7 +79,7 @@ const HeroSection = ({
                 />
               </div>
               <div className="flex flex-col">
-                <h3 className="text-white text-2xl sm:text-[2rem] font-sans font-bold tracking-wide">
+                <h3 className="text-white text-2xl  sm:text-[2.5rem] font-sans font-bold tracking-wide">
                   FEROZ
                 </h3>
                 <p className="text-white/80 text-sm font-light tracking-wide mt-0.5">
@@ -103,7 +103,7 @@ const HeroSection = ({
                 />
               </a>
               <div className="flex flex-col">
-                <h3 className="text-white text-2xl sm:text-[2rem] font-sans font-bold tracking-wide">
+                <h3 className="text-white text-2xl sm:text-[2.5rem] font-sans font-bold tracking-wide">
                   Pakistan Stock Exchange
                 </h3>
                 <a

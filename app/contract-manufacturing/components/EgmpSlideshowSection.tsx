@@ -77,13 +77,13 @@ const EgmpSlideshowSection = () => {
               const isPrev = offset === -1 || (offset < 0 && length === 2);
               const isNext = offset === 1 || (offset > 0 && length === 2);
 
-              // Base styling for completely hidden cards
-              let transform = "translateX(0) scale(0.7)";
+              let transform = offset < 0
+                ? "translateX(-130%) scale(0.85)"
+                : "translateX(130%) scale(0.85)";
               let zIndex = 0;
               let opacity = 0;
               let pointerEvents: "none" | "auto" = "none";
 
-              // 110% translation pushes them out to create the gap
               if (isActive) {
                 transform = "translateX(0) scale(1)";
                 zIndex = 10;

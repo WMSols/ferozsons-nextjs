@@ -58,7 +58,7 @@ export default function KWCampus() {
                     {/* CTA Button */}
                     <Link
                         href="/about/purpose"
-                        className="inline-flex mt-8 items-center justify-center bg-[#3B73AC] hover:bg-[#214e7b] text-white px-8 py-2 rounded-full transition-colors w-fit"
+                        className="inline-flex mt-8 items-center justify-center bg-[#3B73AC] hover:bg-[#214e7b] text-white text-base font-medium h-12 px-8 rounded-full transition-colors w-fit"
                     >
                         Missions, Strategy & Values
                     </Link>

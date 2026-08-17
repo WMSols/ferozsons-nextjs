@@ -18,12 +18,12 @@ export interface NavItem {
 export const mainNavItems: NavItem[] = [
   {
     label: "About Us",
-    href: "/about",
+    href: "/about/company-overview",
     description: "For over 70 years, Ferozsons Laboratories Limited has been putting patients first.",
     megaImage: "/nav-about.webp",
     megaImageTitle: "Putting Patients First Since 1956",
     megaImageSubtitle: "Discover Our Company",
-    megaImageLink: "/about",
+    megaImageLink: "/about/company-overview",
     children: [
       { label: "Our History", href: "/about/history" },
       { label: "Company Overview", href: "/about/company-overview" },
@@ -48,7 +48,7 @@ export const mainNavItems: NavItem[] = [
   {
     label: "Partnerships",
     href: "/partnerships",
-    description: "Collaborating with global innovators to bring the best healthcare solutions to the regions we serve.",
+    description: "We believe meaningful healthcare progress is achieved through trusted partnerships and a shared commitment to patient care. ",
     megaImage: "/nav-partnerships.webp",
     megaImageSubtitle: "Explore Our Partners",
     megaImageLink: "/partnerships",
@@ -56,7 +56,7 @@ export const mainNavItems: NavItem[] = [
   {
     label: "Global Presence",
     href: "/global-presence",
-    description: "Expanding our footprint across borders to ensure our healthcare solutions reach patients worldwide.",
+    description: "Delivering trusted, high-quality pharmaceutical products to over 30 countries.",
     megaImage: "/global-presence/Secondary-GP.webp",
     megaImageSubtitle: "View Our Global Presence",
     megaImageLink: "/global-presence",
@@ -64,7 +64,7 @@ export const mainNavItems: NavItem[] = [
   {
     label: "Manufacturing",
     href: "/contract-manufacturing",
-    description: "State-of-the-art facilities ensuring the highest standards of quality and safety in every product we make.",
+    description: "A fully cGMP-compliant pharmaceutical manufacturing facility delivering world-class formulations for domestic and global markets since 1956.",
     megaImage: "/images/contract-manufacturing/slideshow/vjhvjvhg.webp",
     megaImageSubtitle: "Learn About Our Manufacturing",
     megaImageLink: "/contract-manufacturing",
@@ -73,7 +73,7 @@ export const mainNavItems: NavItem[] = [
   {
     label: "ESG",
     href: "/csr",
-    description: "Committed to sustainable practices, environmental stewardship, and creating a positive social impact in our communities.",
+    description: "We are committed to creating lasting value through sustainable practices, social impact, and responsible business.",
     megaImage: "/images/CSR/initiatives/Community.webp",
     megaImageSubtitle: "See Our Impact",
     megaImageLink: "/csr",
@@ -84,7 +84,7 @@ export const secondaryNavItems: NavItem[] = [
   {
     label: "Investors",
     href: "/investors",
-    description: "Access our latest financial reports, stock performance, and corporate governance updates.",
+    description: "We enhance shareholder value by collaborating for excellence and upholding the highest standards of ethics and transparency.",
     megaImage: "/nav-investors.webp",
     megaImageSubtitle: "Investor Information",
     megaImageLink: "/investors",
@@ -98,7 +98,7 @@ export const secondaryNavItems: NavItem[] = [
   {
     label: "Careers",
     href: "/careers",
-    description: "Join a dedicated team committed to putting patients first and making a real impact in healthcare.",
+    description: "We are committed to employee development through continuous learning and leadership opportunities.",
     megaImage: "/images/careers/values.webp",
     megaImageSubtitle: "Find your role at Ferozsons",
     megaImageLink: "/careers",
@@ -106,7 +106,7 @@ export const secondaryNavItems: NavItem[] = [
 ];
 export const footerLinks = {
   column1: [
-    { label: "About Us", href: "/about" },
+    { label: "About Us", href: "/company-overview" },
     { label: "Products", href: "/products" },
     { label: "Partnerships", href: "/partnerships" },
     { label: "Investor Information", href: "/investors" },
@@ -118,7 +118,7 @@ export const footerLinks = {
     { label: "Contact Us", href: "/contact" },
   ],
   column3: [
-    { label: "Creating Impact", href: "/csr" },
+    { label: "ESG", href: "/csr" },
     { label: "Board of Directors", href: "/board-of-directors" },
   ],
 };

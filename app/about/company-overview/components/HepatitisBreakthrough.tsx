@@ -32,7 +32,7 @@ export default function HepatitisBreakthrough() {
         </div>
 
         {/* Bottom Section: Huge Number & Image Card */}
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-42">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 sm:gap-42">
           
           {/* Left Stats */}
           <div className="flex flex-col text-black">
@@ -59,8 +59,8 @@ export default function HepatitisBreakthrough() {
             />
             {/* Dark Overlay for Text Readability */}
             <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-white text-center p-6">
-               <span className="text-base md:text-lg mb-1">In partnership with</span>
-               <span className="text-3xl md:text-4xl font-bold">Gilead Sciences</span>
+               <span className="text-2xl font-light ">In partnership with</span>
+               <h3 className="text-3xl md:text-4xl font-bold">Gilead Sciences</h3>
             </div>
           </div>
 

@@ -51,7 +51,7 @@ export default function ProductSearchSection({
             </Link>
           </div>
             <button
-              className="rounded-full py-3.5 px-10   bg-[#3B73AC] text-white hover:bg-[#2A5A8C] shrink-0"
+              className="inline-flex items-center justify-center rounded-full h-12 px-8 bg-[#3B73AC] text-white text-base font-medium hover:bg-[#2A5A8C] shrink-0"
             >
               <Link href={ctaLink}>{ctaText}</Link>
             </button>

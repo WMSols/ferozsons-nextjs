@@ -516,7 +516,7 @@ export default function SafetyReportingForm() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="bg-[#3B73AC] hover:bg-[#294e74] text-white font-medium px-10 py-3.5 rounded-full transition-colors shadow-sm hover:shadow-md disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center min-w-[180px]"
+                  className="bg-[#3B73AC] hover:bg-[#294e74] text-white font-medium text-base h-12 px-8 rounded-full transition-colors shadow-sm hover:shadow-md disabled:opacity-70 disabled:cursor-not-allowed inline-flex items-center justify-center"
                 >
                   {isSubmitting ? (
                     <span className="flex items-center gap-2">

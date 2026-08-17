@@ -1,12 +1,13 @@
 import { StaggerFadeUpInView } from "@/components/animations/StaggerFadeUpInView";
+import { ArrowRightIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function BiotechManufacturingSection() {
   return (
-    <section className="py-16 md:py-20 bg-white">
+    <section className="py-0 md:py-20 bg-white">
       <div>
-        <div className="relative w-full py-10 overflow-hidden min-h-[800px] flex items-center shadow-lg group">
+        <div className="relative w-full overflow-hidden min-h-svh h-svh md:h-auto md:min-h-[800px] flex items-center shadow-lg group">
           
           {/* Background Image Placeholder */}
           <Image
@@ -18,35 +19,35 @@ export default function BiotechManufacturingSection() {
           />
           
           {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-black/70 transition-opacity duration-500"></div>
+          <div className="absolute inset-0 bg-black/60 transition-opacity duration-500"></div>
 
-          <div className="relative z-10 px-6 py-24 md:px-16 lg:px-24 w-full flex flex-col lg:flex-row gap-12 lg:gap-10 items-center">
+          <div className="relative z-10 px-5 py-8 md:px-16 md:py-24 lg:px-24 w-full flex flex-col lg:flex-row gap-6 lg:gap-10 items-center">
             
             {/* Left Column: Text & CTA */}
-            <div className="w-full  flex flex-col gap-12">
+            <div className="w-full flex flex-col gap-4 md:gap-12">
               <StaggerFadeUpInView>
-              <h2 className="text-white text-4xl md:text-6xl  font-bold leading-normal mb-16">
-                Advancing Biotech Manufacturing<br/> and Pharmaceutical Capabilities in<br/> Pakistan
+              <h2 className="text-white text-[2.3rem] leading-snug md:text-6xl font-bold md:leading-normal mb-3 md:mb-16">
+                Advancing Biotech<br className="block md:hidden"/> Manufacturing<br className="hidden md:block"/> and<br className="block md:hidden"/> Pharmaceutical<br className="block md:hidden"/> Capabilities in<br className="block"/> Pakistan
               </h2>
               </StaggerFadeUpInView>
               <div className="flex md:flex-row flex-col justify-between">
                 <StaggerFadeUpInView>
-              <div className="text-white space-y-6 max-w-xl text-lg  leading-relaxed mb-10">
+              <div className="text-white space-y-3 md:space-y-6 max-w-xl text-lg leading-relaxed mb-4 md:mb-10">
                 <p>
-                  In partnership with the Bagó Group of Argentina, in 2006 <br/> we established <a href="https://bfbio.com/" className="underline" target="_blank">BF Biosciences Limited</a>, 
-                  a cGMP-compliant biotechnology facility dedicated exclusively to the <br/> manufacture of biological products.
+                  In partnership with the Bagó Group of Argentina, in 2006 <br className="hidden md:block"/> we established <a href="https://bfbio.com/" className="underline" target="_blank">BF Biosciences Limited</a>, 
+                  a cGMP-compliant biotechnology facility dedicated exclusively to the <br className="hidden md:block"/> manufacture of biological products.
                 </p>
                 <p>
-                  In 2024, <a href="https://bfbio.com/" className="underline" target="_blank">BF Biosciences Limited</a> was successfully listed on<br/> the Pakistan Stock Exchange following a 
-                  highly successful<br/> IPO. As the first and only company in Pakistan to operate a<br/> biotech manufacturing 
-                  facility of this kind, we continue to<br/> strengthen the country's capabilities in advanced 
+                  In 2024, <a href="https://bfbio.com/" className="underline" target="_blank">BF Biosciences Limited</a> was successfully listed on<br className="hidden md:block"/> the Pakistan Stock Exchange following a 
+                  highly successful<br className="hidden md:block"/> IPO. As the first and only company in Pakistan to operate a<br className="hidden md:block"/> biotech manufacturing 
+                  facility of this kind, we continue to<br className="hidden md:block"/> strengthen the country's capabilities in advanced 
                   biopharmaceutical production.
                 </p>
                  <Link
                 href="/bf-biosciences"
-                className="inline-flex items-center justify-center mt-12 bg-[#FF00FF40]/50 hover:bg-[#6b2265] text-white font-bold px-8 py-3.5 rounded-full transition-colors w-fit"
+                className="inline-flex items-center justify-center mt-5 md:mt-12 bg-[#FF00FF40]/50 hover:bg-[#6b2265] text-white font-semibold sm:font-bold text-sm md:text-base px-6 py-3 md:px-8 md:py-3.5 rounded-full transition-colors w-fit gap-2 "
               >
-                Learn More About BF Biosciences &rarr;
+                Learn More About BF Biosciences <ArrowRightIcon className="w-6 h-6" />
               </Link>
               </div>
               </StaggerFadeUpInView>
@@ -82,7 +83,6 @@ export default function BiotechManufacturingSection() {
               {/* Card 4 */} 
               <div className="bg-[#3B73AC80]/70 backdrop-blur-xs  rounded-2xl md:rounded-[2rem]  h-36 w-48 flex flex-col items-center justify-center text-center aspect-square">
                 <h2 className="text-white font-bold text-3xl ">cGMP</h2>
-                <span className="text-white text-xs  uppercase ">First In Pakistan</span>
               </div>
               
             </StaggerFadeUpInView>

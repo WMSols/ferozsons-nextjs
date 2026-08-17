@@ -29,7 +29,7 @@ export const heroSlides: HeroSlide[] = [
     description:
       (<span>A patient-centric healthcare organization focused on <br className="hidden sm:block" /> addressing critical unmet medical needs in Pakistan and <br className="hidden sm:block" /> international markets.</span>),
     ctaText: "Learn more",
-    ctaLink: "/about/ceo-message",
+    ctaLink: "/about/history",
     align: "center",
   },
   {

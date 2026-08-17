@@ -32,30 +32,30 @@ export default function TherapeuticCardBig({
   return (
     <div
       onClick={onClick}
-      className={cn(
-        // Taller base height so the center active card is large. 
-        // Side cards will automatically shrink because of the parent's scale() transform.
-        "relative w-full h-[420px] md:h-[400px] lg:h-[460px] xl:h-[500px] rounded-[2rem] overflow-hidden transition-all duration-700 ease-out cursor-pointer shadow-lg",
-        isActive ? "opacity-100" : "opacity-40 hover:opacity-70"
-      )}
+      className="relative w-full h-[580px] md:h-[540px] lg:h-[580px] xl:h-[640px] rounded-[3rem] overflow-hidden transition-all duration-700 ease-out cursor-pointer shadow-lg opacity-100"
     >
       <Image
         src={imageUrl || placeholderImage}
         alt={item.name}
         fill
         className="object-cover"
-        sizes="(max-width: 768px) 100vw, 60vw"
+        sizes="(max-width: 768px) 60vw, 52vw"
       />
       
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-8 md:p-10">
+      <div
+        className={cn(
+          "absolute inset-0 bg-gradient-to-t to-transparent flex flex-col justify-end p-5 md:p-10",
+          isActive ? "from-black/90 via-black/30" : "from-black/25 via-transparent"
+        )}
+      >
         <div className="flex flex-col items-center justify-center h-full md:h-auto md:flex-row md:items-end md:justify-between w-full gap-2 md:gap-4">
-          <h3 className="text-white font-sans text-5xl md:pb-5 font-medium w-full md:w-2/3 leading-tight line-clamp-2 text-center md:text-left">
+          <h3 className="text-white font-sans text-3xl md:text-5xl md:pb-5 font-medium w-full md:w-2/3 leading-tight line-clamp-2 text-center md:text-left">
             {item.name}
           </h3>
           
           <Link
             href={linkHref}
-            className="text-white/90 font-medium underline underline-offset-4 hover:text-white transition-colors shrink-0 md:pb-5"
+            className="text-white/90 text-sm md:text-base font-medium underline underline-offset-4 hover:text-white transition-colors shrink-0 md:pb-5"
             onClick={(e) => e.stopPropagation()} 
           >
             Explore Range

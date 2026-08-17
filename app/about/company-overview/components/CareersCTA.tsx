@@ -38,7 +38,7 @@ export default function CareersCTA() {
           
           <Link 
             href="/careers" 
-            className="inline-flex items-center mt-8 md:mt-32 justify-center bg-[#3B73AC] hover:bg-[#294e74] text-white text-xl px-8 py-2 rounded-full transition-colors w-fit shadow-lg"
+            className="inline-flex items-center mt-8 md:mt-32 justify-center bg-[#3B73AC] hover:bg-[#294e74] text-white text-base font-medium h-12 px-8 rounded-full transition-colors w-fit shadow-lg"
           >
             Career Opportunities
           </Link>

@@ -13,7 +13,6 @@ import HeroCarousel from "@/components/sections/HeroCarousel";
 import MissionSection from "@/components/sections/MissionSection";
 import ProductSearchSection from "@/components/sections/ProductSearchSection";
 import LegacyBanner from "@/components/sections/LegacyBanner";
-import QuoteSection from "@/components/sections/QuoteSection";
 import TherapeuticsGrid from "@/components/sections/TherapeuticsGrid";
 import ArticlesGridClient from "@/components/sections/ArticlesGridClient";
 import CEOMessageCard from "@/components/sections/CeoMessageCard";

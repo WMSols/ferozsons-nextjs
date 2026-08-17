@@ -73,7 +73,7 @@ export function HeroSection() {
                 href="#capabilities"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center justify-center bg-[#3B73AC] text-white font-medium text-sm md:text-base px-8 py-3.5 rounded-full transition-colors hover:bg-[#294e74]"
+                className="inline-flex items-center justify-center bg-[#3B73AC] text-white font-medium text-base h-12 px-8 rounded-full transition-colors hover:bg-[#294e74]"
               >
                 View Our Capabilities
               </motion.a>

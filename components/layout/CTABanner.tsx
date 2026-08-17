@@ -19,7 +19,7 @@ const CTABanner = ({
   showCTA = true,
 }: CTABannerProps) => {
   return (
-    <section className="bg-[#E5F2FF] py-16 md:py-20">
+    <section className="bg-[#E5F2FF] py-16 md:py-24">
       <div className="container">
         <div className="flex flex-col items-center justify-center  max-w-4xl mx-auto">
           <div className="text-center flex flex-col gap-4 sm:gap-12 items-center">
@@ -30,7 +30,7 @@ const CTABanner = ({
               {description}
             </p>
             {showCTA && (
-              <Button asChild className="rounded-full px-10 py-7 text-xl">
+              <Button asChild className="rounded-full h-12 px-8 text-base font-medium">
                 <Link href={ctaLink}>{ctaText}</Link>
               </Button>
             )}

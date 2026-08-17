@@ -79,7 +79,7 @@ export default function CEOMessagePage() {
         {/* CEO Message Paragraphs */}
         <div 
           id="ceo-message" 
-          className="scroll-mt-28 max-w-4xl mx-auto px-8 text-black space-y-6 md:space-y-8 lg:space-y-10 mb-16 md:mb-24"
+          className="scroll-mt-28 max-w-4xl mx-auto px-8 text-black border-b-[2px] border-[#3B73AC] pb-12 space-y-6 md:space-y-8 lg:space-y-10 mb-16 md:mb-24"
         >
           {ceoMessageParagraphs.map((paragraph, i) => (
             <p

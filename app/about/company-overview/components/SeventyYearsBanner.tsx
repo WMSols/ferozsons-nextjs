@@ -21,21 +21,21 @@ export default function SeventyYearsBanner() {
           {/* Dark Overlay */}
           <div className="absolute inset-0 bg-black/60 transition-opacity duration-500"></div>
 
-          <div className="relative z-10 px-2 py-12 md:px-16 lg:px-24 max-w-5xl flex flex-col">
+          <div className="relative z-10 px-3 py-12 md:px-16 lg:px-24 max-w-5xl flex flex-col">
             
             {/* Logo Row */}
            
-              <StaggerFadeUpInView className="flex items-center ml-4">
-              <div >
+              <StaggerFadeUpInView className="flex items-center -ml-3  ">
+              <div  >
                 <Image width={100} height={100} src="/ferozsons-f-white.webp" alt="Ferozsons white logo" />
               </div>
-              <span className="text-white font-bold text-sm uppercase tracking-widest leading-tight">
-                <img src="/people-trust-us.webp" alt="People Trust Us" className=" h-42 sm:h-52 w-auto" />
+              <span className="">
+                <img src="/people-trust-us.webp" alt="People Trust Us" className=" h-42 sm:h-52 w-auto  -ml-3 " />
               </span>
               </StaggerFadeUpInView>
             
     <StaggerFadeUpInView>
-            <h2 className="text-white text-3xl md:text-5xl  font-bold leading-tight -mt-8 mb-4 sm:mb-16">
+            <h2 className="text-white text-3xl md:text-5xl  font-bold leading-tight -mt-8 mb-4 sm:mb-16 -">
               70 Years of putting patients first
             </h2>
             </StaggerFadeUpInView>
@@ -48,7 +48,7 @@ export default function SeventyYearsBanner() {
             </StaggerFadeUpInView>
             <Link
               href="/about/history"
-              className="inline-block bg-[#3B73AC] hover:bg-[#294e74] text-white px-8 py-3.5 rounded-full transition-colors w-fit"
+              className="inline-flex items-center justify-center bg-[#3B73AC] hover:bg-[#294e74] text-white text-base font-medium h-12 px-8 rounded-full transition-colors w-fit"
             >
               Learn How We Built Our Legacy
             </Link>

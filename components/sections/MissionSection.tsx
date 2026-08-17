@@ -26,8 +26,8 @@ export default function MissionSection({
   backgroundImage,
 }: MissionSectionProps) {
   return (
-    <section className="mx-4 mt-8 lg:mx-6 lg:mt-12  rounded-4xl overflow-hidden  bg-background">
-      <div className="relative flex flex-col items-center justify-center px-2 py-16 md:px-12 md:py-24 lg:px-16 lg:py-32">
+    <section className="mx-4 mt-8 lg:mx-6 rounded-4xl overflow-hidden bg-background">
+      <div className="relative flex flex-col items-center justify-center px-2 pt-16 pb-16 md:px-12 md:pt-24 md:pb-24 lg:px-16">
         <StaggerFadeUpInView className="container relative z-10 flex flex-col items-center text-black font-light text-center">
           <h2 className="mb-6 md:mb-8  md:text-base uppercase font-sans ">
             {label}
@@ -45,7 +45,7 @@ export default function MissionSection({
             <Button
               asChild
               size="lg"
-              className="rounded-full bg-mission-cta px-8 py-6 text-base font-semibold text-mission-cta-foreground hover:opacity-90 transition-opacity"
+              className="rounded-full bg-mission-cta h-12 px-8 text-base font-medium text-mission-cta-foreground hover:opacity-90 transition-opacity"
             >
               <Link href={ctaLink}>{ctaText}</Link>
             </Button>

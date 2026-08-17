@@ -7,7 +7,7 @@ export default function CEOMessageCard() {
   const data = ceoMessageData[0];
 
   return (
-    <section className="py-12 md:py-20 px-4 md:px-8 container mx-auto">
+    <section className="mt-8 pt-16 md:pt-24 pb-16 md:pb-24 px-4 md:px-8 container mx-auto">
       <div className="relative w-full rounded-[2rem] md:rounded-[3rem] overflow-hidden min-h-[600px] md:min-h-[800px] flex items-center shadow-lg group">
         
         {/* Background Image */}
@@ -40,7 +40,7 @@ export default function CEOMessageCard() {
           
           <Link
             href={data.buttonLink}
-            className="inline-block bg-[#3B73AC] font-light hover:bg-[#294e74] text-white  text-sm md:text-base px-6 md:px-10 py-3 md:py-3.5 rounded-full transition-all duration-300 hover:shadow-md"
+            className="inline-flex items-center justify-center bg-[#3B73AC] font-medium hover:bg-[#294e74] text-white text-base px-8 h-12 rounded-full transition-all duration-300 hover:shadow-md"
           >
             {data.buttonText}
           </Link>
