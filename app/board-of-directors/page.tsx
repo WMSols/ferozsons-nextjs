@@ -17,7 +17,7 @@ export default async function BoardOfDirectorsPage() {
     <>
     <PageHero
     title="Board of Directors"
-    backgroundImage="/images/Bod-Hero.webp"
+    backgroundImage="/images/BoD-Hero.webp"
     subtitle=""/>
       <BoardMemberCards members={sortedDirectors} />
       </>

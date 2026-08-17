@@ -17,7 +17,7 @@ export default function NewsroomDetailClient({
   const imageUrl = getStrapiImageUrl(article.featured_image?.url);
 
   return (
-    <section className="py-8 md:py-12 bg-secondary">
+    <section className="py-8 md:py-12 mt-16 bg-secondary">
       <div className="container max-w-4xl mx-auto px-4">
         <div className="bg-background rounded-3xl overflow-hidden shadow-sm">
           {imageUrl && (

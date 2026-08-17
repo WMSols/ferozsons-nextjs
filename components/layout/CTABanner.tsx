@@ -22,7 +22,7 @@ const CTABanner = ({
     <section className="bg-[#E5F2FF] py-16 md:py-20">
       <div className="container">
         <div className="flex flex-col items-center justify-center  max-w-4xl mx-auto">
-          <div className="text-center flex flex-col gap-12 items-center">
+          <div className="text-center flex flex-col gap-4 sm:gap-12 items-center">
             <h2 className="text-4xl text-black md:text-[82px] font-bold leading-snug  mb-4">
               {title}
             </h2>

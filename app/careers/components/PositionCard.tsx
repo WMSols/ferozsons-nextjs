@@ -55,12 +55,12 @@ export default function PositionCard({
             <h3 className=" text-3xl font-bold text-[#3B73AC]">{title}</h3>
                 <button
           onClick={() => setIsModalOpen(true)}
-          className="whitespace-nowrap rounded-full bg-[#1a65a4] px-8 py-4  font-medium text-white transition-colors hover:bg-[#145084]"
+          className="whitespace-nowrap rounded-full bg-[#1a65a4] px-8 py-4 hidden sm:block  font-medium text-white transition-colors hover:bg-[#145084]"
         >
           Apply Now
         </button>
             </div>
-          <div className="flex flex-wrap items-center gap-4 text-lg  mt-2 text-gray-600">
+          <div className="flex flex-wrap items-center gap-4 text-lg  mt-4 text-gray-600">
            { domain &&
              <span className="flex items-center gap-1.5">
               <Briefcase size={16} className="text-gray-400" /> {domain}
@@ -85,6 +85,12 @@ export default function PositionCard({
               </span>
             ))}
           </div> */}
+                 <button
+          onClick={() => setIsModalOpen(true)}
+          className="whitespace-nowrap rounded-full bg-[#1a65a4] px-8 py-4 mt-4 sm:hidden block   font-medium text-white transition-colors hover:bg-[#145084]"
+        >
+          Apply Now
+        </button>
         </div>
 
       

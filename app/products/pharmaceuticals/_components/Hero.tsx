@@ -18,7 +18,7 @@ const bottomTiles = [
 
 export default function Hero() {
   return (
-    <section className="bg-pharma-page-bg">
+    <section className="bg-pharma-page-bg py-10">
       <style>{`
         @keyframes marquee-left {
           0% { transform: translateX(0); }
@@ -40,7 +40,7 @@ export default function Hero() {
         }
       `}</style>
 
-      <div className="pt-10 md:pt-14 lg:pt-20 overflow-hidden">
+      <div className="pt-10 md:pt-14 lg:pt-20 pb-10 overflow-hidden">
         <div className="container">
             <h1 className="text-[38px] font-bold text-center mb-10 leading-snug tracking-[-0.02em] text-black md:text-[56px]">
               Advancing healthcare through innovative <br/> medicines across multiple therapeutic areas.

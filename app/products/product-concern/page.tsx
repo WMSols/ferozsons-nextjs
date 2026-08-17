@@ -6,13 +6,13 @@ import SafetyReportingForm from './components/SafetyReportingForm'
 
 const page = () => {
   return (
-    <>
+    <div className='bg-[#F7F7F7]'>
     <HeroSection
     title='Report a Ferozsons product concern'
     backgroundImage='/images/product-concern/Hero.webp'/>
     <SafetySupportSection/>
     <SafetyReportingForm/>
-    </>
+    </div>
   )
 }
 

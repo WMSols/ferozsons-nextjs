@@ -39,9 +39,9 @@ export const mainNavItems: NavItem[] = [
     // No image here so it triggers the multi-column category layout
     children: [
       { label: "Medicine Categories", href: "/products" },
-      { label: "All Products", href: "/products/all" },
+      { label: "All Products", href: "/products" },
       { label: "Pharmaceuticals", href: "/products/pharmaceuticals" },
-      { label: "Medical Technologies", href: "/products/devices" },
+      { label: "Medical Technologies", href: "/products/medical-technologies" },
       { label: "Report a product concern", href: "/products/product-concern" },
     ],
   },
