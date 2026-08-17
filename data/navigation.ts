@@ -38,7 +38,7 @@ export const mainNavItems: NavItem[] = [
     description: "Advancing healthcare through innovative medicines across multiple therapeutic areas.",
     // No image here so it triggers the multi-column category layout
     children: [
-      { label: "Medicine Categories", href: "/products" },
+      { label: "Medicine Categories", href: "/products?category=antibiotics" },
       { label: "All Products", href: "/products" },
       { label: "Pharmaceuticals", href: "/products/pharmaceuticals" },
       { label: "Medical Technologies", href: "/products/medical-technologies" },
@@ -91,7 +91,7 @@ export const secondaryNavItems: NavItem[] = [
     children: [
       { label: "Newsroom ", href: "/newsroom" },
       { label: "Investors Information", href: "/investors" },
-      { label: "Our Impact", href: "/csr" },
+      { label: "ESG", href: "/csr" },
       { label: "Contact Us", href: "/contact" },
     ],
   },

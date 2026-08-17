@@ -27,7 +27,7 @@ export default function KWCampus() {
                     {/* Logo Lockup */}
                     <StaggerFadeUpInView>
                     <div className="flex items-center -mb-8">
-                        <div className="w-14 h-14 md:w-36 md:h-36  flex items-center justify-center shrink-0">
+                        <div className="w-28 h-28 md:w-36 md:h-36  flex items-center justify-center shrink-0">
                             <img src="/ferozsons-f-white.webp" alt="Ferozsons white logo" />
                         </div>
                         <span className=" w-36 text-xs md:text-sm">
