@@ -7,7 +7,7 @@ export default function BiotechManufacturingSection() {
   return (
     <section className="py-0 md:py-20 bg-white">
       <div>
-        <div className="relative w-full overflow-hidden min-h-svh h-svh md:h-auto md:min-h-[800px] flex items-center shadow-lg group">
+        <div className="relative w-full overflow-hidden min-h-svh md:min-h-[800px] flex items-start md:items-center shadow-lg group">
           
           {/* Background Image Placeholder */}
           <Image
@@ -19,15 +19,15 @@ export default function BiotechManufacturingSection() {
           />
           
           {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-black/60 transition-opacity duration-500"></div>
+          <div className="absolute inset-0 bg-black/50 transition-opacity duration-500"></div>
 
-          <div className="relative z-10 px-5 py-8 md:px-16 md:py-24 lg:px-24 w-full flex flex-col lg:flex-row gap-6 lg:gap-10 items-center">
+          <div className="relative z-10 px-5 pt-28 pb-12 md:px-16 md:py-24 lg:px-24 w-full flex flex-col lg:flex-row gap-6 lg:gap-10 items-center">
             
             {/* Left Column: Text & CTA */}
             <div className="w-full flex flex-col gap-4 md:gap-12">
               <StaggerFadeUpInView>
-              <h2 className="text-white text-[2.3rem] leading-snug md:text-6xl font-bold md:leading-normal mb-3 md:mb-16">
-                Advancing Biotech<br className="block md:hidden"/> Manufacturing<br className="hidden md:block"/> and<br className="block md:hidden"/> Pharmaceutical<br className="block md:hidden"/> Capabilities in<br className="block"/> Pakistan
+              <h2 className="text-white text-3xl leading-snug md:text-6xl font-bold md:leading-normal mb-3 md:mb-16">
+                Advancing Biotech Manufacturing<br className="hidden md:block"/> and Pharmaceutical Capabilities in<br className="hidden md:block"/> Pakistan
               </h2>
               </StaggerFadeUpInView>
               <div className="flex md:flex-row flex-col justify-between">
@@ -45,7 +45,7 @@ export default function BiotechManufacturingSection() {
                 </p>
                  <Link
                 href="/bf-biosciences"
-                className="inline-flex items-center justify-center mt-5 md:mt-12 bg-[#FF00FF40]/50 hover:bg-[#6b2265] text-white font-semibold sm:font-bold text-sm md:text-base px-6 py-3 md:px-8 md:py-3.5 rounded-full transition-colors w-fit gap-2 "
+                className="inline-flex items-center justify-center mt-5 md:mt-12 bg-[#FF00FF40] hover:bg-[#6b2265] text-white font-semibold sm:font-bold text-sm md:text-base px-6 py-3 md:px-8 md:py-3.5 rounded-full transition-colors w-fit gap-2 "
               >
                 Learn More About BF Biosciences <ArrowRightIcon className="w-6 h-6" />
               </Link>

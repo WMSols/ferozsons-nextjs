@@ -32,7 +32,7 @@ export default function HepatitisBreakthrough() {
         </div>
 
         {/* Bottom Section: Huge Number & Image Card */}
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 sm:gap-42">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 xl:gap-42">
           
           {/* Left Stats */}
           <div className="flex flex-col text-black">

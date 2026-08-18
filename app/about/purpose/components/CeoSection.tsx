@@ -56,7 +56,7 @@ export default function CeoSection() {
                 Osman Khalid Waheed
               </span>
               <p className="text-base md:text-[1.5rem]  font-light">
-                Chief Executive Officer & President Ferozsons Laboratories Limited
+                Chief Executive Officer<br/> Ferozsons Laboratories Limited
               </p>
             </div>
 

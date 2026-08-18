@@ -21,12 +21,12 @@ const CTABanner = ({
   return (
     <section className="bg-[#E5F2FF] py-16 md:py-24">
       <div className="container">
-        <div className="flex flex-col items-center justify-center  max-w-4xl mx-auto">
-          <div className="text-center flex flex-col gap-4 sm:gap-12 items-center">
-            <h2 className="text-4xl text-black md:text-[82px] font-bold leading-snug  mb-4">
+        <div className="flex flex-col items-center justify-center max-w-[20.5rem] mx-auto sm:max-w-4xl">
+          <div className="text-center flex flex-col gap-6 sm:gap-12 items-center">
+            <h2 className="text-[32px] text-black md:text-[82px] font-bold leading-[1.15] md:leading-snug">
               {title}
             </h2>
-            <p className=" text-[22px] max-w-5xl mb-6 leading-relaxed">
+            <p className="text-lg text-black sm:text-[22px] sm:max-w-5xl sm:leading-relaxed">
               {description}
             </p>
             {showCTA && (

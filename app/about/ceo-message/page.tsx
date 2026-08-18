@@ -43,7 +43,7 @@ export default function CEOMessagePage() {
                       Osman Khalid Waheed
                     </h1>
                     <p className="text-sm md:text-xl text-black font-light">
-                      Chief Executive Officer & President
+                      Chief Executive Officer
                     </p>
                   </div>
 
