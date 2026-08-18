@@ -59,7 +59,7 @@ const HeroSection = ({
           </Breadcrumb>
         )} */}
         <StaggerFadeUp>
-        <h1 className={`text-4xl md:ml-12  lg:text-6xl font-bold ${backgroundImage ? "text-white" : "text-foreground"}`}>
+        <h1 className={`text-[32px] md:ml-12  lg:text-6xl font-bold ${backgroundImage ? "text-white" : "text-foreground"}`}>
           {title}
         </h1>
         </StaggerFadeUp>
