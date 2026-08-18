@@ -106,19 +106,29 @@ export const secondaryNavItems: NavItem[] = [
 ];
 export const footerLinks = {
   column1: [
-    { label: "About Us", href: "/company-overview" },
-    { label: "Products", href: "/products" },
-    { label: "Partnerships", href: "/partnerships" },
-    { label: "Investor Information", href: "/investors" },
+    { label: "Our History", href: "/about/history" },
+    { label: "Company Overview", href: "/about/company-overview" },
+    { label: "Purpose", href: "/about/purpose" },
+    { label: "Message from the CEO", href: "/about/ceo-message" },
+    { label: "Board of Directors", href: "/board-of-directors" },
   ],
   column2: [
-    { label: "Newsroom", href: "/newsroom" },
-
-    { label: "Careers", href: "/careers" },
-    { label: "Contact Us", href: "/contact" },
+    { label: "All Products", href: "/products" },
+    { label: "Medicine Categories", href: "/products?category=antibiotics" },
+    { label: "Pharmaceuticals", href: "/products/pharmaceuticals" },
+    { label: "Medical Technologies", href: "/products/medical-technologies" },
+    { label: "Report a Product Concern", href: "/products/product-concern" },
   ],
   column3: [
+    { label: "Global Presence", href: "/global-presence" },
+    { label: "Manufacturing", href: "/contract-manufacturing" },
+    { label: "Partnerships", href: "/partnerships" },
     { label: "ESG", href: "/csr" },
-    { label: "Board of Directors", href: "/board-of-directors" },
+  ],
+  column4: [
+    { label: "Investor Information", href: "/investors" },
+    { label: "Newsroom", href: "/newsroom" },
+    { label: "Careers", href: "/careers" },
+    { label: "Contact Us", href: "/contact" },
   ],
 };

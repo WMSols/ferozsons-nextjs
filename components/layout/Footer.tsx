@@ -52,7 +52,7 @@ const Footer = ({ dark = false }: { dark?: boolean }) => {
       className={`reveal-section text-navy-foreground ${dark ? "bg-black" : "bg-navy"}`}
     >
       <div className="container pt-16 ">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
           {/* Logo column */}
           <div>
             <Link href="/" className="inline-block mb-4">
