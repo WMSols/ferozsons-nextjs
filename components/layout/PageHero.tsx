@@ -2,12 +2,14 @@ import Link from "next/link";
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator, BreadcrumbPage } from "@/components/ui/breadcrumb";
 import { ArrowDown } from "lucide-react";
 import { StaggerFadeUp } from "../animations/StaggerFadeUp";
+import { ReactNode } from "react";
 
 interface PageHeroProps {
-  title: string;
+  title: string | ReactNode;
   subtitle?: string;
   breadcrumbs?: { label: string; href?: string }[];
   backgroundImage?: string;
+  isPharmaceuticals?: boolean;
 }
 
 const PageHero = ({
@@ -15,6 +17,7 @@ const PageHero = ({
   subtitle,
   breadcrumbs,
   backgroundImage,
+  isPharmaceuticals = false,
 }: PageHeroProps) => {
   return (
     <section
@@ -59,7 +62,7 @@ const PageHero = ({
           </Breadcrumb>
         )} */}
         <StaggerFadeUp>
-        <h1 className={`text-[39px] md:ml-12 leading-snug sm:leading-none  lg:text-8xl font-bold ${backgroundImage ? "text-white" : "text-foreground"}`}>
+        <h1 className={`${isPharmaceuticals ? "text-[39px]" : "text-[43px]"} md:ml-12 leading-snug sm:leading-none  lg:text-8xl font-bold ${backgroundImage ? "text-white" : "text-foreground"}`}>
           {title}
         </h1>
         </StaggerFadeUp>

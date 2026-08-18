@@ -15,6 +15,7 @@ export default function PharmaceuticalsPage() {
     <>
     <PageHero
     title="Pharmaceuticals"
+    isPharmaceuticals={true}
     backgroundImage="/images/Pharmaceuticals-Hero.webp"/>
     {/* Hero containing slider images */}
       <Hero />

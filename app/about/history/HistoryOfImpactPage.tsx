@@ -33,7 +33,7 @@ export default function HistoryOfImpactPage() {
       >
         <PageHero
         backgroundImage="/images/about-history/1961.webp"
-        title="Company History"
+        title=<span>Company <br className="hidden md:block"/> History</span>
         />
       <HistoryOverview/>
         <div
