@@ -37,8 +37,7 @@ export const heroSlides: HeroSlide[] = [
     image: "/Hero-3.png",
     title: (
       <>
-        Innovation Through
-        <br className="hidden md:block" />
+        Innovation Through <br className="hidden md:block" />
         Global Partnerships
       </>
     ),

@@ -62,7 +62,7 @@ const PageHero = ({
           </Breadcrumb>
         )} */}
         <StaggerFadeUp>
-        <h1 className={`${isPharmaceuticals ? "text-[39px]" : "text-[43px]"} md:ml-12 leading-snug sm:leading-none  lg:text-8xl font-bold ${backgroundImage ? "text-white" : "text-foreground"}`}>
+        <h1 className={`${isPharmaceuticals ? "text-[39px]" : "text-[40px]"} md:ml-12 leading-snug sm:leading-none  lg:text-8xl font-bold ${backgroundImage ? "text-white" : "text-foreground"}`}>
           {title}
         </h1>
         </StaggerFadeUp>
