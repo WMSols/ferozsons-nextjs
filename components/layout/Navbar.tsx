@@ -17,11 +17,13 @@ const Navbar = () => {
   const [activePrimaryDropdown, setActivePrimaryDropdown] = useState<string | null>(null);
   const [mobileDropdown, setMobileDropdown] = useState<string | null>(null);
   const [desktopSearchOpen, setDesktopSearchOpen] = useState(false);
+  const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
   const pathname = usePathname();
   const router = useRouter();
   const desktopSearchRef = useRef<HTMLInputElement>(null);
+  const mobileSearchRef = useRef<HTMLInputElement>(null);
   const navContainerRef = useRef<HTMLDivElement>(null);
   const closeMenuTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const ignoreHamburgerHoverRef = useRef(false);
@@ -31,6 +33,12 @@ const Navbar = () => {
       desktopSearchRef.current?.focus();
     }
   }, [desktopSearchOpen]);
+
+  useEffect(() => {
+    if (mobileSearchOpen) {
+      mobileSearchRef.current?.focus();
+    }
+  }, [mobileSearchOpen]);
 
   const clearCloseMenuTimeout = () => {
     if (closeMenuTimeoutRef.current) {
@@ -69,7 +77,9 @@ const Navbar = () => {
     router.push(`/products?search=${encodeURIComponent(searchQuery.trim())}`);
     setSearchQuery("");
     setDesktopSearchOpen(false);
+    setMobileSearchOpen(false);
     setMobileOpen(false);
+    setMobileDropdown(null);
     setDesktopMenuOpen(false);
   };
 
@@ -369,23 +379,67 @@ const Navbar = () => {
 
       {/* Mobile Header (Collapsed State) */}
       <div className="flex ixl:hidden items-center justify-between rounded-[20px] bg-[#000000] shadow-[0_2px_12px_rgba(0,0,0,0.08)] px-4 py-3">
-        <Link href="/" className="flex items-center shrink-0">
-          <Image
-            src="/Ferozsons-Logo-1000x250px3.avif"
-            alt="Ferozsons Laboratories Limited"
-            width={160}
-            height={40}
-            className="h-8 w-auto"
-            priority
-          />
-        </Link>
-        <button
-          className="p-2 text-[#FFFFFF]"
-          onClick={() => setMobileOpen(true)}
-          aria-label="Open menu"
-        >
-          <Menu className="h-6 w-6" />
-        </button>
+        {mobileSearchOpen ? (
+          <form onSubmit={handleSearchSubmit} className="flex items-center gap-2 w-full">
+            <div className="flex-1 flex items-center bg-[#222222] rounded-full px-4 py-2 min-w-0">
+              <input
+                ref={mobileSearchRef}
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search ferozsons-labs.com"
+                className="w-full text-sm text-white placeholder:text-[#999999] outline-none bg-transparent"
+              />
+            </div>
+            <button
+              type="submit"
+              className="bg-white text-black p-2.5 rounded-[12px] shrink-0"
+              aria-label="Submit search"
+            >
+              <Search className="h-5 w-5" />
+            </button>
+            <button
+              type="button"
+              className="text-white p-1 shrink-0"
+              onClick={() => setMobileSearchOpen(false)}
+              aria-label="Close search"
+            >
+              <X className="h-5 w-5" />
+            </button>
+          </form>
+        ) : (
+          <>
+            <Link href="/" className="flex items-center shrink-0">
+              <Image
+                src="/Ferozsons-Logo-1000x250px3.avif"
+                alt="Ferozsons Laboratories Limited"
+                width={160}
+                height={40}
+                className="h-8 w-auto"
+                priority
+              />
+            </Link>
+            <div className="flex items-center gap-1 shrink-0">
+              <button
+                className="p-2 text-[#FFFFFF]"
+                onClick={() => setMobileSearchOpen(true)}
+                aria-label="Open search"
+              >
+                <Search className="h-5 w-5" />
+              </button>
+              <button
+                className="p-2 text-[#FFFFFF]"
+                onClick={() => {
+                  setMobileSearchOpen(false);
+                  setMobileOpen(true);
+                }}
+                aria-label="Open menu"
+              >
+                <Menu className="h-6 w-6" />
+              </button>
+            </div>
+          </>
+        )}
       </div>
 
       {/* Mobile Menu (Full Screen Overlay) */}
@@ -425,6 +479,29 @@ const Navbar = () => {
 
           {/* Mobile Menu Content */}
           <div className="flex-1 overflow-y-auto px-6 py-4">
+            <form
+              onSubmit={handleSearchSubmit}
+              className="flex items-center gap-2 mb-8"
+            >
+              <div className="flex-1 flex items-center bg-[#222222] rounded-full px-4 py-3 min-w-0">
+                <Search className="h-4 w-4 text-white/50 mr-3 shrink-0" />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search ferozsons-labs.com"
+                  className="w-full text-sm text-white placeholder:text-[#999999] outline-none bg-transparent"
+                />
+              </div>
+              <button
+                type="submit"
+                className="bg-white text-black p-3 rounded-[12px] shrink-0"
+                aria-label="Submit search"
+              >
+                <Search className="h-5 w-5" />
+              </button>
+            </form>
+
             {!mobileDropdown ? (
               /* Main Menu List */
               <div className="flex flex-col gap-10 animate-in fade-in slide-in-from-left-4 duration-300">
