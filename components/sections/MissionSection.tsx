@@ -26,14 +26,14 @@ export default function MissionSection({
   backgroundImage,
 }: MissionSectionProps) {
   return (
-    <section className="mx-4 mt-8 lg:mx-6 rounded-4xl overflow-hidden bg-background">
+    <section className=" mt-8 lg:mx-6 rounded-4xl overflow-hidden bg-background">
       <div className="relative flex flex-col items-center justify-center px-2 pt-16 pb-16 md:px-12 md:pt-24 md:pb-24 lg:px-16">
         <StaggerFadeUpInView className="container relative z-10 flex flex-col items-center text-black font-light text-center">
           <h2 className="mb-6 md:mb-8  md:text-base uppercase font-sans ">
             {label}
           </h2>
 
-          <h3 className="mb-8 md:mb-10  text-2xl font-bold leading-relaxed  sm:text-3xl md:text-7xl  lg:leading-snug">
+          <h3 className="mb-8 md:mb-10  text-[24px] font-bold leading-relaxed  sm:text-3xl md:text-7xl  lg:leading-snug">
             {headline}
           </h3>
 

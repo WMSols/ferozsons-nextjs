@@ -79,7 +79,7 @@ export const legacyData = {
   backgroundImage: "/home-legacy.png",
   title: (
     <>
-      Our legacy is built on<br className="hidden sm:block" />
+      Our legacy is built on <br className="hidden sm:block" />
       integrity,
       quality, and {" "}
     <br className="hidden sm:block" />

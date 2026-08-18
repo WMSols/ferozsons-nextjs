@@ -23,7 +23,6 @@ const Navbar = () => {
   const pathname = usePathname();
   const router = useRouter();
   const desktopSearchRef = useRef<HTMLInputElement>(null);
-  const mobileSearchRef = useRef<HTMLInputElement>(null);
   const navContainerRef = useRef<HTMLDivElement>(null);
   const closeMenuTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const ignoreHamburgerHoverRef = useRef(false);
@@ -33,12 +32,6 @@ const Navbar = () => {
       desktopSearchRef.current?.focus();
     }
   }, [desktopSearchOpen]);
-
-  useEffect(() => {
-    if (mobileSearchOpen) {
-      mobileSearchRef.current?.focus();
-    }
-  }, [mobileSearchOpen]);
 
   const clearCloseMenuTimeout = () => {
     if (closeMenuTimeoutRef.current) {
@@ -383,12 +376,11 @@ const Navbar = () => {
           <form onSubmit={handleSearchSubmit} className="flex items-center gap-2 w-full">
             <div className="flex-1 flex items-center bg-[#222222] rounded-full px-4 py-2 min-w-0">
               <input
-                ref={mobileSearchRef}
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search ferozsons-labs.com"
-                className="w-full text-sm text-white placeholder:text-[#999999] outline-none bg-transparent"
+                className="w-full text-base text-white placeholder:text-[#999999] outline-none bg-transparent"
               />
             </div>
             <button
@@ -490,7 +482,7 @@ const Navbar = () => {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search ferozsons-labs.com"
-                  className="w-full text-sm text-white placeholder:text-[#999999] outline-none bg-transparent"
+                  className="w-full text-base text-white placeholder:text-[#999999] outline-none bg-transparent"
                 />
               </div>
               <button
