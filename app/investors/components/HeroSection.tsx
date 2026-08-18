@@ -20,7 +20,7 @@ const HeroSection = ({
 }: PageHeroProps) => {
   return (
     <section
-      className={`rounded-b-[3.1rem] md:rounded-b-[3.5rem] relative pb-16 pt-10 md:pb-24 md:pt-12 overflow-hidden ${
+      className={`rounded-b-[3.1rem] md:rounded-b-[3.5rem] relative pb-16 pt-10 md:pb-24 md:pt-16 overflow-hidden ${
         backgroundImage
           ? "text-white min-h-[93vh] flex items-center"
           : "bg-transparent"
@@ -41,7 +41,7 @@ const HeroSection = ({
       <div className="container relative z-10 w-full flex flex-col h-full justify-center">
         
         {/* Title Section */}
-        <div className={showInvestorInfo ? "text-center mt-2 mb-20" : "md:ml-12"}>
+        <div className={showInvestorInfo ? "text-center mt-10 mb-20" : "md:ml-12"}>
           <h1 
             className={`text-4xl sm:text-5xl lg:text-6xl font-bold ${backgroundImage ? "text-white" : "text-foreground"}`}
           >

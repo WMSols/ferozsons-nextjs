@@ -28,7 +28,7 @@ export default function ProductSearchSection({
         <h2 className="font-sans uppercase text-center  mb-4 md:mb-16">
           {label}
         </h2>
-        <h3 className=" text-2xl md:text-4xl lg:text-[56px] font-bold leading-normal  ">
+        <h3 className=" text-2xl md:text-5xl  2xl:text-[56px] font-bold leading-normal  ">
           {description}
         </h3>
         <div className="flex flex-col md:flex-row md:items-center gap-6 mt-12 w-full max-w-4xl">

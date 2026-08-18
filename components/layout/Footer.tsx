@@ -71,10 +71,11 @@ const Footer = ({ dark = false }: { dark?: boolean }) => {
           </div>
 
           {/* Link columns */}
-          {Object.entries(footerLinks).map(([key, links]) => (
-            <div key={key}>
+          {footerLinks.map((column) => (
+            <div key={column.title}>
+              <h3 className="text-sm font-semibold mb-4">{column.title}</h3>
               <ul className="space-y-3">
-                {links.map((link) => (
+                {column.links.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}

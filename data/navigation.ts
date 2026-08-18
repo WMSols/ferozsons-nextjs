@@ -104,31 +104,43 @@ export const secondaryNavItems: NavItem[] = [
     megaImageLink: "/careers",
   },
 ];
-export const footerLinks = {
-  column1: [
-    { label: "Our History", href: "/about/history" },
-    { label: "Company Overview", href: "/about/company-overview" },
-    { label: "Purpose", href: "/about/purpose" },
-    { label: "Message from the CEO", href: "/about/ceo-message" },
-    { label: "Board of Directors", href: "/board-of-directors" },
-  ],
-  column2: [
-    { label: "All Products", href: "/products" },
-    { label: "Medicine Categories", href: "/products?category=antibiotics" },
-    { label: "Pharmaceuticals", href: "/products/pharmaceuticals" },
-    { label: "Medical Technologies", href: "/products/medical-technologies" },
-    { label: "Report a Product Concern", href: "/products/product-concern" },
-  ],
-  column3: [
-    { label: "Global Presence", href: "/global-presence" },
-    { label: "Manufacturing", href: "/contract-manufacturing" },
-    { label: "Partnerships", href: "/partnerships" },
-    { label: "ESG", href: "/csr" },
-  ],
-  column4: [
-    { label: "Investor Information", href: "/investors" },
-    { label: "Newsroom", href: "/newsroom" },
-    { label: "Careers", href: "/careers" },
-    { label: "Contact Us", href: "/contact" },
-  ],
-};
+export const footerLinks = [
+  {
+    title: "About Us",
+    links: [
+      { label: "Our History", href: "/about/history" },
+      { label: "Company Overview", href: "/about/company-overview" },
+      { label: "Purpose", href: "/about/purpose" },
+      { label: "Message from the CEO", href: "/about/ceo-message" },
+      { label: "Board of Directors", href: "/board-of-directors" },
+    ],
+  },
+  {
+    title: "Products",
+    links: [
+      { label: "All Products", href: "/products" },
+      { label: "Medicine Categories", href: "/products?category=antibiotics" },
+      { label: "Pharmaceuticals", href: "/products/pharmaceuticals" },
+      { label: "Medical Technologies", href: "/products/medical-technologies" },
+      { label: "Report a Product Concern", href: "/products/product-concern" },
+    ],
+  },
+  {
+    title: "",
+    links: [
+      { label: "Global Presence", href: "/global-presence" },
+      { label: "Manufacturing", href: "/contract-manufacturing" },
+      { label: "Partnerships", href: "/partnerships" },
+      { label: "ESG", href: "/csr" },
+    ],
+  },
+  {
+    title: " ",
+    links: [
+      { label: "Investor Information", href: "/investors" },
+      { label: "Newsroom", href: "/newsroom" },
+      { label: "Careers", href: "/careers" },
+      { label: "Contact Us", href: "/contact" },
+    ],
+  },
+];
