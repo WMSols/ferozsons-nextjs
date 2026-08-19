@@ -33,11 +33,11 @@ export default function MissionSection({
             {label}
           </h2>
 
-          <h3 className="mb-8 md:mb-10  text-[24px] font-bold leading-relaxed  sm:text-3xl md:text-6xl 2xl:text-7xl  lg:leading-snug">
+          <h3 className="mb-8 md:mb-10  text-[28px] font-bold leading-relaxed  sm:text-3xl md:text-6xl 2xl:text-7xl  lg:leading-snug">
             {headline}
           </h3>
 
-          <p className="mb-10 md:mb-12 max-w-4xl text-base  font-light leading-relaxed md:text-lg">
+          <p className="mb-10 md:mb-12 sm:max-w-4xl text-base  font-light leading-relaxed md:text-lg">
             {description}
           </p>
 
