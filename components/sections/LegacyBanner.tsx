@@ -48,7 +48,7 @@ export default function LegacyBanner({
           <Button
             asChild
             size="lg"
-            className="mt-10 h-12 w-full min-w-0 sm:w-auto rounded-full bg-primary px-4 text-sm sm:text-base font-medium text-primary-foreground hover:opacity-90"
+            className="mt-10 h-12  min-w-0 sm:w-auto rounded-full bg-primary px-4 text-sm sm:text-base font-medium text-primary-foreground hover:opacity-90"
           >
             <Link href={ctaLink}>
               {ctaText}

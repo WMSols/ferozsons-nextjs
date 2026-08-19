@@ -113,8 +113,8 @@ export default async function InvestorsPage({
     : "N/A";
 
   return (
-    <div className="bg-background">
-      <div className=" px-0 sm:px-10">
+    <div className="bg-background mt-28 sm:mt-32">
+      <div className="px-4 sm:px-10">
       <HeroSection
         title="Investor Information"
         subtitle="Financial information and governance for shareholders and the investment community."

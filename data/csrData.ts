@@ -175,14 +175,7 @@ export const csrInitiatives: CSRInitiative[] = [
     description: "As Ferozsons Laboratories Limited celebrates 70 Years of Trust – A Lifetime of Care, we continue to expand our commitment to healthier communities—not only through advancing healthcare, but also through protecting the environment that sustains it. Building on our sustainability platform, Act Today Impact Tomorrow, we are proud to launch the next chapter of our journey: Be An Icon of Sustainability. As part of this initiative, BF Biosciences Limited has entered into a strategic partnership with The Minus Fifteen Project to support a data-driven approach to climate resilience in Pakistan. The partnership aims to build a citywide environmental monitoring network and support interventions contributing toward reducing Lahore’s temperature. The insights generated will help better understand urban environmental trends, support practical interventions to mitigate the impact of extreme heat, and contribute to the long-term vision of reducing Lahore's temperature through evidence-based climate action. The partnership was formally inaugurated through the signing of a MoU, followed by the unveiling of the climate monitoring device that will serve as the foundation of this initiative. The ceremony also featured keynote addresses by Zaib Husain, Founder of The Minus Fifteen Project, and from the leadership of Ferozsons Laboratories Limited and BF Biosciences Limited, reaffirming a shared pledge to champion sustainability through collaboration, innovation, and measurable action. As climate change continues to emerge as one of the greatest challenges to human health, this collaboration reflects our belief that healthier communities begin with a healthier environment. It also supports our shared commitment to advancing the United Nations Sustainable Development Goals. Because creating a healthier tomorrow means caring for both people and the planet.",
     ongoing: true,
   },
-  {
-    id: "ca-2",
-    category: "climate_action",
-    title: "World Wildlife Fund",
-    description: "",
-    ongoing: true,
-  },
-
+  
   // --- COMMUNITY ---
   {
     id: "c-1",

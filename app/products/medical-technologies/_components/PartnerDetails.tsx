@@ -8,6 +8,7 @@ type PartnerBlock = {
   paragraphs: string[];
   bullets?: string[];
   cta: string;
+  href: string;
 };
 
 const partnerBlocks: PartnerBlock[] = [
@@ -27,6 +28,7 @@ const partnerBlocks: PartnerBlock[] = [
       "Women's Health",
     ],
     cta: "Learn more about Boston Scientific",
+    href: "https://www.bostonscientific.com/",
   },
   {
     name: "NIHON KOHDEN",
@@ -42,6 +44,7 @@ const partnerBlocks: PartnerBlock[] = [
       "Critical care monitoring technologies",
     ],
     cta: "Learn more about NIHON KOHDEN",
+    href: "https://www.nihonkohden.com/",
   },
   {
     name: "Butterfly Network",
@@ -60,6 +63,7 @@ const partnerBlocks: PartnerBlock[] = [
       "Point-of-Care Diagnostics",
     ],
     cta: "Learn more about Butterfly Network",
+    href: "https://www.butterflynetwork.com/",
   },
 ];
 
@@ -104,7 +108,8 @@ function PartnerCard({
 
       <div className="mt-auto pt-10">
         <Link
-          href="/partnerships"
+          href={partner.href}
+          target="_blank"
           className="inline-flex rounded-[10px] border border-[#444444] bg-[#2a2a2a] px-6 py-3.5 text-[15px] font-medium text-white transition-colors hover:bg-[#3a3a3a]"
         >
           {partner.cta}

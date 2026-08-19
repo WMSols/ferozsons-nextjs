@@ -44,7 +44,7 @@ export default function BiotechManufacturingSection() {
                   biopharmaceutical production.
                 </p>
                  <Link
-                href="/bf-biosciences"
+                href="https://bfbio.com/"
                 className="inline-flex items-center justify-center mt-5 md:mt-12 bg-[#FF00FF40] hover:bg-[#6b2265] text-white font-semibold sm:font-bold text-sm md:text-base px-6 py-3 md:px-8 md:py-3.5 rounded-full transition-colors w-fit gap-2 "
               >
                 Learn More About BF Biosciences <ArrowRightIcon className="w-6 h-6" />

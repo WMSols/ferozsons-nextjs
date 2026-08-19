@@ -126,7 +126,7 @@ export const footerLinks = [
     ],
   },
   {
-    title: "",
+    title: "Company",
     links: [
       { label: "Global Presence", href: "/global-presence" },
       { label: "Manufacturing", href: "/contract-manufacturing" },
@@ -143,4 +143,9 @@ export const footerLinks = [
       { label: "Contact Us", href: "/contact" },
     ],
   },
+];
+
+export const legalLinks = [
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Site Map", href: "/sitemap" },
 ];

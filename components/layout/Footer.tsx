@@ -3,48 +3,17 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { footerLinks } from "@/data/navigation";
+import { footerLinks, legalLinks } from "@/data/navigation";
+import {
+  fetchWebsiteUpdateDate,
+  WEBSITE_UPDATE_DATE_FALLBACK,
+} from "@/lib/website-update-date";
 
 const Footer = ({ dark = false }: { dark?: boolean }) => {
-  // Set the fallback date as the initial state
-  const [displayDate, setDisplayDate] = useState("05/08/2026");
+  const [displayDate, setDisplayDate] = useState(WEBSITE_UPDATE_DATE_FALLBACK);
 
   useEffect(() => {
-    const fetchUpdateDate = async () => {
-      try {
-        const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL || "https://srv1615764.hstgr.cloud";
-        const res = await fetch(`${baseUrl}/api/website-update-date`);
-        
-        if (res.ok) {
-          const json = await res.json();
-          console.log("Strapi Date Data:", json); 
-          
-          // Removed '.attributes' from the chain
-          const rawDate = json?.data?.lastUpdated; 
-          
-          if (rawDate) {
-            const dateObj = new Date(rawDate);
-            
-            setDisplayDate(
-              dateObj.toLocaleString("en-GB", {
-                day: "2-digit",
-                month: "2-digit",
-                year: "numeric",
-                // hour: "2-digit",   
-                // minute: "2-digit", 
-                // second: "2-digit", 
-              })
-            );
-          }
-        } else {
-          console.warn(`Strapi fetch failed with status: ${res.status}`);
-        }
-      } catch (error) {
-        console.error("Failed to fetch website update date:", error);
-      }
-    };
-
-    fetchUpdateDate();
+    fetchWebsiteUpdateDate().then(setDisplayDate);
   }, []);
 
   return (
@@ -52,7 +21,7 @@ const Footer = ({ dark = false }: { dark?: boolean }) => {
       className={`reveal-section text-navy-foreground ${dark ? "bg-black" : "bg-navy"}`}
     >
       <div className="container pt-16 ">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
+        <div className="flex flex-col gap-10 lg:grid lg:grid-cols-5 lg:gap-x-12 lg:gap-y-10">
           {/* Logo column */}
           <div>
             <Link href="/" className="inline-block mb-4">
@@ -71,23 +40,31 @@ const Footer = ({ dark = false }: { dark?: boolean }) => {
           </div>
 
           {/* Link columns */}
-          {footerLinks.map((column) => (
-            <div key={column.title}>
-              <h3 className="text-sm font-semibold mb-4">{column.title}</h3>
-              <ul className="space-y-3">
-                {column.links.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-sm opacity-70 hover:opacity-100 transition-opacity"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-14  gap-y-10 lg:contents">
+            {footerLinks.map((column) => (
+              <div key={column.title}>
+                {column.title.trim() ? (
+                  <h3 className="text-sm font-semibold mb-4">{column.title}</h3>
+                ) : (
+                  <div className="text-sm font-semibold mb-4 invisible" aria-hidden>
+                    &nbsp;
+                  </div>
+                )}
+                <ul className="space-y-3">
+                  {column.links.map((link) => (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        className="text-sm opacity-70 hover:opacity-100 transition-opacity"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6  md:items-start border-t border-white/10 mt-12 pt-4">
@@ -104,6 +81,24 @@ However, please note that SECP will entertain only those complaints which were a
 directly requested to be redressed by the company and the company has failed to 
 redress the same. Further, the complaints that are not relevant to SECP’s regulatory 
 domain/competence shall not be entertained by the SECP.</p>
+
+            <div className="mt-6 pt-4 border-t border-white/15 flex items-center gap-3">
+              {legalLinks.map((link, index) => (
+                <span key={link.href} className="flex items-center gap-3">
+                  {index > 0 && (
+                    <span className="text-white/20" aria-hidden>
+                      |
+                    </span>
+                  )}
+                  <Link
+                    href={link.href}
+                    className="text-xs font-medium text-white/70 hover:text-white transition-colors underline-offset-4 hover:underline"
+                  >
+                    {link.label}
+                  </Link>
+                </span>
+              ))}
+            </div>
           </div>
 
           {/* Center Column: SCEP and Jama-Punji logos */}
