@@ -110,7 +110,7 @@ export default function HeroCarousel({
                   <Button
                     asChild
                     size="lg"
-                    className="mt-10 rounded-full bg-hero-cta h-12 px-8 text-base font-medium text-hero-cta-foreground hover:opacity-90"
+                    className="mt-6 2xl:mt-10 rounded-full bg-hero-cta h-12 px-8 text-base font-medium text-hero-cta-foreground hover:opacity-90"
                   >
                     <Link href={slide.ctaLink}>{slide.ctaText}</Link>
                   </Button>

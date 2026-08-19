@@ -58,7 +58,7 @@ export default function BiotechManufacturingSection() {
            
               <StaggerFadeUpInView  className="  h-1/2  gap-4  hidden sm:grid grid-cols-2 ">
               {/* Card 1 - Logo Placeholder */}
-              <div className="bg-[#FF00FF40]/70 backdrop-blur-xs  rounded-2xl md:rounded-[2rem] p-2 h-36 w-48 flex flex-col items-center justify-center text-center aspect-square">
+              <div className="bg-[#FF00FF40]/70 backdrop-blur-xs  rounded-2xl md:rounded-[2rem] p-2 xl:h-36 h-32 xl:w-48 w-40 flex flex-col items-center justify-center text-center aspect-square">
                 <Image
                   src="/images/company-overview/BFBIO-Symbol.webp"
                   alt="BF Biosciences Logo"
@@ -69,19 +69,19 @@ export default function BiotechManufacturingSection() {
               </div>
               
               {/* Card 2 */}
-              <div className="bg-[#3B73AC80]/70 backdrop-blur-xs   rounded-2xl md:rounded-[2rem] h-36 w-48 flex flex-col items-center justify-center text-center aspect-square">
+              <div className="bg-[#3B73AC80]/70 backdrop-blur-xs   rounded-2xl md:rounded-[2rem] xl:h-36 h-32 xl:w-48 w-40 flex flex-col items-center justify-center text-center aspect-square">
                 <h2 className="text-white font-bold text-3xl  ">2006</h2>
                 <span className="text-white text-xs  uppercase ">Founded With Bago Group</span>
               </div>
               
               {/* Card 3 */}
-              <div className="bg-[#3B73AC80]/70 backdrop-blur-xs   rounded-2xl md:rounded-[2rem]  h-36 w-48 flex flex-col items-center justify-center text-center aspect-square">
+              <div className="bg-[#3B73AC80]/70 backdrop-blur-xs   rounded-2xl md:rounded-[2rem]  xl:h-36 h-32 xl:w-48 w-40 flex flex-col items-center justify-center text-center aspect-square">
                 <h2 className="text-white font-bold text-3xl  ">2024</h2>
                 <span className="text-white text-xs  uppercase ">Listed On PSX</span>
               </div>
               
               {/* Card 4 */} 
-              <div className="bg-[#3B73AC80]/70 backdrop-blur-xs  rounded-2xl md:rounded-[2rem]  h-36 w-48 flex flex-col items-center justify-center text-center aspect-square">
+              <div className="bg-[#3B73AC80]/70 backdrop-blur-xs  rounded-2xl md:rounded-[2rem]  xl:h-36 h-32 xl:w-48 w-40 flex flex-col items-center justify-center text-center aspect-square">
                 <h2 className="text-white font-bold text-3xl ">cGMP</h2>
               </div>
               
