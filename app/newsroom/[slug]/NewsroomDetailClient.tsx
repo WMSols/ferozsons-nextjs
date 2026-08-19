@@ -34,7 +34,7 @@ export default function NewsroomDetailClient({
           )}
 
           <div className="p-6 md:p-8 lg:p-10">
-            <h1 className="text-3xl md:text-4xl font-bold text-foreground">
+            <h1 className=" text-2xl xs:text-3xl md:text-4xl font-bold text-foreground">
               {article.title}
             </h1>
 

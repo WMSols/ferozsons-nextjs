@@ -3,7 +3,7 @@
 import { StaggerGrid } from "@/components/animations/StaggerGrid";
 import ArticleCard from "@/components/shared/ArticleCard";
 import type { Article } from "@/data/articles";
-import { ReactNode } from "react";
+import { ReactNode, TouchEvent, useRef } from "react";
 import { StaggerFadeUpInView } from "../animations/StaggerFadeUpInView";
 
 interface ArticlesGridProps {
@@ -34,6 +34,34 @@ export default function ArticlesGrid({
       article={article}
     />
   ));
+
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const touchStart = useRef({ x: 0, y: 0 });
+
+  const handleTouchStart = (e: TouchEvent<HTMLDivElement>) => {
+    touchStart.current = {
+      x: e.touches[0].clientX,
+      y: e.touches[0].clientY,
+    };
+  };
+
+  const handleTouchMove = (e: TouchEvent<HTMLDivElement>) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+
+    const dx = Math.abs(e.touches[0].clientX - touchStart.current.x);
+    const dy = Math.abs(e.touches[0].clientY - touchStart.current.y);
+
+    // Vertical swipe: release this row so the page can scroll.
+    // Horizontal swipe: keep overflow-x so the cards can pan.
+    el.style.overflowX = dy > dx ? "hidden" : "auto";
+  };
+
+  const handleTouchEnd = () => {
+    if (scrollerRef.current) {
+      scrollerRef.current.style.overflowX = "";
+    }
+  };
 
   return (
     <section className="bg-background py-16 md:py-24">
@@ -78,7 +106,12 @@ export default function ArticlesGrid({
 
       {!isLoading && articles.length > 0 && (
         <div
-          className="md:hidden flex gap-4 overflow-x-auto overscroll-x-contain snap-x snap-mandatory pl-4 ml-3 sm:ml-0 pr-4 touch-pan-x [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          ref={scrollerRef}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          onTouchCancel={handleTouchEnd}
+          className="md:hidden flex gap-4 overflow-x-auto overscroll-x-contain snap-x snap-mandatory pl-4 ml-3 sm:ml-0 pr-4 [touch-action:pan-x_pan-y] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {articles.map((article) => (
             <div

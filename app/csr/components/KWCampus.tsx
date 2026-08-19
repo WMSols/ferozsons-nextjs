@@ -40,12 +40,12 @@ export default function KWCampus() {
 
 
                         {/* Heading */}
-                        <h2 className="text-white text-5xl md:text-6xl lg:text-[5rem] font-bold leading-tight mb-8">
+                        <h2 className="text-white text-4xl md:text-6xl lg:text-[5rem] font-bold leading-tight sm:mb-8 mb-4">
                             Khalid Waheed Campus
                         </h2>
 
                         {/* Paragraph */}
-                        <p className="text-white text-lg md:text-xl leading-relaxed mb-10 max-w-3xl">
+                        <p className="text-white text-lg md:text-xl leading-relaxed sm:mb-10 mb-1 max-w-3xl">
                             In memory of Ferozsons' founding Chief Executive, Mr. Khalid Waheed,<br />
                             the company and family co-funded the TCF Khalid Waheed Campus at <br />
                             Kot Addu, Muzaffargarh. With 10% of the world's out-of-school children<br />

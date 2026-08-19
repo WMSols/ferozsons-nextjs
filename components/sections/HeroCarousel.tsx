@@ -121,7 +121,7 @@ export default function HeroCarousel({
           </div>
         );
       })}
-        <div className="absolute bottom-8 left-0 right-0 z-20 flex justify-center gap-3">
+        <div className="absolute xs:bottom-8 bottom-4 left-0 right-0 z-20 flex justify-center gap-3">
         {slides.map((_, index) => (
           <button
             key={index}

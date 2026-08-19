@@ -48,7 +48,7 @@ export default function SeventyYearsBanner() {
             </StaggerFadeUpInView>
             <Link
               href="/about/history"
-              className="inline-flex items-center justify-center bg-[#3B73AC] hover:bg-[#294e74] text-white text-base font-medium h-12 px-8 rounded-full transition-colors w-fit"
+              className="inline-flex items-center justify-center bg-[#3B73AC] hover:bg-[#294e74] text-white text-base font-medium h-12 px-4 sm:px-8 rounded-full transition-colors w-fit"
             >
               Learn How We Built Our Legacy
             </Link>

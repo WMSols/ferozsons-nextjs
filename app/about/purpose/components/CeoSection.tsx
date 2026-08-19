@@ -44,7 +44,7 @@ export default function CeoSection() {
 
             {/* Closing Quote */}
             <div 
-              className="text-[#3B73AC] text-7xl md:text-[8rem] font-kaisei leading-none self-end select-none -mt-6  md:-mt-8 -mr-2 sm:mr-8"
+              className="text-[#3B73AC] text-7xl md:text-[8rem] font-kaisei leading-none self-end select-none -mt-6  md:-mt-8 mr-2 sm:mr-8"
               aria-hidden="true"
             >
               &rdquo;

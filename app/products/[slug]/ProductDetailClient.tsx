@@ -33,7 +33,7 @@ export default function ProductDetailClient({
 
   return (
     <>
-      <section className="py-8 md:py-12 bg-secondary">
+      <section className="py-8 md:py-12 bg-secondary mt-14 ">
         <div className="container max-w-6xl mx-auto px-4">
           <div className="bg-background rounded-3xl overflow-hidden shadow-sm">
             <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-10 lg:gap-12 p-6 md:p-8 lg:p-10">

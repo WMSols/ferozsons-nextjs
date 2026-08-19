@@ -26,7 +26,7 @@ const CommitSection = ({
             <h2 className="text-4xl text-black md:text-[5rem] font-bold leading-snug  mb-4">
               {title}
             </h2>
-            <p className=" text-2xl md:text-[1.6rem] max-w-9xl mb-6 text-black leading-normal">
+            <p className=" text-xl sm:text-2xl md:text-[1.6rem] max-w-9xl mb-6 text-black leading-normal">
               {description}
             </p>
             {showCTA && (

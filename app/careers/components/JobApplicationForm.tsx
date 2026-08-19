@@ -79,7 +79,7 @@ const JobApplicationModal = ({ isOpen, onClose, job } : JobApplicationProps) => 
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/50 p-4 sm:p-12">
-      <div className="relative w-full px-6 py-8 max-h-[90vh] rounded-3xl overflow-y-scroll bg-white shadow-2xl">
+      <div className="relative w-full sm:px-6 py-8 max-h-[90vh] rounded-3xl overflow-y-scroll bg-white shadow-2xl">
         <button
           onClick={onClose}
           className="absolute right-4 top-4 text-gray-500 transition-colors hover:text-gray-700"
@@ -104,7 +104,7 @@ const JobApplicationModal = ({ isOpen, onClose, job } : JobApplicationProps) => 
               <Clock size={16} /> {job.type}
             </span>
           </div>
-          <div className="flex flex-col gap-2 mt-8">
+          <div className="flex flex-col gap-2 sm:mt-8 mt-4">
             <div className="my-4">
               <h1 className="font-semibold text-2xl text-black mb-4">Overview</h1>
               <p className="text-[#565656]  my-1 ml-2 ">{job.overview}</p>

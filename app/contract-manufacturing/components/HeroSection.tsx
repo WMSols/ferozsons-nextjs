@@ -40,7 +40,7 @@ export function HeroSection() {
                 hidden: { opacity: 0, y: 30 },
                 visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
               }}
-              className="text-5xl sm:text-7xl md:text-8xl lg:text-[6.5rem] font-bold text-white leading-none mb-6 tracking-tight"
+              className="text-[40px] sm:text-7xl md:text-8xl lg:text-[6.5rem] font-bold text-white leading-none mb-6 tracking-tight"
             >
               Manufacturing
             </motion.h1>

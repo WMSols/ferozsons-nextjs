@@ -36,7 +36,7 @@ export default function HepatitisBreakthrough() {
           
           {/* Left Stats */}
           <div className="flex flex-col text-black">
-            <h2 className="text-7xl md:text-[6rem] lg:text-[7rem] font-bold leading-normal tracking-tight mb-4">
+            <h2 className="text-6xl md:text-[6rem] lg:text-[7rem] font-bold leading-normal tracking-tight mb-4">
               <Counter target="250,000"/>+
             </h2>
             <span className="text-2xl md:text-3xl font-semibold leading-normal  mb-3">

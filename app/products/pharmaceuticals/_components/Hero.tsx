@@ -42,7 +42,7 @@ export default function Hero() {
 
       <div className="pt-10 md:pt-14 lg:pt-20 pb-10 overflow-hidden">
         <div className="container">
-            <h1 className="text-[32px] font-bold text-center mb-10 leading-snug tracking-[-0.02em] text-black md:text-[56px]">
+            <h1 className="text-[28px] sm:text-[32px] font-bold text-center mb-10 leading-snug tracking-[-0.02em] text-black md:text-[56px]">
               Advancing healthcare through innovative <br className="hidden md:block" /> medicines across multiple therapeutic areas.
             </h1>
         </div>
