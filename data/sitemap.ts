@@ -5,6 +5,7 @@ export const sitemapPage = {
     {
       title: "About Us",
       links: [
+        { label: "About Us", href: "/about" },
         { label: "Our History", href: "/about/history" },
         { label: "Company Overview", href: "/about/company-overview" },
         { label: "Purpose", href: "/about/purpose" },

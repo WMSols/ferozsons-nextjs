@@ -37,7 +37,7 @@ const HeroSection = ({
         <div
           className={
             showInvestorInfo
-              ? "flex-1 flex items-center justify-center text-center pt-16 md:pt-20"
+              ? "pt-10 text-center md:flex-1 md:flex md:items-center md:justify-center md:pt-20"
               : "md:ml-12 py-16"
           }
         >
@@ -61,7 +61,7 @@ const HeroSection = ({
         </div>
 
         {showInvestorInfo && (
-          <div className="flex flex-col gap-6 md:gap-8 pb-20 md:pb-24 max-w-4xl">
+          <div className="absolute inset-x-6 top-1/2 -translate-y-1/2 flex flex-col gap-6 max-w-4xl md:static md:inset-auto md:top-auto md:translate-y-0 md:gap-8 md:pb-24">
             <a
               href="https://dps.psx.com.pk/company/FEROZ"
               target="_blank"

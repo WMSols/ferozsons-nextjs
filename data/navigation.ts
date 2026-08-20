@@ -18,12 +18,12 @@ export interface NavItem {
 export const mainNavItems: NavItem[] = [
   {
     label: "About Us",
-    href: "/about/company-overview",
+    href: "/about",
     description: "For over 70 years, Ferozsons Laboratories Limited has been putting patients first.",
     megaImage: "/nav-about.webp",
     megaImageTitle: "Putting Patients First Since 1956",
     megaImageSubtitle: "Discover Our Company",
-    megaImageLink: "/about/company-overview",
+    megaImageLink: "/about",
     children: [
       { label: "Our History", href: "/about/history" },
       { label: "Company Overview", href: "/about/company-overview" },
@@ -108,6 +108,7 @@ export const footerLinks = [
   {
     title: "About Us",
     links: [
+      { label: "About Us", href: "/about" },
       { label: "Our History", href: "/about/history" },
       { label: "Company Overview", href: "/about/company-overview" },
       { label: "Purpose", href: "/about/purpose" },
