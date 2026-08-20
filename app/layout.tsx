@@ -20,7 +20,7 @@ const merriweather = Merriweather({
 
 export const metadata: Metadata = {
   title: { default: "Ferozsons Laboratories Limited", template: "%s | Ferozsons Laboratories Limited" },
-  description: "Feroz Sons Website",
+  description: "Ferozsons Laboratories Limited",
   authors: [{ name: "Ferozsons Laboratories Limited" }],
 };
 
