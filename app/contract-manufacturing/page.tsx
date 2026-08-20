@@ -16,13 +16,6 @@ import EgmpSlideshowSection from "./components/EgmpSlideshowSection";
 
 // ─── Main Component ────────────────────────────────────────────────────────────
 export default function ContractManufacturing() {
-  const heroRef = useRef<HTMLElement | null>(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-
   const ctaRef = useRef<HTMLElement | null>(null);
   const ctaScroll = useScroll({
     target: ctaRef,
@@ -36,7 +29,7 @@ export default function ContractManufacturing() {
 
   return (
     <div
-      className="w-full overflow-x-hidden -mt-[6.6rem] "
+      className="w-full overflow-x-hidden"
       style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}
     >
       {/* ── Google Fonts ── */}
@@ -48,10 +41,10 @@ export default function ContractManufacturing() {
         .font-body { font-family: 'Source Serif 4', Georgia, serif; }
       `}</style>
 
-      <HeroSection heroRef={heroRef} heroY={heroY} />
+      <HeroSection  />
       <StatementSection />
+       <EgmpSlideshowSection/>
       <FacilityHighlightsSection cards={facilityCards} />
-      <EgmpSlideshowSection/>
         <ClientsSection
         currentClients={currentClients}
         legacyClients={legacyClients}

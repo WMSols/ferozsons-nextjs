@@ -14,16 +14,16 @@ export default function BrandLockup({
   const suffix = variant === "light" ? "light" : "dark";
 
   return (
-    <div className={cn("flex items-center gap-4", className)}>
+    <div className={cn("flex items-center sm:gap-4 ml-4 sm:ml-8 ", className)}>
       <img
         src="ferozsons-f-white.webp"
         alt="Ferozsons logo"
-        className={cn("shrink-0", size === "lg" ? "h-20" : "h-16")}
+        className={cn("shrink-0 h-20 md:h-32")}
       />
       <img
         src="people-trust-us.webp"
         alt="People Trust Us"
-        className={cn("shrink-0", size === "lg" ? "h-24 md:h-28" : "h-16 md:h-20")}
+        className={cn("shrink-0 h-28 md:h-36")}
       />
     </div>
   );

@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { ReactNode } from "react";
 
 interface CTABannerProps {
-  title?: string;
-  description?: string;
+  title?: string | ReactNode;
+  description?: string | ReactNode;
   ctaText?: string;
   ctaLink?: string;
   image?: string;
@@ -11,33 +12,25 @@ interface CTABannerProps {
 }
 
 const CTABanner = ({
-  title = "Care That Goes Beyond Medicine",
-  description = "At Ferozsons, we believe healthcare is more than just prescriptions. It's about compassion, innovation, and a deep commitment to improving lives across Pakistan.",
+  title = (<span>Care That Goes <br /> Beyond Medicine</span>),
+  description = (<span>At Ferozsons, we believe healthcare is more than just prescriptions. It's about<br className="hidden md:block"/> compassion, innovation, and a deep commitment to improving lives across Pakistan.</span>),
   ctaText = "Learn More",
   ctaLink = "/about",
-  image = "/care-beyond.avif",
   showCTA = true,
 }: CTABannerProps) => {
   return (
-    <section className="bg-primary/10 py-16 md:py-20">
+    <section className="bg-[#E5F2FF] py-16 md:py-24">
       <div className="container">
-        <div className="flex flex-col md:flex-row items-center gap-10 max-w-4xl mx-auto">
-          <div className="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden shrink-0 border-4 border-primary/20">
-            <img
-              src={image}
-              alt={title}
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="text-center md:text-left">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+        <div className="flex flex-col items-center justify-center max-w-[20.5rem] mx-auto sm:max-w-4xl">
+          <div className="text-center flex flex-col gap-6 sm:gap-12 items-center">
+            <h2 className="text-[32px] text-black md:text-[82px] font-bold leading-[1.15] md:leading-snug">
               {title}
             </h2>
-            <p className="text-muted-foreground mb-6 leading-relaxed">
+            <p className="text-lg text-black sm:text-[22px] sm:max-w-5xl sm:leading-relaxed">
               {description}
             </p>
             {showCTA && (
-              <Button asChild className="rounded-full px-8">
+              <Button asChild className="rounded-full h-12 px-8 text-base font-medium">
                 <Link href={ctaLink}>{ctaText}</Link>
               </Button>
             )}

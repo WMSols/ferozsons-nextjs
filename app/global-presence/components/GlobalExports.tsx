@@ -50,13 +50,24 @@ export default function GlobalExports() {
   };
 
   return (
-    <section className="relative -mt-16 rounded-t-[3.3rem] bg-[#e8e8e8] pb-14 pt-12 sm:pt-16 lg:-mt-20 lg:rounded-t-[4.2rem] lg:pb-20">
+    <section className="relative  rounded-t-[3.3rem] sm:px-0 px-4 pt-12 sm:pt-16  lg:rounded-t-[4.2rem] lg:pb-20">
       <div className="container">
-        <h2 className="text-center font-kaisei font-bold text-4xl font-black leading-[1.05] tracking-tight text-black sm:text-5xl">
+        <h2 className="text-center font-kaisei font-bold text-4xl hidden sm:block leading-[1.05] tracking-tight text-black sm:text-5xl">
           Global Exports Excellence
         </h2>
 
         <div className="mt-10 grid gap-5 lg:grid-cols-[290px_1fr] lg:items-start">
+          <div className="overflow-hidden sm:hidden block rounded-[3rem] bg-[#2f87ce] ">
+            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[1.65rem]">
+              <Image
+                src="/global-presence/world-map.png"
+                alt="World map showing Ferozsons export footprint"
+                fill
+                className=" object-center"
+                sizes="(max-width: 1024px) 95vw, 70vw"
+              />
+            </div>
+          </div>
           <div>
             <div className="overflow-hidden rounded-[2rem] border border-[#a8adb3] bg-[#efefef]">
               {Object.entries(REGION_COUNTRIES).map(
@@ -114,18 +125,19 @@ export default function GlobalExports() {
                 },
               )}
             </div>
-
+              <div className="flex w-full justify-center">
             <button
               type="button"
               onClick={handleContactClick}
-              className="mt-5 w-full rounded-full bg-[#2f80c7] px-8 py-4 text-2xl font-semibold text-white shadow-[0_10px_22px_rgba(47,128,199,0.35)] transition hover:bg-[#236db0]"
+              className="mt-5 w-fit sm:w-full rounded-full bg-[#2B7EC0] mx-auto px-8  sm:py-4 py-1 sm:text-2xl font-semibold text-white sm:shadow-[0_10px_22px_rgba(47,128,199,0.35)] transition hover:bg-[#236db0]"
             >
               Contact Us
             </button>
+            </div>
           </div>
 
           <div className="overflow-hidden rounded-[2rem] bg-[#2f87ce] ">
-            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[1.35rem]">
+            <div className="relative hidden sm:block aspect-[16/9] w-full overflow-hidden rounded-[1.35rem]">
               <Image
                 src="/global-presence/world-map.png"
                 alt="World map showing Ferozsons export footprint"

@@ -8,13 +8,12 @@ export default function ArticlesGridClient() {
 
   return (
     <>
-    <ArticlesGrid
-      articles={latestArticles}
-      title="Latest Articles"
-      viewAllLink="/newsroom"
-      viewAllText="View All"
-      isLoading={isLoading}
-    />
+      <ArticlesGrid
+        articles={latestArticles}
+        subtitle="Latest Articles"
+        title={(<span> Discover the Stories Driving<br className="hidden md:block"/> Better Healthcare.</span>)}
+        isLoading={isLoading}
+      />
     </>
   );
 }

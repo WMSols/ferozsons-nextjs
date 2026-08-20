@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { ArrowDown, ChevronDown } from "lucide-react";
 
 interface HeroFullScreenProps {
   backgroundImage: string;
@@ -17,7 +18,7 @@ export default function HeroFullScreen({
   return (
     <section
       className={cn(
-        "relative w-full min-h-[100vh] flex flex-col items-center justify-center",
+        "relative w-full  overflow-hidden rounded-b-[3.1rem] flex flex-col items-center justify-center",
         className,
       )}
     >

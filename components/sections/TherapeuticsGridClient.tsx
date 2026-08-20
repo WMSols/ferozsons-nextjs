@@ -1,110 +1,78 @@
 "use client";
 
-import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { StaggerFadeUp } from "../animations/StaggerFadeUp";
-import { StaggerFadeUpInView } from "../animations/StaggerFadeUpInView";
 import { TherapeuticArea } from "@/types/strapi";
-import { getStrapiImageUrl } from "@/lib/strapi";
 import { useCategories } from "@/app/products/hooks/useCategories";
+import { cn } from "@/lib/utils";
+import TherapeuticCardBig from "@/components/shared/TherapeuticCardBig";
+import { StaggerFadeUpInView } from "../animations/StaggerFadeUpInView";
 
 interface TherapeuticsGridProps {
   items: TherapeuticArea[];
   loading: boolean;
 }
 
-const ITEMS_PER_PAGE_MOBILE = 2;
-const ITEMS_PER_PAGE_DESKTOP = 4;
-
 export default function TherapeuticsGridClient({
   items,
   loading
 }: TherapeuticsGridProps) {
-  const [page, setPage] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  // Refs for swipe tracking
   const touchStartX = useRef<number>(0);
   const isDragging = useRef(false);
   const hasMoved = useRef(false);
 
-  useEffect(() => {
-    const mq = window.matchMedia("(max-width: 767px)");
-    setIsMobile(mq.matches);
-    const handler = (e: MediaQueryListEvent) => {
-      setIsMobile(e.matches);
-      setPage(0);
-    };
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
+  const { categories, isLoading: categoriesLoading } = useCategories();
 
-  const itemsPerPage = isMobile
-    ? ITEMS_PER_PAGE_MOBILE
-    : ITEMS_PER_PAGE_DESKTOP;
-  const totalPages = Math.ceil(items.length / itemsPerPage);
-  const start = page * itemsPerPage;
-  const visibleItems = items.slice(start, start + itemsPerPage);
-
-  const prev = () => setPage((p) => Math.max(0, p - 1));
-  const next = () => setPage((p) => Math.min(totalPages - 1, p + 1));
-
-  //Therapuetic area image url resolving
-  const getImageUrl = (
-    image: string | { url: string } | undefined,
-  ): string | undefined => {
-    return typeof image === "string" ? image : image?.url;
-  };
-
-  const getTherapeuticImage = (url: string | { url: string } | undefined) => {
-    const stringUrl = getImageUrl(url);
-
-    if (!stringUrl) return undefined;
-
-    // local image from public folder
-    if (stringUrl.startsWith("/images")) {
-      return stringUrl;
-    }
-
-    // strapi image
-    return getStrapiImageUrl(stringUrl);
-  };
-    const {
-      categories,
-      isLoading
-    } = useCategories()
-  
   const getCategorySlug = (title: string) => {
-      // 1. Use .find() instead of .filter()
-      // 2. Add the optional chaining operator (?.) before .slug
-      const categorySlug = (!isLoading) && categories.find((c) => c.name === title)?.slug;
-      
-      return categorySlug;
-  }
+    const categorySlug = !categoriesLoading && categories.find((c) => c.name === title)?.slug;
+    // Fallback to a URL-friendly slug if strapi data isn't loaded yet
+    return categorySlug || title.toLowerCase().replace(/\s+/g, '-'); 
+  };
+
+  const nextSlide = () => {
+    if (!items || items.length === 0) return;
+    setActiveIndex((prev) => (prev === items.length - 1 ? 0 : prev + 1));
+  };
+
+  const prevSlide = () => {
+    if (!items || items.length === 0) return;
+    setActiveIndex((prev) => (prev === 0 ? items.length - 1 : prev - 1));
+  };
 
   return (
-    <section className="pt-8 pb-16 md:pt-10 md:pb-20">
-      <div className="mx-4 lg:mx-6">
-        <h2 className="font-kaisei text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2 md:mb-4 leading-snug">
-          A broad range of pharmaceutical solutions
-        </h2>
-
-        <p className="font-sans text-xs sm:text-sm md:text-base text-gray-600 mb-6 md:mb-10 max-w-xl leading-relaxed">
-          Through continuous development and strategic partnerships, we offer
-          medicines across several therapeutic areas to support modern
-          healthcare.
-        </p>
-
-       {
-        loading ? (
-          <div className="text-muted-foreground">Therapeutic Areas loading...</div>
-        ): (
-          <>
-           {/* Card Grid */}
+    <section className="bg-background mt-8 pt-16 md:pt-24 pb-0 text-black overflow-hidden">
+      <div className="container mx-auto px-4 text-center mb-16">
         <StaggerFadeUpInView>
-          <div
-            className="touch-pan-y select-none cursor-grab active:cursor-grabbing grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6"
+        <span className=" font-light   uppercase ">
+          Product List
+        </span>
+        <h3 className="text-3xl md:text-[82px]  font-bold mb-10 mt-8 ">
+          A broad portfolio of <br/> pharmaceutical solutions
+        </h3>
+        <p className=" text-sm md:text-lg max-w-3xl mx-auto mb-10 leading-relaxed">
+          Through continuous development and strategic partnerships, we offer medicines<br className="hidden md:block"/> across several therapeutic areas to support modern healthcare.
+        </p>
+        </StaggerFadeUpInView>
+      </div>
+
+      {loading ? (
+        <div className="text-muted-foreground py-12 text-center">
+          Loading therapeutic areas...
+        </div>
+      ) : !items || items.length === 0 ? (
+        <div className="text-muted-foreground py-12 text-center">
+          No therapeutic areas found.
+        </div>
+      ) : (
+        <div className="relative w-full max-w-[1600px] mx-auto flex flex-col items-center">
+          
+          {/* Carousel Track with Swipe Listeners */}
+          <div 
+            // Adjusted container height to comfortably fit the large center card
+            className="relative w-full mt-16 flex justify-center items-center h-[620px] md:h-[600px] lg:h-[640px] xl:h-[700px] touch-pan-y select-none"
             onPointerDown={(e) => {
               touchStartX.current = e.clientX;
               isDragging.current = true;
@@ -112,28 +80,20 @@ export default function TherapeuticsGridClient({
             }}
             onPointerMove={(e) => {
               if (!isDragging.current) return;
-
               const dx = e.clientX - touchStartX.current;
-
               if (Math.abs(dx) > 10) {
                 hasMoved.current = true;
               }
             }}
             onPointerUp={(e) => {
               if (!isDragging.current) return;
-
               isDragging.current = false;
-
               const dx = e.clientX - touchStartX.current;
-
+              
               if (Math.abs(dx) > 40) {
-                if (dx < 0) {
-                  next();
-                } else {
-                  prev();
-                }
+                if (dx < 0) nextSlide(); 
+                else prevSlide();
               }
-
               requestAnimationFrame(() => {
                 hasMoved.current = false;
               });
@@ -142,89 +102,87 @@ export default function TherapeuticsGridClient({
               isDragging.current = false;
             }}
           >
-            {visibleItems ? (
-              visibleItems.map((item) => {
+            {items.map((item, index) => {
+              const length = items.length;
+              
+              let offset = index - activeIndex;
+              if (offset > Math.floor(length / 2)) offset -= length;
+              else if (offset < -Math.floor(length / 2)) offset += length;
+
+              const isActive = offset === 0;
+              const isPrev = offset === -1 || (offset < 0 && length === 2);
+              const isNext = offset === 1 || (offset > 0 && length === 2);
+
+              const linkHref = `/products?category=${getCategorySlug(item.name)}`;
+
               return (
-                <Link
-                  href={`/products?category=${getCategorySlug(item.name)}`}
+                <div
                   key={item.name}
-                  onClick={(e) => {
-                    if (hasMoved.current) {
-                      e.preventDefault();
-                    }
-                  }}
-                  className="bg-[#3b6a9e] rounded-2xl md:rounded-3xl hover:scale-102 transition-all duration-300 w-full aspect-square flex flex-col p-4 sm:p-4 md:p-6"
+                  className={cn(
+                    "absolute left-1/2 top-1/2 w-[70%] md:w-[54%] lg:w-[50%] xl:w-[60%] -translate-x-1/2 -translate-y-1/2 transition-opacity duration-700 ease-out",
+                    isActive && "z-10 opacity-100 pointer-events-auto",
+                    (isPrev || isNext) && "z-[5] opacity-100 pointer-events-auto",
+                    !isActive && !isPrev && !isNext && "z-0 opacity-0 pointer-events-none"
+                  )}
                 >
-                  {/* Bumped mobile floor from 11px → text-sm (14px), rest of scale unchanged */}
-                  <h3 className="font-kaisei capitalize text-white text-sm sm:text-sm md:text-base lg:text-xl font-bold text-left leading-tight wrap-break-words hyphens-auto">
-                    {item.name}
-                  </h3>
-
-                  {/* Image shrinks to give label room */}
-                  <div className="flex-1 relative mt-1 min-h-0 min-w-0">
-                    {item.image ? (
-                      <Image
-                        src={getTherapeuticImage(item.image)!}
-                        alt={`${item.name} illustration`}
-                        fill
-                        className="object-contain p-1 sm:p-2"
-                      />
-                    ) : (
-                      <div className="flex justify-center items-center h-full">
-                        <h1 className="text-8xl text-white/10">
-                          {item.name.charAt(0)}
-                        </h1>
-                      </div>
+                  <div
+                    className={cn(
+                      "transition-transform duration-700 ease-out",
+                      isActive && "translate-x-0 scale-100",
+                      isPrev && "-translate-x-[95%] md:-translate-x-[90%] scale-75 sm:scale-[0.68] ",
+                      isNext && "translate-x-[95%] md:translate-x-[90%] scale-75 sm:scale-[0.68] ",
+                      !isActive && !isPrev && !isNext && "scale-[0.6]"
                     )}
+                  >
+                    <TherapeuticCardBig
+                      item={item}
+                      isActive={isActive}
+                      linkHref={linkHref}
+                      onClick={() => {
+                        if (hasMoved.current) return;
+                        if (!isActive) setActiveIndex(index);
+                      }}
+                    />
                   </div>
-                </Link>
+                </div>
               );
-            })): (
-              <div className="text-muted-foreground">Theraputic Areas loading...</div>
-            )}
+            })}
           </div>
-        </StaggerFadeUpInView>
 
-        {/* Pagination */}
-        {totalPages > 1 && (
-          <div className="flex justify-center mt-6 md:mt-10">
-            <div className="inline-flex items-center gap-2 rounded-full bg-white shadow-md px-3 py-1.5 md:px-4 md:py-2">
-              <button
-                type="button"
-                onClick={prev}
-                disabled={page === 0}
-                className="p-1 text-gray-600 hover:text-gray-900 disabled:opacity-30 disabled:cursor-not-allowed"
-                aria-label="Previous"
-              >
-                <ChevronLeft className="w-4 h-4 md:w-5 md:h-5" />
-              </button>
-
-              {Array.from({ length: totalPages }).map((_, i) => (
-                <span
-                  key={i}
-                  className={`w-1.5 h-1.5 md:w-2 md:h-2 rounded-full transition-colors ${
-                    i === page ? "bg-blue-600" : "bg-gray-300"
-                  }`}
-                  aria-hidden
+          {/* Controls */}
+          <div className="flex items-center gap-6 mt-12">
+            <button 
+              onClick={prevSlide} 
+              className="p-2 hover:bg-muted rounded-full transition-colors"
+              aria-label="Previous slide"
+            >
+              <ChevronLeft className="w-5 h-5 text-foreground" />
+            </button>
+            
+            <div className="flex gap-3">
+              {items.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActiveIndex(idx)}
+                  aria-label={`Go to slide ${idx + 1}`}
+                  className={cn(
+                    "h-1.5 rounded-full transition-all duration-500 ease-out",
+                    activeIndex === idx ? "w-8 bg-primary" : "w-1.5 bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                  )}
                 />
               ))}
-
-              <button
-                type="button"
-                onClick={next}
-                disabled={page === totalPages - 1}
-                className="p-1 text-gray-600 hover:text-gray-900 disabled:opacity-30 disabled:cursor-not-allowed"
-                aria-label="Next"
-              >
-                <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
-              </button>
             </div>
+
+            <button 
+              onClick={nextSlide} 
+              className="p-2 hover:bg-muted rounded-full transition-colors"
+              aria-label="Next slide"
+            >
+              <ChevronRight className="w-5 h-5 text-foreground" />
+            </button>
           </div>
-        )}
-        </>
-        )
-       }
-      </div>
+        </div>
+      )}
     </section>
   );
 }

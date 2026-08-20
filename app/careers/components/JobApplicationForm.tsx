@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from "react";
-import { X, Briefcase, MapPin, Clock, Paperclip } from "lucide-react";
+import { X, Briefcase, MapPin, Clock, Paperclip, Dot } from "lucide-react";
 import { submitJobApplication } from "@/lib/strapi";
 import { StrapiJob } from "@/types/strapi";
 
@@ -78,8 +78,8 @@ const JobApplicationModal = ({ isOpen, onClose, job } : JobApplicationProps) => 
   if (!isOpen || !job) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/50 p-4 sm:p-6">
-      <div className="relative w-full max-w-2xl max-h-[90vh] rounded-xl overflow-y-scroll bg-white shadow-2xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/50 p-4 sm:p-12">
+      <div className="relative w-full sm:px-6 py-8 max-h-[90vh] rounded-3xl overflow-y-scroll bg-white shadow-2xl">
         <button
           onClick={onClose}
           className="absolute right-4 top-4 text-gray-500 transition-colors hover:text-gray-700"
@@ -88,13 +88,15 @@ const JobApplicationModal = ({ isOpen, onClose, job } : JobApplicationProps) => 
         </button>
 
         <div className="border-b border-gray-100 p-6 sm:p-8">
-          <h2 className="mb-3 text-2xl font-bold text-[#0f2846]">
+          <h2 className="mb-3 text-2xl font-bold text-[#3B73AC]">
             {job.title}
           </h2>
-          <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500">
-            <span className="flex items-center gap-1.5">
-              <Briefcase size={16} /> {job.domain}
-            </span>
+          <div className="flex flex-wrap items-center gap-4 text-sm text-[#565656]">
+            { job.domain &&
+                         <span className="flex items-center gap-1.5">
+                          <Briefcase size={16} className="text-gray-400" /> {job.domain}
+                        </span>
+                       }
             <span className="flex items-center gap-1.5">
               <MapPin size={16} /> {job.location}
             </span>
@@ -102,39 +104,39 @@ const JobApplicationModal = ({ isOpen, onClose, job } : JobApplicationProps) => 
               <Clock size={16} /> {job.type}
             </span>
           </div>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 sm:mt-8 mt-4">
             <div className="my-4">
-              <h1 className="font-semibold">Overview</h1>
-              <p className="text-muted-foreground text-sm my-1 ml-2 ">{job.overview}</p>
+              <h1 className="font-semibold text-2xl text-black mb-4">Overview</h1>
+              <p className="text-[#565656]  my-1 ml-2 ">{job.overview}</p>
             </div>
             <div className="my-4">
-              <h1 className="font-semibold">Responsibilites</h1>
-              <p className="text-muted-foreground text-sm my-1 ml-2">
+              <h1 className="font-semibold text-2xl text-black mb-4">Responsibilites</h1>
+              <p className="text-[#565656]  my-1 ml-2">
                 {job.responsiblities}
               </p>
             </div>
             <div className="my-4">
-              <h1 className="font-semibold">Requirements</h1>
-              <p className="text-muted-foreground text-sm my-1 ml-2">
+              <h1 className="font-semibold text-2xl text-black mb-4">Requirements</h1>
+              <p className="text-[#565656]  my-1 ml-2">
                 {job.requirements}
               </p>
             </div>
             <div className="my-4">
-              <h1 className="font-semibold">Skills</h1>
-              <div className="flex gap-2">
+              <h1 className="font-semibold text-2xl mb-2 text-black ">Skills</h1>
+              <div className="flex text-gray-600 flex-col">
                 {job.skills?.split(",").map((skill: string, idx: number) => (
                   <span
                     key={idx}
-                    className="text-xs rounded-full bg-blue-100 px-1.5 py-0.5 text-blue-600"
+                    className="flex"
                   >
-                    {skill}
+                    <Dot/> {skill}
                   </span>
                 ))}
               </div>
             </div>
             <div className="my-4">
-              <h1 className="font-semibold">What You'll Get</h1>
-              <p className="text-muted-foreground text-sm my-1 ml-2">{job.benefits}</p>
+              <h1 className="font-semibold text-black text-2xl mb-2">What You'll Get</h1>
+              <p className="text-[#565656] my-1 ml-2">{job.benefits}</p>
             </div>
           </div>
         </div>
@@ -230,7 +232,7 @@ const JobApplicationModal = ({ isOpen, onClose, job } : JobApplicationProps) => 
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full rounded-full bg-[#1a65a4] py-3 text-center font-medium text-white transition-colors hover:bg-[#145084] disabled:bg-gray-400 disabled:cursor-not-allowed"
+              className="w-full h-12 rounded-full bg-[#1a65a4] text-center text-base font-medium text-white transition-colors hover:bg-[#145084] disabled:bg-gray-400 disabled:cursor-not-allowed"
             >
               {isSubmitting ? "Submitting..." : "Submit Application"}
             </button>

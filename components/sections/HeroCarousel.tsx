@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { HeroImageZoom } from "@/components/animations/HeroImageZoom";
 import { StaggerFadeUp } from "@/components/animations/StaggerFadeUp";
 import { ButtonMotion } from "@/components/animations/ButtonMotion";
+import { ArrowDown } from "lucide-react";
 
 export interface HeroSlide {
   id: number;
@@ -60,7 +61,8 @@ export default function HeroCarousel({
   );
 
   return (
-    <section className="mx-4 mt-4 lg:mx-6 lg:mt-6 relative flex min-h-[100vh] flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-hero-border bg-background px-6 xs:py-20  shadow-sm md:px-12 md:py-24 lg:px-16 lg:py-28">
+  
+    <section className=" relative flex min-h-[95vh] xs:min-h-[93vh] flex-col items-center justify-center overflow-hidden rounded-b-[3.1rem]   px-8 xs:pt-32 shadow-sm md:px-12 md:pt-24 lg:px-16 lg:pt-32">
       {slides.map((slide, index) => {
         const isActive = current === index;
         const isPrev = prev === index;
@@ -70,9 +72,6 @@ export default function HeroCarousel({
             key={slide.id}
             className="absolute inset-0 flex flex-col items-center justify-center"
             style={{
-              // active: fully visible on top
-              // prev: fading out below active
-              // others: hidden behind
               opacity: isActive ? 1 : 0,
               zIndex: isActive ? 10 : isPrev ? 5 : 0,
               transition: "opacity 1200ms ease-in-out",
@@ -88,30 +87,30 @@ export default function HeroCarousel({
                 />
               </HeroImageZoom>
               <div
-                className="absolute inset-0 bg-linear-to-b from-hero-overlay/80 via-hero-overlay/60 to-hero-overlay/40"
-                aria-hidden
-              />
+  className="absolute inset-0 bg-black/50 "
+  aria-hidden
+/>
             </div>
 
             {isActive && (
               <StaggerFadeUp
-                className={`container relative z-10 flex w-full flex-col ${
+                className={`container relative z-10 sm:px-32 pt-24 -pb-10 flex w-full flex-col ${
                   slide.align === "left"
                     ? "items-start text-left"
-                    : "items-center text-center"
+                    : ""
                 }`}
               >
-                <h1 className="font-serif text-2xl xs:text-4xl font-bold leading-tight text-hero-heading sm:text-5xl md:text-6xl lg:text-[3.5rem] max-w-4xl">
+                <h1 className=" text-4xl xs:text-5xl  font-bold leading-tight text-hero-heading sm:text-5xl md:text-6xl lg:text-[82px] max-w-4xl">
                   {slide.title}
                 </h1>
-                <p className="mt-6 max-w-3xl text-base xs:text-xl font-normal leading-relaxed text-hero-body md:text-2xl">
+                <p className=" mt-8 sm:mt-6 max-w-3xl text-base font-normal md:text-xl   leading-relaxed text-white  ">
                   {slide.description}
                 </p>
                 <ButtonMotion>
                   <Button
                     asChild
                     size="lg"
-                    className="mt-10 rounded-full bg-hero-cta px-8 py-3 text-sm sm:text-base font-semibold text-hero-cta-foreground hover:opacity-90"
+                    className="mt-6 2xl:mt-10 rounded-full bg-hero-cta h-12 px-8 text-base font-medium text-hero-cta-foreground hover:opacity-90"
                   >
                     <Link href={slide.ctaLink}>{slide.ctaText}</Link>
                   </Button>
@@ -122,8 +121,7 @@ export default function HeroCarousel({
           </div>
         );
       })}
-
-      <div className="absolute bottom-8 left-0 right-0 z-20 flex justify-center gap-3">
+        <div className="absolute xs:bottom-8 bottom-4 left-0 right-0 z-20 flex justify-center gap-3">
         {slides.map((_, index) => (
           <button
             key={index}

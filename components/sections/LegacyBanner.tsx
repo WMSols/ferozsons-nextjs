@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import BrandLockup from "@/components/shared/BrandLockup";
 import { StaggerFadeUpInView } from "../animations/StaggerFadeUpInView";
@@ -22,8 +21,8 @@ export default function LegacyBanner({
   showBrandLockup = true,
 }: LegacyBannerProps) {
   return (
-    <section className="w-full">
-      <StaggerFadeUpInView className="relative min-h-[60vh] flex flex-col items-center justify-center px-6 py-20 md:px-12 md:py-24 lg:px-16 lg:py-28">
+    <section className="w-full mt-8">
+      <StaggerFadeUpInView className="relative min-h-[60vh] flex flex-col   justify-center  py-20 md:px-12 md:py-24 lg:px-24 lg:py-28">
         <div className="absolute inset-0">
           <img
             src={backgroundImage}
@@ -32,33 +31,27 @@ export default function LegacyBanner({
             aria-hidden
           />
           <div
-            className="absolute inset-0 bg-linear-to-r from-black/70 via-black/60 to-black/50"
+            className="absolute inset-0 bg-linear-to-r from-black/40 via-black/40 to-black/50"
             aria-hidden
           />
         </div>
-        <StaggerFadeUpInView className="container relative z-10 flex flex-col items-start text-left mx-auto">
+        <StaggerFadeUpInView className="container relative z-10 flex flex-col items-start text-left ">
           {showBrandLockup && (
-            <BrandLockup variant="light" className="mb-8 md:mb-10" />
+            <BrandLockup variant="light"  />
           )}
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white max-w-6xl">
+          <h2 className=" text-3xl  md:text-5xl lg:text-[82px] sm:font-bold leading-tight text-white max-w-6xl">
             {title}
           </h2>
-          <p className="mt-6 max-w-xl text-base md:text-lg font-normal leading-relaxed text-white">
+          <p className="mt-12 max-w-xl text-base md:text-xl font-normal leading-relaxed text-white">
             {description}
           </p>
           <Button
             asChild
             size="lg"
-            className="mt-10 h-auto w-full min-w-0 sm:w-auto rounded-full bg-primary px-6 py-4 sm:px-8 sm:py-4 text-sm sm:text-base font-semibold text-primary-foreground hover:opacity-90"
+            className="mt-10 h-12  min-w-0 sm:w-auto rounded-full bg-primary px-4 text-sm sm:text-base font-medium text-primary-foreground hover:opacity-90"
           >
-            <Link
-              href={ctaLink}
-              className="flex flex-col items-center justify-center gap-y-2 min-w-0 sm:flex-row sm:gap-x-2 sm:justify-start"
-            >
-              <span className="whitespace-normal text-center sm:text-left">
-                {ctaText}
-              </span>
-              <ArrowRight className="h-4 w-4 shrink-0" />
+            <Link href={ctaLink}>
+              {ctaText}
             </Link>
           </Button>
         </StaggerFadeUpInView>

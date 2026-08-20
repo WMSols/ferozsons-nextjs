@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Opti&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 @import "tailwindcss";
 
 @layer base {
@@ -156,10 +157,11 @@
   --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-serif), ui-serif, Georgia, serif;
   --font-kaisei: "Kaisei Opti", ui-serif, Georgia, serif;
+  --font-open-sans: "Open Sans", ui-sans-serif, system-ui, sans-serif;
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
-  --breakpoint-ixl: 1430px;
+  --breakpoint-ixl: 1025px;
 }
 
 @keyframes accordion-down {
@@ -192,6 +194,23 @@
   max-width: 1400px;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+/* Lenis needs instant programmatic scroll; CSS smooth would double-ease the wheel. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
 /* Mission card: subtle circular pattern (right on desktop, bottom on mobile) */
 .mission-card-pattern {
   background-color: hsl(var(--mission-card));
@@ -246,11 +265,13 @@
     color: hsl(var(--foreground));
     font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   }
-
+  p {
+    font-family: var(--font-open-sans), ui-sans-serif, system-ui, sans-serif;
+  }
   h1,
   h2,
   h3,
   h4 {
-    font-family: var(--font-serif), ui-serif, Georgia, serif;
+    font-family: var(--font-kaisei), ui-serif, Georgia, serif;
   }
 }

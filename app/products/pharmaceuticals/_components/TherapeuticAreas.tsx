@@ -35,16 +35,16 @@ const getTherapeuticImage = (
   return (
     <section className="bg-pharma-page-bg pb-14 pt-10 md:pb-20 md:pt-14">
       <div className="container">
-        <h2 className="font-serif text-[22px] font-bold leading-tight text-pharma-text-primary">
+        <h2 className=" text-[2rem] font-bold leading-tight text-black">
           Our Therapeutic Areas
         </h2>
 
-        <div className="mt-7 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {sortedAreas.map((area) => (
             <TherapeuticCard
               key={area.name}
               title={area.name}
-              icon={getTherapeuticImage(area.image)}
+              icon={getTherapeuticImage(area.pharma_image)}
               portfolioLink={area.portfolioLink}
             />
           ))}

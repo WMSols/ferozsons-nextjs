@@ -19,16 +19,31 @@ export interface YearGroup {
 
 export const YEARS: YearGroup[] = [
   {
+    year: 2025,
+    milestones: [
+      {
+        date: "2025",
+        category: "product",
+        title:
+          "Ferozsons Subsidiary BF Biosciences Limited Launches Zeptide®, an Advanced Treatment for Type 2 Diabetes and Obesity",
+        body: "Ferozsons subsidiary BF Biosciences Limited launched Zeptide® (Tirzepatide), an innovative treatment for Type 2 diabetes and obesity, reflecting the company's continued commitment to advancing biopharmaceutical innovation and improving patient care in Pakistan.",
+
+        image: "/images/about-history/2025.png",
+        imageAlt: "Pharmaceutical product representing Tirzepatide.",
+        imagePosition: "left",
+      },
+    ],
+  },{
     year: 2024,
     milestones: [
       {
         date: "2024",
         category: "product",
         title:
-          "Ferozsons launches Sematide, Pakistan’s first locally manufactured GLP-1 medicine",
-        body: "Ferozsons Laboratories launched Sematide (Semaglutide), Pakistan’s first locally manufactured GLP-1 medicine, representing a landmark achievement in bringing advanced biopharmaceutical innovation to the local healthcare market.",
+          " Ferozsons Subsidiary BF Biosciences Limited launches Sematide, Pakistan’s first locally manufactured GLP-1 medicine ",
+        body: " Ferozsons Subsidiary BF Biosciences Limited  launched Sematide (Semaglutide), Pakistan’s first locally manufactured GLP-1 medicine, representing a landmark achievement in bringing advanced biopharmaceutical innovation to the local healthcare market.",
 
-        image: "/images/about-history/2024.webp",
+        image: "/images/about-history/2024.png",
         imageAlt: "Pharmaceutical product representing Semaglutide.",
         imagePosition: "right",
       },
@@ -163,7 +178,7 @@ export const YEARS: YearGroup[] = [
         title: "Strategic partnerships for oncology and liver disease",
         body: "Ferozsons Laboratories entered into strategic partnerships with leading international companies, Curatis Pharma GmbH (Germany) and Bagó Group S.A. (Argentina), for the import and marketing of a range of biological products in oncology and liver disease.",
 
-        image: "/images/about-history/2002.webp",
+        image: "/images/about-history/2002.png",
         imageAlt: "Oncology research lab.",
         imagePosition: "left",
       },
@@ -239,6 +254,20 @@ export const YEARS: YearGroup[] = [
     ],
   },
   {
+    year: 1956,
+    milestones: [
+      {
+        date: "1956",
+        category: "foundation",
+        title: "Beginning of Operations",
+        body: "Ferozsons Laboratories Limited officially began manufacturing operations in 1956, marking the start of its mission to produce high-quality pharmaceutical products and putting patients first in Pakistan. This milestone laid the foundation for decades of innovation, trusted healthcare solutions, and sustained growth in both domestic and international markets.",
+
+        image: "/images/about-history/1956.webp",
+        imageAlt: "Historic pharmaceutical facility.",
+        imagePosition: "right",
+      },
+    ],
+  },{
     year: 1954,
     milestones: [
       {

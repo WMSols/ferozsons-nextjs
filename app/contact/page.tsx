@@ -1,31 +1,27 @@
-import Layout from "@/components/layout/Layout";
 import CTABanner from "@/components/layout/CTABanner";
-import ContactHeroSection from "./components/ContactHeroSection";
 import ContactInfoSection from "./components/ContactInfoSection";
 import ContactFormSection from "./components/ContactFormSection";
+import PageHero from "@/components/layout/PageHero";
 
 const Contact = () => {
   return (
-    <div className="sm:pt-10 pt-20">
-      <ContactHeroSection
+    <>
+      <PageHero
         title="Contact Us"
-        subtitle="We'd love to hear from you. Reach out with any questions, feedback, or inquiries."
+        backgroundImage="/images/contact-hero.webp"
       />
-
-      <section className="py-16 md:py-24">
-        <div className="container">
-          <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
-            <ContactInfoSection
-              heading="Get in Touch"
-              description="Whether you have a question about our products, partnerships, career opportunities, or anything else, our team is ready to help."
-            />
+      <div className="bg-background">
+        <section className="py-16 md:py-24">
+          {/* Stacked Layout with centered max-width */}
+          <div className="container max-w-6xl mx-auto px-4 flex flex-col gap-16 md:gap-24">
             <ContactFormSection />
+            <ContactInfoSection />
           </div>
-        </div>
-      </section>
+        </section>
 
-      <CTABanner />
-    </div>
+        <CTABanner />
+      </div>
+    </>
   );
 };
 

@@ -1,11 +1,15 @@
 import Link from "next/link";
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator, BreadcrumbPage } from "@/components/ui/breadcrumb";
+import { ArrowDown } from "lucide-react";
+import { StaggerFadeUp } from "../animations/StaggerFadeUp";
+import { ReactNode } from "react";
 
 interface PageHeroProps {
-  title: string;
+  title: string | ReactNode;
   subtitle?: string;
   breadcrumbs?: { label: string; href?: string }[];
   backgroundImage?: string;
+  isPharmaceuticals?: boolean;
 }
 
 const PageHero = ({
@@ -13,11 +17,12 @@ const PageHero = ({
   subtitle,
   breadcrumbs,
   backgroundImage,
+  isPharmaceuticals = false,
 }: PageHeroProps) => {
   return (
     <section
-      className={` -mt-[6.6rem] relative py-16 md:py-24 overflow-hidden ${
-        backgroundImage ? "text-white min-h-screen flex items-center" : "bg-transparent"
+      className={` rounded-b-[3.1rem] relative py-16 md:py-24 overflow-hidden ${
+        backgroundImage ? "text-white min-h-[93vh] flex items-center" : "bg-transparent"
       }`}
     >
       {backgroundImage && (
@@ -27,7 +32,7 @@ const PageHero = ({
             alt=""
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-black/30" />
         </div>
       )}
       <div className="container relative z-10">
@@ -56,15 +61,18 @@ const PageHero = ({
             </BreadcrumbList>
           </Breadcrumb>
         )} */}
-        <h1 className={`text-3xl md:text-5xl lg:text-6xl font-bold ${backgroundImage ? "text-white" : "text-foreground"}`}>
+        <StaggerFadeUp>
+        <h1 className={`${isPharmaceuticals ? "text-[39px]" : "text-[40px]"} md:ml-12 leading-snug sm:leading-none  lg:text-8xl font-bold ${backgroundImage ? "text-white" : "text-foreground"}`}>
           {title}
         </h1>
+        </StaggerFadeUp>
         {subtitle && (
-          <p className={`mt-6 text-lg md:text-xl max-w-3xl leading-relaxed ${backgroundImage ? "text-white/90" : "text-muted-foreground"}`}>
+          <p className={`mt-6 md:ml-12 text-lg font-normal md:text-xl max-w-3xl leading-relaxed ${backgroundImage ? "text-white" : "text-muted-foreground"}`}>
             {subtitle}
           </p>
         )}
       </div>
+       
     </section>
   );
 };

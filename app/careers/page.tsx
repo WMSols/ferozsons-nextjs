@@ -1,12 +1,11 @@
-
 import PageHero from "@/components/layout/PageHero";
-import { whyWorkWithUs } from "@/data/careers";
-import WhyWorkCard from "./components/WhyWorkCard";
+import WhyWorkSection from "./components/WhyWorkSection";
 import PositionCard from "./components/PositionCard";
 
-// Import your fetch utilities (adjust the path to wherever your strapi.ts file is located)
+// Import your fetch utilities
 import { buildJobPostsUrl, strapiFetch } from "@/lib/strapi";
 import { StrapiJob } from "@/types/strapi";
+import CTABanner from "@/components/layout/CTABanner";
 
 export const metadata = {
   title: "Careers",
@@ -14,23 +13,21 @@ export const metadata = {
     "Join our team and help shape the future of healthcare in Pakistan.",
 };
 
-// 1. Make the component async to handle server-side fetching
 export default async function CareersPage() {
- let jobs = [];
+  let jobs: StrapiJob[] = [];
 
   try {
     const url = buildJobPostsUrl();
 
     const res = await strapiFetch(url, {
-  cache: "no-store",
-});
+      cache: "no-store",
+    });
 
     if (!res.ok) {
       throw new Error(`HTTP ${res.status}`);
     }
 
     const json = await res.json();
-
     jobs = Array.isArray(json?.data) ? json.data : [];
   } catch (error) {
     console.error("Failed to fetch job posts:", error);
@@ -38,35 +35,31 @@ export default async function CareersPage() {
   }
 
   return (
-    <div className="sm:pt-10 pt-20">
+    <div className="">
       <PageHero
         title="Careers"
-        subtitle="Join our team and help shape the future of healthcare in Pakistan."
+        backgroundImage="/images/careers/Hero.webp"
+        subtitle="Join our team and help shape the future of healthcare."
       />
 
-      <div className="flex flex-col items-center justify-center py-16 md:py-20">
-        <div className="mb-16 max-w-4xl px-4">
-          <h2 className="text-2xl font-bold mb-6">Why Work With Us</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {whyWorkWithUs.map((v) => (
-              <WhyWorkCard key={v.title} title={v.title} desc={v.desc} />
-            ))}
-          </div>
-        </div>
-
-        <h2 className="text-2xl font-bold mb-6">Open Positions</h2>
-        <div className="space-y-4 max-w-5xl  px-6 lg:p-0">
-
-          {/* 3. Handle empty state or map through the fetched jobs */}
+      {/* Replaced old mapping block with the new WhyWorkSection component */}
+      <WhyWorkSection />
+{/* Open Positions Section */}
+      <div className="flex flex-col items-center justify-center pb-16 md:pb-20">
+        <h2 className=" text-3xl sm:text-5xl  font-bold mb-12 md:mb-24 text-center">Open Positions</h2>
+        
+        <div className="space-y-4 w-full  px-6">
           {jobs.length === 0 ? (
-            <p className="text-gray-500">No open positions at the moment. Please check back later!</p>
+            <p className="text-muted-foreground text-center py-8">
+              No open positions at the moment. Please check back later!
+            </p>
           ) : (
-            jobs.map((job: StrapiJob, idx:number) => {
+            jobs.map((job: StrapiJob, idx: number) => {
               const { title, domain, location, type } = job;
 
               return (
                 <PositionCard
-                  key={idx} // Use the Strapi database ID as the React key
+                  key={idx}
                   title={title}
                   domain={domain}
                   location={location}
@@ -76,20 +69,14 @@ export default async function CareersPage() {
                   requirements={job.requirements}
                   skills={job.skills}
                   benefits={job.benefits}
-
-                  // Important: Since PositionCard contains the Application Form,
-                  // you will likely want to pass the Job ID down so when the form
-                  // is submitted, you know which job they applied for!
                   jobId={job.jobId}
                 />
               );
-            }
-          )
+            })
           )}
-
         </div>
       </div>
+      <CTABanner/>
     </div>
   );
 }
-

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function MedicalTechnologiesPage() {
   return (
-    <div className="bg-[#1a1a1a] text-white">
+    <div className="bg-[#1a1a1a] text-white pt-12">
       <SmoothScroll />
       <Navbar />
       <Hero />

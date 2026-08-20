@@ -18,7 +18,7 @@ const bottomTiles = [
 
 export default function Hero() {
   return (
-    <section className="bg-pharma-page-bg">
+    <section className="bg-pharma-page-bg py-10">
       <style>{`
         @keyframes marquee-left {
           0% { transform: translateX(0); }
@@ -40,20 +40,14 @@ export default function Hero() {
         }
       `}</style>
 
-      <div className="pt-10 md:pt-14 lg:pt-20 overflow-hidden">
+      <div className="pt-10 md:pt-14 lg:pt-20 pb-10 overflow-hidden">
         <div className="container">
-          <div className="max-w-3xl">
-            <h1 className="font-serif text-[38px] font-extrabold leading-[1.05] tracking-[-0.02em] text-pharma-text-primary md:text-[48px]">
-              Pharmaceuticals
+            <h1 className="text-[28px] sm:text-[32px] font-bold text-center mb-10 leading-snug tracking-[-0.02em] text-black md:text-[56px]">
+              Advancing healthcare through innovative <br className="hidden md:block" /> medicines across multiple therapeutic areas.
             </h1>
-            <p className="mt-4 max-w-105 text-[16px] leading-relaxed text-pharma-text-secondary">
-              Advancing healthcare through innovative medicines across multiple
-              therapeutic areas.
-            </p>
-          </div>
         </div>
 
-        <div className="mt-10 space-y-2 md:mt-12 md:space-y-4 relative">
+        <div className="mt-10 space-y-2 md:mt-20 md:space-y-4 relative">
           {/* Edge Fades */}
           <div className="absolute inset-y-0 h-full left-0 w-20 bg-gradient-to-r from-pharma-page-bg to-transparent z-10 pointer-events-none" />
           <div className="absolute inset-y-0 h-full right-0 w-20 bg-gradient-to-l from-pharma-page-bg to-transparent z-10 pointer-events-none" />

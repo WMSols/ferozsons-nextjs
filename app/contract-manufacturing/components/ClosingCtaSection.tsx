@@ -13,7 +13,7 @@ export interface ClosingCtaSectionProps {
 export function ClosingCtaSection({ ctaRef, ctaBgY }: ClosingCtaSectionProps) {
   return (
     <section
-      id="contact"
+      id="partner"
       ref={ctaRef}
       className="relative py-32 overflow-hidden text-center"
       style={{ background: "#0a1628" }}
@@ -71,11 +71,10 @@ export function ClosingCtaSection({ ctaRef, ctaBgY }: ClosingCtaSectionProps) {
                 boxShadow: "0 0 40px rgba(74,144,217,0.5)",
               }}
               whileTap={{ scale: 0.97 }}
-              className="font-body px-10 py-4 rounded-full text-white text-base cursor-pointer"
+              className="font-body inline-flex items-center justify-center h-12 px-8 rounded-full text-white text-base font-medium cursor-pointer"
               style={{
                 background: "linear-gradient(135deg, #2563eb, #1d4ed8)",
                 border: "1px solid #3b82f6",
-                fontWeight: 400,
               }}
             >
               Contact Us →

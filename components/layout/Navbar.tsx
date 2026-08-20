@@ -5,27 +5,27 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
-import { Menu, X, Search, ChevronDown } from "lucide-react";
-import {
-  mainNavItems,
-  PRODUCTS_DROPDOWN_PLACEHOLDER_LABEL,
-  secondaryNavItems,
-} from "@/data/navigation";
+import { Menu, X, Search, ChevronDown, ChevronRight, ChevronLeft, ArrowRight } from "lucide-react";
+import { mainNavItems, secondaryNavItems, NavItem } from "@/data/navigation";
 import { getCategoriesUrl, strapiFetch } from "@/lib/strapi";
 import { cn } from "@/lib/utils";
 import type { StrapiCategoriesResponse } from "@/types/strapi";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [desktopMenuOpen, setDesktopMenuOpen] = useState(false);
   const [activePrimaryDropdown, setActivePrimaryDropdown] = useState<string | null>(null);
-  const [activeNestedDropdown, setActiveNestedDropdown] = useState<string | null>(null);
   const [mobileDropdown, setMobileDropdown] = useState<string | null>(null);
-  const [mobileNestedDropdown, setMobileNestedDropdown] = useState<string | null>(null);
   const [desktopSearchOpen, setDesktopSearchOpen] = useState(false);
+  const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+
   const pathname = usePathname();
   const router = useRouter();
   const desktopSearchRef = useRef<HTMLInputElement>(null);
+  const navContainerRef = useRef<HTMLDivElement>(null);
+  const closeMenuTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const ignoreHamburgerHoverRef = useRef(false);
 
   useEffect(() => {
     if (desktopSearchOpen) {
@@ -33,13 +33,47 @@ const Navbar = () => {
     }
   }, [desktopSearchOpen]);
 
+  const clearCloseMenuTimeout = () => {
+    if (closeMenuTimeoutRef.current) {
+      clearTimeout(closeMenuTimeoutRef.current);
+      closeMenuTimeoutRef.current = null;
+    }
+  };
+
+  const openDesktopMenu = () => {
+    if (ignoreHamburgerHoverRef.current) return;
+    clearCloseMenuTimeout();
+    setDesktopMenuOpen(true);
+    setActivePrimaryDropdown((current) => current ?? mainNavItems[0]?.label ?? null);
+  };
+
+  const closeDesktopMenu = () => {
+    clearCloseMenuTimeout();
+    setDesktopMenuOpen(false);
+    setActivePrimaryDropdown(null);
+  };
+
+  const scheduleCloseDesktopMenu = () => {
+    clearCloseMenuTimeout();
+    closeMenuTimeoutRef.current = setTimeout(() => {
+      closeDesktopMenu();
+    }, 160);
+  };
+
+  useEffect(() => {
+    return () => clearCloseMenuTimeout();
+  }, []);
+
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!searchQuery.trim()) return;
     router.push(`/products?search=${encodeURIComponent(searchQuery.trim())}`);
     setSearchQuery("");
     setDesktopSearchOpen(false);
+    setMobileSearchOpen(false);
     setMobileOpen(false);
+    setMobileDropdown(null);
+    setDesktopMenuOpen(false);
   };
 
   const categoriesQuery = useQuery({
@@ -50,487 +84,462 @@ const Navbar = () => {
     },
   });
 
- const productCategories = categoriesQuery.data?.data ?? [];
+  const productCategories = categoriesQuery.data?.data ?? [];
 
+  // Helper to check if an item should trigger a dropdown
+  const hasDropdown = (item: NavItem) => {
+    return !!(item.children && item.children.length > 0) || item.label === "Products" || !!item.megaImage;
+  };
 
-  const navItems = mainNavItems.map((item) => {
-    if (item.label !== "Products" || !item.children?.length) return item;
-    const hasPlaceholder = item.children.some(
-      (c) => c.label === PRODUCTS_DROPDOWN_PLACEHOLDER_LABEL,
-    );
-    if (!hasPlaceholder) return item;
-    const dynamicChildren = productCategories.map((cat) => ({
-      label: cat.name,
-      href: `/products?category=${encodeURIComponent(cat.slug)}`,
-    }));
-    const nextChildren = item.children.map((child) => {
-      if (child.label !== PRODUCTS_DROPDOWN_PLACEHOLDER_LABEL) return child;
-      return {
-        label: "Medicine Categories",
-        href: "/products",
-        children: dynamicChildren,
-      };
-    });
-    return { ...item, children: nextChildren };
-  });
+  // Reusable component block for the Mega Menu (Desktop)
+  const renderMegaMenu = (item: NavItem) => {
+    if (!hasDropdown(item) || activePrimaryDropdown !== item.label) return null;
 
-  return (
-    <header className="sticky top-0 z-50 px-4 pt-4 ixl:px-6 ixl:pt-6">
-      {/* Desktop */}
-      <div className="hidden ixl:block rounded-[20px] bg-[#FFFFFF] shadow-[0_2px_12px_rgba(0,0,0,0.08)]">
-        <div className="flex items-center justify-between gap-8 px-8 py-4">
-          <Link href="/" className="flex items-center shrink-0">
-            <Image
-              src="/Ferozsons-Logo-1000x250px3.avif"
-              alt="Ferozsons Laboratories Limited"
-              width={200}
-              height={50}
-              className="h-10 w-auto"
-              priority
-            />
-          </Link>
+    // Check if we actually have sub-links to display in the middle column
+    const hasSubLinks = item.children && item.children.length > 0;
 
-          <nav className="flex items-center gap-6 flex-1 justify-start pl-8">
-            {navItems.map((item) => (
-              <div
-                key={item.href}
-                className="relative"
-                onMouseEnter={() => item.children && setActivePrimaryDropdown(item.label)}
-                onMouseLeave={() => {
-                  setActivePrimaryDropdown(null);
-                  setActiveNestedDropdown(null);
-                }}
-              >
-                <Link
-                  href={item.href}
-                  className={cn(
-                    "flex items-center gap-1 text-base font-medium text-[#5C85A6] transition-colors hover:opacity-80",
-                    pathname === item.href && "opacity-100",
-                  )}
-                >
-                  {item.label}
-                  {item.children && <ChevronDown className="h-3 w-3" />}
-                </Link>
+    return (
+      <div className="absolute top-full left-0 right-0 z-50 before:absolute before:inset-x-0 before:-top-8 before:h-8 before:bg-transparent">
+        {/* Adjusted padding to hug the ceiling (px-10 pb-10 pt-6) */}
+        <div className="bg-[#000000] border-t border-white/20 rounded-b-[25px] shadow-2xl px-10 pb-10 pt-6 origin-top animate-in fade-in slide-in-from-top-3 duration-300 ease-out">
+          {/* Removed top padding (py-8 to pb-4) to bring elements higher */}
+          <div className="grid grid-cols-13 gap-4 pb-4">
 
-                {item.children && activePrimaryDropdown === item.label && (
-                  <div className="absolute top-full left-0 pt-2 z-50">
-                    <div className="bg-[#FFFFFF] border border-[#CCCCCC] rounded-lg shadow-lg p-6 min-w-60">
-                      <p className="text-xs font-semibold text-[#666666] uppercase tracking-wider mb-3">
-                        {item.label}
-                      </p>
-                      <div className="grid gap-1">
-                        {item.children.map((child) => {
-                          const nestedKey = `${item.label}.${child.label}`;
-                          const hasNestedChildren =
-                            Array.isArray(child.children) && child.children.length > 0;
-
-                          return hasNestedChildren ? (
-                            <div
-                              key={`${child.label}-${child.href}`}
-                              className="relative"
-                              onMouseEnter={() => setActiveNestedDropdown(nestedKey)}
-                              onMouseLeave={() => setActiveNestedDropdown(null)}
-                            >
-                              <button className="flex items-center justify-between w-full px-3 py-2 text-sm text-[#333333] font-medium rounded-md hover:bg-gray-100">
-                                {child.label}
-                                <ChevronDown className="h-3 w-3 ml-2" />
-                              </button>
-                              {activeNestedDropdown === nestedKey && (
-                                <div className="absolute left-full top-0 pl-2">
-                                  <div className="bg-[#FFFFFF] border border-[#CCCCCC] rounded-lg shadow-lg p-4 min-w-50">
-                                    {child.children?.map((grandChild) => (
-                                      <Link
-                                        key={`${grandChild.label}-${grandChild.href}`}
-                                        href={grandChild.href}
-                                        className="block px-3 py-2 text-sm capitalize text-[#666666] hover:text-black rounded-md transition-colors hover:bg-gray-100"
-                                        onClick={() => {
-                                          setActivePrimaryDropdown(null);
-                                          setActiveNestedDropdown(null);
-                                        }}
-                                      >
-                                        {grandChild.label}
-                                      </Link>
-                                    ))}
-                                  </div>
-                                </div>
-                              )}
-                            </div>
-                          ) : (
-                            <Link
-                              key={`${child.label}-${child.href}`}
-                              href={child.href}
-                              className="block px-3 py-2 text-sm text-[#666666] hover:text-black rounded-md transition-colors hover:bg-gray-100"
-                              onClick={() => setActivePrimaryDropdown(null)}
-                            >
-                              {child.label}
-                            </Link>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
-          </nav>
-
-          <div className="flex items-center gap-4 shrink-0">
-            {secondaryNavItems.map((item) => (
-              <div
-                key={item.href}
-                className="relative"
-                onMouseEnter={() => item.children && setActivePrimaryDropdown(item.label)}
-                onMouseLeave={() => {
-                  setActivePrimaryDropdown(null);
-                  setActiveNestedDropdown(null);
-                }}
-              >
-                <Link
-                  href={item.href}
-                  className="flex items-center gap-1 text-sm font-medium text-[#5C85A6] transition-colors hover:opacity-80"
-                >
-                  {item.label}
-                  {item.children && <ChevronDown className="h-3 w-3" />}
-                </Link>
-
-                {item.children && activePrimaryDropdown === item.label && (
-                  <div className="absolute top-full right-0 pt-2 z-50">
-                    <div className="bg-[#FFFFFF] border border-[#CCCCCC] rounded-lg shadow-lg p-6 min-w-60">
-                      <p className="text-xs font-semibold text-[#666666] uppercase tracking-wider mb-3">
-                        {item.label}
-                      </p>
-                      <div className="grid gap-1">
-                        {item.children.map((child) => {
-                          const nestedKey = `${item.label}.${child.label}`;
-                          const hasNestedChildren =
-                            Array.isArray(child.children) && child.children.length > 0;
-
-                          return hasNestedChildren ? (
-                            <div
-                              key={`${child.label}-${child.href}`}
-                              className="relative"
-                              onMouseEnter={() => setActiveNestedDropdown(nestedKey)}
-                              onMouseLeave={() => setActiveNestedDropdown(null)}
-                            >
-                              <button className="flex items-center justify-between w-full px-3 py-2 text-sm text-[#333333] font-medium rounded-md hover:bg-gray-100">
-                                {child.label}
-                                <ChevronDown className="h-3 w-3 ml-2" />
-                              </button>
-                              {activeNestedDropdown === nestedKey && (
-                                <div className="absolute right-full top-0 pr-2">
-                                  <div className="bg-[#FFFFFF] border border-[#CCCCCC] rounded-lg shadow-lg p-4 min-w-50">
-                                    {child.children?.map((grandChild) => (
-                                      <Link
-                                        key={`${grandChild.label}-${grandChild.href}`}
-                                        href={grandChild.href}
-                                        className="block px-3 py-2 text-sm text-[#666666] hover:text-black rounded-md transition-colors hover:bg-gray-100"
-                                        onClick={() => {
-                                          setActivePrimaryDropdown(null);
-                                          setActiveNestedDropdown(null);
-                                        }}
-                                      >
-                                        {grandChild.label}
-                                      </Link>
-                                    ))}
-                                  </div>
-                                </div>
-                              )}
-                            </div>
-                          ) : (
-                            <Link
-                              key={`${child.label}-${child.href}`}
-                              href={child.href}
-                              className="block px-3 py-2 text-sm text-[#666666] hover:text-black rounded-md transition-colors hover:bg-gray-100"
-                              onClick={() => setActivePrimaryDropdown(null)}
-                            >
-                              {child.label}
-                            </Link>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
-
-            {/* Desktop search */}
-            <div className="relative">
-              <button
-                className="text-[#5C85A6] hover:opacity-80"
-                onClick={() => setDesktopSearchOpen((prev) => !prev)}
-                aria-label="Toggle search"
-              >
-                {desktopSearchOpen ? (
-                  <X className="h-5 w-5" />
-                ) : (
-                  <Search className="h-5 w-5" />
-                )}
-              </button>
-
-              {desktopSearchOpen && (
-                <div className="absolute top-full right-0 pt-3 z-50">
-                  <form
-                    onSubmit={handleSearchSubmit}
-                    className="bg-[#FFFFFF] border border-[#CCCCCC] rounded-lg shadow-lg p-3 flex items-center gap-2 w-72"
-                  >
-                    <Search className="h-4 w-4 text-[#5C85A6] shrink-0" />
-                    <input
-                      ref={desktopSearchRef}
-                      type="text"
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      placeholder="Search for products..."
-                      className="flex-1 text-sm text-[#333333] placeholder:text-[#999999] outline-none bg-transparent"
-                    />
-                    {searchQuery && (
-                      <button
-                        type="button"
-                        onClick={() => setSearchQuery("")}
-                        className="text-[#999999] hover:text-[#333333]"
-                      >
-                        <X className="h-3 w-3" />
-                      </button>
-                    )}
-                  </form>
-                </div>
+            {/* Left Column: Title & Description */}
+            <div className="col-span-4 flex flex-col gap-4">
+              {/* Added font-serif and leading-none to hug the top edge perfectly */}
+              <h2 className="text-5xl font-serif leading-none text-white">{item.label}</h2>
+              {item.description && (
+                <p className="text-white/70 text-sm leading-relaxed pr-4 mt-2">
+                  {item.description}
+                </p>
               )}
             </div>
+
+            {/* Middle Column: Links (Only renders if there are children) */}
+            {hasSubLinks && (
+              <div className={cn(
+                "flex flex-col justify-start border-l border-white/10 pl-8",
+                item.megaImage ? "col-span-4" : "col-span-3"
+              )}>
+                <div className="grid gap-4">
+                  {item.children?.map((child) => (
+                    <Link
+                      key={`${child.label}-${child.href}`}
+                      href={child.href}
+                      className="text-white text-sm font-medium hover:text-[#89bdf2] transition-colors w-fit border-b border-transparent hover:border-[#89bdf2] pb-0.5"
+                      onClick={() => {
+                        setActivePrimaryDropdown(null);
+                        setDesktopMenuOpen(false);
+                      }}
+                    >
+                      {child.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Right Column: Image Card OR Dynamic Product Categories Grid */}
+            {item.megaImage ? (
+              <div className={cn(
+                "h-full min-h-[250px] -mb-4 relative rounded-xl overflow-hidden group",
+                // Dynamically span 7 cols, push to column 7, and add top margin if there are no sub-links
+                hasSubLinks ? "col-span-5" : "col-span-7 col-start-7 mt-14"
+              )}>
+                <Image
+                  src={item.megaImage}
+                  alt={item.megaImageTitle || item.label}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6">
+                  {item.megaImageTitle && (
+                    <h3 className="text-white font-semibold text-xl mb-1">
+                      {item.megaImageTitle}
+                    </h3>
+                  )}
+                  <Link
+                    href={item.megaImageLink || item.href}
+                    className="text-white/80 text-sm flex items-center justify-between hover:text-white transition-colors"
+                    onClick={() => {
+                      setActivePrimaryDropdown(null);
+                      setDesktopMenuOpen(false);
+                    }}
+                  >
+                    {item.megaImageSubtitle} <ArrowRight className="h-8 w-8" />
+                  </Link>
+                </div>
+              </div>
+            ) : (
+              item.label === "Products" && (
+                <div className={cn(
+                  "grid grid-cols-2 gap-x-8 gap-y-4 content-start border-l border-white/10 pl-8",
+                  hasSubLinks ? "col-span-5" : "col-span-7 col-start-7 mt-14"
+                )}>
+                  {productCategories.map((cat) => (
+                    <Link
+                      key={cat.slug || cat.name}
+                      href={`/products?category=${encodeURIComponent(cat.slug || cat.name)}`}
+                      className="text-white/80 text-sm hover:text-white transition-colors"
+                      onClick={() => {
+                        setActivePrimaryDropdown(null);
+                        setDesktopMenuOpen(false);
+                      }}
+                    >
+                      {cat.name}
+                    </Link>
+                  ))}
+                </div>
+              )
+            )}
+
           </div>
         </div>
       </div>
+    );
+  };
 
-      {/* Mobile */}
-      <div className="flex ixl:hidden items-center justify-between rounded-[20px] bg-[#FFFFFF] shadow-[0_2px_12px_rgba(0,0,0,0.08)] px-4 py-3">
-        <Link href="/" className="flex items-center shrink-0">
-          <Image
-            src="/Ferozsons-Logo-1000x250px3.avif"
-            alt="Ferozsons Laboratories Limited"
-            width={160}
-            height={40}
-            className="h-8 w-auto"
-            priority
-          />
-        </Link>
-        <button
-          className="p-2 text-[#5C85A6]"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
-      </div>
+  return (
+    <header className="fixed w-[90%] mx-auto left-0 right-0 z-50 top-6">
+      {/* Desktop */}
+      <div
+        ref={navContainerRef}
+        className={cn(
+          "hidden ixl:flex flex-col bg-[#000000] shadow-[0_2px_12px_rgba(0,0,0,0.08)] relative",
+          activePrimaryDropdown ? "rounded-t-[25px]" : "rounded-[25px]"
+        )}
+        onMouseLeave={scheduleCloseDesktopMenu}
+        onMouseEnter={clearCloseMenuTimeout}
+      >
+        {desktopSearchOpen ? (
+          /* Full-width Search View */
+          <div className="flex items-center justify-between w-full px-8 py-4 animate-in fade-in zoom-in-95 duration-300 gap-6">
+            <div className="flex items-center gap-4 shrink-0">
+              <Search className="h-5 w-5 text-white" />
+              <span className="text-white text-sm font-medium hidden lg:block">
+                Search Ferozsons Products
+              </span>
+            </div>
 
-      {mobileOpen && (
-        <>
-          <button
-            type="button"
-            className="ixl:hidden fixed inset-0 z-40 bg-black/20"
-            aria-label="Close menu"
-            onClick={() => setMobileOpen(false)}
-          />
-          <div className="ixl:hidden absolute top-full left-0 right-0 mt-2 z-50 px-4">
-            <div className="rounded-[20px] bg-[#FFFFFF] shadow-[0_2px_12px_rgba(0,0,0,0.08)] border border-[#CCCCCC]/30 overflow-hidden">
-              <div className="px-4 py-4 space-y-1 max-h-[75vh] overflow-y-auto">
+            <form
+              onSubmit={handleSearchSubmit}
+              className="flex flex-1 items-center gap-4"
+            >
+              <div className="flex-1 flex items-center bg-[#222222] rounded-full px-5 py-3">
+                <input
+                  ref={desktopSearchRef}
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search ferozsons-labs.com"
+                  className="w-full text-sm text-white placeholder:text-[#999999] outline-none bg-transparent"
+                />
+              </div>
+              <button
+                type="submit"
+                className="bg-white text-black p-3.5 rounded-[15px] hover:bg-gray-200 transition-colors shrink-0"
+              >
+                <Search className="h-6 w-6" />
+              </button>
+            </form>
 
-                {/* Mobile search — always at the top */}
-                <form
-                  onSubmit={handleSearchSubmit}
-                  className="flex items-center gap-2 bg-gray-50 border border-[#CCCCCC] rounded-lg px-3 py-2 mb-3"
+            <button
+              className="text-white hover:text-gray-300 shrink-0 ml-2"
+              onClick={() => setDesktopSearchOpen(false)}
+              aria-label="Close search"
+            >
+              <X className="h-6 w-6" />
+            </button>
+          </div>
+        ) : (
+          /* Default & Menu Open States */
+          <div className="flex flex-col w-full">
+            {/* Row 1: Logo & Action Icons */}
+            <div className="flex items-center justify-between px-8 py-4 w-full">
+              <Link
+                href="/"
+                className="flex items-center shrink-0"
+                onClick={() => {
+                  setDesktopMenuOpen(false);
+                  setActivePrimaryDropdown(null);
+                }}
+              >
+                <Image
+                  src="/nav-logo.webp"
+                  alt="Ferozsons Laboratories Limited"
+                  width={200}
+                  height={50}
+                  className="h-10 w-auto"
+                  priority
+                />
+              </Link>
+
+              <div className="flex items-center gap-6 shrink-0">
+                <button
+                  className="text-[#FFFFFF] hover:text-gray-300"
+                  onClick={() => {
+                    setDesktopSearchOpen(true);
+                    setDesktopMenuOpen(false);
+                    setActivePrimaryDropdown(null);
+                  }}
+                  aria-label="Open search"
                 >
-                  <Search className="h-4 w-4 text-[#5C85A6] shrink-0" />
-                  <input
-                    type="text"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Search for products..."
-                    className="flex-1 text-sm text-[#333333] placeholder:text-[#999999] outline-none bg-transparent"
-                  />
-                  {searchQuery && (
-                    <button
-                      type="button"
-                      onClick={() => setSearchQuery("")}
-                      className="text-[#999999] hover:text-[#333333]"
+                  <Search className="h-5 w-5" />
+                </button>
+                <button
+                  className="text-[#FFFFFF] hover:text-gray-300"
+                  onMouseEnter={openDesktopMenu}
+                  onMouseLeave={() => {
+                    ignoreHamburgerHoverRef.current = false;
+                  }}
+                  onClick={() => {
+                    if (desktopMenuOpen) {
+                      ignoreHamburgerHoverRef.current = true;
+                      closeDesktopMenu();
+                    } else {
+                      ignoreHamburgerHoverRef.current = false;
+                      openDesktopMenu();
+                    }
+                  }}
+                  aria-label="Toggle menu"
+                  aria-expanded={desktopMenuOpen}
+                >
+                  {desktopMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                </button>
+              </div>
+            </div>
+
+            {/* Row 2: Expanded Nav Items */}
+            {desktopMenuOpen && (
+              <div className="flex items-center justify-between px-8 pb-5 pt-2 w-full animate-in fade-in slide-in-from-top-3 duration-300 ease-out">
+                <nav className="flex items-center gap-4 flex-1 justify-start">
+                  {mainNavItems.map((item) => (
+                    <div
+                      key={item.href}
+                      className="static"
+                      onMouseEnter={() => hasDropdown(item) && setActivePrimaryDropdown(item.label)}
                     >
-                      <X className="h-3 w-3" />
-                    </button>
-                  )}
-                </form>
-
-                {navItems.map((item) => (
-                  <div key={item.href}>
-                    {item.children ? (
-                      <>
-                        <div className="flex items-center justify-between w-full py-3 text-base font-medium text-[#5C85A6]">
-                          <Link
-                            href={item.href}
-                            className="flex-1 hover:opacity-80 text-left"
-                            onClick={() => {
-                              setMobileOpen(false);
-                              setMobileDropdown(null);
-                              setMobileNestedDropdown(null);
-                            }}
-                          >
-                            {item.label}
-                          </Link>
-                          <button
-                            className="p-2 -mr-2"
-                            onClick={() =>
-                              setMobileDropdown(
-                                mobileDropdown === item.label ? null : item.label,
-                              )
-                            }
-                          >
-                            <ChevronDown
-                              className={cn(
-                                "h-4 w-4 transition-transform",
-                                mobileDropdown === item.label && "rotate-180",
-                              )}
-                            />
-                          </button>
-                        </div>
-                        {mobileDropdown === item.label && (
-                          <div className="pl-4 pb-2 space-y-1">
-                            {item.children.map((child) => {
-                              const nestedKey = `${item.label}.${child.label}`;
-                              const hasNestedChildren =
-                                Array.isArray(child.children) && child.children.length > 0;
-
-                              return hasNestedChildren ? (
-                                <div key={`${child.label}-${child.href}`}>
-                                  <div className="flex items-center justify-between w-full py-2 text-sm text-[#5C85A6]">
-                                    <Link
-                                      href={child.href}
-                                      className="flex-1 hover:opacity-80 text-left"
-                                      onClick={() => {
-                                        setMobileOpen(false);
-                                        setMobileDropdown(null);
-                                        setMobileNestedDropdown(null);
-                                      }}
-                                    >
-                                      {child.label}
-                                    </Link>
-                                    <button
-                                      className="p-2 -mr-2 hover:opacity-80"
-                                      onClick={() =>
-                                        setMobileNestedDropdown(
-                                          mobileNestedDropdown === nestedKey ? null : nestedKey,
-                                        )
-                                      }
-                                    >
-                                      <ChevronDown
-                                        className={cn(
-                                          "h-4 w-4 transition-transform",
-                                          mobileNestedDropdown === nestedKey && "rotate-180",
-                                        )}
-                                      />
-                                    </button>
-                                  </div>
-                                  {mobileNestedDropdown === nestedKey && (
-                                    <div className="pl-4 pb-2 space-y-1">
-                                      {child.children?.map((grandChild) => (
-                                        <Link
-                                          key={`${grandChild.label}-${grandChild.href}`}
-                                          href={grandChild.href}
-                                          className="block py-2 text-sm text-[#5C85A6] hover:opacity-80"
-                                          onClick={() => {
-                                            setMobileOpen(false);
-                                            setMobileDropdown(null);
-                                            setMobileNestedDropdown(null);
-                                          }}
-                                        >
-                                          {grandChild.label}
-                                        </Link>
-                                      ))}
-                                    </div>
-                                  )}
-                                </div>
-                              ) : (
-                                <Link
-                                  key={`${child.label}-${child.href}`}
-                                  href={child.href}
-                                  className="block py-2 text-sm text-[#5C85A6] hover:opacity-80"
-                                  onClick={() => {
-                                    setMobileOpen(false);
-                                    setMobileDropdown(null);
-                                    setMobileNestedDropdown(null);
-                                  }}
-                                >
-                                  {child.label}
-                                </Link>
-                              );
-                            })}
-                          </div>
-                        )}
-                      </>
-                    ) : (
                       <Link
                         href={item.href}
-                        className="block py-3 text-base font-medium text-[#5C85A6] hover:opacity-80"
-                        onClick={() => setMobileOpen(false)}
+                        className={cn(
+                          "flex items-center gap-1 text-sm font-medium text-[#FFFFFF] transition-all px-4 py-2 rounded-full",
+                          activePrimaryDropdown === item.label ? "bg-white/15" : "hover:text-gray-300",
+                          pathname === item.href && "text-white"
+                        )}
+                        onClick={() => {
+                          setDesktopMenuOpen(false);
+                          setActivePrimaryDropdown(null);
+                        }}
                       >
                         {item.label}
                       </Link>
-                    )}
-                  </div>
-                ))}
+                      {renderMegaMenu(item)}
+                    </div>
+                  ))}
+                </nav>
 
-                <div className="border-t border-[#CCCCCC]/50 pt-3 mt-3 space-y-1">
+                <div className="flex items-center gap-4 shrink-0">
                   {secondaryNavItems.map((item) => (
-                    <div key={item.href}>
-                      {item.children ? (
-                        <>
-                          <div className="flex items-center justify-between w-full py-2 text-sm font-medium text-[#5C85A6]">
-                            <Link
-                              href={item.href}
-                              className="flex-1 hover:opacity-80 text-left"
-                              onClick={() => {
-                                setMobileOpen(false);
-                                setMobileDropdown(null);
-                                setMobileNestedDropdown(null);
-                              }}
-                            >
-                              {item.label}
-                            </Link>
-                            <button
-                              className="p-2 -mr-2"
-                              onClick={() =>
-                                setMobileDropdown(
-                                  mobileDropdown === item.label ? null : item.label,
-                                )
-                              }
-                            >
-                              <ChevronDown
-                                className={cn(
-                                  "h-4 w-4 transition-transform",
-                                  mobileDropdown === item.label && "rotate-180",
-                                )}
-                              />
-                            </button>
-                          </div>
-                          {mobileDropdown === item.label && (
-                            <div className="pl-4 pb-2 space-y-1">
-                              {item.children.map((child) => (
-                                <Link
-                                  key={`${child.label}-${child.href}`}
-                                  href={child.href}
-                                  className="block py-2 text-sm text-[#5C85A6] hover:opacity-80"
-                                  onClick={() => {
-                                    setMobileOpen(false);
-                                    setMobileDropdown(null);
-                                    setMobileNestedDropdown(null);
-                                  }}
-                                >
-                                  {child.label}
-                                </Link>
-                              ))}
-                            </div>
-                          )}
-                        </>
+                    <div
+                      key={item.href}
+                      className="static"
+                      onMouseEnter={() => hasDropdown(item) && setActivePrimaryDropdown(item.label)}
+                    >
+                      <Link
+                        href={item.href}
+                        className={cn(
+                          "flex items-center gap-1 text-sm font-medium text-[#FFFFFF] transition-all px-4 py-2 rounded-full",
+                          activePrimaryDropdown === item.label ? "bg-white/15" : "hover:text-gray-300",
+                          pathname === item.href && "text-white"
+                        )}
+                        onClick={() => {
+                          setDesktopMenuOpen(false);
+                          setActivePrimaryDropdown(null);
+                        }}
+                      >
+                        {item.label}
+                      </Link>
+                      {renderMegaMenu(item)}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+
+      {/* Mobile Header (Collapsed State) */}
+      <div className="flex ixl:hidden items-center justify-between rounded-[20px] bg-[#000000] shadow-[0_2px_12px_rgba(0,0,0,0.08)] px-4 py-3">
+        {mobileSearchOpen ? (
+          <form onSubmit={handleSearchSubmit} className="flex items-center gap-2 w-full">
+            <div className="flex-1 flex items-center bg-[#222222] rounded-full px-4 py-2 min-w-0">
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search ferozsons-labs.com"
+                className="w-full text-base text-white placeholder:text-[#999999] outline-none bg-transparent"
+              />
+            </div>
+            <button
+              type="submit"
+              className="bg-white text-black p-2.5 rounded-[12px] shrink-0"
+              aria-label="Submit search"
+            >
+              <Search className="h-5 w-5" />
+            </button>
+            <button
+              type="button"
+              className="text-white p-1 shrink-0"
+              onClick={() => setMobileSearchOpen(false)}
+              aria-label="Close search"
+            >
+              <X className="h-5 w-5" />
+            </button>
+          </form>
+        ) : (
+          <>
+            <Link href="/" className="flex items-center shrink-0">
+              <Image
+                src="/nav-logo.webp"
+                alt="Ferozsons Laboratories Limited"
+                width={160}
+                height={40}
+                className="h-8 w-auto"
+                priority
+              />
+            </Link>
+            <div className="flex items-center gap-1 shrink-0">
+              <button
+                className="p-2 text-[#FFFFFF]"
+                onClick={() => setMobileSearchOpen(true)}
+                aria-label="Open search"
+              >
+                <Search className="h-5 w-5" />
+              </button>
+              <button
+                className="p-2 text-[#FFFFFF]"
+                onClick={() => {
+                  setMobileSearchOpen(false);
+                  setMobileOpen(true);
+                }}
+                aria-label="Open menu"
+              >
+                <Menu className="h-6 w-6" />
+              </button>
+            </div>
+          </>
+        )}
+      </div>
+
+      {/* Mobile Menu (Full Screen Overlay) */}
+      {mobileOpen && (
+        <div className="ixl:hidden fixed inset-0 z-[100] bg-[#000000] flex flex-col animate-in fade-in slide-in-from-top-[50px] duration-300">
+
+          {/* Mobile Menu Header */}
+          <div className="flex items-center justify-between px-6 py-6">
+            <Link
+              href="/"
+              className="flex items-center shrink-0"
+              onClick={() => {
+                setMobileOpen(false);
+                setMobileDropdown(null);
+              }}
+            >
+              <Image
+                src="/nav-logo.webp"
+                alt="Ferozsons Laboratories Limited"
+                width={160}
+                height={40}
+                className="h-8 w-auto"
+                priority
+              />
+            </Link>
+            <button
+              className="p-2 text-[#FFFFFF]"
+              onClick={() => {
+                setMobileOpen(false);
+                setMobileDropdown(null);
+              }}
+              aria-label="Close menu"
+            >
+              <X className="h-6 w-6" />
+            </button>
+          </div>
+
+          {/* Mobile Menu Content */}
+          <div className="flex-1 overflow-y-auto px-6 py-4">
+            <form
+              onSubmit={handleSearchSubmit}
+              className="flex items-center gap-2 mb-8"
+            >
+              <div className="flex-1 flex items-center bg-[#222222] rounded-full px-4 py-3 min-w-0">
+                <Search className="h-4 w-4 text-white/50 mr-3 shrink-0" />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search ferozsons-labs.com"
+                  className="w-full text-base text-white placeholder:text-[#999999] outline-none bg-transparent"
+                />
+              </div>
+              <button
+                type="submit"
+                className="bg-white text-black p-3 rounded-[12px] shrink-0"
+                aria-label="Submit search"
+              >
+                <Search className="h-5 w-5" />
+              </button>
+            </form>
+
+            {!mobileDropdown ? (
+              /* Main Menu List */
+              <div className="flex flex-col gap-10 animate-in fade-in slide-in-from-left-4 duration-300">
+                <div className="flex flex-col gap-6">
+                  {mainNavItems.map((item) => (
+                    <div key={item.href} className="flex items-center justify-between">
+                      {hasDropdown(item) ? (
+                        <button
+                          className="flex items-center justify-between w-full text-left group"
+                          onClick={() => setMobileDropdown(item.label)}
+                        >
+                          <span className="font-serif text-3xl text-white group-hover:text-gray-300 transition-colors">
+                            {item.label}
+                          </span>
+                          <ChevronRight className="h-6 w-6 text-white" />
+                        </button>
                       ) : (
                         <Link
                           href={item.href}
-                          className="block py-2 text-sm text-[#5C85A6] hover:opacity-80"
+                          className="font-serif text-3xl text-white w-full text-left hover:text-gray-300 transition-colors"
+                          onClick={() => setMobileOpen(false)}
+                        >
+                          {item.label}
+                        </Link>
+                      )}
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex flex-col gap-6">
+                  {secondaryNavItems.map((item) => (
+                    <div key={item.href} className="flex items-center justify-between">
+                      {hasDropdown(item) ? (
+                        <button
+                          className="flex items-center justify-between w-full text-left group"
+                          onClick={() => setMobileDropdown(item.label)}
+                        >
+                          <span className="font-serif text-2xl text-white group-hover:text-gray-300 transition-colors">
+                            {item.label}
+                          </span>
+                          <ChevronRight className="h-5 w-5 text-white" />
+                        </button>
+                      ) : (
+                        <Link
+                          href={item.href}
+                          className="font-serif text-2xl text-white w-full text-left hover:text-gray-300 transition-colors"
                           onClick={() => setMobileOpen(false)}
                         >
                           {item.label}
@@ -540,9 +549,94 @@ const Navbar = () => {
                   ))}
                 </div>
               </div>
-            </div>
+            ) : (
+              /* Submenu Drilldown */
+              <div className="flex flex-col pb-10 animate-in fade-in slide-in-from-right-4 duration-300">
+                <button
+                  onClick={() => setMobileDropdown(null)}
+                  className="text-white/50 mb-6 w-fit text-left flex items-center gap-2 text-sm hover:text-white transition-colors"
+                >
+                  <ChevronLeft className="h-4 w-4" /> Back to menu
+                </button>
+
+                {(() => {
+                  const activeItem = [...mainNavItems, ...secondaryNavItems].find(i => i.label === mobileDropdown);
+                  if (!activeItem) return null;
+
+                  return (
+                    <div className="flex flex-col">
+                      <h2 className="font-serif text-[2rem] leading-tight text-white inline-block border-b-2 border-white pb-2 mb-8 w-fit">
+                        {activeItem.label}
+                      </h2>
+
+                      <div className="flex flex-col gap-6 mb-12">
+                        {activeItem.children?.map(child => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            className="text-white text-lg font-medium hover:text-[#89bdf2] hover:underline underline-offset-4 transition-all"
+                            onClick={() => {
+                              setMobileOpen(false);
+                              setMobileDropdown(null);
+                            }}
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+
+                        {activeItem.label === "Products" && productCategories.length > 0 && (
+                          <>
+                            <div className="h-px w-full bg-white/20" aria-hidden />
+                            {productCategories.map((cat) => (
+                              <Link
+                                key={cat.slug || cat.name}
+                                href={`/products?category=${encodeURIComponent(cat.slug || cat.name)}`}
+                                className="text-white/50 text-lg font-medium hover:text-white transition-colors"
+                                onClick={() => {
+                                  setMobileOpen(false);
+                                  setMobileDropdown(null);
+                                }}
+                              >
+                                {cat.name}
+                              </Link>
+                            ))}
+                          </>
+                        )}
+                      </div>
+
+                      {/* Image Card for Mega Menu */}
+                      {activeItem.megaImage && (
+                        <div className="relative w-full h-[250px] rounded-2xl overflow-hidden group">
+                          <Image
+                            src={activeItem.megaImage}
+                            alt={activeItem.megaImageTitle || activeItem.label}
+                            fill
+                            className="object-cover"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-5">
+                            <h3 className="text-white font-semibold text-lg mb-1 leading-tight">
+                              {activeItem.megaImageTitle}
+                            </h3>
+                            <Link
+                              href={activeItem.megaImageLink || activeItem.href}
+                              className="text-white/80 text-xs font-medium flex items-center gap-2 hover:text-white transition-colors"
+                              onClick={() => {
+                                setMobileOpen(false);
+                                setMobileDropdown(null);
+                              }}
+                            >
+                              {activeItem.megaImageSubtitle} <ArrowRight className="h-3 w-3" />
+                            </Link>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })()}
+              </div>
+            )}
           </div>
-        </>
+        </div>
       )}
     </header>
   );

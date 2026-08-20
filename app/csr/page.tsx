@@ -1,3 +1,5 @@
+// Note : This page is the ESG page but the route is /csr because the navigation link is labeled "ESG" but points to /csr. The page content is about ESG initiatives, so the route is kept as /csr for consistency with the navigation label.
+
 "use client";
 
 import { useState } from "react";
@@ -12,6 +14,10 @@ import CSRInitiativeGrid from "./components/CSRInitiativeGrid";
 import CSRPillarOverview from "./components/CSRPillarOverview";
 import CSRVisionSection from "./components/CSRVisionSection";
 import CSRSlidesshow from "./components/CSRSlidesshow";
+import CSRImpactCard from "./components/CSRImpactCard";
+import CSRInvestorsCards from "./components/CSRInvestorsCards";
+import CorporateGovernanceSection from "./components/CorporateGovernanceSection";
+import KWCampus from "./components/KWCampus";
 
 // ─── Page ───────────────────────────────────────────────────────────────────
 const metadata = {
@@ -36,19 +42,20 @@ export default function CreatingImpactPage() {
   return (
     <>
       <PageHero
-        title="Creating Impact"
-        subtitle="At Ferozsons, giving back is not a programme — it is our purpose. From classrooms to clinical wards, we invest in the communities that define Pakistan."
-        backgroundImage="/images/CSR/1-banner-creating-impact.webp"
+        title="Environmental, Social and Governance"
+        subtitle=""
+        backgroundImage="/images/CSR/ESG-Hero-Image.webp"
       />
 
 
-      <CSRSlidesshow/>
       <CSRVisionSection />
-
+      <CSRImpactCard/>
+      <CSRInvestorsCards/>
+      <KWCampus/>
+      <CSRSlidesshow/>
       <CSRPillarOverview
         activeCategory={activeCategory}
         onCategoryChange={setActiveCategory}
-        countFor={countFor}
       />
 
       <section className="pb-20">
@@ -62,7 +69,7 @@ export default function CreatingImpactPage() {
           <CSRInitiativeGrid filtered={filtered} />
         </div>
       </section>
-
+      <CorporateGovernanceSection/>
       <CSRClosingCTA />
     </>
   );

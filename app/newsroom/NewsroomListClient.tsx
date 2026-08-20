@@ -4,10 +4,24 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/layout/PageHero";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { getStrapiImageUrl } from "@/lib/strapi";
 import { useNewsrooms } from "./hooks/useNewsrooms";
+
+// Helper to safely extract the first paragraph from Strapi Rich Text blocks
+const getExcerpt = (content: any): string => {
+  if (!Array.isArray(content)) return "Read more about this update by clicking the full article link.";
+  
+  const paragraph = content.find(
+    (block: any) => block.type === "paragraph" && Array.isArray(block.children)
+  );
+  
+  if (paragraph) {
+    const text = paragraph.children.map((child: any) => child.text || "").join("");
+    if (text.trim()) return text;
+  }
+  
+  return "Read more about this update by clicking the full article link.";
+};
 
 export default function NewsroomListClient() {
   const {
@@ -38,14 +52,26 @@ export default function NewsroomListClient() {
   }, [hasNextPage, fetchNextPage]);
 
   return (
-    <div className="sm:pt-10 pt-20">
+    <>
       <PageHero
         title="Newsroom"
-        subtitle="Stay updated with the latest news and developments from Ferozsons Laboratories."
+        backgroundImage="/images/newsroom/Hero.webp"
+        subtitle="Explore our latest news, press releases, and company stories."
       />
 
-      <section className="py-12">
-        <div className="container">
+      <section className="py-16 md:py-24 bg-background">
+        <div className="container mx-auto px-4 max-w-8xl">
+          
+          {/* Section Heading & Subheading */}
+          <div className="text-center mb-16 md:mb-28">
+            <h2 className="text-4xl md:text-5xl  font-bold text-black mb-12">
+              What's New at Ferozsons?
+            </h2>
+            <p className="text-black text-lg md:text-[24px] font-light max-w-5xl  mx-auto">
+              Stay updated with the latest news and developments from Ferozsons Laboratories Limited
+            </p>
+          </div>
+
           {isError && (
             <p className="text-center text-destructive py-8">
               Failed to load news articles. Please try again.
@@ -66,24 +92,27 @@ export default function NewsroomListClient() {
 
           {!isError && !isLoading && items.length > 0 && (
             <>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12 ">
                 {items.map((article) => {
                   const imageUrl = getStrapiImageUrl(
                     article.featured_image?.url,
                   );
+                  // Extract the text from the Strapi content blocks
+                  const excerpt = getExcerpt(article.content);
 
                   return (
-                    <Card
+                    <div
                       key={article.documentId ?? article.id}
-                      className="hover:shadow-md transition-shadow overflow-hidden  flex flex-col"
+                      className="group flex flex-col h-full"
                     >
-                      <div className="relative w-full h-48 sm:h-56 overflow-hidden">
+                      {/* Image Container */}
+                      <Link href={`/newsroom/${article.slug}`} className="block relative w-full aspect-[4/3] mb-6 rounded-[2rem] md:rounded-[2.5rem] overflow-hidden bg-muted">
                         {imageUrl ? (
                           <Image
                             src={imageUrl}
                             alt={article.title}
                             fill
-                            className="object-cover object-center"
+                            className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             unoptimized
                           />
@@ -92,35 +121,42 @@ export default function NewsroomListClient() {
                             {article.title.charAt(0)}
                           </span>
                         )}
-                      </div>
-                      <CardContent className="pt-4 flex flex-col flex-1">
-                        <div className="flex justify-between flex-1">
-                          <h3 className="font-bold text-lg ">
+                      </Link>
+
+                      {/* Content Area */}
+                      <div className="flex flex-col flex-1 px-2">
+                        <Link href={`/newsroom/${article.slug}`} className="hover:text-primary transition-colors">
+                          <span className="font-medium text-xl md:text-2xl text-black line-clamp-2 leading-snug mb-3">
                             {article.title}
-                          </h3>
-                          <p className="text-xs text-muted-foreground">
-                            {" "}
+                          </span>
+                        </Link>
+                        
+                        {/* Excerpt / Description extracted from rich text */}
+                        <p className="text-sm text-black line-clamp-2 mb-6">
+                          {excerpt}
+                        </p>
+                        
+                        {/* Footer (Link & Date) */}
+                        <div className="flex items-center justify-between mt-auto pt-2">
+                          <Link 
+                            href={`/newsroom/${article.slug}`}
+                            className="text-[#3B73AC] text-sm font-medium underline underline-offset-4 hover:text-[#294e74] transition-colors"
+                          >
+                            Read full article
+                          </Link>
+                          <span className="text-xs md:text-sm text-muted-foreground/70">
                             {new Date(article.date || article.createdAt).toLocaleDateString(
-                              "en-US",
+                              "en-GB",
                               {
-                                month: "short",
-                                day: "numeric",
+                                day: "2-digit",
+                                month: "2-digit",
                                 year: "numeric",
                               },
                             )}
-                          </p>
+                          </span>
                         </div>
-                        <Link href={`/newsroom/${article.slug}`}>
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            className="mt-4 rounded-full w-full"
-                          >
-                            Read Article
-                          </Button>
-                        </Link>
-                      </CardContent>
-                    </Card>
+                      </div>
+                    </div>
                   );
                 })}
               </div>
@@ -136,6 +172,6 @@ export default function NewsroomListClient() {
           )}
         </div>
       </section>
-    </div>
+    </>
   );
 }

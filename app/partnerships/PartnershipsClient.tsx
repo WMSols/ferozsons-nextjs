@@ -8,7 +8,7 @@ import { partnerships, timelineEvents } from "@/data/partnerships";
 export default function PartnershipsClient() {
   return (
     <>
-      <div className="-mt-[6.6rem]">
+      <>
         <HeroSection />
         <IntroSection />
         <PartnersGrid partners={partnerships} />
@@ -19,7 +19,7 @@ export default function PartnershipsClient() {
           className="bg-linear-to-br overflow-x-hidden from-primary/5 via-primary/10 to-primary/5 py-20"
         />
         <CTABanner />
-      </div>
+      </>
     </>
   );
 }

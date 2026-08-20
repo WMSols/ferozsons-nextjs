@@ -1,44 +1,31 @@
 "use client";
 
-import type { RefObject } from "react";
-import type { MotionValue } from "framer-motion";
+
 import { motion } from "framer-motion";
+import Image from "next/image";
 
-export interface HeroSectionProps {
-  heroRef: RefObject<HTMLElement | null>;
-  heroY: MotionValue<string>;
-}
-
-export function HeroSection({ heroRef, heroY }: HeroSectionProps) {
+export function HeroSection() {
   return (
     <section
-      ref={heroRef}
-      className=" pt-10  relative min-h-screen flex items-center overflow-hidden"
-      style={{
-        background:
-          "linear-gradient(135deg, #0a1628 0%, #0e2044 50%, #0d1c3d 100%)",
-      }}
+      className="relative min-h-[95vh] flex items-center overflow-hidden rounded-b-[3.1rem]"
     >
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle, #ffffff22 1px, transparent 1px)",
-          backgroundSize: "30px 30px",
-        }}
-      />
-      <div
-        className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
-        style={{
-          background: "linear-gradient(to bottom, transparent, #0a1628)",
-        }}
-      />
+      {/* Background Image & Overlay */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <Image
+          src="/images/contract-manufacturing/Hero.webp"
+          alt="Manufacturing Facility"
+          fill
+          className="object-cover"
+          priority
+        />
+        {/* Dark gradient overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
+      </div>
 
       <motion.div
-        style={{ y: heroY }}
-        className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-16 py-20"
+        className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-16 py-20 mt-16"
       >
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="max-w-4xl">
           <motion.div
             initial="hidden"
             animate="visible"
@@ -47,44 +34,29 @@ export function HeroSection({ heroRef, heroY }: HeroSectionProps) {
               visible: { transition: { staggerChildren: 0.18 } },
             }}
           >
-            <motion.p
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-              }}
-              className="font-body text-[#7ab8f5] text-sm tracking-[0.3em] uppercase mb-6"
-            >
-              Ferozsons Laboratories Limited
-            </motion.p>
+            {/* Heading - strictly font-bold with no specific font family */}
             <motion.h1
               variants={{
                 hidden: { opacity: 0, y: 30 },
                 visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
               }}
-              className="font-display text-white leading-[1.05]"
-              style={{
-                fontSize: "clamp(2.4rem, 5vw, 4.2rem)",
-                fontWeight: 900,
-              }}
+              className="text-[40px] sm:text-7xl md:text-8xl lg:text-[6.5rem] font-bold text-white leading-none mb-6 tracking-tight"
             >
-              Precision
-              <br />
-              <span style={{ color: "#4a90d9" }}>Manufacturing.</span>
-              <br />
-              Global Standards.
+              Manufacturing
             </motion.h1>
+
             <motion.p
               variants={{
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0, transition: { duration: 0.7 } },
               }}
-              className="font-body text-[#a8c4e0] mt-6 text-lg leading-relaxed max-w-lg"
-              style={{ fontWeight: 300 }}
+              className="text-white/90 text-lg md:text-xl font-sans  lg:text-2xl leading-relaxed max-w-5xl mb-10"
             >
               A fully cGMP-compliant pharmaceutical manufacturing facility
               delivering world-class formulations for domestic and global
-              markets since 1954.
+              markets since 1956.
             </motion.p>
+
             <motion.div
               variants={{
                 hidden: { opacity: 0, y: 20 },
@@ -94,37 +66,29 @@ export function HeroSection({ heroRef, heroY }: HeroSectionProps) {
                   transition: { duration: 0.6, delay: 0.1 },
                 },
               }}
-              className="mt-10 flex gap-4 flex-wrap"
+              className="flex flex-wrap items-center gap-4 md:gap-6"
             >
-              <motion.a
-                href="#contact"
-                whileHover={{
-                  scale: 1.04,
-                  boxShadow: "0 0 30px rgba(74,144,217,0.5)",
-                }}
-                whileTap={{ scale: 0.97 }}
-                className="font-body px-8 py-3.5 rounded-full text-white text-base tracking-wide cursor-pointer"
-                style={{
-                  background: "linear-gradient(135deg, #2563eb, #1d4ed8)",
-                  border: "1px solid #3b82f6",
-                  fontWeight: 400,
-                }}
-              >
-                Partner with Us →
-              </motion.a>
+              {/* Primary Button */}
               <motion.a
                 href="#capabilities"
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.97 }}
-                className="font-body px-8 py-3.5 rounded-full text-[#93c5fd] text-base tracking-wide cursor-pointer"
-                style={{ border: "1px solid #3b82f688", fontWeight: 400 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center justify-center bg-[#3B73AC] text-white font-medium text-base h-12 px-8 rounded-full transition-colors hover:bg-[#294e74]"
               >
-                View Capabilities
+                View Our Capabilities
+              </motion.a>
+              
+              {/* Secondary Transparent Button */}
+              <motion.a
+                href="#partner"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center justify-center bg-transparent border border-white/50 text-white font-medium text-sm md:text-base px-8 py-3.5 rounded-full transition-colors hover:bg-white/10 hover:border-white"
+              >
+                Partner With Us &rarr;
               </motion.a>
             </motion.div>
           </motion.div>
-
-
         </div>
       </motion.div>
     </section>
