@@ -266,7 +266,7 @@ const Navbar = () => {
                 }}
               >
                 <Image
-                  src="/Ferozsons-Logo-1000x250px3.avif"
+                  src="/nav-logo.webp"
                   alt="Ferozsons Laboratories Limited"
                   width={200}
                   height={50}
@@ -403,7 +403,7 @@ const Navbar = () => {
           <>
             <Link href="/" className="flex items-center shrink-0">
               <Image
-                src="/Ferozsons-Logo-1000x250px3.avif"
+                src="/nav-logo.webp"
                 alt="Ferozsons Laboratories Limited"
                 width={160}
                 height={40}
@@ -449,7 +449,7 @@ const Navbar = () => {
               }}
             >
               <Image
-                src="/Ferozsons-Logo-1000x250px3.avif"
+                src="/nav-logo.webp"
                 alt="Ferozsons Laboratories Limited"
                 width={160}
                 height={40}
