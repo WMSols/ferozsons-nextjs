@@ -14,6 +14,10 @@ export function useMedicalAnimations() {
       "(prefers-reduced-motion: reduce)",
     ).matches;
 
+    // Disable CSS smooth scroll while Lenis owns the wheel (double-smoothing).
+    const html = document.documentElement;
+    html.style.setProperty("scroll-behavior", "auto", "important");
+
     // --- Initialize Lenis ---
     const lenis = new Lenis({
       duration: 1.2,
@@ -24,17 +28,22 @@ export function useMedicalAnimations() {
     // Connect Lenis to ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);
 
-    gsap.ticker.add((time) => {
+    const onTick = (time: number) => {
       lenis.raf(time * 1000);
-    });
+    };
+    gsap.ticker.add(onTick);
 
     gsap.ticker.lagSmoothing(0);
 
+    const teardown = () => {
+      html.style.removeProperty("scroll-behavior");
+      gsap.ticker.remove(onTick);
+      lenis.destroy();
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+    };
+
     if (prefersReducedMotion) {
-      return () => {
-        lenis.destroy();
-        ScrollTrigger.getAll().forEach((t) => t.kill());
-      };
+      return teardown;
     }
 
     // --- GSAP Animations ---
@@ -114,9 +123,8 @@ export function useMedicalAnimations() {
     });
 
     return () => {
-      lenis.destroy();
+      teardown();
       ctx.revert();
-      ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);
 }

@@ -3,11 +3,18 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { footerLinks, legalLinks } from "@/data/navigation";
+import { Facebook, Instagram, Linkedin } from "lucide-react";
+import { footerLinks, legalLinks, socialLinks } from "@/data/navigation";
 import {
   fetchWebsiteUpdateDate,
   WEBSITE_UPDATE_DATE_FALLBACK,
 } from "@/lib/website-update-date";
+
+const socialIcons = {
+  instagram: Instagram,
+  facebook: Facebook,
+  linkedin: Linkedin,
+} as const;
 
 const Footer = ({ dark = false }: { dark?: boolean }) => {
   const [displayDate, setDisplayDate] = useState(WEBSITE_UPDATE_DATE_FALLBACK);
@@ -37,6 +44,28 @@ const Footer = ({ dark = false }: { dark?: boolean }) => {
               Committed to improving the quality of life through innovative
               healthcare solutions since 1956.
             </p>
+            <div className="mt-6">
+              <p className="text-xs font-semibold uppercase tracking-wider mb-3 opacity-80">
+                Follow Us
+              </p>
+              <div className="flex items-center gap-3">
+                {socialLinks.map((social) => {
+                  const Icon = socialIcons[social.icon];
+                  return (
+                    <a
+                      key={social.href}
+                      href={social.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={social.label}
+                      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/80 hover:text-white hover:border-white/50 hover:bg-white/10 transition-colors"
+                    >
+                      <Icon className="h-4 w-4" />
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
           </div>
 
           {/* Link columns */}

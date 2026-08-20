@@ -150,3 +150,21 @@ export const legalLinks = [
   { label: "Privacy Policy", href: "/privacy-policy" },
   { label: "Site Map", href: "/sitemap" },
 ];
+
+export const socialLinks = [
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/ferozsonslabs/",
+    icon: "instagram",
+  },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/ferozsonslabs/",
+    icon: "facebook",
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/ferozsonslabs",
+    icon: "linkedin",
+  },
+] as const;

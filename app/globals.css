@@ -197,6 +197,20 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* Lenis needs instant programmatic scroll; CSS smooth would double-ease the wheel. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
 /* Mission card: subtle circular pattern (right on desktop, bottom on mobile) */
 .mission-card-pattern {
   background-color: hsl(var(--mission-card));

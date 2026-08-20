@@ -62,7 +62,7 @@ export default function HeroCarousel({
 
   return (
   
-    <section className=" relative flex min-h-[93vh] flex-col items-center justify-center overflow-hidden rounded-b-[3.1rem]   px-8 xs:pt-32 shadow-sm md:px-12 md:pt-24 lg:px-16 lg:pt-32">
+    <section className=" relative flex min-h-[95vh] xs:min-h-[93vh] flex-col items-center justify-center overflow-hidden rounded-b-[3.1rem]   px-8 xs:pt-32 shadow-sm md:px-12 md:pt-24 lg:px-16 lg:pt-32">
       {slides.map((slide, index) => {
         const isActive = current === index;
         const isPrev = prev === index;
@@ -100,7 +100,7 @@ export default function HeroCarousel({
                     : ""
                 }`}
               >
-                <h1 className=" text-5xl  font-bold leading-tight text-hero-heading sm:text-5xl md:text-6xl lg:text-[82px] max-w-4xl">
+                <h1 className=" text-4xl xs:text-5xl  font-bold leading-tight text-hero-heading sm:text-5xl md:text-6xl lg:text-[82px] max-w-4xl">
                   {slide.title}
                 </h1>
                 <p className=" mt-8 sm:mt-6 max-w-3xl text-base font-normal md:text-xl   leading-relaxed text-white  ">
