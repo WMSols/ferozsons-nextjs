@@ -249,44 +249,53 @@ export interface JobApplicationPayload {
   resume?: File; // The native browser File object from your input type="file"
 }
 
-export async function submitJobApplication(payload: JobApplicationPayload) {
-  const url = `${STRAPI_BASE_URL}/api/job-applications`;
-
-  const { resume, ...restData } = payload;
-
+async function uploadStrapiFile(file: File): Promise<number> {
   const formData = new FormData();
+  formData.append("files", file, file.name);
 
-  formData.append("data[fullName]", payload.fullName);
-  formData.append("data[email]", payload.email);
-  formData.append("data[title]", payload.title);
-  formData.append("data[coverLetter]", payload.coverLetter);
-
-  if (payload.resume) {
-    formData.append("files.resume", payload.resume);
-  }
-  // 3. Create fresh headers to guarantee NO "Content-Type" is set.
-  // We MUST let the browser automatically generate the "multipart/form-data"
-  // header along with its unique boundary hash.
   const headers = new Headers();
   headers.set("Authorization", `Bearer ${STRAPI_BEARER_TOKEN}`);
   headers.set("Accept", "application/json");
 
-  const body = formData;
-  // Bypass the standard `strapiFetch` just for this upload to ensure
-  // no global JSON headers accidentally infect this multipart request.
-  const res = await fetch(url, {
+  const res = await fetch(`${STRAPI_BASE_URL}/api/upload`, {
     method: "POST",
-    headers: headers,
-    body,
+    headers,
+    body: formData,
   });
+
   if (!res.ok) {
     const text = await res.text().catch(() => "");
     throw new Error(
-      `Strapi request failed (${res.status} ${res.statusText}) ${text}`.trim(),
+      `Strapi upload failed (${res.status} ${res.statusText}) ${text}`.trim(),
     );
   }
 
-  return res;
+  const uploaded = await res.json();
+  const fileId = Array.isArray(uploaded) ? uploaded[0]?.id : uploaded?.id;
+  if (typeof fileId !== "number") {
+    throw new Error("Strapi upload succeeded but returned no file id");
+  }
+
+  return fileId;
+}
+
+export async function submitJobApplication(payload: JobApplicationPayload) {
+  const { resume, ...entryData } = payload;
+
+  const resumeId = resume ? await uploadStrapiFile(resume) : undefined;
+
+  return strapiFetch(`${STRAPI_BASE_URL}/api/job-applications`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      data: {
+        ...entryData,
+        ...(resumeId != null ? { resume: resumeId } : {}),
+      },
+    }),
+  });
 }
 
 export async function getFinancialHighlights(): Promise<ApiResult<StrapiFinancialHighlights[]>> {

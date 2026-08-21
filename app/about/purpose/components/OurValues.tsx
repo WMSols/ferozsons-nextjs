@@ -25,14 +25,14 @@ export default function OurValues() {
               Putting Patients First
             </h3>
             <p className="text-base md:text-[24px] font-light leading-relaxed">
-              Our purpose for existence and ultimate measure of success is our impact on<br className="hidden md:block"/>
+              Our purpose for existence and ultimate measure of success is our impact on <br className="hidden md:block"/>
               the improvement of human lives.
             </p>
             <h3 className="text-2xl md:text-[3rem] font-bold  text-white">
               Trustworthiness
             </h3>
             <p className="text-base md:text-[24px] font-light leading-relaxed">
-              We work hard every day to earn the trust of patients, healthcare providers,<br className="hidden md:block"/> 
+              We work hard every day to earn the trust of patients, healthcare providers, <br className="hidden md:block"/> 
               employees, business partners and other stakeholders.
             </p>
         
