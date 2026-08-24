@@ -10,24 +10,24 @@ export default function Story() {
             Our Story
           </h2>
           <p className="mt-8 md:mt-10 text-base md:text-xl lg:text-2xl text-black leading-relaxed">
-            Ferozsons Laboratories Limited was established in 1954 as one of
+            Ferozsons Laboratories Limited was established in 1954 as one of{" "} 
             <br className="hidden md:block" />
-            the first Pharmaceutical manufacturing companies in Pakistan,
+            the first Pharmaceutical manufacturing companies in Pakistan,{" "} 
             <br className="hidden md:block" />
-            and has now entered its seventh decade of serving the cause of
+            and has now entered its seventh decade of serving the cause of{" "} 
             <br className="hidden md:block" />
-            health and well-being in Pakistan and a growing number of
+            health and well-being in Pakistan and a growing number of{" "} 
             <br className="hidden md:block" />
             international markets.
           </p>
           <p className="mt-6 md:mt-8 text-base md:text-xl lg:text-2xl text-black leading-relaxed">
-            The company has emerged as one of Pakistan’s fastest-growing
+            The company has emerged as one of Pakistan’s fastest-growing{" "} 
             <br className="hidden md:block" />
-            pharmaceutical firms, recognized for delivering high-quality
+            pharmaceutical firms, recognized for delivering high-quality{" "} 
             <br className="hidden md:block" />
-            healthcare solutions and building leading brands across key
+            healthcare solutions and building leading brands across key{" "} 
             <br className="hidden md:block" />
-            therapeutic areas, including gastroenterology, hepatology,
+            therapeutic areas, including gastroenterology, hepatology,{" "} 
             <br className="hidden md:block" />
             cardiology, and oncology.
           </p>

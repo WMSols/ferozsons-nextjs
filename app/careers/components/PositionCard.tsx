@@ -50,9 +50,9 @@ export default function PositionCard({
     <>
       {/* The Job Position Card */}
       <div className="flex flex-col items-start border border-black/30  justify-between gap-12 rounded-3xl bg-white py-16 px-8 md:py-24 md:px-20 sm:flex-row sm:items-center">
-        <div className="flex flex-col">
-          <div className="flex justify-between w-full md:flex-row flex-col gap-4">
-            <h3 className=" text-3xl font-bold text-[#3B73AC]">{title}</h3>
+        <div className="flex flex-col w-full">
+          <div className="flex  w-full md:flex-row  flex-col gap-4">
+            <h3 className=" text-3xl font-bold flex-1 text-[#3B73AC]">{title}</h3>
                 <button
           onClick={() => setIsModalOpen(true)}
           className="whitespace-nowrap rounded-full bg-[#1a65a4] h-12 px-8 hidden sm:inline-flex items-center justify-center text-base font-medium text-white transition-colors hover:bg-[#145084]"
