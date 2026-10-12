@@ -22,6 +22,15 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/products/product-concern",
+        destination: "/safety-reporting-form",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

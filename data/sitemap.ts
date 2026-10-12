@@ -20,7 +20,7 @@ export const sitemapPage = {
         { label: "All Products", href: "/products" },
         { label: "Pharmaceuticals", href: "/products/pharmaceuticals" },
         { label: "Medical Technologies", href: "/products/medical-technologies" },
-        { label: "Report a product concern", href: "/products/product-concern" },
+        { label: "Report a product concern", href: "/safety-reporting-form" },
       ],
     },
     {
