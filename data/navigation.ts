@@ -42,7 +42,7 @@ export const mainNavItems: NavItem[] = [
       { label: "All Products", href: "/products" },
       { label: "Pharmaceuticals", href: "/products/pharmaceuticals" },
       { label: "Medical Technologies", href: "/products/medical-technologies" },
-      { label: "Report a product concern", href: "/products/product-concern" },
+      { label: "Report a product concern", href: "/safety-reporting-form" },
     ],
   },
   {
@@ -123,7 +123,7 @@ export const footerLinks = [
       { label: "Medicine Categories", href: "/products?category=antibiotics" },
       { label: "Pharmaceuticals", href: "/products/pharmaceuticals" },
       { label: "Medical Technologies", href: "/products/medical-technologies" },
-      { label: "Report a Product Concern", href: "/products/product-concern" },
+      { label: "Report a Product Concern", href: "/safety-reporting-form" },
     ],
   },
   {
