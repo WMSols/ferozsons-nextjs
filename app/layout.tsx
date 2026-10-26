@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Merriweather,} from "next/font/google";
+import { Inter, Merriweather, Kaisei_Opti, Open_Sans } from "next/font/google";
 import "./globals.css"
 import Layout from "@/components/layout/Layout";
 import { QueryProvider } from "@/components/providers/QueryProvider";
@@ -8,14 +8,27 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
 const inter = Inter({
-  variable: "--font-sans",
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
 const merriweather = Merriweather({
-  variable: "--font-serif",
+  variable: "--font-merriweather",
   subsets: ["latin"],
   weight: ["400", "700", "900"],
+});
+
+// Brand heading/body faces — must use next/font; CSS @import of Google Fonts
+// is dropped under Next 16 Turbopack, so Kaisei/Open Sans never loaded.
+const kaiseiOpti = Kaisei_Opti({
+  variable: "--font-kaisei-opti",
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+});
+
+const openSans = Open_Sans({
+  variable: "--font-open-sans-face",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -34,7 +47,7 @@ export default function RootLayout({
       <head>
       </head>
       <body
-        className={`${inter.variable} ${merriweather.variable} font-sans antialiased`}
+        className={`${inter.variable} ${merriweather.variable} ${kaiseiOpti.variable} ${openSans.variable} font-sans antialiased`}
         suppressHydrationWarning
       >
         <TooltipProvider>

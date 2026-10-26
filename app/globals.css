@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Kaisei+Opti&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 @import "tailwindcss";
 
 @layer base {
@@ -154,10 +153,10 @@
   --color-pharma-navbar-bg: var(--pharma-navbar-bg);
   --color-pharma-text-primary: var(--pharma-text-primary);
   --color-pharma-text-secondary: var(--pharma-text-secondary);
-  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-serif), ui-serif, Georgia, serif;
-  --font-kaisei: "Kaisei Opti", ui-serif, Georgia, serif;
-  --font-open-sans: "Open Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-merriweather), ui-serif, Georgia, serif;
+  --font-kaisei: var(--font-kaisei-opti), ui-serif, Georgia, serif;
+  --font-open-sans: var(--font-open-sans-face), ui-sans-serif, system-ui, sans-serif;
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);

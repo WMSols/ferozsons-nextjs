@@ -4,6 +4,7 @@ import CeoSection from "./components/CeoSection";
 import CommitSection from "./components/CommitSection";
 import OurValues from "./components/OurValues";
 import BottomCTA from "./components/BottomCTA";
+import FontDebugProbe from "./components/FontDebugProbe";
 
 export const metadata = {
   title: "Our Purpose",
@@ -14,6 +15,7 @@ export const metadata = {
 export default function PurposePage() {
   return (
     <div className="bg-[#F7F7F7]">
+      <FontDebugProbe />
       <PageHero
         title="Our Purpose"
         backgroundImage="/images/about-purpose/Hero.webp"
