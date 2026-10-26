@@ -13,7 +13,7 @@ export function formatWebsiteUpdateDate(rawDate: string) {
 
 export async function fetchWebsiteUpdateDate(): Promise<string> {
   const baseUrl =
-    process.env.NEXT_PUBLIC_STRAPI_URL || "https://srv1615764.hstgr.cloud";
+    process.env.NEXT_PUBLIC_STRAPI_URL || "https://admin.ferozsons-labs.com";
 
   try {
     const res = await fetch(`${baseUrl}/api/website-update-date`);
