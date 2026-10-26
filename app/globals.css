@@ -155,8 +155,8 @@
   --color-pharma-text-secondary: var(--pharma-text-secondary);
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-merriweather), ui-serif, Georgia, serif;
-  --font-kaisei: var(--font-kaisei-opti), ui-serif, Georgia, serif;
-  --font-open-sans: var(--font-open-sans-face), ui-sans-serif, system-ui, sans-serif;
+  --font-kaisei: "Kaisei Opti", ui-serif, Georgia, serif;
+  --font-open-sans: "Open Sans", ui-sans-serif, system-ui, sans-serif;
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);

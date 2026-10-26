@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Merriweather, Kaisei_Opti, Open_Sans } from "next/font/google";
+import { Inter, Merriweather } from "next/font/google";
 import "./globals.css"
 import Layout from "@/components/layout/Layout";
 import { QueryProvider } from "@/components/providers/QueryProvider";
@@ -18,19 +18,6 @@ const merriweather = Merriweather({
   weight: ["400", "700", "900"],
 });
 
-// Brand heading/body faces — must use next/font; CSS @import of Google Fonts
-// is dropped under Next 16 Turbopack, so Kaisei/Open Sans never loaded.
-const kaiseiOpti = Kaisei_Opti({
-  variable: "--font-kaisei-opti",
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-});
-
-const openSans = Open_Sans({
-  variable: "--font-open-sans-face",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
   title: { default: "Ferozsons Laboratories Limited", template: "%s | Ferozsons Laboratories Limited" },
   description: "Ferozsons Laboratories Limited",
@@ -45,9 +32,22 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Kaisei Opti / Open Sans via <link>, not next/font: next/font emits
+            hundreds of CJK unicode-range files for Kaisei (~246 preloads), so
+            the latin face never wins on Cloudflare and Fallback (Arial) shows. */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Kaisei+Opti:wght@400;500;700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body
-        className={`${inter.variable} ${merriweather.variable} ${kaiseiOpti.variable} ${openSans.variable} font-sans antialiased`}
+        className={`${inter.variable} ${merriweather.variable} font-sans antialiased`}
         suppressHydrationWarning
       >
         <TooltipProvider>
