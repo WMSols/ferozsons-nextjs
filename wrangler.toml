@@ -1,15 +1,9 @@
 name = "ferozsons-nextjs"
 main = ".open-next/worker.js"
-compatibility_date = "2024-09-23"
+compatibility_date = "2024-12-30"
 compatibility_flags = ["nodejs_compat"]
 
 # Serve static assets from the Next.js build
 [assets]
 directory = ".open-next/assets"
 binding = "ASSETS"
-
-# Add your custom domain here
-routes = [
-  { pattern = "ferozsons-labs.com", custom_domain = true },
-  { pattern = "www.ferozsons-labs.com", custom_domain = true } # Optional, if you want www support
-]

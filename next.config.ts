@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "srv1615764.hstgr.cloud",
+        hostname: "admin.ferozsons-labs.com",
         pathname: "/uploads/**"
       },
       {
